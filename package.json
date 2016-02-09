@@ -1,0 +1,23 @@
+{
+  "name": "gls",
+  "version": "0.0.1",
+  "description": "Grid Layout System for React",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/basarat/gls.git"
+  },
+  "keywords": [
+    "grid",
+    "layout"
+  ],
+  "author": "basaratali@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/basarat/gls/issues"
+  },
+  "homepage": "https://github.com/basarat/gls#readme"
+}
