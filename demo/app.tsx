@@ -159,7 +159,7 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: { 
                         samples.map((s, i) => {
                             return {
                                 header: s.name,
-                                body: <textarea key={i} style={csx.flex} value={s.code} onChange={(e) => {
+                                body: <textarea key={i} style={csx.extend(csx.flex,{background:'#111', color:'white'})} value={s.code} onChange={(e) => {
                                     var value = (e.target as HTMLTextAreaElement).value;
                                     samples[i].code = value;
                                     this.setState({ samples });

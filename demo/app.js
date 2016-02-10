@@ -102,7 +102,7 @@ var Demo = (function (_super) {
         return (React.createElement(gls.FlexVertical, null, React.createElement(Tabs, {tabs: samples.map(function (s, i) {
             return {
                 header: s.name,
-                body: React.createElement("textarea", {key: i, style: csx.flex, value: s.code, onChange: function (e) {
+                body: React.createElement("textarea", {key: i, style: csx.extend(csx.flex, { background: '#111', color: 'white' }), value: s.code, onChange: function (e) {
                     var value = e.target.value;
                     samples[i].code = value;
                     _this.setState({ samples: samples });
