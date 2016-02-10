@@ -21,9 +21,16 @@
     "url": "https://github.com/basarat/gls/issues"
   },
   "peerDependencies": {
+    "radium": ">0.0.0",
+    "csx": ">0.0.0",
+    "react": ">0.0.0",
+    "react-dom": ">0.0.0"
+  },
+  "homepage": "https://github.com/basarat/gls#readme",
+  "devDependencies": {
       "radium": ">0.0.0",
       "csx": ">0.0.0",
-      "react": ">0.0.0"
-  },
-  "homepage": "https://github.com/basarat/gls#readme"
+      "react": ">0.0.0",
+      "react-dom": ">0.0.0"
+  }
 }
