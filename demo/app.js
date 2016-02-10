@@ -91,7 +91,7 @@ var Demo = (function (_super) {
                 },
                 {
                     name: 'Column Padded',
-                    code: "\n<gls.ColumnPadded padding={10}>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n</gls.ColumnPadded>\n".trim()
+                    code: "\n<gls.ColumnPadded padding={10}>\n    <SampleContent/>\n    <SampleContent/>\n    <SampleContent/>\n    <SampleContent/>\n</gls.ColumnPadded>\n".trim()
                 },
                 {
                     name: 'Column Padded Nested',
@@ -99,8 +99,12 @@ var Demo = (function (_super) {
                 },
                 {
                     name: 'Row Padded',
-                    code: "\n<gls.RowPadded padding={10}>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n</gls.RowPadded>\n"
-                }
+                    code: "\n<gls.RowPadded padding={10}>\n    <SampleContent/>\n    <SampleContent/>\n    <SampleContent/>\n    <SampleContent/>\n</gls.RowPadded>\n"
+                },
+                {
+                    name: 'Header Body Footer',
+                    code: "\n<gls.FlexVertical>\n    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>\n        HEADER\n    </gls.Content>\n    <gls.Flex style={csx.centerCenter}>\n        BODY\n    </gls.Flex>\n    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>\n        FOOTER\n    </gls.Content>\n</gls.FlexVertical>\n"
+                },
             ]
         };
     }

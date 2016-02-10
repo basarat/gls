@@ -141,10 +141,10 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: { 
                     name: 'Column Padded',
                     code: `
 <gls.ColumnPadded padding={10}>
-        <SampleContent/>
-        <SampleContent/>
-        <SampleContent/>
-        <SampleContent/>
+    <SampleContent/>
+    <SampleContent/>
+    <SampleContent/>
+    <SampleContent/>
 </gls.ColumnPadded>
 `.trim()
                 },
@@ -169,13 +169,29 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: { 
                     name: 'Row Padded',
                     code:`
 <gls.RowPadded padding={10}>
-        <SampleContent/>
-        <SampleContent/>
-        <SampleContent/>
-        <SampleContent/>
+    <SampleContent/>
+    <SampleContent/>
+    <SampleContent/>
+    <SampleContent/>
 </gls.RowPadded>
 `
-                }
+                },
+                {
+                    name: 'Header Body Footer',
+                    code:`
+<gls.FlexVertical>
+    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>
+        HEADER
+    </gls.Content>
+    <gls.Flex style={csx.centerCenter}>
+        BODY
+    </gls.Flex>
+    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>
+        FOOTER
+    </gls.Content>
+</gls.FlexVertical>
+`
+                },
             ]
 
         }
