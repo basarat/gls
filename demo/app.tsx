@@ -22,22 +22,85 @@ const SampleContent = (props: any) => {
     </gls.Content>
 }
 
+const sample = <gls.ColumnPadded padding={10}>
+    <gls.ColumnPadded padding={10}>
+        <SampleContent/>
+        <SampleContent/>
+        <SampleContent/>
+        <SampleContent/>
+    </gls.ColumnPadded>
+    <gls.ColumnPadded padding={10}>
+        <SampleContent/>
+    </gls.ColumnPadded>
+</gls.ColumnPadded>;
 
+type TabProps = { tabs: { header: string; body: JSX.Element }[] }
+class Tabs extends React.Component<TabProps, { selectedIndex?: number }>{
+    private Styles = {
+        headerItem: csx.extend(
+            csx.Box.padding(0, 5),
+            csx.centerCenter,
+            {
+                cursor: 'pointer',
+                borderTop: '2px solid white',
+                borderLeft: '2px solid white',
+                borderRight: '2px solid white',
+                borderRadius: '4px 4px 0px 0px',
+                transition: 'border .2s'
+            }),
+        headerItemSelected: {
+            borderTop: '2px solid grey',
+            borderLeft: '2px solid grey',
+            borderRight: '2px solid grey',
+        },
+        body: csx.Box.padding(5),
+    };
+    constructor(props: TabProps) {
+        super(props);
+        this.state = { selectedIndex: 0 };
+    }
+    render() {
+        if (!this.props.tabs.length) return <noscript/>
+
+        const selectedIndex = this.state.selectedIndex;
+        const selected = this.props.tabs[selectedIndex];
+        return (
+            <gls.FlexVertical>
+                <gls.ContentHorizontal style={{ height: '30px' }}>
+                    {this.props.tabs.map((t, i) => {
+                        return (
+                            <gls.Content
+                                key={i}
+                                onClick={()=>this.setState({selectedIndex:i})}
+                                style={
+                                    csx.extend(this.Styles.headerItem, selectedIndex == i && this.Styles.headerItemSelected)
+                                }>
+                                {t.header}
+                            </gls.Content>
+                        );
+                    }) }
+                </gls.ContentHorizontal>
+                <gls.Flex style={this.Styles.body}>
+                    {selected.body}
+                </gls.Flex>
+            </gls.FlexVertical>
+        );
+    }
+}
 
 class Demo extends React.Component<{}, {}>{
     render() {
         return (
-            <gls.ColumnPadded padding={10}>
-                <gls.ColumnPadded padding={10}>
-                    <SampleContent/>
-                    <SampleContent/>
-                    <SampleContent/>
-                    <SampleContent/>
-                </gls.ColumnPadded>
-                <gls.ColumnPadded padding={10}>
-                    <SampleContent/>
-                </gls.ColumnPadded>
-            </gls.ColumnPadded>
+            <Tabs tabs={[
+                {
+                    header: "First",
+                    body: <gls.Content>First Body</gls.Content>
+                },
+                {
+                    header: "Second",
+                    body: <gls.Content>Second Body</gls.Content>
+                }
+            ]}/>
         );
     }
 }

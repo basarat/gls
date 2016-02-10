@@ -67,7 +67,7 @@ export const ContentVertical = Radium((props: PrimitiveProps) => {
  * Provides a Horizontal Container. For the parent it behaves like content.
  */
 export const ContentHorizontal = Radium((props: PrimitiveProps) => {
-    const style = csx.extend(props.style || {},csx.content,csx.vertical);
+    const style = csx.extend(props.style || {},csx.content,csx.horizontal);
     return (
         <div data-comment="ContentHorizontal" {...props} style={style}>
             {props.children}

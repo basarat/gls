@@ -9,6 +9,6 @@ npm install webpack -g
 ```
 * Run it
 ```
-webpack --watch
+webpack -w
 ```
 * Open up `index.html` in the browser :rose:

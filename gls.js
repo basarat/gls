@@ -20,7 +20,7 @@ exports.ContentVertical = Radium(function (props) {
     return (React.createElement("div", React.__spread({"data-comment": "ContentVertical"}, props, {style: style}), props.children));
 });
 exports.ContentHorizontal = Radium(function (props) {
-    var style = csx.extend(props.style || {}, csx.content, csx.vertical);
+    var style = csx.extend(props.style || {}, csx.content, csx.horizontal);
     return (React.createElement("div", React.__spread({"data-comment": "ContentHorizontal"}, props, {style: style}), props.children));
 });
 exports.FlexVertical = Radium(function (props) {
