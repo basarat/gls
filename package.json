@@ -5,7 +5,8 @@
   "main": "gls.js",
   "typings": "gls",
   "scripts": {
-    "build": "ntsc -p . && webpack"
+    "build": "ntsc -p . && webpack",
+    "watch": "webpack -w"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,8 @@
     "radium": ">0.0.0",
     "react": ">0.0.0",
     "react-dom": ">0.0.0",
-    "webpack": "latest"
+    "webpack": "latest",
+    "style-loader": "^0.12.3",
+    "css-loader": "^0.17.0"
   }
 }

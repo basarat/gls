@@ -4,11 +4,12 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
+var gls = require("../gls");
 var React = require("react");
 var ReactDOM = require("react-dom");
 var ReactDOMServer = require("react-dom/server");
-var gls = require("../gls");
 var csx = require("csx");
+var codeEditor_1 = require("./codeEditor");
 var lorem = "\nLorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum has been the industry's standard dummy text ever since the\n 1500s, when an unknown printer took a galley of type and scrambled it\n  to make a type specimen book. It has survived not only five\n  centuries, but also the leap into electronic typesetting,\n   remaining essentially unchanged.\n    It was popularised in the 1960s with the release of Letraset sheets\n     containing Lorem Ipsum passages, and more recently\n      with desktop publishing software like Aldus PageMaker\n       including versions of Lorem Ipsum.\n";
 var SampleContent = function (props) {
     return React.createElement(gls.InlineBlock, null, lorem);
@@ -109,8 +110,7 @@ var Demo = (function (_super) {
         return (React.createElement(gls.FlexVertical, null, React.createElement(Tabs, {tabs: samples.map(function (s, i) {
             return {
                 header: s.name,
-                body: React.createElement("textarea", {key: i, style: csx.extend(csx.flex, { background: '#111', color: 'white' }), value: s.code, onChange: function (e) {
-                    var value = e.target.value;
+                body: React.createElement(codeEditor_1.CodeEditor, {key: i, value: s.code, onChange: function (value) {
                     samples[i].code = value;
                     _this.setState({ samples: samples });
                 }})

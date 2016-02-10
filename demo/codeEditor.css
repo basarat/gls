@@ -1,0 +1,42 @@
+/* Make code mirror flex boxy */
+.CodeMirror {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.CodeMirror-scroll {
+    flex: 1;
+}
+
+/* Make code mirror selections a bit more popping */
+.cm-s-monokai div.CodeMirror-selected {
+    background: #58574B;
+}
+
+/* matchbrackets addon */
+.cm-s-monokai .CodeMirror-matchingbracket {
+    color: #4f0 !important;
+    background-color: #32332b;
+    text-decoration: none;
+}
+.cm-s-monokai .CodeMirror-nonmatchingbracket {
+    background-color: #32332b;
+}
+
+/* cm-s-monokai has nothing for qualifier */
+.cm-s-monokai span.cm-qualifier { color: rgb(0, 208, 255); }
+
+/* make overrite (insert) mode visually different */
+.CodeMirror-overwrite .CodeMirror-cursor{
+    border-left:2px solid red !important;
+}
+
+/* match-highlight from demo : https://codemirror.net/demo/matchhighlighter.html */
+.cm-matchhighlight {
+    text-decoration: underline;
+}
+
+/* tag matching is a bit too bold. Dull it down a bit */
+.CodeMirror-matchingtag {
+    background: rgba(0, 150, 150, .3);
+}

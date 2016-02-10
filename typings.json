@@ -2,6 +2,8 @@
   "dependencies": {},
   "devDependencies": {},
   "ambientDependencies": {
+    "codemirror": "github:DefinitelyTyped/DefinitelyTyped/codemirror/codemirror.d.ts#773f159f3e3bcf480aaa2b9d324c57945c4444fd",
+    "node": "github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts#aee0039a2d6686ec78352125010ebb38a7a7d743",
     "react": "github:DefinitelyTyped/DefinitelyTyped/react/react.d.ts#83b88a031cc8f2006fd361bf0a0b548c3bcc8259",
     "react-dom": "github:DefinitelyTyped/DefinitelyTyped/react/react-dom.d.ts#ca5bfe76d2d9bf6852cbc712d9f3e0047c93486e"
   }

@@ -1,8 +1,10 @@
+import * as gls from "../gls";
+
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import * as ReactDOMServer from "react-dom/server";
-import * as gls from "../gls";
 import * as csx from "csx";
+import {CodeEditor} from "./codeEditor";
 
 const lorem = `
 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -190,12 +192,10 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: { 
                             return {
                                 header: s.name,
                                 body:
-                                    <textarea
+                                    <CodeEditor
                                         key={i}
-                                        style={csx.extend(csx.flex, { background: '#111', color: 'white' }) }
                                         value={s.code}
-                                        onChange={(e) => {
-                                        var value = (e.target as HTMLTextAreaElement).value;
+                                        onChange={(value) => {
                                         samples[i].code = value;
                                         this.setState({ samples });
                                     } }/>
