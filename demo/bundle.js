@@ -104,9 +104,21 @@
 	        _super.apply(this, arguments);
 	    }
 	    DemoComponent.prototype.render = function () {
+	        var outputStyle = { backgroundColor: '#EEE' };
+	        var errorStyle = csx.extend(outputStyle, { color: 'red', fontWeight: 'bold', fontFamily: 'monospace', fontSize: '2rem' });
 	        var compiled = transpile(this.props.code);
-	        var html = ReactDOMServer.renderToString(eval(compiled));
-	        return React.createElement(gls.Flex, {style: { backgroundColor: '#EEE' }, dangerouslySetInnerHTML: {
+	        if (!compiled.replace('"use strict";', '').trim()) {
+	            return React.createElement(gls.Flex, {style: errorStyle}, "ERROR: No code emitted");
+	        }
+	        var evaled;
+	        try {
+	            evaled = eval(compiled);
+	        }
+	        catch (e) {
+	            return React.createElement(gls.Flex, {style: errorStyle}, "EVAL ERROR:", e.message);
+	        }
+	        var html = ReactDOMServer.renderToString(evaled);
+	        return React.createElement(gls.Flex, {style: outputStyle, dangerouslySetInnerHTML: {
 	            __html: html
 	        }});
 	    };

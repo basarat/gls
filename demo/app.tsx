@@ -102,14 +102,27 @@ function transpile(str: string): string {
  */
 class DemoComponent extends React.Component<{ code: string }, {}>{
     render() {
+
+        const outputStyle = {backgroundColor: '#EEE'};
+        const errorStyle = csx.extend(outputStyle,{color:'red',fontWeight:'bold', fontFamily:'monospace', fontSize:'2rem'});
+
         const compiled = transpile(this.props.code);
-        // if (compiled.error) {
-        //     return <gls.Flex style={{ backgroundColor: 'red' }}>{compiled.error}</gls.Flex>;
-        // }
+        if (!compiled.replace('"use strict";','').trim()) {
+            return <gls.Flex style={errorStyle}>ERROR: No code emitted</gls.Flex>;
+        }
 
-        const html = ReactDOMServer.renderToString(eval(compiled));
+        let evaled:any;
+        try {
+            evaled = eval(compiled);
+        }
+        catch(e){
+            return <gls.Flex style={errorStyle}>EVAL ERROR:{e.message}</gls.Flex>;
+        }
 
-        return <gls.Flex style={{ backgroundColor: '#EEE' }} dangerouslySetInnerHTML={
+
+        const html = ReactDOMServer.renderToString(evaled);
+
+        return <gls.Flex style={outputStyle} dangerouslySetInnerHTML={
             {
                 __html: html
             }
