@@ -38,7 +38,7 @@ const sample = <gls.ColumnPadded padding={10}>
 type TabProps = {
     tabs: { header: string; body: JSX.Element }[],
     selectedIndex: number,
-    requestSelectedIndexChange: (index: number) => any
+    onRequestSelectedIndexChange: (index: number) => any
 }
 class Tabs extends React.Component<TabProps, {}>{
     private Styles = {
@@ -76,7 +76,7 @@ class Tabs extends React.Component<TabProps, {}>{
                         return (
                             <gls.Content
                                 key={i}
-                                onClick={() => this.props.requestSelectedIndexChange(i) }
+                                onClick={() => this.props.onRequestSelectedIndexChange(i) }
                                 style={
                                     csx.extend(this.Styles.headerItem, selectedIndex == i && this.Styles.headerItemSelected)
                                 }>
@@ -168,7 +168,7 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: { 
                         })
                     }
                     selectedIndex={this.state.selectedTabIndex}
-                    requestSelectedIndexChange={(selectedTabIndex) => this.setState({ selectedTabIndex }) }
+                    onRequestSelectedIndexChange={(selectedTabIndex) => this.setState({ selectedTabIndex }) }
                     />
 
                 <DemoComponent code={samples[this.state.selectedTabIndex].code}/>

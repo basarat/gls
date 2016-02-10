@@ -89,7 +89,7 @@
 	        var selectedIndex = this.props.selectedIndex;
 	        var selected = this.props.tabs[selectedIndex];
 	        return (React.createElement(gls.FlexVertical, null, React.createElement(gls.ContentHorizontal, {style: { height: '30px' }}, this.props.tabs.map(function (t, i) {
-	            return (React.createElement(gls.Content, {key: i, onClick: function () { return _this.props.requestSelectedIndexChange(i); }, style: csx.extend(_this.Styles.headerItem, selectedIndex == i && _this.Styles.headerItemSelected)}, t.header));
+	            return (React.createElement(gls.Content, {key: i, onClick: function () { return _this.props.onRequestSelectedIndexChange(i); }, style: csx.extend(_this.Styles.headerItem, selectedIndex == i && _this.Styles.headerItemSelected)}, t.header));
 	        })), React.createElement(gls.Flex, {style: this.Styles.body}, selected.body)));
 	    };
 	    return Tabs;
@@ -153,7 +153,7 @@
 	                    _this.setState({ samples: samples });
 	                }})
 	            };
-	        }), selectedIndex: this.state.selectedTabIndex, requestSelectedIndexChange: function (selectedTabIndex) { return _this.setState({ selectedTabIndex: selectedTabIndex }); }}), React.createElement(DemoComponent, {code: samples[this.state.selectedTabIndex].code})));
+	        }), selectedIndex: this.state.selectedTabIndex, onRequestSelectedIndexChange: function (selectedTabIndex) { return _this.setState({ selectedTabIndex: selectedTabIndex }); }}), React.createElement(DemoComponent, {code: samples[this.state.selectedTabIndex].code})));
 	    };
 	    return Demo;
 	}(React.Component));
