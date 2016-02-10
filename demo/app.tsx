@@ -35,8 +35,12 @@ const sample = <gls.ColumnPadded padding={10}>
     </gls.ColumnPadded>
 </gls.ColumnPadded>;
 
-type TabProps = { tabs: { header: string; body: JSX.Element }[] }
-class Tabs extends React.Component<TabProps, { selectedIndex?: number }>{
+type TabProps = {
+    tabs: { header: string; body: JSX.Element }[],
+    selectedIndex: number,
+    requestSelectedIndexChange: (index: number) => any
+}
+class Tabs extends React.Component<TabProps, {}>{
     private Styles = {
         headerItem: csx.extend(
             csx.Box.padding(0, 5),
@@ -63,7 +67,7 @@ class Tabs extends React.Component<TabProps, { selectedIndex?: number }>{
     render() {
         if (!this.props.tabs.length) return <noscript/>
 
-        const selectedIndex = this.state.selectedIndex;
+        const selectedIndex = this.props.selectedIndex;
         const selected = this.props.tabs[selectedIndex];
         return (
             <gls.FlexVertical>
@@ -72,7 +76,7 @@ class Tabs extends React.Component<TabProps, { selectedIndex?: number }>{
                         return (
                             <gls.Content
                                 key={i}
-                                onClick={() => this.setState({ selectedIndex: i }) }
+                                onClick={() => this.props.requestSelectedIndexChange(i) }
                                 style={
                                     csx.extend(this.Styles.headerItem, selectedIndex == i && this.Styles.headerItemSelected)
                                 }>
@@ -91,7 +95,7 @@ class Tabs extends React.Component<TabProps, { selectedIndex?: number }>{
 
 import * as ts from "ntypescript";
 function transpile(str: string): string {
-    return ts.transpile(str,{jsx:ts.JsxEmit.React});
+    return ts.transpile(str, { jsx: ts.JsxEmit.React });
 }
 /**
  * Renders the `jsx` string to `js` string and then sets it as its innerHTML
@@ -106,19 +110,37 @@ class DemoComponent extends React.Component<{ code: string }, {}>{
     }
 }
 
-class Demo extends React.Component<{}, {}>{
+class Demo extends React.Component<{}, { selectedTabIndex: number }>{
+    constructor(props: {}) {
+        super(props);
+        this.state = {
+            selectedTabIndex: 0
+        }
+    }
+
     render() {
+
+        const samples = [
+            {
+                name: 'First',
+                code: `<gls.Content>First Body</gls.Content>`
+            },
+            {
+                name: 'Second',
+                code: `<gls.Content>Second Body</gls.Content>`
+            }
+        ]
+
         return (
-            <Tabs tabs={[
-                {
-                    header: "First",
-                    body: <DemoComponent code={`<gls.Content>First Body</gls.Content>`} />
-                },
-                {
-                    header: "Second",
-                    body: <DemoComponent code={`<gls.Content>Second Body</gls.Content>`} />
-                }
-            ]}/>
+            <gls.FlexVertical>
+
+                <Tabs tabs={samples.map(s => ({ header: s.name, body: <pre>{s.code}</pre> })) }
+                    selectedIndex={this.state.selectedTabIndex}
+                    requestSelectedIndexChange={(selectedTabIndex) => this.setState({ selectedTabIndex }) }
+                    />
+
+                <DemoComponent code={samples[this.state.selectedTabIndex].code}/>
+            </gls.FlexVertical>
         );
     }
 }

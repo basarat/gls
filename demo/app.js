@@ -40,10 +40,10 @@ var Tabs = (function (_super) {
         var _this = this;
         if (!this.props.tabs.length)
             return React.createElement("noscript", null);
-        var selectedIndex = this.state.selectedIndex;
+        var selectedIndex = this.props.selectedIndex;
         var selected = this.props.tabs[selectedIndex];
         return (React.createElement(gls.FlexVertical, null, React.createElement(gls.ContentHorizontal, {style: { height: '30px' }}, this.props.tabs.map(function (t, i) {
-            return (React.createElement(gls.Content, {key: i, onClick: function () { return _this.setState({ selectedIndex: i }); }, style: csx.extend(_this.Styles.headerItem, selectedIndex == i && _this.Styles.headerItemSelected)}, t.header));
+            return (React.createElement(gls.Content, {key: i, onClick: function () { return _this.props.requestSelectedIndexChange(i); }, style: csx.extend(_this.Styles.headerItem, selectedIndex == i && _this.Styles.headerItemSelected)}, t.header));
         })), React.createElement(gls.Flex, {style: this.Styles.body}, selected.body)));
     };
     return Tabs;
@@ -66,20 +66,25 @@ var DemoComponent = (function (_super) {
 }(React.Component));
 var Demo = (function (_super) {
     __extends(Demo, _super);
-    function Demo() {
-        _super.apply(this, arguments);
+    function Demo(props) {
+        _super.call(this, props);
+        this.state = {
+            selectedTabIndex: 0
+        };
     }
     Demo.prototype.render = function () {
-        return (React.createElement(Tabs, {tabs: [
+        var _this = this;
+        var samples = [
             {
-                header: "First",
-                body: React.createElement(DemoComponent, {code: "<gls.Content>First Body</gls.Content>"})
+                name: 'First',
+                code: "<gls.Content>First Body</gls.Content>"
             },
             {
-                header: "Second",
-                body: React.createElement(DemoComponent, {code: "<gls.Content>Second Body</gls.Content>"})
+                name: 'Second',
+                code: "<gls.Content>Second Body</gls.Content>"
             }
-        ]}));
+        ];
+        return (React.createElement(gls.FlexVertical, null, React.createElement(Tabs, {tabs: samples.map(function (s) { return ({ header: s.name, body: React.createElement("pre", null, s.code) }); }), selectedIndex: this.state.selectedTabIndex, requestSelectedIndexChange: function (selectedTabIndex) { return _this.setState({ selectedTabIndex: selectedTabIndex }); }}), React.createElement(DemoComponent, {code: samples[this.state.selectedTabIndex].code})));
     };
     return Demo;
 }(React.Component));
