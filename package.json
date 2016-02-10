@@ -27,11 +27,12 @@
   },
   "homepage": "https://github.com/basarat/gls#readme",
   "devDependencies": {
+    "codemirror": "^5.11.0",
     "csx": ">0.0.0",
     "ntypescript": "latest",
-    "webpack": "latest",
     "radium": ">0.0.0",
     "react": ">0.0.0",
-    "react-dom": ">0.0.0"
+    "react-dom": ">0.0.0",
+    "webpack": "latest"
   }
 }
