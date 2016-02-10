@@ -53,11 +53,9 @@
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
 	var gls = __webpack_require__(159);
+	var lorem = "\nLorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum has been the industry's standard dummy text ever since the\n 1500s, when an unknown printer took a galley of type and scrambled it\n  to make a type specimen book. It has survived not only five\n  centuries, but also the leap into electronic typesetting,\n   remaining essentially unchanged.\n    It was popularised in the 1960s with the release of Letraset sheets\n     containing Lorem Ipsum passages, and more recently\n      with desktop publishing software like Aldus PageMaker\n       including versions of Lorem Ipsum.\n";
 	var SampleContent = function (props) {
-	    return React.createElement(gls.Content, null, "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
-	};
-	var SampleFlex = function (props) {
-	    return React.createElement(gls.Flex, null, "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
+	    return React.createElement(gls.Content, null, lorem);
 	};
 	var Demo = (function (_super) {
 	    __extends(Demo, _super);
@@ -65,7 +63,7 @@
 	        _super.apply(this, arguments);
 	    }
 	    Demo.prototype.render = function () {
-	        return (React.createElement(gls.FlexVertical, null, React.createElement(gls.ColumnPadded, {padding: 10}, React.createElement(SampleContent, null), React.createElement(SampleContent, null), React.createElement(SampleContent, null), React.createElement(SampleContent, null)), React.createElement(gls.FlexVertical, null, React.createElement(SampleContent, null))));
+	        return (React.createElement(gls.ColumnPadded, {padding: 10}, React.createElement(gls.ColumnPadded, {padding: 10}, React.createElement(SampleContent, null), React.createElement(SampleContent, null), React.createElement(SampleContent, null), React.createElement(SampleContent, null)), React.createElement(gls.ColumnPadded, {padding: 10}, React.createElement(SampleContent, null))));
 	    };
 	    return Demo;
 	}(React.Component));
