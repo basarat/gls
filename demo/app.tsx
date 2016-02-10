@@ -103,20 +103,20 @@ function transpile(str: string): string {
 class DemoComponent extends React.Component<{ code: string }, {}>{
     render() {
 
-        const outputStyle = {backgroundColor: '#EEE'};
-        const errorStyle = csx.extend(outputStyle,{color:'red',fontWeight:'bold', fontFamily:'monospace', fontSize:'2rem'});
+        const outputStyle = { backgroundColor: '#EEE', overflow:'auto' };
+        const errorStyle = csx.extend(outputStyle, { color: 'red', fontWeight: 'bold', fontFamily: 'monospace', fontSize: '2rem' });
 
         const compiled = transpile(this.props.code);
-        if (!compiled.replace('"use strict";','').trim()) {
+        if (!compiled.replace('"use strict";', '').trim()) {
             return <gls.Flex style={errorStyle}>ERROR: No code emitted</gls.Flex>;
         }
 
-        let evaled:any;
+        let evaled: any;
         try {
             evaled = eval(compiled);
         }
-        catch(e){
-            return <gls.Flex style={errorStyle}>EVAL ERROR:{e.message}</gls.Flex>;
+        catch (e) {
+            return <gls.Flex style={errorStyle}>EVAL ERROR: {e.message}</gls.Flex>;
         }
 
 
@@ -149,7 +149,6 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: { 
         }
     }
 
-
     render() {
         let samples = this.state.samples;
         return (
@@ -159,7 +158,8 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: { 
                     tabs={
                         samples.map((s, i) => {
                             return {
-                                header: s.name, body: <textarea key={i} style={csx.flex} value={s.code} onChange={(e) => {
+                                header: s.name,
+                                body: <textarea key={i} style={csx.flex} value={s.code} onChange={(e) => {
                                     var value = (e.target as HTMLTextAreaElement).value;
                                     samples[i].code = value;
                                     this.setState({ samples });

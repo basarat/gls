@@ -58,7 +58,7 @@ var DemoComponent = (function (_super) {
         _super.apply(this, arguments);
     }
     DemoComponent.prototype.render = function () {
-        var outputStyle = { backgroundColor: '#EEE' };
+        var outputStyle = { backgroundColor: '#EEE', overflow: 'auto' };
         var errorStyle = csx.extend(outputStyle, { color: 'red', fontWeight: 'bold', fontFamily: 'monospace', fontSize: '2rem' });
         var compiled = transpile(this.props.code);
         if (!compiled.replace('"use strict";', '').trim()) {
@@ -69,7 +69,7 @@ var DemoComponent = (function (_super) {
             evaled = eval(compiled);
         }
         catch (e) {
-            return React.createElement(gls.Flex, {style: errorStyle}, "EVAL ERROR:", e.message);
+            return React.createElement(gls.Flex, {style: errorStyle}, "EVAL ERROR: ", e.message);
         }
         var html = ReactDOMServer.renderToString(evaled);
         return React.createElement(gls.Flex, {style: outputStyle, dangerouslySetInnerHTML: {
@@ -101,7 +101,8 @@ var Demo = (function (_super) {
         var samples = this.state.samples;
         return (React.createElement(gls.FlexVertical, null, React.createElement(Tabs, {tabs: samples.map(function (s, i) {
             return {
-                header: s.name, body: React.createElement("textarea", {key: i, style: csx.flex, value: s.code, onChange: function (e) {
+                header: s.name,
+                body: React.createElement("textarea", {key: i, style: csx.flex, value: s.code, onChange: function (e) {
                     var value = e.target.value;
                     samples[i].code = value;
                     _this.setState({ samples: samples });
