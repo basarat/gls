@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import * as ReactDOMServer from "react-dom/server";
 import * as gls from "../gls";
 import * as csx from "csx";
 
@@ -71,7 +72,7 @@ class Tabs extends React.Component<TabProps, { selectedIndex?: number }>{
                         return (
                             <gls.Content
                                 key={i}
-                                onClick={()=>this.setState({selectedIndex:i})}
+                                onClick={() => this.setState({ selectedIndex: i }) }
                                 style={
                                     csx.extend(this.Styles.headerItem, selectedIndex == i && this.Styles.headerItemSelected)
                                 }>
@@ -88,17 +89,34 @@ class Tabs extends React.Component<TabProps, { selectedIndex?: number }>{
     }
 }
 
+import * as ts from "ntypescript";
+function transpile(str: string): string {
+    return ts.transpile(str,{jsx:ts.JsxEmit.React});
+}
+/**
+ * Renders the `jsx` string to `js` string and then sets it as its innerHTML
+ */
+class DemoComponent extends React.Component<{ code: string }, {}>{
+    render() {
+        return <gls.Flex dangerouslySetInnerHTML={
+            {
+                __html: ReactDOMServer.renderToString(eval(transpile(this.props.code)))
+            }
+        }/>;
+    }
+}
+
 class Demo extends React.Component<{}, {}>{
     render() {
         return (
             <Tabs tabs={[
                 {
                     header: "First",
-                    body: <gls.Content>First Body</gls.Content>
+                    body: <DemoComponent code={`<gls.Content>First Body</gls.Content>`} />
                 },
                 {
                     header: "Second",
-                    body: <gls.Content>Second Body</gls.Content>
+                    body: <DemoComponent code={`<gls.Content>Second Body</gls.Content>`} />
                 }
             ]}/>
         );

@@ -7,6 +7,9 @@ module.exports = {
       extensions: ['', '.webpack.js', '.web.js', '.js']
   },
   module: {
+      noParse: [
+        /ntypescript/,
+      ],
       loaders: [
       ]
   }
