@@ -158,6 +158,17 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: { 
 </gls.ColumnPadded>
 `.trim()
                 },
+                {
+                    name: 'Row Padded',
+                    code: `
+<gls.RowPadded padding={10}>
+        <SampleContent/>
+        <SampleContent/>
+        <SampleContent/>
+        <SampleContent/>
+</gls.RowPadded>
+`.trim()
+                }
             ]
 
         }

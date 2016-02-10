@@ -142,6 +142,10 @@
 	                    name: 'Column Padded Nested',
 	                    code: "\n<gls.ColumnPadded padding={10}>\n    <gls.ColumnPadded padding={10}>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n    </gls.ColumnPadded>\n    <gls.ColumnPadded padding={10}>\n        <SampleContent/>\n        <SampleContent/>\n    </gls.ColumnPadded>\n</gls.ColumnPadded>\n".trim()
 	                },
+	                {
+	                    name: 'Row Padded',
+	                    code: "\n<gls.RowPadded padding={10}>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n</gls.RowPadded>\n".trim()
+	                }
 	            ]
 	        };
 	    }
