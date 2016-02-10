@@ -57,7 +57,7 @@
 	var csx = __webpack_require__(161);
 	var lorem = "\nLorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum has been the industry's standard dummy text ever since the\n 1500s, when an unknown printer took a galley of type and scrambled it\n  to make a type specimen book. It has survived not only five\n  centuries, but also the leap into electronic typesetting,\n   remaining essentially unchanged.\n    It was popularised in the 1960s with the release of Letraset sheets\n     containing Lorem Ipsum passages, and more recently\n      with desktop publishing software like Aldus PageMaker\n       including versions of Lorem Ipsum.\n";
 	var SampleContent = function (props) {
-	    return React.createElement(gls.Content, null, lorem);
+	    return React.createElement(gls.InlineBlock, null, lorem);
 	};
 	var Tabs = (function (_super) {
 	    __extends(Tabs, _super);
@@ -144,7 +144,7 @@
 	                },
 	                {
 	                    name: 'Row Padded',
-	                    code: "\n<gls.RowPadded padding={10}>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n</gls.RowPadded>\n".trim()
+	                    code: "\n<gls.RowPadded padding={10}>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n</gls.RowPadded>\n"
 	                }
 	            ]
 	        };
@@ -19784,37 +19784,42 @@
 /* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
 	var csx = __webpack_require__(161);
 	var Radium = __webpack_require__(162);
 	var React = __webpack_require__(1);
 	;
 	exports.Content = Radium(function (props) {
 	    var style = csx.extend(props.style || {}, csx.content);
-	    return (React.createElement("div", React.__spread({"data-comment": "Content"}, props, {"style": style}), props.children));
+	    return (React.createElement("div", React.__spread({"data-comment": "Content"}, props, {style: style}), props.children));
+	});
+	exports.InlineBlock = Radium(function (props) {
+	    var style = csx.extend(props.style || {}, { display: 'inline-block' });
+	    return (React.createElement("div", React.__spread({"data-comment": "InlineBlock"}, props, {style: style}), props.children));
 	});
 	exports.Flex = Radium(function (props) {
 	    var style = csx.extend(props.style || {}, csx.pass, csx.flex);
-	    return (React.createElement("div", React.__spread({"data-comment": "Flex"}, props, {"style": style}), props.children));
+	    return (React.createElement("div", React.__spread({"data-comment": "Flex"}, props, {style: style}), props.children));
 	});
 	exports.Pass = Radium(function (props) {
 	    var style = csx.extend(props.style || {}, csx.pass);
-	    return (React.createElement("div", React.__spread({"data-comment": "Pass"}, props, {"style": style}), props.children));
+	    return (React.createElement("div", React.__spread({"data-comment": "Pass"}, props, {style: style}), props.children));
 	});
 	exports.ContentVertical = Radium(function (props) {
 	    var style = csx.extend(props.style || {}, csx.content, csx.vertical);
-	    return (React.createElement("div", React.__spread({"data-comment": "ContentVertical"}, props, {"style": style}), props.children));
+	    return (React.createElement("div", React.__spread({"data-comment": "ContentVertical"}, props, {style: style}), props.children));
 	});
 	exports.ContentHorizontal = Radium(function (props) {
 	    var style = csx.extend(props.style || {}, csx.content, csx.horizontal);
-	    return (React.createElement("div", React.__spread({"data-comment": "ContentHorizontal"}, props, {"style": style}), props.children));
+	    return (React.createElement("div", React.__spread({"data-comment": "ContentHorizontal"}, props, {style: style}), props.children));
 	});
 	exports.FlexVertical = Radium(function (props) {
 	    var style = csx.extend(props.style || {}, csx.flex, csx.vertical);
-	    return (React.createElement("div", React.__spread({"data-comment": "FlexVertical"}, props, {"style": style}), props.children));
+	    return (React.createElement("div", React.__spread({"data-comment": "FlexVertical"}, props, {style: style}), props.children));
 	});
 	exports.FlexHorizontal = Radium(function (props) {
 	    var style = csx.extend(props.style || {}, csx.flex, csx.horizontal);
-	    return (React.createElement("div", React.__spread({"data-comment": "FlexHorizontal"}, props, {"style": style}), props.children));
+	    return (React.createElement("div", React.__spread({"data-comment": "FlexHorizontal"}, props, {style: style}), props.children));
 	});
 	exports.RowPadded = function (props) {
 	    var basicPadding = props.padding;
@@ -19827,7 +19832,7 @@
 	            return csx.Box.padding(0, basicPadding, 0, 0);
 	        }
 	    };
-	    return (React.createElement(exports.FlexHorizontal, null, React.Children.map(props.children, function (child, i) { return React.createElement(exports.Flex, {"key": i, "style": itemPadding(i)}, child); })));
+	    return (React.createElement(exports.FlexHorizontal, null, React.Children.map(props.children, function (child, i) { return React.createElement(exports.Flex, {key: i, style: itemPadding(i)}, child); })));
 	};
 	exports.ColumnPadded = function (props) {
 	    var basicPadding = props.padding;
@@ -19840,7 +19845,7 @@
 	            return csx.Box.padding(0, 0, basicPadding, 0);
 	        }
 	    };
-	    return (React.createElement(exports.ContentVertical, null, React.Children.map(props.children, function (child, i) { return React.createElement(exports.Content, {"key": i, "style": itemPadding(i)}, child); })));
+	    return (React.createElement(exports.ContentVertical, null, React.Children.map(props.children, function (child, i) { return React.createElement(exports.Content, {key: i, style: itemPadding(i)}, child); })));
 	};
 
 

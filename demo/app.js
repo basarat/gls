@@ -11,7 +11,7 @@ var gls = require("../gls");
 var csx = require("csx");
 var lorem = "\nLorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum has been the industry's standard dummy text ever since the\n 1500s, when an unknown printer took a galley of type and scrambled it\n  to make a type specimen book. It has survived not only five\n  centuries, but also the leap into electronic typesetting,\n   remaining essentially unchanged.\n    It was popularised in the 1960s with the release of Letraset sheets\n     containing Lorem Ipsum passages, and more recently\n      with desktop publishing software like Aldus PageMaker\n       including versions of Lorem Ipsum.\n";
 var SampleContent = function (props) {
-    return React.createElement(gls.Content, null, lorem);
+    return React.createElement(gls.InlineBlock, null, lorem);
 };
 var Tabs = (function (_super) {
     __extends(Tabs, _super);
@@ -98,7 +98,7 @@ var Demo = (function (_super) {
                 },
                 {
                     name: 'Row Padded',
-                    code: "\n<gls.RowPadded padding={10}>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n</gls.RowPadded>\n".trim()
+                    code: "\n<gls.RowPadded padding={10}>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n</gls.RowPadded>\n"
                 }
             ]
         };

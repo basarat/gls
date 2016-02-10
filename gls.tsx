@@ -16,6 +16,9 @@ import * as React from "react";
 interface PrimitiveProps extends React.HTMLProps<HTMLDivElement>{};
 
 /**
+ * Generally prefer an inline block (as that will wrap).
+ * Use this for critical `content` driven *vertical* height
+ *
  * Takes as much space as it needs, no more, no less
  */
 export const Content = Radium((props: PrimitiveProps) => {
@@ -26,6 +29,19 @@ export const Content = Radium((props: PrimitiveProps) => {
         </div>
     );
 });
+
+/**
+ * Takes as much space as it needs, no more, no less
+ */
+export const InlineBlock = Radium((props: PrimitiveProps) => {
+    const style = csx.extend(props.style || {},{display:'inline-block'});
+    return (
+        <div data-comment="InlineBlock" {...props} style={style}>
+            {props.children}
+        </div>
+    );
+});
+
 
 /**
  * Takes up all the parent space, no more, no less

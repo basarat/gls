@@ -18,9 +18,9 @@ Lorem Ipsum has been the industry's standard dummy text ever since the
 `;
 
 const SampleContent = (props: any) => {
-    return <gls.Content>
+    return <gls.InlineBlock>
         {lorem}
-    </gls.Content>
+    </gls.InlineBlock>
 }
 
 type TabProps = {
@@ -118,6 +118,11 @@ class DemoComponent extends React.Component<{ code: string }, {}>{
     }
 }
 
+type Sample = {
+    name: string;
+    code: string;
+}
+
 class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: { name: string, code: string }[] }>{
     constructor(props: {}) {
         super(props);
@@ -160,14 +165,14 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: { 
                 },
                 {
                     name: 'Row Padded',
-                    code: `
+                    code:`
 <gls.RowPadded padding={10}>
         <SampleContent/>
         <SampleContent/>
         <SampleContent/>
         <SampleContent/>
 </gls.RowPadded>
-`.trim()
+`
                 }
             ]
 
@@ -184,11 +189,16 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: { 
                         samples.map((s, i) => {
                             return {
                                 header: s.name,
-                                body: <textarea key={i} style={csx.extend(csx.flex, { background: '#111', color: 'white' }) } value={s.code} onChange={(e) => {
-                                    var value = (e.target as HTMLTextAreaElement).value;
-                                    samples[i].code = value;
-                                    this.setState({ samples });
-                                } }/>
+                                body:
+                                    <textarea
+                                        key={i}
+                                        style={csx.extend(csx.flex, { background: '#111', color: 'white' }) }
+                                        value={s.code}
+                                        onChange={(e) => {
+                                        var value = (e.target as HTMLTextAreaElement).value;
+                                        samples[i].code = value;
+                                        this.setState({ samples });
+                                    } }/>
                             };
                         })
                     }
