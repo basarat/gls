@@ -1,7 +1,7 @@
 module.exports = {
-  entry: './app.js',
+  entry: './demo/app.js',
   output: {
-      filename: 'bundle.js'
+      filename: './demo/bundle.js'
   },
   resolve: {
       extensions: ['', '.webpack.js', '.web.js', '.js']
