@@ -59,7 +59,6 @@
 	var SampleContent = function (props) {
 	    return React.createElement(gls.Content, null, lorem);
 	};
-	var sample = React.createElement(gls.ColumnPadded, {padding: 10}, React.createElement(gls.ColumnPadded, {padding: 10}, React.createElement(SampleContent, null), React.createElement(SampleContent, null), React.createElement(SampleContent, null), React.createElement(SampleContent, null)), React.createElement(gls.ColumnPadded, {padding: 10}, React.createElement(SampleContent, null)));
 	var Tabs = (function (_super) {
 	    __extends(Tabs, _super);
 	    function Tabs(props) {
@@ -133,12 +132,16 @@
 	            samples: [
 	                {
 	                    name: 'First',
-	                    code: "<gls.Content>First Body</gls.Content>"
+	                    code: "\n<gls.Content>First Body</gls.Content>\n".trim()
 	                },
 	                {
-	                    name: 'Second',
-	                    code: "<gls.Content>Second Body</gls.Content>"
-	                }
+	                    name: 'Column Padded',
+	                    code: "\n<gls.ColumnPadded padding={10}>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n</gls.ColumnPadded>\n".trim()
+	                },
+	                {
+	                    name: 'Column Padded Nested',
+	                    code: "\n<gls.ColumnPadded padding={10}>\n    <gls.ColumnPadded padding={10}>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n    </gls.ColumnPadded>\n    <gls.ColumnPadded padding={10}>\n        <SampleContent/>\n        <SampleContent/>\n    </gls.ColumnPadded>\n</gls.ColumnPadded>\n".trim()
+	                },
 	            ]
 	        };
 	    }

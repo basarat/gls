@@ -23,18 +23,6 @@ const SampleContent = (props: any) => {
     </gls.Content>
 }
 
-const sample = <gls.ColumnPadded padding={10}>
-    <gls.ColumnPadded padding={10}>
-        <SampleContent/>
-        <SampleContent/>
-        <SampleContent/>
-        <SampleContent/>
-    </gls.ColumnPadded>
-    <gls.ColumnPadded padding={10}>
-        <SampleContent/>
-    </gls.ColumnPadded>
-</gls.ColumnPadded>;
-
 type TabProps = {
     tabs: { header: string; body: JSX.Element }[],
     selectedIndex: number,
@@ -103,7 +91,7 @@ function transpile(str: string): string {
 class DemoComponent extends React.Component<{ code: string }, {}>{
     render() {
 
-        const outputStyle = { backgroundColor: '#EEE', overflow:'auto' };
+        const outputStyle = { backgroundColor: '#EEE', overflow: 'auto' };
         const errorStyle = csx.extend(outputStyle, { color: 'red', fontWeight: 'bold', fontFamily: 'monospace', fontSize: '2rem' });
 
         const compiled = transpile(this.props.code);
@@ -138,12 +126,38 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: { 
             samples: [
                 {
                     name: 'First',
-                    code: `<gls.Content>First Body</gls.Content>`
+                    code: `
+<gls.Content>First Body</gls.Content>
+`.trim()
                 },
                 {
-                    name: 'Second',
-                    code: `<gls.Content>Second Body</gls.Content>`
-                }
+                    name: 'Column Padded',
+                    code: `
+<gls.ColumnPadded padding={10}>
+        <SampleContent/>
+        <SampleContent/>
+        <SampleContent/>
+        <SampleContent/>
+</gls.ColumnPadded>
+`.trim()
+                },
+                {
+                    name: 'Column Padded Nested',
+                    code: `
+<gls.ColumnPadded padding={10}>
+    <gls.ColumnPadded padding={10}>
+        <SampleContent/>
+        <SampleContent/>
+        <SampleContent/>
+        <SampleContent/>
+    </gls.ColumnPadded>
+    <gls.ColumnPadded padding={10}>
+        <SampleContent/>
+        <SampleContent/>
+    </gls.ColumnPadded>
+</gls.ColumnPadded>
+`.trim()
+                },
             ]
 
         }
@@ -159,7 +173,7 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: { 
                         samples.map((s, i) => {
                             return {
                                 header: s.name,
-                                body: <textarea key={i} style={csx.extend(csx.flex,{background:'#111', color:'white'})} value={s.code} onChange={(e) => {
+                                body: <textarea key={i} style={csx.extend(csx.flex, { background: '#111', color: 'white' }) } value={s.code} onChange={(e) => {
                                     var value = (e.target as HTMLTextAreaElement).value;
                                     samples[i].code = value;
                                     this.setState({ samples });
