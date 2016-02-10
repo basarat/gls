@@ -1,7 +1,6 @@
 /**
  * This is a level above CSX
  *  - It wraps up the CSX primitives into components
- *  - also use provides grid abstractions (rows / columns)
  */
 import * as csx from "csx";
 import * as Radium from "radium";
@@ -20,10 +19,9 @@ interface PrimitiveProps extends React.HTMLProps<HTMLDivElement>{};
  * Takes as much space as it needs, no more, no less
  */
 export const Content = Radium((props: PrimitiveProps) => {
-    const style = props.style || {};
-    props.style = csx.extend(style,csx.content);
+    const style = csx.extend(props.style || {},csx.content);
     return (
-        <div data-comment="Content" {...props}>
+        <div data-comment="Content" {...props} style={style}>
             {props.children}
         </div>
     );
@@ -33,10 +31,9 @@ export const Content = Radium((props: PrimitiveProps) => {
  * Takes up all the parent space, no more, no less
  */
 export const Flex = Radium((props: PrimitiveProps) => {
-    const style = props.style || {};
-    props.style = csx.extend(style,csx.flex);
+    const style = csx.extend(props.style || {},csx.pass,csx.flex);
     return (
-        <div data-comment="Flex" {...props}>
+        <div data-comment="Flex" {...props} style={style}>
             {props.children}
         </div>
     );
@@ -46,10 +43,9 @@ export const Flex = Radium((props: PrimitiveProps) => {
  * When you need a general purpose container. Use this instead of a `div`
  */
 export const Pass = Radium((props: PrimitiveProps) => {
-    const style = props.style || {};
-    props.style = csx.extend(style,csx.pass);
+    const style = csx.extend(props.style || {},csx.pass);
     return (
-        <div data-comment="Pass" {...props}>
+        <div data-comment="Pass" {...props} style={style}>
             {props.children}
         </div>
     );
@@ -59,10 +55,9 @@ export const Pass = Radium((props: PrimitiveProps) => {
  * Provides a Vertical Container. For the parent it behaves like content.
  */
 export const ContentVertical = Radium((props: PrimitiveProps) => {
-    const style = props.style || {};
-    props.style = csx.extend(style, csx.content, csx.vertical);
+    const style = csx.extend(props.style || {}, csx.content, csx.vertical);
     return (
-        <div data-comment="ContentVertical" {...props}>
+        <div data-comment="ContentVertical" {...props} style={style}>
             {props.children}
         </div>
     );
@@ -72,10 +67,9 @@ export const ContentVertical = Radium((props: PrimitiveProps) => {
  * Provides a Horizontal Container. For the parent it behaves like content.
  */
 export const ContentHorizontal = Radium((props: PrimitiveProps) => {
-    const style = props.style || {};
-    props.style = csx.extend(style,csx.content,csx.vertical);
+    const style = csx.extend(props.style || {},csx.content,csx.vertical);
     return (
-        <div data-comment="ContentHorizontal" {...props}>
+        <div data-comment="ContentHorizontal" {...props} style={style}>
             {props.children}
         </div>
     );
@@ -85,10 +79,9 @@ export const ContentHorizontal = Radium((props: PrimitiveProps) => {
  * Provides a Vertical Container. For the parent it behaves like flex.
  */
 export const FlexVertical = Radium((props: PrimitiveProps) => {
-    const style = props.style || {};
-    props.style = csx.extend(style,csx.flex,csx.vertical);
+    const style = csx.extend(props.style || {},csx.flex,csx.vertical);
     return (
-        <div data-comment="FlexVertical" {...props}>
+        <div data-comment="FlexVertical" {...props} style={style}>
             {props.children}
         </div>
     );
@@ -98,10 +91,9 @@ export const FlexVertical = Radium((props: PrimitiveProps) => {
  * Provides a Horizontal Container. For the parent it behaves like flex.
  */
 export const FlexHorizontal = Radium((props: PrimitiveProps) => {
-    const style = props.style || {};
-    props.style = csx.extend(style,csx.flex,csx.horizontal);
+    const style = csx.extend(props.style || {},csx.flex,csx.horizontal);
     return (
-        <div data-comment="FlexHorizontal" {...props}>
+        <div data-comment="FlexHorizontal" {...props} style={style}>
             {props.children}
         </div>
     );
