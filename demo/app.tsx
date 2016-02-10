@@ -102,39 +102,58 @@ function transpile(str: string): string {
  */
 class DemoComponent extends React.Component<{ code: string }, {}>{
     render() {
-        return <gls.Flex dangerouslySetInnerHTML={
+        const compiled = transpile(this.props.code);
+        // if (compiled.error) {
+        //     return <gls.Flex style={{ backgroundColor: 'red' }}>{compiled.error}</gls.Flex>;
+        // }
+
+        const html = ReactDOMServer.renderToString(eval(compiled));
+
+        return <gls.Flex style={{ backgroundColor: '#EEE' }} dangerouslySetInnerHTML={
             {
-                __html: ReactDOMServer.renderToString(eval(transpile(this.props.code)))
+                __html: html
             }
         }/>;
     }
 }
 
-class Demo extends React.Component<{}, { selectedTabIndex: number }>{
+class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: { name: string, code: string }[] }>{
     constructor(props: {}) {
         super(props);
         this.state = {
-            selectedTabIndex: 0
+            selectedTabIndex: 0,
+            samples: [
+                {
+                    name: 'First',
+                    code: `<gls.Content>First Body</gls.Content>`
+                },
+                {
+                    name: 'Second',
+                    code: `<gls.Content>Second Body</gls.Content>`
+                }
+            ]
+
         }
     }
 
+
     render() {
-
-        const samples = [
-            {
-                name: 'First',
-                code: `<gls.Content>First Body</gls.Content>`
-            },
-            {
-                name: 'Second',
-                code: `<gls.Content>Second Body</gls.Content>`
-            }
-        ]
-
+        let samples = this.state.samples;
         return (
             <gls.FlexVertical>
 
-                <Tabs tabs={samples.map(s => ({ header: s.name, body: <pre>{s.code}</pre> })) }
+                <Tabs
+                    tabs={
+                        samples.map((s, i) => {
+                            return {
+                                header: s.name, body: <textarea key={i} style={csx.flex} value={s.code} onChange={(e) => {
+                                    var value = (e.target as HTMLTextAreaElement).value;
+                                    samples[i].code = value;
+                                    this.setState({ samples });
+                                } }/>
+                            };
+                        })
+                    }
                     selectedIndex={this.state.selectedTabIndex}
                     requestSelectedIndexChange={(selectedTabIndex) => this.setState({ selectedTabIndex }) }
                     />

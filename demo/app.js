@@ -58,8 +58,10 @@ var DemoComponent = (function (_super) {
         _super.apply(this, arguments);
     }
     DemoComponent.prototype.render = function () {
-        return React.createElement(gls.Flex, {dangerouslySetInnerHTML: {
-            __html: ReactDOMServer.renderToString(eval(transpile(this.props.code)))
+        var compiled = transpile(this.props.code);
+        var html = ReactDOMServer.renderToString(eval(compiled));
+        return React.createElement(gls.Flex, {style: { backgroundColor: '#EEE' }, dangerouslySetInnerHTML: {
+            __html: html
         }});
     };
     return DemoComponent;
@@ -69,22 +71,31 @@ var Demo = (function (_super) {
     function Demo(props) {
         _super.call(this, props);
         this.state = {
-            selectedTabIndex: 0
+            selectedTabIndex: 0,
+            samples: [
+                {
+                    name: 'First',
+                    code: "<gls.Content>First Body</gls.Content>"
+                },
+                {
+                    name: 'Second',
+                    code: "<gls.Content>Second Body</gls.Content>"
+                }
+            ]
         };
     }
     Demo.prototype.render = function () {
         var _this = this;
-        var samples = [
-            {
-                name: 'First',
-                code: "<gls.Content>First Body</gls.Content>"
-            },
-            {
-                name: 'Second',
-                code: "<gls.Content>Second Body</gls.Content>"
-            }
-        ];
-        return (React.createElement(gls.FlexVertical, null, React.createElement(Tabs, {tabs: samples.map(function (s) { return ({ header: s.name, body: React.createElement("pre", null, s.code) }); }), selectedIndex: this.state.selectedTabIndex, requestSelectedIndexChange: function (selectedTabIndex) { return _this.setState({ selectedTabIndex: selectedTabIndex }); }}), React.createElement(DemoComponent, {code: samples[this.state.selectedTabIndex].code})));
+        var samples = this.state.samples;
+        return (React.createElement(gls.FlexVertical, null, React.createElement(Tabs, {tabs: samples.map(function (s, i) {
+            return {
+                header: s.name, body: React.createElement("textarea", {key: i, style: csx.flex, value: s.code, onChange: function (e) {
+                    var value = e.target.value;
+                    samples[i].code = value;
+                    _this.setState({ samples: samples });
+                }})
+            };
+        }), selectedIndex: this.state.selectedTabIndex, requestSelectedIndexChange: function (selectedTabIndex) { return _this.setState({ selectedTabIndex: selectedTabIndex }); }}), React.createElement(DemoComponent, {code: samples[this.state.selectedTabIndex].code})));
     };
     return Demo;
 }(React.Component));
