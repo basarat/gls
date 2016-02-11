@@ -130,10 +130,10 @@ function transpile(str: string): string {
 /**
  * Renders the `jsx` string to `js` string and then sets it as its innerHTML
  */
-class DemoComponent extends React.Component<{ code: string }, {}>{
+class DemoComponent extends React.Component<{ code: string, horizontal?: boolean }, {}>{
     render() {
 
-        const outputStyle = { backgroundColor: '#EEE', overflow: 'auto', border:'5px solid #5AD15A' };
+        const outputStyle = csx.extend({ backgroundColor: '#EEE', overflow: 'auto', border:'5px solid #5AD15A' });
         const errorStyle = csx.extend(outputStyle, { color: 'red', fontWeight: 'bold', fontFamily: 'monospace', fontSize: '2rem' });
 
         const compiled = transpile(this.props.code);
@@ -151,21 +151,27 @@ class DemoComponent extends React.Component<{ code: string }, {}>{
 
 
         const html = ReactDOMServer.renderToString(evaled);
-
-        return <gls.Flex style={outputStyle} dangerouslySetInnerHTML={
+        const props = {
+            dangerouslySetInnerHTML:
             {
                 __html: html
-            }
-        }/>;
+            },
+            style: this.props.horizontal?csx.selfStart:{}
+        };
+
+        return <gls.Flex style={outputStyle}>
+            <gls.FlexVertical {...props} />
+        </gls.Flex>;
     }
 }
 
 type Sample = {
     name: string;
     code: string;
+    horizontal?: boolean;
 }
 
-class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: { name: string, code: string }[] }>{
+class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sample[] }>{
     constructor(props: {}) {
         super(props);
         this.state = {
@@ -220,14 +226,15 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: { 
                     name: 'ContentVertical',
                     code: `
 <gls.ContentVertical style={{backgroundColor:blue}}>
-    <SampleContentSmall/>
-    <SampleContentSmall/>
-    <SampleContentSmall/>
+    <SampleContent/>
+    <SampleContent/>
+    <SampleContent/>
 </gls.ContentVertical>
 `.trim()
                 },
                 {
                     name: 'ContentHorizontal',
+                    horizontal: true,
                     code: `
 <gls.ContentHorizontal style={{backgroundColor:blue}}>
     <SampleContentSmall/>
@@ -412,6 +419,7 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: { 
 
     render() {
         let samples = this.state.samples;
+        const sample = samples[this.state.selectedTabIndex];
         return (
             <gls.FlexVertical>
 
@@ -435,7 +443,7 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: { 
                     onRequestSelectedIndexChange={(selectedTabIndex) => this.setState({ selectedTabIndex }) }
                     />
 
-                <DemoComponent code={samples[this.state.selectedTabIndex].code}/>
+                <DemoComponent code={sample.code} horizontal={!!sample.horizontal}/>
             </gls.FlexVertical>
         );
     }

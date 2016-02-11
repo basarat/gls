@@ -92,7 +92,7 @@ var DemoComponent = (function (_super) {
         _super.apply(this, arguments);
     }
     DemoComponent.prototype.render = function () {
-        var outputStyle = { backgroundColor: '#EEE', overflow: 'auto', border: '5px solid #5AD15A' };
+        var outputStyle = csx.extend({ backgroundColor: '#EEE', overflow: 'auto', border: '5px solid #5AD15A' });
         var errorStyle = csx.extend(outputStyle, { color: 'red', fontWeight: 'bold', fontFamily: 'monospace', fontSize: '2rem' });
         var compiled = transpile(this.props.code);
         if (!compiled.replace('"use strict";', '').trim()) {
@@ -106,9 +106,13 @@ var DemoComponent = (function (_super) {
             return React.createElement(gls.Flex, {style: errorStyle}, "EVAL ERROR: ", e.message);
         }
         var html = ReactDOMServer.renderToString(evaled);
-        return React.createElement(gls.Flex, {style: outputStyle, dangerouslySetInnerHTML: {
-            __html: html
-        }});
+        var props = {
+            dangerouslySetInnerHTML: {
+                __html: html
+            },
+            style: this.props.horizontal ? csx.selfStart : {}
+        };
+        return React.createElement(gls.Flex, {style: outputStyle}, React.createElement(gls.FlexVertical, React.__spread({}, props)));
     };
     return DemoComponent;
 }(React.Component));
@@ -145,10 +149,11 @@ var Demo = (function (_super) {
                 },
                 {
                     name: 'ContentVertical',
-                    code: "\n<gls.ContentVertical style={{backgroundColor:blue}}>\n    <SampleContentSmall/>\n    <SampleContentSmall/>\n    <SampleContentSmall/>\n</gls.ContentVertical>\n".trim()
+                    code: "\n<gls.ContentVertical style={{backgroundColor:blue}}>\n    <SampleContent/>\n    <SampleContent/>\n    <SampleContent/>\n</gls.ContentVertical>\n".trim()
                 },
                 {
                     name: 'ContentHorizontal',
+                    horizontal: true,
                     code: "\n<gls.ContentHorizontal style={{backgroundColor:blue}}>\n    <SampleContentSmall/>\n    <SampleContentSmall/>\n    <SampleContentSmall/>\n    <SampleContentSmall/>\n</gls.ContentHorizontal>\n".trim()
                 },
                 {
@@ -193,6 +198,7 @@ var Demo = (function (_super) {
     Demo.prototype.render = function () {
         var _this = this;
         var samples = this.state.samples;
+        var sample = samples[this.state.selectedTabIndex];
         return (React.createElement(gls.FlexVertical, null, React.createElement(Tabs, {tabs: samples.map(function (s, i) {
             return {
                 header: s.name,
@@ -201,7 +207,7 @@ var Demo = (function (_super) {
                     _this.setState({ samples: samples });
                 }})
             };
-        }), selectedIndex: this.state.selectedTabIndex, onRequestSelectedIndexChange: function (selectedTabIndex) { return _this.setState({ selectedTabIndex: selectedTabIndex }); }}), React.createElement(DemoComponent, {code: samples[this.state.selectedTabIndex].code})));
+        }), selectedIndex: this.state.selectedTabIndex, onRequestSelectedIndexChange: function (selectedTabIndex) { return _this.setState({ selectedTabIndex: selectedTabIndex }); }}), React.createElement(DemoComponent, {code: sample.code, horizontal: !!sample.horizontal})));
     };
     return Demo;
 }(React.Component));
