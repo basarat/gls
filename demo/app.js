@@ -4,10 +4,20 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 var gls = require("../gls");
 var React = require("react");
 var ReactDOM = require("react-dom");
 var ReactDOMServer = require("react-dom/server");
+var Radium = require("radium");
 var csx = require("csx");
 var codeEditor_1 = require("./codeEditor");
 var lorem = "\nLorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum has been the industry's standard dummy text ever since the\n 1500s, when an unknown printer took a galley of type and scrambled it\n  to make a type specimen book. It has survived not only five\n  centuries, but also the leap into electronic typesetting,\n   remaining essentially unchanged.\n    It was popularised in the 1960s with the release of Letraset sheets\n     containing Lorem Ipsum passages, and more recently\n      with desktop publishing software like Aldus PageMaker\n       including versions of Lorem Ipsum.\n";
@@ -25,7 +35,10 @@ var Tabs = (function (_super) {
                 borderLeft: '2px solid white',
                 borderRight: '2px solid white',
                 borderRadius: '4px 4px 0px 0px',
-                transition: 'border .2s'
+                transition: 'border .2s,background-color .2s',
+                ':hover': {
+                    backgroundColor: '#DDD'
+                }
             }),
             headerItemSelected: {
                 borderTop: '2px solid grey',
@@ -46,6 +59,10 @@ var Tabs = (function (_super) {
             return (React.createElement(gls.Content, {key: i, onClick: function () { return _this.props.onRequestSelectedIndexChange(i); }, style: csx.extend(_this.Styles.headerItem, selectedIndex == i && _this.Styles.headerItemSelected)}, t.header));
         })), React.createElement(gls.Flex, {style: this.Styles.body}, selected.body)));
     };
+    Tabs = __decorate([
+        Radium, 
+        __metadata('design:paramtypes', [Object])
+    ], Tabs);
     return Tabs;
 }(React.Component));
 var ts = require("ntypescript");

@@ -3,6 +3,7 @@ import * as gls from "../gls";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import * as ReactDOMServer from "react-dom/server";
+import * as Radium from "radium";
 import * as csx from "csx";
 import {CodeEditor} from "./codeEditor";
 
@@ -30,6 +31,7 @@ type TabProps = {
     selectedIndex: number,
     onRequestSelectedIndexChange: (index: number) => any
 }
+@Radium
 class Tabs extends React.Component<TabProps, {}>{
     private Styles = {
         headerItem: csx.extend(
@@ -41,7 +43,10 @@ class Tabs extends React.Component<TabProps, {}>{
                 borderLeft: '2px solid white',
                 borderRight: '2px solid white',
                 borderRadius: '4px 4px 0px 0px',
-                transition: 'border .2s'
+                transition: 'border .2s,background-color .2s',
+                ':hover': {
+                    backgroundColor:'#DDD'
+                }
             }),
         headerItemSelected: {
             borderTop: '2px solid grey',
