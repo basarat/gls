@@ -54,7 +54,7 @@ const SampleHeader = (props: any) => {
 }
 
 const SamplePage = (props: any) => {
-    return <gls.FlexScrollY style={{ backgroundColor: blue, padding: '5px' }}>
+    return <gls.FlexScrollY style={{ backgroundColor: blue, padding: '10px' }}>
         {props.children}
     </gls.FlexScrollY>
 }
@@ -304,7 +304,7 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
     <gls.Content style={csx.extend({height:'30px', backgroundColor:orange},csx.centerCenter)}>
         HEADER
     </gls.Content>
-    <gls.FlexScrollY style={{backgroundColor:blue, padding: '5px'}}>
+    <gls.FlexScrollY style={{backgroundColor:blue, padding: '10px'}}>
         <div>BODY</div>
         <div>BODY</div>
         <div>BODY</div>
@@ -580,14 +580,53 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
     <SampleHeader/>
     <SamplePage>
         <gls.ContentVerticalPadded padding={10}>
+            {/* Actions row */}
             <gls.ContentHorizontal>
-                <gls.FlexHorizontalPadded padding={10}>
+                <gls.ContentHorizontalPadded padding={5}>
                     <SampleButton/>
                     <SampleButton/>
                     <SampleButton/>
                     <SampleButton/>
-                </gls.FlexHorizontalPadded>
+                </gls.ContentHorizontalPadded>
+                <gls.Flex/>
+                <gls.ContentHorizontalPadded padding={5}>
+                    <SampleButton/>
+                    <SampleButton/>
+                </gls.ContentHorizontalPadded>
             </gls.ContentHorizontal>
+
+            {/* Some info */}
+            <gls.FlexHorizontalPadded padding={10}>
+                <SampleContent/>
+                <SampleContent/>
+                <SampleContent/>
+                <SampleContent/>
+            </gls.FlexHorizontalPadded>
+
+            {/* Some Inputs */}
+            <SampleInput/>
+            <SampleInput/>
+            <SampleInput/>
+            <SampleInput/>
+
+            {/* Some more info */}
+            <gls.FlexHorizontalPadded padding={10}>
+                <SampleContent/>
+                <gls.FlexHorizontalPadded padding={10}>
+                    <SampleContent/>
+                    <SampleContent/>
+                </gls.FlexHorizontalPadded>
+            </gls.FlexHorizontalPadded>
+
+            {/* Some More Inputs */}
+            <SampleInput/>
+            <SampleInput/>
+
+            {/* A Grid! */}
+            <gls.GridMargined margin={10}>
+                {renderSampleRects()}
+            </gls.GridMargined>
+
         </gls.ContentVerticalPadded>
     </SamplePage>
     <SampleFooter/>
