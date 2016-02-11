@@ -45,6 +45,26 @@ const SampleFlex = (props: any) => {
     </gls.Flex>;
 }
 
+const SampleHeader = (props:any) => {
+    return (
+        <gls.Content style={csx.extend({height:'30px', backgroundColor:orange},csx.centerCenter)}>
+            HEADER
+        </gls.Content>
+    );
+}
+
+const SamplePage = (props: any) => {
+    return <gls.FlexScrollY style={{backgroundColor:blue, padding: '5px'}}>
+        {props.children}
+    </gls.FlexScrollY>
+}
+
+const SampleFooter = (props: any)=>{
+    return <gls.Content style={csx.extend({height:'30px', backgroundColor:green},csx.centerCenter)}>
+        FOOTER
+    </gls.Content>
+}
+
 const SampleRect = (props: any) => {
     return (
         <gls.InlineBlock style={{ height: '50px', width: '30px', backgroundColor: '#666' }}>
@@ -57,12 +77,6 @@ const renderSampleRects = () => {
         <gls.InlineBlock key={i} style={{ height: '50px', width: '30px', backgroundColor: '#666' }}>
         </gls.InlineBlock>
     ));
-}
-
-const SamplePage = (props: any) => {
-    return <gls.FlexScrollY style={csx.Box.padding(5, 0) }>
-        {props.children}
-    </gls.FlexScrollY>;
 }
 
 type TabProps = {
@@ -262,12 +276,154 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
     <gls.Content style={csx.extend({height:'30px', backgroundColor:orange},csx.centerCenter)}>
         HEADER
     </gls.Content>
-    <gls.Flex style={csx.extend({backgroundColor:blue},csx.centerCenter)}>
+    <gls.Flex style={{backgroundColor:blue}}>
         BODY
     </gls.Flex>
     <gls.Content style={csx.extend({height:'30px', backgroundColor:green},csx.centerCenter)}>
         FOOTER
     </gls.Content>
+</gls.FlexVertical>
+`
+                },
+                {
+                    name: 'Header Body Footer Scroll Pad',
+                    code: `
+<gls.FlexVertical>
+    <gls.Content style={csx.extend({height:'30px', backgroundColor:orange},csx.centerCenter)}>
+        HEADER
+    </gls.Content>
+    <gls.FlexScrollY style={{backgroundColor:blue, padding: '5px'}}>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+    </gls.FlexScrollY>
+    <gls.Content style={csx.extend({height:'30px', backgroundColor:green},csx.centerCenter)}>
+        FOOTER
+    </gls.Content>
+</gls.FlexVertical>
+`
+                },
+                {
+                    name: 'Samplified',
+                    code: `
+<gls.FlexVertical>
+    <SampleHeader/>
+    <SamplePage>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+        <div>BODY</div>
+    </SamplePage>
+    <SampleFooter/>
 </gls.FlexVertical>
 `
                 },
