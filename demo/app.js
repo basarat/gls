@@ -21,7 +21,10 @@ var Radium = require("radium");
 var csx = require("csx");
 var codeEditor_1 = require("./codeEditor");
 var blue = '#00ADFF';
-var yellow = 'yellow';
+var yellow = 'gold';
+var orange = '#FF806A';
+var green = 'lightgreen';
+var pink = 'hotpink';
 var lorem = "\nLorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum has been the industry's standard dummy text ever since the\n 1500s, when an unknown printer took a galley of type and scrambled it\n  to make a type specimen book. It has survived not only five\n  centuries, but also the leap into electronic typesetting,\n   remaining essentially unchanged.\n    It was popularised in the 1960s with the release of Letraset sheets\n     containing Lorem Ipsum passages, and more recently\n      with desktop publishing software like Aldus PageMaker\n       including versions of Lorem Ipsum.\n";
 var SampleContent = function (props) {
     return React.createElement(gls.InlineBlock, {style: { backgroundColor: 'yellow' }}, lorem);
@@ -47,6 +50,7 @@ var Tabs = (function (_super) {
         _super.call(this, props);
         this.Styles = {
             headerItem: csx.extend(csx.Box.padding(4, 5), csx.centerCenter, {
+                fontFamily: 'sans-serif',
                 cursor: 'pointer',
                 borderTop: '2px solid white',
                 borderLeft: '2px solid white',
@@ -92,7 +96,13 @@ var DemoComponent = (function (_super) {
         _super.apply(this, arguments);
     }
     DemoComponent.prototype.render = function () {
-        var outputStyle = csx.extend({ backgroundColor: '#EEE', overflow: 'auto', border: '5px solid #5AD15A' });
+        var outputStyle = {
+            backgroundColor: '#EEE',
+            overflow: 'auto',
+            border: '5px solid #5AD15A',
+            fontFamily: 'sans-serif',
+            fontSize: '1rem'
+        };
         var errorStyle = csx.extend(outputStyle, { color: 'red', fontWeight: 'bold', fontFamily: 'monospace', fontSize: '2rem' });
         var compiled = transpile(this.props.code);
         if (!compiled.replace('"use strict";', '').trim()) {
@@ -157,20 +167,20 @@ var Demo = (function (_super) {
                     code: "\n<gls.ContentHorizontal style={{backgroundColor:blue}}>\n    <SampleContentSmall/>\n    <SampleContentSmall/>\n    <SampleContentSmall/>\n    <SampleContentSmall/>\n</gls.ContentHorizontal>\n".trim()
                 },
                 {
-                    name: 'Column Padded',
+                    name: 'Header Body Footer',
+                    code: "\n<gls.FlexVertical>\n    <gls.Content style={csx.extend({height:'30px', backgroundColor:orange},csx.centerCenter)}>\n        HEADER\n    </gls.Content>\n    <gls.Flex style={csx.extend({backgroundColor:blue},csx.centerCenter)}>\n        BODY\n    </gls.Flex>\n    <gls.Content style={csx.extend({height:'30px', backgroundColor:green},csx.centerCenter)}>\n        FOOTER\n    </gls.Content>\n</gls.FlexVertical>\n"
+                },
+                {
+                    name: 'ColumnPadded',
                     code: "\n<gls.ColumnPadded padding={10}>\n    <SampleContent/>\n    <SampleContent/>\n    <SampleContent/>\n    <SampleContent/>\n</gls.ColumnPadded>\n".trim()
                 },
                 {
-                    name: 'Column Padded Nested',
+                    name: 'ColumnPadded Nested',
                     code: "\n<gls.ColumnPadded padding={10}>\n    <gls.ColumnPadded padding={10}>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n    </gls.ColumnPadded>\n    <gls.ColumnPadded padding={10}>\n        <SampleContent/>\n        <SampleContent/>\n    </gls.ColumnPadded>\n</gls.ColumnPadded>\n".trim()
                 },
                 {
-                    name: 'Row Padded',
+                    name: 'RowPadded',
                     code: "\n<gls.RowPadded padding={10}>\n    <SampleContent/>\n    <SampleContent/>\n    <SampleContent/>\n    <SampleContent/>\n</gls.RowPadded>\n"
-                },
-                {
-                    name: 'Header Body Footer',
-                    code: "\n<gls.FlexVertical>\n    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>\n        HEADER\n    </gls.Content>\n    <gls.Flex style={csx.centerCenter}>\n        BODY\n    </gls.Flex>\n    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>\n        FOOTER\n    </gls.Content>\n</gls.FlexVertical>\n"
                 },
                 {
                     name: 'Body Scroll',

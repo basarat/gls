@@ -8,7 +8,11 @@ import * as csx from "csx";
 import {CodeEditor} from "./codeEditor";
 
 const blue = '#00ADFF';
-const yellow = 'yellow';
+const yellow = 'gold';
+const orange = '#FF806A';
+const green = 'lightgreen';
+const pink = 'hotpink';
+
 
 const lorem = `
 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -24,39 +28,39 @@ Lorem Ipsum has been the industry's standard dummy text ever since the
 `;
 
 const SampleContent = (props: any) => {
-    return <gls.InlineBlock style={{backgroundColor:'yellow'}}>
+    return <gls.InlineBlock style={{ backgroundColor: 'yellow' }}>
         {lorem}
     </gls.InlineBlock>
 }
 
 const SampleContentSmall = (props: any) => {
-    return <gls.InlineBlock style={{backgroundColor:'yellow'}}>
+    return <gls.InlineBlock style={{ backgroundColor: 'yellow' }}>
         Hello World!
     </gls.InlineBlock>
 }
 
 const SampleFlex = (props: any) => {
-    return <gls.Flex style={{backgroundColor:'yellow'}}>
+    return <gls.Flex style={{ backgroundColor: 'yellow' }}>
         {lorem}
     </gls.Flex>;
 }
 
-const SampleRect =(props: any) => {
+const SampleRect = (props: any) => {
     return (
-        <gls.InlineBlock style={{height:'50px',width:'30px',backgroundColor:'#666'}}>
+        <gls.InlineBlock style={{ height: '50px', width: '30px', backgroundColor: '#666' }}>
         </gls.InlineBlock>
     );
 }
 
 const renderSampleRects = () => {
-    return Array.apply(null, Array(300)).map((item,i)=>(
-        <gls.InlineBlock key={i} style={{height:'50px',width:'30px',backgroundColor:'#666'}}>
+    return Array.apply(null, Array(300)).map((item, i) => (
+        <gls.InlineBlock key={i} style={{ height: '50px', width: '30px', backgroundColor: '#666' }}>
         </gls.InlineBlock>
     ));
 }
 
-const SamplePage = (props:any) => {
-    return <gls.FlexScrollY style={csx.Box.padding(5,0)}>
+const SamplePage = (props: any) => {
+    return <gls.FlexScrollY style={csx.Box.padding(5, 0) }>
         {props.children}
     </gls.FlexScrollY>;
 }
@@ -73,6 +77,7 @@ class Tabs extends React.Component<TabProps, {}>{
             csx.Box.padding(4, 5),
             csx.centerCenter,
             {
+                fontFamily: 'sans-serif',
                 cursor: 'pointer',
                 borderTop: '2px solid white',
                 borderLeft: '2px solid white',
@@ -80,7 +85,7 @@ class Tabs extends React.Component<TabProps, {}>{
                 borderRadius: '4px 4px 0px 0px',
                 transition: 'border .2s,background-color .2s',
                 ':hover': {
-                    backgroundColor:'#DDD'
+                    backgroundColor: '#DDD'
                 }
             }),
         headerItemSelected: {
@@ -101,7 +106,7 @@ class Tabs extends React.Component<TabProps, {}>{
         const selected = this.props.tabs[selectedIndex];
         return (
             <gls.FlexVertical>
-                <gls.ContentHorizontal style={{ overflow:'auto' }}>
+                <gls.ContentHorizontal style={{ overflow: 'auto' }}>
                     {this.props.tabs.map((t, i) => {
                         return (
                             <gls.Content
@@ -133,7 +138,13 @@ function transpile(str: string): string {
 class DemoComponent extends React.Component<{ code: string, horizontal?: boolean }, {}>{
     render() {
 
-        const outputStyle = csx.extend({ backgroundColor: '#EEE', overflow: 'auto', border:'5px solid #5AD15A' });
+        const outputStyle = {
+            backgroundColor: '#EEE',
+            overflow: 'auto',
+            border: '5px solid #5AD15A',
+            fontFamily: 'sans-serif',
+            fontSize: '1rem'
+        };
         const errorStyle = csx.extend(outputStyle, { color: 'red', fontWeight: 'bold', fontFamily: 'monospace', fontSize: '2rem' });
 
         const compiled = transpile(this.props.code);
@@ -156,7 +167,7 @@ class DemoComponent extends React.Component<{ code: string, horizontal?: boolean
             {
                 __html: html
             },
-            style: this.props.horizontal?csx.selfStart:{}
+            style: this.props.horizontal ? csx.selfStart : {}
         };
 
         return <gls.Flex style={outputStyle}>
@@ -245,7 +256,23 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
 `.trim()
                 },
                 {
-                    name: 'Column Padded',
+                    name: 'Header Body Footer',
+                    code: `
+<gls.FlexVertical>
+    <gls.Content style={csx.extend({height:'30px', backgroundColor:orange},csx.centerCenter)}>
+        HEADER
+    </gls.Content>
+    <gls.Flex style={csx.extend({backgroundColor:blue},csx.centerCenter)}>
+        BODY
+    </gls.Flex>
+    <gls.Content style={csx.extend({height:'30px', backgroundColor:green},csx.centerCenter)}>
+        FOOTER
+    </gls.Content>
+</gls.FlexVertical>
+`
+                },
+                {
+                    name: 'ColumnPadded',
                     code: `
 <gls.ColumnPadded padding={10}>
     <SampleContent/>
@@ -256,7 +283,7 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
 `.trim()
                 },
                 {
-                    name: 'Column Padded Nested',
+                    name: 'ColumnPadded Nested',
                     code: `
 <gls.ColumnPadded padding={10}>
     <gls.ColumnPadded padding={10}>
@@ -273,8 +300,8 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
 `.trim()
                 },
                 {
-                    name: 'Row Padded',
-                    code:`
+                    name: 'RowPadded',
+                    code: `
 <gls.RowPadded padding={10}>
     <SampleContent/>
     <SampleContent/>
@@ -284,24 +311,8 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
 `
                 },
                 {
-                    name: 'Header Body Footer',
-                    code:`
-<gls.FlexVertical>
-    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>
-        HEADER
-    </gls.Content>
-    <gls.Flex style={csx.centerCenter}>
-        BODY
-    </gls.Flex>
-    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>
-        FOOTER
-    </gls.Content>
-</gls.FlexVertical>
-`
-                },
-                {
                     name: 'Body Scroll',
-                    code:`
+                    code: `
 <gls.FlexVertical>
     <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>
         HEADER
@@ -325,7 +336,7 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
                 },
                 {
                     name: 'Body Padded Scroll',
-                    code:`
+                    code: `
 <gls.FlexVertical>
     <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>
         HEADER
@@ -351,7 +362,7 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
                 },
                 {
                     name: 'Sample Page',
-                    code:`
+                    code: `
 <gls.FlexVertical>
     <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>
         HEADER
@@ -378,7 +389,7 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
                 },
                 {
                     name: 'Rect',
-                    code:`
+                    code: `
 <gls.FlexScrollY>
     <gls.ColumnPadded padding={10} style={csx.center}>
         <SampleRect/>
@@ -404,7 +415,7 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
                 },
                 {
                     name: 'Grid',
-                    code:`
+                    code: `
 <gls.FlexScrollY>
     <gls.GridMargined margin={10}>
         {renderSampleRects()}
@@ -429,10 +440,10 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
                             return {
                                 header: s.name,
                                 body:
-                                    <CodeEditor
-                                        key={i}
-                                        value={s.code}
-                                        onChange={(value) => {
+                                <CodeEditor
+                                    key={i}
+                                    value={s.code}
+                                    onChange={(value) => {
                                         samples[i].code = value;
                                         this.setState({ samples });
                                     } }/>
