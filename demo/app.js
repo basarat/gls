@@ -22,7 +22,10 @@ var csx = require("csx");
 var codeEditor_1 = require("./codeEditor");
 var lorem = "\nLorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum has been the industry's standard dummy text ever since the\n 1500s, when an unknown printer took a galley of type and scrambled it\n  to make a type specimen book. It has survived not only five\n  centuries, but also the leap into electronic typesetting,\n   remaining essentially unchanged.\n    It was popularised in the 1960s with the release of Letraset sheets\n     containing Lorem Ipsum passages, and more recently\n      with desktop publishing software like Aldus PageMaker\n       including versions of Lorem Ipsum.\n";
 var SampleContent = function (props) {
-    return React.createElement(gls.InlineBlock, null, lorem);
+    return React.createElement(gls.InlineBlock, {style: { backgroundColor: 'yellow' }}, lorem);
+};
+var SampleFlex = function (props) {
+    return React.createElement(gls.Flex, {style: { backgroundColor: 'yellow' }}, lorem);
 };
 var SampleRect = function (props) {
     return (React.createElement(gls.InlineBlock, {style: { height: '50px', width: '30px', backgroundColor: '#666' }}));
@@ -112,8 +115,20 @@ var Demo = (function (_super) {
             selectedTabIndex: 0,
             samples: [
                 {
-                    name: 'First',
-                    code: "\n<gls.Content>First Body</gls.Content>\n".trim()
+                    name: 'Content',
+                    code: ("\n<gls.Content style={{backgroundColor:'yellow'}}>" + lorem + "</gls.Content>\n").trim()
+                },
+                {
+                    name: 'SampleContent',
+                    code: "\n<SampleContent/>\n".trim()
+                },
+                {
+                    name: 'Flex',
+                    code: ("\n<gls.Flex style={{backgroundColor:'yellow'}}>" + lorem + "</gls.Flex>\n").trim()
+                },
+                {
+                    name: 'SampleFlex',
+                    code: "\n<SampleFlex/>\n".trim()
                 },
                 {
                     name: 'Column Padded',

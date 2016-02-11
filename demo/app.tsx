@@ -21,9 +21,15 @@ Lorem Ipsum has been the industry's standard dummy text ever since the
 `;
 
 const SampleContent = (props: any) => {
-    return <gls.InlineBlock>
+    return <gls.InlineBlock style={{backgroundColor:'yellow'}}>
         {lorem}
     </gls.InlineBlock>
+}
+
+const SampleFlex = (props: any) => {
+    return <gls.Flex style={{backgroundColor:'yellow'}}>
+        {lorem}
+    </gls.Flex>;
 }
 
 const SampleRect =(props: any) => {
@@ -157,9 +163,27 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: { 
             selectedTabIndex: 0,
             samples: [
                 {
-                    name: 'First',
+                    name: 'Content',
                     code: `
-<gls.Content>First Body</gls.Content>
+<gls.Content style={{backgroundColor:'yellow'}}>${lorem}</gls.Content>
+`.trim()
+                },
+                {
+                    name: 'SampleContent',
+                    code: `
+<SampleContent/>
+`.trim()
+                },
+                {
+                    name: 'Flex',
+                    code: `
+<gls.Flex style={{backgroundColor:'yellow'}}>${lorem}</gls.Flex>
+`.trim()
+                },
+                {
+                    name: 'SampleFlex',
+                    code: `
+<SampleFlex/>
 `.trim()
                 },
                 {
