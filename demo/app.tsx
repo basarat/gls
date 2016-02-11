@@ -67,10 +67,10 @@ const SampleFooter = (props: any) => {
 
 const SampleInput = (props: any) => {
     return (
-        <gls.ContentHorizontal style={csx.extend(csx.center, props.style) }>
-            <label style={{ paddingRight: '5px' }}>Some Label</label>
+        <gls.FlexHorizontal style={csx.extend(csx.center, props.style) }>
+            <label style={{paddingRight:'5px'}}>Some Label</label>
             <input style={csx.flex} placeholder="Sample Input"/>
-        </gls.ContentHorizontal>
+        </gls.FlexHorizontal>
     )
 }
 
@@ -443,24 +443,30 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
                     name: 'Input',
                     code: `
 <gls.ContentHorizontal>
-    <label>Some Label</label>
-    <input placeholder="Sample Input"/>
+    <gls.FlexHorizontal>
+        <label>Some Label</label>
+        <input placeholder="Sample Input"/>
+    </gls.FlexHorizontal>
 </gls.ContentHorizontal>
 `.trim()
                 },
                 {
                     name: 'Input Managed',
                     code: `
-<gls.ContentHorizontal style={csx.center}>
-    <label style={{paddingRight:'5px'}}>Some Label</label>
-    <input style={csx.flex} placeholder="Sample Input"/>
+<gls.ContentHorizontal>
+    <gls.FlexHorizontal style={csx.center}>
+        <label style={{paddingRight:'5px'}}>Some Label</label>
+        <input style={csx.flex} placeholder="Sample Input"/>
+    </gls.FlexHorizontal>
 </gls.ContentHorizontal>
 `.trim()
                 },
                 {
                     name: 'SampleInput',
                     code: `
-<SampleInput/>
+<gls.ContentHorizontal>
+    <SampleInput/>
+<gls.ContentHorizontal>
 `.trim()
                 },
                 {
@@ -524,6 +530,22 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
         </gls.ContentVerticalPadded>
     </gls.ContentVerticalPadded>
 </SamplePage>
+`.trim()
+                },
+                {
+                    name: 'ContentHorizontalPadded',
+                    code: `
+<gls.ContentHorizontalPadded padding={10}>
+    <SampleContentSmall/>
+    <SampleContentSmall/>
+    <SampleButton/>
+    <SampleButton/>
+    
+    <gls.Content>
+        <SampleButton/>
+        <SampleButton/>
+    </gls.Content>
+</gls.ContentHorizontalPadded>
 `.trim()
                 },
                 {
@@ -621,6 +643,12 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
             {/* Some More Inputs */}
             <SampleInput/>
             <SampleInput/>
+
+            {/* Some Inputs in a Row */}
+            <gls.FlexHorizontalPadded padding={10}>
+                <SampleInput/>
+                <SampleInput/>
+            </gls.FlexHorizontalPadded>
 
             {/* A Grid! */}
             <gls.GridMargined margin={10}>

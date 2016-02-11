@@ -45,7 +45,7 @@ var SampleFooter = function (props) {
     return React.createElement(gls.Content, {style: csx.extend({ height: '30px', backgroundColor: green }, csx.centerCenter)}, "FOOTER");
 };
 var SampleInput = function (props) {
-    return (React.createElement(gls.ContentHorizontal, {style: csx.extend(csx.center, props.style)}, React.createElement("label", {style: { paddingRight: '5px' }}, "Some Label"), React.createElement("input", {style: csx.flex, placeholder: "Sample Input"})));
+    return (React.createElement(gls.FlexHorizontal, {style: csx.extend(csx.center, props.style)}, React.createElement("label", {style: { paddingRight: '5px' }}, "Some Label"), React.createElement("input", {style: csx.flex, placeholder: "Sample Input"})));
 };
 var SampleRect = function (props) {
     return (React.createElement(gls.InlineBlock, {style: { height: '100px', width: '150px', backgroundColor: '#666' }}));
@@ -192,15 +192,15 @@ var Demo = (function (_super) {
                 },
                 {
                     name: 'Input',
-                    code: "\n<gls.ContentHorizontal>\n    <label>Some Label</label>\n    <input placeholder=\"Sample Input\"/>\n</gls.ContentHorizontal>\n".trim()
+                    code: "\n<gls.ContentHorizontal>\n    <gls.FlexHorizontal>\n        <label>Some Label</label>\n        <input placeholder=\"Sample Input\"/>\n    </gls.FlexHorizontal>\n</gls.ContentHorizontal>\n".trim()
                 },
                 {
                     name: 'Input Managed',
-                    code: "\n<gls.ContentHorizontal style={csx.center}>\n    <label style={{paddingRight:'5px'}}>Some Label</label>\n    <input style={csx.flex} placeholder=\"Sample Input\"/>\n</gls.ContentHorizontal>\n".trim()
+                    code: "\n<gls.ContentHorizontal>\n    <gls.FlexHorizontal style={csx.center}>\n        <label style={{paddingRight:'5px'}}>Some Label</label>\n        <input style={csx.flex} placeholder=\"Sample Input\"/>\n    </gls.FlexHorizontal>\n</gls.ContentHorizontal>\n".trim()
                 },
                 {
                     name: 'SampleInput',
-                    code: "\n<SampleInput/>\n".trim()
+                    code: "\n<gls.ContentHorizontal>\n    <SampleInput/>\n<gls.ContentHorizontal>\n".trim()
                 },
                 {
                     name: '2 Inputs',
@@ -223,6 +223,10 @@ var Demo = (function (_super) {
                     code: "\n<SamplePage>\n    <gls.ContentVerticalPadded padding={10}>\n        <gls.ContentVerticalPadded padding={10}>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleInput/>\n            <SampleContent/>\n        </gls.ContentVerticalPadded>\n        <gls.ContentVerticalPadded padding={10}>\n            <SampleContent/>\n            <SampleContent/>\n        </gls.ContentVerticalPadded>\n    </gls.ContentVerticalPadded>\n</SamplePage>\n".trim()
                 },
                 {
+                    name: 'ContentHorizontalPadded',
+                    code: "\n<gls.ContentHorizontalPadded padding={10}>\n    <SampleContentSmall/>\n    <SampleContentSmall/>\n    <SampleButton/>\n    <SampleButton/>\n    \n    <gls.Content>\n        <SampleButton/>\n        <SampleButton/>\n    </gls.Content>\n</gls.ContentHorizontalPadded>\n".trim()
+                },
+                {
                     name: 'FlexHorizontalPadded',
                     code: "\n<gls.FlexHorizontalPadded padding={10}>\n    <SampleContent/>\n    <SampleContent/>\n    <SampleContent/>\n    <SampleContent/>\n</gls.FlexHorizontalPadded>\n"
                 },
@@ -236,7 +240,7 @@ var Demo = (function (_super) {
                 },
                 {
                     name: 'Full Featured',
-                    code: "\n<gls.FlexVertical>\n    <SampleHeader/>\n    <SamplePage>\n        <gls.ContentVerticalPadded padding={10}>\n            {/* Actions row */}\n            <gls.ContentHorizontal>\n                <gls.ContentHorizontalPadded padding={5}>\n                    <SampleButton/>\n                    <SampleButton/>\n                    <SampleButton/>\n                    <SampleButton/>\n                </gls.ContentHorizontalPadded>\n                <gls.Flex/>\n                <gls.ContentHorizontalPadded padding={5}>\n                    <SampleButton/>\n                    <SampleButton/>\n                </gls.ContentHorizontalPadded>\n            </gls.ContentHorizontal>\n\n            {/* Some info */}\n            <gls.FlexHorizontalPadded padding={10}>\n                <SampleContent/>\n                <SampleContent/>\n                <SampleContent/>\n                <SampleContent/>\n            </gls.FlexHorizontalPadded>\n\n            {/* Some Inputs */}\n            <SampleInput/>\n            <SampleInput/>\n            <SampleInput/>\n            <SampleInput/>\n\n            {/* Some more info */}\n            <gls.FlexHorizontalPadded padding={10}>\n                <SampleContent/>\n                <gls.FlexHorizontalPadded padding={10}>\n                    <SampleContent/>\n                    <SampleContent/>\n                </gls.FlexHorizontalPadded>\n            </gls.FlexHorizontalPadded>\n\n            {/* Some More Inputs */}\n            <SampleInput/>\n            <SampleInput/>\n\n            {/* A Grid! */}\n            <gls.GridMargined margin={10}>\n                {renderSampleRects()}\n            </gls.GridMargined>\n\n        </gls.ContentVerticalPadded>\n    </SamplePage>\n    <SampleFooter/>\n</gls.FlexVertical>\n"
+                    code: "\n<gls.FlexVertical>\n    <SampleHeader/>\n    <SamplePage>\n        <gls.ContentVerticalPadded padding={10}>\n            {/* Actions row */}\n            <gls.ContentHorizontal>\n                <gls.ContentHorizontalPadded padding={5}>\n                    <SampleButton/>\n                    <SampleButton/>\n                    <SampleButton/>\n                    <SampleButton/>\n                </gls.ContentHorizontalPadded>\n                <gls.Flex/>\n                <gls.ContentHorizontalPadded padding={5}>\n                    <SampleButton/>\n                    <SampleButton/>\n                </gls.ContentHorizontalPadded>\n            </gls.ContentHorizontal>\n\n            {/* Some info */}\n            <gls.FlexHorizontalPadded padding={10}>\n                <SampleContent/>\n                <SampleContent/>\n                <SampleContent/>\n                <SampleContent/>\n            </gls.FlexHorizontalPadded>\n\n            {/* Some Inputs */}\n            <SampleInput/>\n            <SampleInput/>\n            <SampleInput/>\n            <SampleInput/>\n\n            {/* Some more info */}\n            <gls.FlexHorizontalPadded padding={10}>\n                <SampleContent/>\n                <gls.FlexHorizontalPadded padding={10}>\n                    <SampleContent/>\n                    <SampleContent/>\n                </gls.FlexHorizontalPadded>\n            </gls.FlexHorizontalPadded>\n\n            {/* Some More Inputs */}\n            <SampleInput/>\n            <SampleInput/>\n\n            {/* Some Inputs in a Row */}\n            <gls.FlexHorizontalPadded padding={10}>\n                <SampleInput/>\n                <SampleInput/>\n            </gls.FlexHorizontalPadded>\n\n            {/* A Grid! */}\n            <gls.GridMargined margin={10}>\n                {renderSampleRects()}\n            </gls.GridMargined>\n\n        </gls.ContentVerticalPadded>\n    </SamplePage>\n    <SampleFooter/>\n</gls.FlexVertical>\n"
                 }
             ]
         };
