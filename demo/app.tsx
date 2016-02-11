@@ -45,38 +45,44 @@ const SampleFlex = (props: any) => {
     </gls.Flex>;
 }
 
-const SampleHeader = (props:any) => {
+const SampleHeader = (props: any) => {
     return (
-        <gls.Content style={csx.extend({height:'30px', backgroundColor:orange},csx.centerCenter)}>
+        <gls.Content style={csx.extend({ height: '30px', backgroundColor: orange }, csx.centerCenter) }>
             HEADER
         </gls.Content>
     );
 }
 
 const SamplePage = (props: any) => {
-    return <gls.FlexScrollY style={{backgroundColor:blue, padding: '5px'}}>
+    return <gls.FlexScrollY style={{ backgroundColor: blue, padding: '5px' }}>
         {props.children}
     </gls.FlexScrollY>
 }
 
-const SampleFooter = (props: any)=>{
-    return <gls.Content style={csx.extend({height:'30px', backgroundColor:green},csx.centerCenter)}>
+const SampleFooter = (props: any) => {
+    return <gls.Content style={csx.extend({ height: '30px', backgroundColor: green }, csx.centerCenter) }>
         FOOTER
     </gls.Content>
 }
 
+const SampleInput = (props: any) => {
+    return (
+        <gls.ContentHorizontal style={csx.extend(csx.center,props.style)}>
+            <label style={{ paddingRight: '5px' }}>Some Label</label>
+            <input style={csx.flex} placeholder="Sample Input"/>
+        </gls.ContentHorizontal>
+    )
+}
+
 const SampleRect = (props: any) => {
     return (
-        <gls.InlineBlock style={{ height: '50px', width: '30px', backgroundColor: '#666' }}>
+        <gls.InlineBlock style={{ height: '100px', width: '150px', backgroundColor: '#666' }}>
         </gls.InlineBlock>
     );
 }
 
 const renderSampleRects = () => {
-    return Array.apply(null, Array(300)).map((item, i) => (
-        <gls.InlineBlock key={i} style={{ height: '50px', width: '30px', backgroundColor: '#666' }}>
-        </gls.InlineBlock>
-    ));
+    return Array.apply(null, Array(300)).map((item, i) => (<SampleRect key={i}/>));
 }
 
 type TabProps = {
@@ -446,13 +452,35 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
 `.trim()
                 },
                 {
+                    name: 'SampleInput',
+                    code: `
+<SampleInput/>
+`.trim()
+                },
+                {
+                    name: '2 Inputs',
+                    code: `
+<gls.Content>
+    <SampleInput/>
+    <SampleInput/>
+</gls.Content>
+`.trim()
+                },
+                {
+                    name: '2 Inputs Bad',
+                    code: `
+<gls.Content>
+    <SampleInput style={{marginBottom:'10px'}}/>
+    <SampleInput/>
+</gls.Content>
+`.trim()
+                },
+                {
                     name: 'ColumnPadded',
                     code: `
 <gls.ColumnPadded padding={10}>
-    <SampleContent/>
-    <SampleContent/>
-    <SampleContent/>
-    <SampleContent/>
+    <SampleInput/>
+    <SampleInput/>
 </gls.ColumnPadded>
 `.trim()
                 },
@@ -463,7 +491,7 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
     <gls.ColumnPadded padding={10}>
         <SampleContent/>
         <SampleContent/>
-        <SampleContent/>
+        <SampleInput/>
         <SampleContent/>
     </gls.ColumnPadded>
     <gls.ColumnPadded padding={10}>
@@ -471,6 +499,25 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
         <SampleContent/>
     </gls.ColumnPadded>
 </gls.ColumnPadded>
+`.trim()
+                },
+                {
+                    name: 'ColumnPadded Paged',
+                    code: `
+<SamplePage>
+    <gls.ColumnPadded padding={10}>
+        <gls.ColumnPadded padding={10}>
+            <SampleContent/>
+            <SampleContent/>
+            <SampleInput/>
+            <SampleContent/>
+        </gls.ColumnPadded>
+        <gls.ColumnPadded padding={10}>
+            <SampleContent/>
+            <SampleContent/>
+        </gls.ColumnPadded>
+    </gls.ColumnPadded>
+</SamplePage>
 `.trim()
                 },
                 {
@@ -482,83 +529,6 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
     <SampleContent/>
     <SampleContent/>
 </gls.RowPadded>
-`
-                },
-                {
-                    name: 'Body Scroll',
-                    code: `
-<gls.FlexVertical>
-    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>
-        HEADER
-    </gls.Content>
-    <gls.FlexScrollY>
-        <SampleContent/>
-        <SampleContent/>
-        <SampleContent/>
-        <SampleContent/>
-        <SampleContent/>
-        <SampleContent/>
-        <SampleContent/>
-        <SampleContent/>
-        <SampleContent/>
-    </gls.FlexScrollY>
-    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>
-        FOOTER
-    </gls.Content>
-</gls.FlexVertical>
-`
-                },
-                {
-                    name: 'Body Padded Scroll',
-                    code: `
-<gls.FlexVertical>
-    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>
-        HEADER
-    </gls.Content>
-    <gls.FlexScrollY>
-        <gls.ColumnPadded padding={10}>
-            <SampleContent/>
-            <SampleContent/>
-            <SampleContent/>
-            <SampleContent/>
-            <SampleContent/>
-            <SampleContent/>
-            <SampleContent/>
-            <SampleContent/>
-            <SampleContent/>
-        </gls.ColumnPadded>
-    </gls.FlexScrollY>
-    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>
-        FOOTER
-    </gls.Content>
-</gls.FlexVertical>
-`
-                },
-                {
-                    name: 'Sample Page',
-                    code: `
-<gls.FlexVertical>
-    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>
-        HEADER
-    </gls.Content>
-    <gls.FlexScrollY>
-    <SamplePage>
-        <gls.ColumnPadded padding={10}>
-            <SampleContent/>
-            <SampleContent/>
-            <SampleContent/>
-            <SampleContent/>
-            <SampleContent/>
-            <SampleContent/>
-            <SampleContent/>
-            <SampleContent/>
-            <SampleContent/>
-        </gls.ColumnPadded>
-    </SamplePage>
-    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>
-        FOOTER
-    </gls.Content>
-</gls.FlexVertical>
 `
                 },
                 {

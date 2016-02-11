@@ -44,11 +44,14 @@ var SamplePage = function (props) {
 var SampleFooter = function (props) {
     return React.createElement(gls.Content, {style: csx.extend({ height: '30px', backgroundColor: green }, csx.centerCenter)}, "FOOTER");
 };
+var SampleInput = function (props) {
+    return (React.createElement(gls.ContentHorizontal, {style: csx.extend(csx.center, props.style)}, React.createElement("label", {style: { paddingRight: '5px' }}, "Some Label"), React.createElement("input", {style: csx.flex, placeholder: "Sample Input"})));
+};
 var SampleRect = function (props) {
-    return (React.createElement(gls.InlineBlock, {style: { height: '50px', width: '30px', backgroundColor: '#666' }}));
+    return (React.createElement(gls.InlineBlock, {style: { height: '100px', width: '150px', backgroundColor: '#666' }}));
 };
 var renderSampleRects = function () {
-    return Array.apply(null, Array(300)).map(function (item, i) { return (React.createElement(gls.InlineBlock, {key: i, style: { height: '50px', width: '30px', backgroundColor: '#666' }})); });
+    return Array.apply(null, Array(300)).map(function (item, i) { return (React.createElement(SampleRect, {key: i})); });
 };
 var Tabs = (function (_super) {
     __extends(Tabs, _super);
@@ -193,28 +196,32 @@ var Demo = (function (_super) {
                     code: "\n<gls.ContentHorizontal style={csx.center}>\n    <label style={{paddingRight:'5px'}}>Some Label</label>\n    <input style={csx.flex} placeholder=\"Sample Input\"/>\n</gls.ContentHorizontal>\n".trim()
                 },
                 {
+                    name: 'SampleInput',
+                    code: "\n<SampleInput/>\n".trim()
+                },
+                {
+                    name: '2 Inputs',
+                    code: "\n<gls.Content>\n    <SampleInput/>\n    <SampleInput/>\n</gls.Content>\n".trim()
+                },
+                {
+                    name: '2 Inputs Bad',
+                    code: "\n<gls.Content>\n    <SampleInput style={{marginBottom:'10px'}}/>\n    <SampleInput/>\n</gls.Content>\n".trim()
+                },
+                {
                     name: 'ColumnPadded',
-                    code: "\n<gls.ColumnPadded padding={10}>\n    <SampleContent/>\n    <SampleContent/>\n    <SampleContent/>\n    <SampleContent/>\n</gls.ColumnPadded>\n".trim()
+                    code: "\n<gls.ColumnPadded padding={10}>\n    <SampleInput/>\n    <SampleInput/>\n</gls.ColumnPadded>\n".trim()
                 },
                 {
                     name: 'ColumnPadded Nested',
-                    code: "\n<gls.ColumnPadded padding={10}>\n    <gls.ColumnPadded padding={10}>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n    </gls.ColumnPadded>\n    <gls.ColumnPadded padding={10}>\n        <SampleContent/>\n        <SampleContent/>\n    </gls.ColumnPadded>\n</gls.ColumnPadded>\n".trim()
+                    code: "\n<gls.ColumnPadded padding={10}>\n    <gls.ColumnPadded padding={10}>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleInput/>\n        <SampleContent/>\n    </gls.ColumnPadded>\n    <gls.ColumnPadded padding={10}>\n        <SampleContent/>\n        <SampleContent/>\n    </gls.ColumnPadded>\n</gls.ColumnPadded>\n".trim()
+                },
+                {
+                    name: 'ColumnPadded Paged',
+                    code: "\n<SamplePage>\n    <gls.ColumnPadded padding={10}>\n        <gls.ColumnPadded padding={10}>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleInput/>\n            <SampleContent/>\n        </gls.ColumnPadded>\n        <gls.ColumnPadded padding={10}>\n            <SampleContent/>\n            <SampleContent/>\n        </gls.ColumnPadded>\n    </gls.ColumnPadded>\n</SamplePage>\n".trim()
                 },
                 {
                     name: 'RowPadded',
                     code: "\n<gls.RowPadded padding={10}>\n    <SampleContent/>\n    <SampleContent/>\n    <SampleContent/>\n    <SampleContent/>\n</gls.RowPadded>\n"
-                },
-                {
-                    name: 'Body Scroll',
-                    code: "\n<gls.FlexVertical>\n    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>\n        HEADER\n    </gls.Content>\n    <gls.FlexScrollY>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleContent/>\n    </gls.FlexScrollY>\n    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>\n        FOOTER\n    </gls.Content>\n</gls.FlexVertical>\n"
-                },
-                {
-                    name: 'Body Padded Scroll',
-                    code: "\n<gls.FlexVertical>\n    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>\n        HEADER\n    </gls.Content>\n    <gls.FlexScrollY>\n        <gls.ColumnPadded padding={10}>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n        </gls.ColumnPadded>\n    </gls.FlexScrollY>\n    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>\n        FOOTER\n    </gls.Content>\n</gls.FlexVertical>\n"
-                },
-                {
-                    name: 'Sample Page',
-                    code: "\n<gls.FlexVertical>\n    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>\n        HEADER\n    </gls.Content>\n    <gls.FlexScrollY>\n    <SamplePage>\n        <gls.ColumnPadded padding={10}>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n        </gls.ColumnPadded>\n    </SamplePage>\n    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>\n        FOOTER\n    </gls.Content>\n</gls.FlexVertical>\n"
                 },
                 {
                     name: 'Rect',
