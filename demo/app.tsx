@@ -25,7 +25,13 @@ const SampleContent = (props: any) => {
         {lorem}
     </gls.InlineBlock>
 }
-SampleContent.displayName = "SampleContent";
+
+const SampleRect =(props: any) => {
+    return (
+        <gls.InlineBlock style={{height:'50px',width:'30px',backgroundColor:'#666'}}>
+        </gls.InlineBlock>
+    );
+}
 
 type TabProps = {
     tabs: { header: string; body: JSX.Element }[],
@@ -246,6 +252,32 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: { 
         FOOTER
     </gls.Content>
 </gls.FlexVertical>
+`
+                },
+                {
+                    name: 'Rect',
+                    code:`
+<gls.FlexScrollY>
+    <gls.ColumnPadded padding={10} style={csx.center}>
+        <SampleRect/>
+        <SampleRect/>
+        <SampleRect/>
+        <SampleRect/>
+        <SampleRect/>
+        <SampleRect/>
+        <SampleRect/>
+        <SampleRect/>
+        <SampleRect/>
+        <SampleRect/>
+        <SampleRect/>
+        <SampleRect/>
+        <SampleRect/>
+        <SampleRect/>
+        <SampleRect/>
+        <SampleRect/>
+        <SampleRect/>
+    </gls.ColumnPadded>
+</gls.FlexScrollY>
 `
                 },
             ]

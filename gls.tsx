@@ -147,7 +147,7 @@ FlexHorizontal.displayName = "FlexHorizontal";
  * Grid System
  *
  ********/
-interface GridProps extends PrimitiveProps {
+interface PaddedProps extends PrimitiveProps {
     padding: number | string;
 }
 
@@ -159,7 +159,7 @@ interface GridProps extends PrimitiveProps {
  * - Children: get the Height : sized by content
  * - ThisComponent: Puts a horizontal padding between each item
  */
-export const RowPadded = (props:GridProps) => {
+export const RowPadded = (props:PaddedProps) => {
     const basicPadding = props.padding;
 
     const last = React.Children.count(props.children) - 1;
@@ -173,7 +173,7 @@ export const RowPadded = (props:GridProps) => {
     }
 
     return (
-        <FlexHorizontal>
+        <FlexHorizontal {...props}>
             {React.Children.map(props.children,
                 (child, i) => <Flex key={i} style={itemPadding(i)}>{child}</Flex>)
             }
@@ -190,7 +190,7 @@ RowPadded.displayName = "RowPadded";
  * - Children: get the Height : sized by content
  * - ThisComponent: Puts a vertical padding between each item
  */
-export const ColumnPadded  = (props:GridProps) => {
+export const ColumnPadded  = (props:PaddedProps) => {
     const basicPadding = props.padding;
 
     const last = React.Children.count(props.children) - 1;
@@ -204,7 +204,7 @@ export const ColumnPadded  = (props:GridProps) => {
     }
 
     return (
-        <ContentVertical>
+        <ContentVertical {...props}>
             {React.Children.map(props.children,
                 (child, i) => <Content key={i} style={itemPadding(i)}>{child}</Content>)
             }
@@ -212,3 +212,28 @@ export const ColumnPadded  = (props:GridProps) => {
     );
 }
 ColumnPadded.displayName = "ColumnPadded";
+
+interface GridMarginedProps extends PrimitiveProps {
+    margin: number | string;
+}
+/**
+ * Lays out the children vertically with
+ * - Parent: gets to chose the overall Width
+ * - ThisComponent: gets the Height : (by sum) of the children
+ * - Children: get the Width : sized by content
+ * - Children: get the Height : sized by content
+ * - ThisComponent: Puts a margin between each item.
+ *
+ * // Warning: Its up to you to put this in a layout that has at least enough padding at the TOP and LEFT borders as the margin
+ */
+export const GridMargined  = (props:GridMarginedProps) => {
+    const style = csx.extend(props.style || {},csx.wrap);
+    return (
+        <ContentHorizontal {...props} style={style}>
+            {React.Children.map(props.children,
+                (child, i) => <Content key={i} style={{marginLeft:props.margin,marginTop:props.margin}}>{child}</Content>)
+            }
+        </ContentHorizontal>
+    );
+}
+GridMargined.displayName = "GridMargined";

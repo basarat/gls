@@ -59,7 +59,7 @@ exports.RowPadded = function (props) {
             return csx.Box.padding(0, basicPadding, 0, 0);
         }
     };
-    return (React.createElement(exports.FlexHorizontal, null, React.Children.map(props.children, function (child, i) { return React.createElement(exports.Flex, {key: i, style: itemPadding(i)}, child); })));
+    return (React.createElement(exports.FlexHorizontal, React.__spread({}, props), React.Children.map(props.children, function (child, i) { return React.createElement(exports.Flex, {key: i, style: itemPadding(i)}, child); })));
 };
 exports.RowPadded.displayName = "RowPadded";
 exports.ColumnPadded = function (props) {
@@ -73,6 +73,11 @@ exports.ColumnPadded = function (props) {
             return csx.Box.padding(0, 0, basicPadding, 0);
         }
     };
-    return (React.createElement(exports.ContentVertical, null, React.Children.map(props.children, function (child, i) { return React.createElement(exports.Content, {key: i, style: itemPadding(i)}, child); })));
+    return (React.createElement(exports.ContentVertical, React.__spread({}, props), React.Children.map(props.children, function (child, i) { return React.createElement(exports.Content, {key: i, style: itemPadding(i)}, child); })));
 };
 exports.ColumnPadded.displayName = "ColumnPadded";
+exports.GridMargined = function (props) {
+    var style = csx.extend(props.style || {}, csx.wrap);
+    return (React.createElement(exports.ContentHorizontal, React.__spread({}, props, {style: style}), React.Children.map(props.children, function (child, i) { return React.createElement(exports.Content, {key: i, style: { marginLeft: props.margin, marginTop: props.margin }}, child); })));
+};
+exports.GridMargined.displayName = "GridMargined";

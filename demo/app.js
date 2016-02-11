@@ -24,7 +24,9 @@ var lorem = "\nLorem Ipsum is simply dummy text of the printing and typesetting 
 var SampleContent = function (props) {
     return React.createElement(gls.InlineBlock, null, lorem);
 };
-SampleContent.displayName = "SampleContent";
+var SampleRect = function (props) {
+    return (React.createElement(gls.InlineBlock, {style: { height: '50px', width: '30px', backgroundColor: '#666' }}));
+};
 var Tabs = (function (_super) {
     __extends(Tabs, _super);
     function Tabs(props) {
@@ -130,6 +132,10 @@ var Demo = (function (_super) {
                 {
                     name: 'Body Padded Scroll',
                     code: "\n<gls.FlexVertical>\n    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>\n        HEADER\n    </gls.Content>\n    <gls.FlexScrollY>\n        <gls.ColumnPadded padding={10}>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n        </gls.ColumnPadded>\n    </gls.FlexScrollY>\n    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>\n        FOOTER\n    </gls.Content>\n</gls.FlexVertical>\n"
+                },
+                {
+                    name: 'Rect',
+                    code: "\n<gls.FlexScrollY>\n    <gls.ColumnPadded padding={10} style={csx.center}>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n    </gls.ColumnPadded>\n</gls.FlexScrollY>\n"
                 },
             ]
         };
