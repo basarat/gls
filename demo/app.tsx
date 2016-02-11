@@ -428,6 +428,24 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
 `
                 },
                 {
+                    name: 'Input',
+                    code: `
+<gls.ContentHorizontal>
+    <label>Some Label</label>
+    <input placeholder="Sample Input"/>
+</gls.ContentHorizontal>
+`.trim()
+                },
+                {
+                    name: 'Input Managed',
+                    code: `
+<gls.ContentHorizontal style={csx.center}>
+    <label style={{paddingRight:'5px'}}>Some Label</label>
+    <input style={csx.flex} placeholder="Sample Input"/>
+</gls.ContentHorizontal>
+`.trim()
+                },
+                {
                     name: 'ColumnPadded',
                     code: `
 <gls.ColumnPadded padding={10}>

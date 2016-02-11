@@ -39,7 +39,7 @@ exports.ContentHorizontal = Radium(function (props) {
 });
 exports.ContentHorizontal.displayName = "ContentHorizontal";
 exports.FlexVertical = Radium(function (props) {
-    var style = csx.extend(props.style || {}, csx.flex, csx.vertical);
+    var style = csx.extend(props.style || {}, csx.flex, csx.vertical, { maxWidth: '100%' });
     return (React.createElement("div", React.__spread({"data-comment": "FlexVertical"}, props, {style: style}), props.children));
 });
 exports.FlexVertical.displayName = "FlexVertical";

@@ -120,7 +120,7 @@ ContentHorizontal.displayName = "ContentHorizontal";
  * Provides a Vertical Container. For the parent it behaves like flex.
  */
 export const FlexVertical = Radium((props: PrimitiveProps) => {
-    const style = csx.extend(props.style || {},csx.flex,csx.vertical);
+    const style = csx.extend(props.style || {},csx.flex,csx.vertical,{maxWidth:'100%' /*normalizing browser bugs*/});
     return (
         <div data-comment="FlexVertical" {...props} style={style}>
             {props.children}

@@ -185,6 +185,14 @@ var Demo = (function (_super) {
                     code: "\n<gls.FlexVertical>\n    <SampleHeader/>\n    <SamplePage>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n    </SamplePage>\n    <SampleFooter/>\n</gls.FlexVertical>\n"
                 },
                 {
+                    name: 'Input',
+                    code: "\n<gls.ContentHorizontal>\n    <label>Some Label</label>\n    <input placeholder=\"Sample Input\"/>\n</gls.ContentHorizontal>\n".trim()
+                },
+                {
+                    name: 'Input Managed',
+                    code: "\n<gls.ContentHorizontal style={csx.center}>\n    <label style={{paddingRight:'5px'}}>Some Label</label>\n    <input style={csx.flex} placeholder=\"Sample Input\"/>\n</gls.ContentHorizontal>\n".trim()
+                },
+                {
                     name: 'ColumnPadded',
                     code: "\n<gls.ColumnPadded padding={10}>\n    <SampleContent/>\n    <SampleContent/>\n    <SampleContent/>\n    <SampleContent/>\n</gls.ColumnPadded>\n".trim()
                 },
