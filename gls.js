@@ -15,6 +15,10 @@ exports.Flex = Radium(function (props) {
     var style = csx.extend(props.style || {}, csx.pass, csx.flex);
     return (React.createElement("div", React.__spread({"data-comment": "Flex"}, props, {style: style}), props.children));
 });
+exports.FlexScrollY = Radium(function (props) {
+    var style = csx.extend(props.style || {}, csx.pass, csx.flex, { overflowY: 'auto' });
+    return (React.createElement("div", React.__spread({"data-comment": "FlexScrollY"}, props, {style: style}), props.children));
+});
 exports.Pass = Radium(function (props) {
     var style = csx.extend(props.style || {}, csx.pass);
     return (React.createElement("div", React.__spread({"data-comment": "Pass"}, props, {style: style}), props.children));

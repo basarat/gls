@@ -56,6 +56,18 @@ export const Flex = Radium((props: PrimitiveProps) => {
 });
 
 /**
+ * Takes up all the parent space, no more, no less and scrolls the children in Y if needed
+ */
+export const FlexScrollY = Radium((props: PrimitiveProps) => {
+    const style = csx.extend(props.style || {},csx.pass,csx.flex,{overflowY:'auto'});
+    return (
+        <div data-comment="FlexScrollY" {...props} style={style}>
+            {props.children}
+        </div>
+    );
+});
+
+/**
  * When you need a general purpose container. Use this instead of a `div`
  */
 export const Pass = Radium((props: PrimitiveProps) => {

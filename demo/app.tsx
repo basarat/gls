@@ -192,6 +192,56 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: { 
 </gls.FlexVertical>
 `
                 },
+                {
+                    name: 'Body Scroll',
+                    code:`
+<gls.FlexVertical>
+    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>
+        HEADER
+    </gls.Content>
+    <gls.FlexScrollY>
+        <SampleContent/>
+        <SampleContent/>
+        <SampleContent/>
+        <SampleContent/>
+        <SampleContent/>
+        <SampleContent/>
+        <SampleContent/>
+        <SampleContent/>
+        <SampleContent/>
+    </gls.FlexScrollY>
+    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>
+        FOOTER
+    </gls.Content>
+</gls.FlexVertical>
+`
+                },
+                {
+                    name: 'Body Padded Scroll',
+                    code:`
+<gls.FlexVertical>
+    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>
+        HEADER
+    </gls.Content>
+    <gls.FlexScrollY>
+        <gls.ColumnPadded padding={10}>
+            <SampleContent/>
+            <SampleContent/>
+            <SampleContent/>
+            <SampleContent/>
+            <SampleContent/>
+            <SampleContent/>
+            <SampleContent/>
+            <SampleContent/>
+            <SampleContent/>
+        </gls.ColumnPadded>
+    </gls.FlexScrollY>
+    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>
+        FOOTER
+    </gls.Content>
+</gls.FlexVertical>
+`
+                },
             ]
 
         }
