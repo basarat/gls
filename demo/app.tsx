@@ -7,6 +7,9 @@ import * as Radium from "radium";
 import * as csx from "csx";
 import {CodeEditor} from "./codeEditor";
 
+const blue = '#00ADFF';
+const yellow = 'yellow';
+
 const lorem = `
 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
 Lorem Ipsum has been the industry's standard dummy text ever since the
@@ -23,6 +26,12 @@ Lorem Ipsum has been the industry's standard dummy text ever since the
 const SampleContent = (props: any) => {
     return <gls.InlineBlock style={{backgroundColor:'yellow'}}>
         {lorem}
+    </gls.InlineBlock>
+}
+
+const SampleContentSmall = (props: any) => {
+    return <gls.InlineBlock style={{backgroundColor:'yellow'}}>
+        Hello World!
     </gls.InlineBlock>
 }
 
@@ -184,6 +193,48 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: { 
                     name: 'SampleFlex',
                     code: `
 <SampleFlex/>
+`.trim()
+                },
+                {
+                    name: 'FlexVertical',
+                    code: `
+<gls.FlexVertical style={{backgroundColor:blue}}>
+    <SampleContent/>
+    <SampleContent/>
+    <SampleContent/>
+</gls.FlexVertical>
+`.trim()
+                },
+                {
+                    name: 'FlexHorizontal',
+                    code: `
+<gls.FlexHorizontal style={{backgroundColor:blue}}>
+    <SampleContentSmall/>
+    <SampleContentSmall/>
+    <SampleContentSmall/>
+    <SampleContentSmall/>
+</gls.FlexHorizontal>
+`.trim()
+                },
+                {
+                    name: 'ContentVertical',
+                    code: `
+<gls.ContentVertical style={{backgroundColor:blue}}>
+    <SampleContentSmall/>
+    <SampleContentSmall/>
+    <SampleContentSmall/>
+</gls.ContentVertical>
+`.trim()
+                },
+                {
+                    name: 'ContentHorizontal',
+                    code: `
+<gls.ContentHorizontal style={{backgroundColor:blue}}>
+    <SampleContentSmall/>
+    <SampleContentSmall/>
+    <SampleContentSmall/>
+    <SampleContentSmall/>
+</gls.ContentHorizontal>
 `.trim()
                 },
                 {

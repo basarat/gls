@@ -20,9 +20,14 @@ var ReactDOMServer = require("react-dom/server");
 var Radium = require("radium");
 var csx = require("csx");
 var codeEditor_1 = require("./codeEditor");
+var blue = '#00ADFF';
+var yellow = 'yellow';
 var lorem = "\nLorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum has been the industry's standard dummy text ever since the\n 1500s, when an unknown printer took a galley of type and scrambled it\n  to make a type specimen book. It has survived not only five\n  centuries, but also the leap into electronic typesetting,\n   remaining essentially unchanged.\n    It was popularised in the 1960s with the release of Letraset sheets\n     containing Lorem Ipsum passages, and more recently\n      with desktop publishing software like Aldus PageMaker\n       including versions of Lorem Ipsum.\n";
 var SampleContent = function (props) {
     return React.createElement(gls.InlineBlock, {style: { backgroundColor: 'yellow' }}, lorem);
+};
+var SampleContentSmall = function (props) {
+    return React.createElement(gls.InlineBlock, {style: { backgroundColor: 'yellow' }}, "Hello World!");
 };
 var SampleFlex = function (props) {
     return React.createElement(gls.Flex, {style: { backgroundColor: 'yellow' }}, lorem);
@@ -129,6 +134,22 @@ var Demo = (function (_super) {
                 {
                     name: 'SampleFlex',
                     code: "\n<SampleFlex/>\n".trim()
+                },
+                {
+                    name: 'FlexVertical',
+                    code: "\n<gls.FlexVertical style={{backgroundColor:blue}}>\n    <SampleContent/>\n    <SampleContent/>\n    <SampleContent/>\n</gls.FlexVertical>\n".trim()
+                },
+                {
+                    name: 'FlexHorizontal',
+                    code: "\n<gls.FlexHorizontal style={{backgroundColor:blue}}>\n    <SampleContentSmall/>\n    <SampleContentSmall/>\n    <SampleContentSmall/>\n    <SampleContentSmall/>\n</gls.FlexHorizontal>\n".trim()
+                },
+                {
+                    name: 'ContentVertical',
+                    code: "\n<gls.ContentVertical style={{backgroundColor:blue}}>\n    <SampleContentSmall/>\n    <SampleContentSmall/>\n    <SampleContentSmall/>\n</gls.ContentVertical>\n".trim()
+                },
+                {
+                    name: 'ContentHorizontal',
+                    code: "\n<gls.ContentHorizontal style={{backgroundColor:blue}}>\n    <SampleContentSmall/>\n    <SampleContentSmall/>\n    <SampleContentSmall/>\n    <SampleContentSmall/>\n</gls.ContentHorizontal>\n".trim()
                 },
                 {
                     name: 'Column Padded',
