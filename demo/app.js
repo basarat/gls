@@ -27,12 +27,18 @@ var SampleContent = function (props) {
 var SampleRect = function (props) {
     return (React.createElement(gls.InlineBlock, {style: { height: '50px', width: '30px', backgroundColor: '#666' }}));
 };
+var renderSampleRects = function () {
+    return Array.apply(null, Array(300)).map(function (item, i) { return (React.createElement(gls.InlineBlock, {key: i, style: { height: '50px', width: '30px', backgroundColor: '#666' }})); });
+};
+var SamplePage = function (props) {
+    return React.createElement(gls.FlexScrollY, {style: csx.Box.padding(5, 0)}, props.children);
+};
 var Tabs = (function (_super) {
     __extends(Tabs, _super);
     function Tabs(props) {
         _super.call(this, props);
         this.Styles = {
-            headerItem: csx.extend(csx.Box.padding(0, 5), csx.centerCenter, {
+            headerItem: csx.extend(csx.Box.padding(4, 5), csx.centerCenter, {
                 cursor: 'pointer',
                 borderTop: '2px solid white',
                 borderLeft: '2px solid white',
@@ -58,7 +64,7 @@ var Tabs = (function (_super) {
             return React.createElement("noscript", null);
         var selectedIndex = this.props.selectedIndex;
         var selected = this.props.tabs[selectedIndex];
-        return (React.createElement(gls.FlexVertical, null, React.createElement(gls.ContentHorizontal, {style: { height: '30px' }}, this.props.tabs.map(function (t, i) {
+        return (React.createElement(gls.FlexVertical, null, React.createElement(gls.ContentHorizontal, {style: { overflow: 'auto' }}, this.props.tabs.map(function (t, i) {
             return (React.createElement(gls.Content, {key: i, onClick: function () { return _this.props.onRequestSelectedIndexChange(i); }, style: csx.extend(_this.Styles.headerItem, selectedIndex == i && _this.Styles.headerItemSelected)}, t.header));
         })), React.createElement(gls.Flex, {style: this.Styles.body}, selected.body)));
     };
@@ -78,7 +84,7 @@ var DemoComponent = (function (_super) {
         _super.apply(this, arguments);
     }
     DemoComponent.prototype.render = function () {
-        var outputStyle = { backgroundColor: '#EEE', overflow: 'auto' };
+        var outputStyle = { backgroundColor: '#EEE', overflow: 'auto', border: '5px solid #5AD15A' };
         var errorStyle = csx.extend(outputStyle, { color: 'red', fontWeight: 'bold', fontFamily: 'monospace', fontSize: '2rem' });
         var compiled = transpile(this.props.code);
         if (!compiled.replace('"use strict";', '').trim()) {
@@ -134,8 +140,16 @@ var Demo = (function (_super) {
                     code: "\n<gls.FlexVertical>\n    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>\n        HEADER\n    </gls.Content>\n    <gls.FlexScrollY>\n        <gls.ColumnPadded padding={10}>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n        </gls.ColumnPadded>\n    </gls.FlexScrollY>\n    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>\n        FOOTER\n    </gls.Content>\n</gls.FlexVertical>\n"
                 },
                 {
+                    name: 'Sample Page',
+                    code: "\n<gls.FlexVertical>\n    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>\n        HEADER\n    </gls.Content>\n    <gls.FlexScrollY>\n    <SamplePage>\n        <gls.ColumnPadded padding={10}>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleContent/>\n        </gls.ColumnPadded>\n    </SamplePage>\n    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>\n        FOOTER\n    </gls.Content>\n</gls.FlexVertical>\n"
+                },
+                {
                     name: 'Rect',
                     code: "\n<gls.FlexScrollY>\n    <gls.ColumnPadded padding={10} style={csx.center}>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n    </gls.ColumnPadded>\n</gls.FlexScrollY>\n"
+                },
+                {
+                    name: 'Grid',
+                    code: "\n<gls.FlexScrollY>\n    <gls.GridMargined margin={10}>\n        {renderSampleRects()}\n    </gls.GridMargined>\n</gls.FlexScrollY>\n"
                 },
             ]
         };

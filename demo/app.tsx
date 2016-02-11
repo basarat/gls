@@ -33,6 +33,19 @@ const SampleRect =(props: any) => {
     );
 }
 
+const renderSampleRects = () => {
+    return Array.apply(null, Array(300)).map((item,i)=>(
+        <gls.InlineBlock key={i} style={{height:'50px',width:'30px',backgroundColor:'#666'}}>
+        </gls.InlineBlock>
+    ));
+}
+
+const SamplePage = (props:any) => {
+    return <gls.FlexScrollY style={csx.Box.padding(5,0)}>
+        {props.children}
+    </gls.FlexScrollY>;
+}
+
 type TabProps = {
     tabs: { header: string; body: JSX.Element }[],
     selectedIndex: number,
@@ -42,7 +55,7 @@ type TabProps = {
 class Tabs extends React.Component<TabProps, {}>{
     private Styles = {
         headerItem: csx.extend(
-            csx.Box.padding(0, 5),
+            csx.Box.padding(4, 5),
             csx.centerCenter,
             {
                 cursor: 'pointer',
@@ -73,7 +86,7 @@ class Tabs extends React.Component<TabProps, {}>{
         const selected = this.props.tabs[selectedIndex];
         return (
             <gls.FlexVertical>
-                <gls.ContentHorizontal style={{ height: '30px' }}>
+                <gls.ContentHorizontal style={{ overflow:'auto' }}>
                     {this.props.tabs.map((t, i) => {
                         return (
                             <gls.Content
@@ -105,7 +118,7 @@ function transpile(str: string): string {
 class DemoComponent extends React.Component<{ code: string }, {}>{
     render() {
 
-        const outputStyle = { backgroundColor: '#EEE', overflow: 'auto' };
+        const outputStyle = { backgroundColor: '#EEE', overflow: 'auto', border:'5px solid #5AD15A' };
         const errorStyle = csx.extend(outputStyle, { color: 'red', fontWeight: 'bold', fontFamily: 'monospace', fontSize: '2rem' });
 
         const compiled = transpile(this.props.code);
@@ -255,6 +268,33 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: { 
 `
                 },
                 {
+                    name: 'Sample Page',
+                    code:`
+<gls.FlexVertical>
+    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>
+        HEADER
+    </gls.Content>
+    <gls.FlexScrollY>
+    <SamplePage>
+        <gls.ColumnPadded padding={10}>
+            <SampleContent/>
+            <SampleContent/>
+            <SampleContent/>
+            <SampleContent/>
+            <SampleContent/>
+            <SampleContent/>
+            <SampleContent/>
+            <SampleContent/>
+            <SampleContent/>
+        </gls.ColumnPadded>
+    </SamplePage>
+    <gls.Content style={csx.extend({height:'30px'},csx.centerCenter)}>
+        FOOTER
+    </gls.Content>
+</gls.FlexVertical>
+`
+                },
+                {
                     name: 'Rect',
                     code:`
 <gls.FlexScrollY>
@@ -277,6 +317,16 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: { 
         <SampleRect/>
         <SampleRect/>
     </gls.ColumnPadded>
+</gls.FlexScrollY>
+`
+                },
+                {
+                    name: 'Grid',
+                    code:`
+<gls.FlexScrollY>
+    <gls.GridMargined margin={10}>
+        {renderSampleRects()}
+    </gls.GridMargined>
 </gls.FlexScrollY>
 `
                 },
