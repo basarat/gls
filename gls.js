@@ -48,7 +48,7 @@ exports.FlexHorizontal = Radium(function (props) {
     return (React.createElement("div", React.__spread({"data-comment": "FlexHorizontal"}, props, {style: style}), props.children));
 });
 exports.FlexHorizontal.displayName = "FlexHorizontal";
-exports.RowPadded = function (props) {
+exports.FlexHorizontalPadded = function (props) {
     var basicPadding = props.padding;
     var last = React.Children.count(props.children) - 1;
     var itemPadding = function (index) {
@@ -61,8 +61,8 @@ exports.RowPadded = function (props) {
     };
     return (React.createElement(exports.FlexHorizontal, React.__spread({}, props), React.Children.map(props.children, function (child, i) { return React.createElement(exports.Flex, {key: i, style: itemPadding(i)}, child); })));
 };
-exports.RowPadded.displayName = "RowPadded";
-exports.ColumnPadded = function (props) {
+exports.FlexHorizontalPadded.displayName = "FlexHorizontalPadded";
+exports.ContentVerticalPadded = function (props) {
     var basicPadding = props.padding;
     var last = React.Children.count(props.children) - 1;
     var itemPadding = function (index) {
@@ -75,7 +75,7 @@ exports.ColumnPadded = function (props) {
     };
     return (React.createElement(exports.ContentVertical, React.__spread({}, props), React.Children.map(props.children, function (child, i) { return React.createElement(exports.Content, {key: i, style: itemPadding(i)}, child); })));
 };
-exports.ColumnPadded.displayName = "ColumnPadded";
+exports.ContentVerticalPadded.displayName = "ContentVerticalPadded";
 exports.GridMargined = function (props) {
     var style = csx.extend(props.style || {}, csx.wrap);
     return (React.createElement(exports.ContentHorizontal, React.__spread({}, props, {style: style}), React.Children.map(props.children, function (child, i) { return React.createElement(exports.Content, {key: i, style: { marginLeft: props.margin, marginTop: props.margin }}, child); })));

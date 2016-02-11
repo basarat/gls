@@ -67,7 +67,7 @@ const SampleFooter = (props: any) => {
 
 const SampleInput = (props: any) => {
     return (
-        <gls.ContentHorizontal style={csx.extend(csx.center,props.style)}>
+        <gls.ContentHorizontal style={csx.extend(csx.center, props.style) }>
             <label style={{ paddingRight: '5px' }}>Some Label</label>
             <input style={csx.flex} placeholder="Sample Input"/>
         </gls.ContentHorizontal>
@@ -82,7 +82,13 @@ const SampleRect = (props: any) => {
 }
 
 const renderSampleRects = () => {
-    return Array.apply(null, Array(300)).map((item, i) => (<SampleRect key={i}/>));
+    return Array.apply(null, Array(100)).map((item, i) => (<SampleRect key={i}/>));
+}
+
+const SampleButton = (props: any) => {
+    return (
+        <button>Sample</button>
+    )
 }
 
 type TabProps = {
@@ -476,66 +482,66 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
 `.trim()
                 },
                 {
-                    name: 'ColumnPadded',
+                    name: 'ContentVerticalPadded',
                     code: `
-<gls.ColumnPadded padding={10}>
+<gls.ContentVerticalPadded padding={10}>
     <SampleInput/>
     <SampleInput/>
-</gls.ColumnPadded>
+</gls.ContentVerticalPadded>
 `.trim()
                 },
                 {
-                    name: 'ColumnPadded Nested',
+                    name: 'ContentVerticalPadded Nested',
                     code: `
-<gls.ColumnPadded padding={10}>
-    <gls.ColumnPadded padding={10}>
+<gls.ContentVerticalPadded padding={10}>
+    <gls.ContentVerticalPadded padding={10}>
         <SampleContent/>
         <SampleContent/>
         <SampleInput/>
         <SampleContent/>
-    </gls.ColumnPadded>
-    <gls.ColumnPadded padding={10}>
+    </gls.ContentVerticalPadded>
+    <gls.ContentVerticalPadded padding={10}>
         <SampleContent/>
         <SampleContent/>
-    </gls.ColumnPadded>
-</gls.ColumnPadded>
+    </gls.ContentVerticalPadded>
+</gls.ContentVerticalPadded>
 `.trim()
                 },
                 {
-                    name: 'ColumnPadded Paged',
+                    name: 'ContentVerticalPadded Page',
                     code: `
 <SamplePage>
-    <gls.ColumnPadded padding={10}>
-        <gls.ColumnPadded padding={10}>
+    <gls.ContentVerticalPadded padding={10}>
+        <gls.ContentVerticalPadded padding={10}>
             <SampleContent/>
             <SampleContent/>
             <SampleInput/>
             <SampleContent/>
-        </gls.ColumnPadded>
-        <gls.ColumnPadded padding={10}>
+        </gls.ContentVerticalPadded>
+        <gls.ContentVerticalPadded padding={10}>
             <SampleContent/>
             <SampleContent/>
-        </gls.ColumnPadded>
-    </gls.ColumnPadded>
+        </gls.ContentVerticalPadded>
+    </gls.ContentVerticalPadded>
 </SamplePage>
 `.trim()
                 },
                 {
-                    name: 'RowPadded',
+                    name: 'FlexHorizontalPadded',
                     code: `
-<gls.RowPadded padding={10}>
+<gls.FlexHorizontalPadded padding={10}>
     <SampleContent/>
     <SampleContent/>
     <SampleContent/>
     <SampleContent/>
-</gls.RowPadded>
+</gls.FlexHorizontalPadded>
 `
                 },
                 {
                     name: 'Rect',
                     code: `
 <gls.FlexScrollY>
-    <gls.ColumnPadded padding={10} style={csx.center}>
+    <gls.ContentVerticalPadded padding={10} style={csx.center}>
         <SampleRect/>
         <SampleRect/>
         <SampleRect/>
@@ -553,7 +559,7 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
         <SampleRect/>
         <SampleRect/>
         <SampleRect/>
-    </gls.ColumnPadded>
+    </gls.ContentVerticalPadded>
 </gls.FlexScrollY>
 `
                 },
@@ -567,6 +573,27 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
 </gls.FlexScrollY>
 `
                 },
+                {
+                    name: 'Full Featured',
+                    code: `
+<gls.FlexVertical>
+    <SampleHeader/>
+    <SamplePage>
+        <gls.ContentVerticalPadded padding={10}>
+            <gls.ContentHorizontal>
+                <gls.FlexHorizontalPadded padding={10}>
+                    <SampleButton/>
+                    <SampleButton/>
+                    <SampleButton/>
+                    <SampleButton/>
+                </gls.FlexHorizontalPadded>
+            </gls.ContentHorizontal>
+        </gls.ContentVerticalPadded>
+    </SamplePage>
+    <SampleFooter/>
+</gls.FlexVertical>
+`
+                }
             ]
 
         }

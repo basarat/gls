@@ -159,7 +159,7 @@ interface PaddedProps extends PrimitiveProps {
  * - Children: get the Height : sized by content
  * - ThisComponent: Puts a horizontal padding between each item
  */
-export const RowPadded = (props:PaddedProps) => {
+export const FlexHorizontalPadded = (props:PaddedProps) => {
     const basicPadding = props.padding;
 
     const last = React.Children.count(props.children) - 1;
@@ -180,7 +180,7 @@ export const RowPadded = (props:PaddedProps) => {
         </FlexHorizontal>
     );
 }
-RowPadded.displayName = "RowPadded";
+FlexHorizontalPadded.displayName = "FlexHorizontalPadded";
 
 /**
  * Lays out the children vertically with
@@ -190,7 +190,7 @@ RowPadded.displayName = "RowPadded";
  * - Children: get the Height : sized by content
  * - ThisComponent: Puts a vertical padding between each item
  */
-export const ColumnPadded  = (props:PaddedProps) => {
+export const ContentVerticalPadded  = (props:PaddedProps) => {
     const basicPadding = props.padding;
 
     const last = React.Children.count(props.children) - 1;
@@ -211,7 +211,7 @@ export const ColumnPadded  = (props:PaddedProps) => {
         </ContentVertical>
     );
 }
-ColumnPadded.displayName = "ColumnPadded";
+ContentVerticalPadded.displayName = "ContentVerticalPadded";
 
 interface GridMarginedProps extends PrimitiveProps {
     margin: number | string;

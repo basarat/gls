@@ -51,7 +51,10 @@ var SampleRect = function (props) {
     return (React.createElement(gls.InlineBlock, {style: { height: '100px', width: '150px', backgroundColor: '#666' }}));
 };
 var renderSampleRects = function () {
-    return Array.apply(null, Array(300)).map(function (item, i) { return (React.createElement(SampleRect, {key: i})); });
+    return Array.apply(null, Array(100)).map(function (item, i) { return (React.createElement(SampleRect, {key: i})); });
+};
+var SampleButton = function (props) {
+    return (React.createElement("button", null, "Sample"));
 };
 var Tabs = (function (_super) {
     __extends(Tabs, _super);
@@ -208,29 +211,33 @@ var Demo = (function (_super) {
                     code: "\n<gls.Content>\n    <SampleInput style={{marginBottom:'10px'}}/>\n    <SampleInput/>\n</gls.Content>\n".trim()
                 },
                 {
-                    name: 'ColumnPadded',
-                    code: "\n<gls.ColumnPadded padding={10}>\n    <SampleInput/>\n    <SampleInput/>\n</gls.ColumnPadded>\n".trim()
+                    name: 'ContentVerticalPadded',
+                    code: "\n<gls.ContentVerticalPadded padding={10}>\n    <SampleInput/>\n    <SampleInput/>\n</gls.ContentVerticalPadded>\n".trim()
                 },
                 {
-                    name: 'ColumnPadded Nested',
-                    code: "\n<gls.ColumnPadded padding={10}>\n    <gls.ColumnPadded padding={10}>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleInput/>\n        <SampleContent/>\n    </gls.ColumnPadded>\n    <gls.ColumnPadded padding={10}>\n        <SampleContent/>\n        <SampleContent/>\n    </gls.ColumnPadded>\n</gls.ColumnPadded>\n".trim()
+                    name: 'ContentVerticalPadded Nested',
+                    code: "\n<gls.ContentVerticalPadded padding={10}>\n    <gls.ContentVerticalPadded padding={10}>\n        <SampleContent/>\n        <SampleContent/>\n        <SampleInput/>\n        <SampleContent/>\n    </gls.ContentVerticalPadded>\n    <gls.ContentVerticalPadded padding={10}>\n        <SampleContent/>\n        <SampleContent/>\n    </gls.ContentVerticalPadded>\n</gls.ContentVerticalPadded>\n".trim()
                 },
                 {
-                    name: 'ColumnPadded Paged',
-                    code: "\n<SamplePage>\n    <gls.ColumnPadded padding={10}>\n        <gls.ColumnPadded padding={10}>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleInput/>\n            <SampleContent/>\n        </gls.ColumnPadded>\n        <gls.ColumnPadded padding={10}>\n            <SampleContent/>\n            <SampleContent/>\n        </gls.ColumnPadded>\n    </gls.ColumnPadded>\n</SamplePage>\n".trim()
+                    name: 'ContentVerticalPadded Page',
+                    code: "\n<SamplePage>\n    <gls.ContentVerticalPadded padding={10}>\n        <gls.ContentVerticalPadded padding={10}>\n            <SampleContent/>\n            <SampleContent/>\n            <SampleInput/>\n            <SampleContent/>\n        </gls.ContentVerticalPadded>\n        <gls.ContentVerticalPadded padding={10}>\n            <SampleContent/>\n            <SampleContent/>\n        </gls.ContentVerticalPadded>\n    </gls.ContentVerticalPadded>\n</SamplePage>\n".trim()
                 },
                 {
-                    name: 'RowPadded',
-                    code: "\n<gls.RowPadded padding={10}>\n    <SampleContent/>\n    <SampleContent/>\n    <SampleContent/>\n    <SampleContent/>\n</gls.RowPadded>\n"
+                    name: 'FlexHorizontalPadded',
+                    code: "\n<gls.FlexHorizontalPadded padding={10}>\n    <SampleContent/>\n    <SampleContent/>\n    <SampleContent/>\n    <SampleContent/>\n</gls.FlexHorizontalPadded>\n"
                 },
                 {
                     name: 'Rect',
-                    code: "\n<gls.FlexScrollY>\n    <gls.ColumnPadded padding={10} style={csx.center}>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n    </gls.ColumnPadded>\n</gls.FlexScrollY>\n"
+                    code: "\n<gls.FlexScrollY>\n    <gls.ContentVerticalPadded padding={10} style={csx.center}>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n        <SampleRect/>\n    </gls.ContentVerticalPadded>\n</gls.FlexScrollY>\n"
                 },
                 {
                     name: 'Grid',
                     code: "\n<gls.FlexScrollY>\n    <gls.GridMargined margin={10}>\n        {renderSampleRects()}\n    </gls.GridMargined>\n</gls.FlexScrollY>\n"
                 },
+                {
+                    name: 'Full Featured',
+                    code: "\n<gls.FlexVertical>\n    <SampleHeader/>\n    <SamplePage>\n        <gls.ContentVerticalPadded padding={10}>\n            <gls.ContentHorizontal>\n                <gls.FlexHorizontalPadded padding={10}>\n                    <SampleButton/>\n                    <SampleButton/>\n                    <SampleButton/>\n                    <SampleButton/>\n                </gls.FlexHorizontalPadded>\n            </gls.ContentHorizontal>\n        </gls.ContentVerticalPadded>\n    </SamplePage>\n    <SampleFooter/>\n</gls.FlexVertical>\n"
+                }
             ]
         };
     }
