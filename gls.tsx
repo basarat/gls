@@ -183,6 +183,37 @@ export const FlexHorizontalPadded = (props:PaddedProps) => {
 FlexHorizontalPadded.displayName = "FlexHorizontalPadded";
 
 /**
+ * Lays out the children horizontally with
+ * - Parent: gets to chose the Width
+ * - ThisComponent: gets the overall Height (by max) of the children
+ * - Children: get the Width : equally distributed from the parent Width
+ * - Children: get the Height : sized by content
+ * - ThisComponent: Puts a horizontal padding between each item
+ */
+export const ContentHorizontalPadded = (props:PaddedProps) => {
+    const basicPadding = props.padding;
+
+    const last = React.Children.count(props.children) - 1;
+    const itemPadding = (index: number) => {
+        if (index == last) {
+            return csx.Box.padding(0);
+        }
+        else {
+            return csx.Box.padding(0, basicPadding, 0, 0);
+        }
+    }
+
+    return (
+        <ContentHorizontal {...props}>
+            {React.Children.map(props.children,
+                (child, i) => <Content key={i} style={itemPadding(i)}>{child}</Content>)
+            }
+        </ContentHorizontal>
+    );
+}
+ContentHorizontalPadded.displayName = "ContentHorizontalPadded";
+
+/**
  * Lays out the children vertically with
  * - Parent: gets to chose the Width
  * - ThisComponent: gets the Height : (by sum) of the children

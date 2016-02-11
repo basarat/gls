@@ -62,6 +62,20 @@ exports.FlexHorizontalPadded = function (props) {
     return (React.createElement(exports.FlexHorizontal, React.__spread({}, props), React.Children.map(props.children, function (child, i) { return React.createElement(exports.Flex, {key: i, style: itemPadding(i)}, child); })));
 };
 exports.FlexHorizontalPadded.displayName = "FlexHorizontalPadded";
+exports.ContentHorizontalPadded = function (props) {
+    var basicPadding = props.padding;
+    var last = React.Children.count(props.children) - 1;
+    var itemPadding = function (index) {
+        if (index == last) {
+            return csx.Box.padding(0);
+        }
+        else {
+            return csx.Box.padding(0, basicPadding, 0, 0);
+        }
+    };
+    return (React.createElement(exports.ContentHorizontal, React.__spread({}, props), React.Children.map(props.children, function (child, i) { return React.createElement(exports.Content, {key: i, style: itemPadding(i)}, child); })));
+};
+exports.ContentHorizontalPadded.displayName = "ContentHorizontalPadded";
 exports.ContentVerticalPadded = function (props) {
     var basicPadding = props.padding;
     var last = React.Children.count(props.children) - 1;
