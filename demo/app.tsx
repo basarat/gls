@@ -25,6 +25,7 @@ const SampleContent = (props: any) => {
         {lorem}
     </gls.InlineBlock>
 }
+SampleContent.displayName = "SampleContent";
 
 type TabProps = {
     tabs: { header: string; body: JSX.Element }[],

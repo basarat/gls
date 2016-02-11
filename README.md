@@ -3,12 +3,12 @@ Grid Layout System for React
 
 
 ## Contributing
-* Get Webpack
+* Setup
 ```
-npm install webpack -g
+npm install
 ```
 * Run it
 ```
-webpack -w
+npm run watch
 ```
 * Open up `index.html` in the browser :rose:

@@ -24,6 +24,7 @@ var lorem = "\nLorem Ipsum is simply dummy text of the printing and typesetting 
 var SampleContent = function (props) {
     return React.createElement(gls.InlineBlock, null, lorem);
 };
+SampleContent.displayName = "SampleContent";
 var Tabs = (function (_super) {
     __extends(Tabs, _super);
     function Tabs(props) {

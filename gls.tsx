@@ -6,6 +6,12 @@ import * as csx from "csx";
 import * as Radium from "radium";
 import * as React from "react";
 
+declare global {
+    interface Function {
+        displayName: string;
+    }
+}
+
 /********
  *
  * Primitives
@@ -29,6 +35,7 @@ export const Content = Radium((props: PrimitiveProps) => {
         </div>
     );
 });
+Content.displayName = "Content";
 
 /**
  * Takes as much space as it needs, no more, no less
@@ -41,6 +48,7 @@ export const InlineBlock = Radium((props: PrimitiveProps) => {
         </div>
     );
 });
+InlineBlock.displayName = "InlineBlock";
 
 
 /**
@@ -54,6 +62,7 @@ export const Flex = Radium((props: PrimitiveProps) => {
         </div>
     );
 });
+Flex.displayName = "Flex";
 
 /**
  * Takes up all the parent space, no more, no less and scrolls the children in Y if needed
@@ -66,6 +75,7 @@ export const FlexScrollY = Radium((props: PrimitiveProps) => {
         </div>
     );
 });
+FlexScrollY.displayName = "FlexScrollY";
 
 /**
  * When you need a general purpose container. Use this instead of a `div`
@@ -78,6 +88,7 @@ export const Pass = Radium((props: PrimitiveProps) => {
         </div>
     );
 });
+Pass.displayName = "Pass";
 
 /**
  * Provides a Vertical Container. For the parent it behaves like content.
@@ -90,6 +101,7 @@ export const ContentVertical = Radium((props: PrimitiveProps) => {
         </div>
     );
 });
+ContentVertical.displayName = "ContentVertical";
 
 /**
  * Provides a Horizontal Container. For the parent it behaves like content.
@@ -102,6 +114,7 @@ export const ContentHorizontal = Radium((props: PrimitiveProps) => {
         </div>
     );
 });
+ContentHorizontal.displayName = "ContentHorizontal";
 
 /**
  * Provides a Vertical Container. For the parent it behaves like flex.
@@ -114,6 +127,7 @@ export const FlexVertical = Radium((props: PrimitiveProps) => {
         </div>
     );
 });
+FlexVertical.displayName = "FlexVertical";
 
 /**
  * Provides a Horizontal Container. For the parent it behaves like flex.
@@ -126,6 +140,7 @@ export const FlexHorizontal = Radium((props: PrimitiveProps) => {
         </div>
     );
 });
+FlexHorizontal.displayName = "FlexHorizontal";
 
 /********
  *
@@ -165,6 +180,7 @@ export const RowPadded = (props:GridProps) => {
         </FlexHorizontal>
     );
 }
+RowPadded.displayName = "RowPadded";
 
 /**
  * Lays out the children vertically with
@@ -195,3 +211,4 @@ export const ColumnPadded  = (props:GridProps) => {
         </ContentVertical>
     );
 }
+ColumnPadded.displayName = "ColumnPadded";
