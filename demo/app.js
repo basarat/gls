@@ -39,7 +39,7 @@ var SampleHeader = function (props) {
     return (React.createElement(gls.Content, {style: csx.extend({ height: '30px', backgroundColor: orange }, csx.centerCenter)}, "HEADER"));
 };
 var SamplePage = function (props) {
-    return React.createElement(gls.FlexScrollY, {style: { backgroundColor: blue, padding: '10px' }}, props.children);
+    return React.createElement(gls.FlexScrollY, {style: { padding: '10px' }}, props.children);
 };
 var SampleFooter = function (props) {
     return React.createElement(gls.Content, {style: csx.extend({ height: '30px', backgroundColor: green }, csx.centerCenter)}, "FOOTER");
@@ -180,11 +180,11 @@ var Demo = (function (_super) {
                 },
                 {
                     name: 'Header Body Footer',
-                    code: "\n<gls.FlexVertical>\n    <gls.Content style={csx.extend({height:'30px', backgroundColor:orange},csx.centerCenter)}>\n        HEADER\n    </gls.Content>\n    <gls.Flex style={{backgroundColor:blue}}>\n        BODY\n    </gls.Flex>\n    <gls.Content style={csx.extend({height:'30px', backgroundColor:green},csx.centerCenter)}>\n        FOOTER\n    </gls.Content>\n</gls.FlexVertical>\n"
+                    code: "\n<gls.FlexVertical>\n    <gls.Content style={csx.extend({height:'30px', backgroundColor:orange},csx.centerCenter)}>\n        HEADER\n    </gls.Content>\n    <gls.Flex>\n        BODY\n    </gls.Flex>\n    <gls.Content style={csx.extend({height:'30px', backgroundColor:green},csx.centerCenter)}>\n        FOOTER\n    </gls.Content>\n</gls.FlexVertical>\n"
                 },
                 {
                     name: 'Header Body Footer Scroll Pad',
-                    code: "\n<gls.FlexVertical>\n    <gls.Content style={csx.extend({height:'30px', backgroundColor:orange},csx.centerCenter)}>\n        HEADER\n    </gls.Content>\n    <gls.FlexScrollY style={{backgroundColor:blue, padding: '10px'}}>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n    </gls.FlexScrollY>\n    <gls.Content style={csx.extend({height:'30px', backgroundColor:green},csx.centerCenter)}>\n        FOOTER\n    </gls.Content>\n</gls.FlexVertical>\n"
+                    code: "\n<gls.FlexVertical>\n    <gls.Content style={csx.extend({height:'30px', backgroundColor:orange},csx.centerCenter)}>\n        HEADER\n    </gls.Content>\n    <gls.FlexScrollY style={{padding: '10px'}}>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n        <div>BODY</div>\n    </gls.FlexScrollY>\n    <gls.Content style={csx.extend({height:'30px', backgroundColor:green},csx.centerCenter)}>\n        FOOTER\n    </gls.Content>\n</gls.FlexVertical>\n"
                 },
                 {
                     name: 'Samplified',
@@ -224,7 +224,7 @@ var Demo = (function (_super) {
                 },
                 {
                     name: 'ContentHorizontalPadded',
-                    code: "\n<gls.ContentHorizontalPadded padding={10}>\n    <SampleContentSmall/>\n    <SampleContentSmall/>\n    <SampleButton/>\n    <SampleButton/>\n    \n    <gls.Content>\n        <SampleButton/>\n        <SampleButton/>\n    </gls.Content>\n</gls.ContentHorizontalPadded>\n".trim()
+                    code: "\n<gls.ContentHorizontalPadded padding={10}>\n    <SampleContentSmall/>\n    <SampleContentSmall/>\n    <SampleButton/>\n    <SampleButton/>\n\n    <gls.Content>\n        <SampleButton/>\n        <SampleButton/>\n    </gls.Content>\n</gls.ContentHorizontalPadded>\n".trim()
                 },
                 {
                     name: 'FlexHorizontalPadded',
@@ -257,7 +257,7 @@ var Demo = (function (_super) {
                     _this.setState({ samples: samples });
                 }})
             };
-        }), selectedIndex: this.state.selectedTabIndex, onRequestSelectedIndexChange: function (selectedTabIndex) { return _this.setState({ selectedTabIndex: selectedTabIndex }); }}), React.createElement(DemoComponent, {code: sample.code, horizontal: !!sample.horizontal})));
+        }), selectedIndex: this.state.selectedTabIndex, onRequestSelectedIndexChange: function (selectedTabIndex) { return _this.setState({ selectedTabIndex: selectedTabIndex }); }}), React.createElement(DemoComponent, {code: sample.code, horizontal: !!sample.horizontal}), React.createElement(gls.Content, {style: csx.extend(csx.centerCenter, { backgroundColor: '#333' })}, React.createElement("a", {style: { textDecoration: 'none', fontFamily: 'monospace', color: 'white' }, href: "https://github.com/basarat/gls", title: "Fork me on GitHub", target: "_blank"}, "FORK ME ON GITHUB"))));
     };
     return Demo;
 }(React.Component));

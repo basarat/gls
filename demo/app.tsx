@@ -54,7 +54,7 @@ const SampleHeader = (props: any) => {
 }
 
 const SamplePage = (props: any) => {
-    return <gls.FlexScrollY style={{ backgroundColor: blue, padding: '10px' }}>
+    return <gls.FlexScrollY style={{ padding: '10px' }}>
         {props.children}
     </gls.FlexScrollY>
 }
@@ -288,7 +288,7 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
     <gls.Content style={csx.extend({height:'30px', backgroundColor:orange},csx.centerCenter)}>
         HEADER
     </gls.Content>
-    <gls.Flex style={{backgroundColor:blue}}>
+    <gls.Flex>
         BODY
     </gls.Flex>
     <gls.Content style={csx.extend({height:'30px', backgroundColor:green},csx.centerCenter)}>
@@ -304,7 +304,7 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
     <gls.Content style={csx.extend({height:'30px', backgroundColor:orange},csx.centerCenter)}>
         HEADER
     </gls.Content>
-    <gls.FlexScrollY style={{backgroundColor:blue, padding: '10px'}}>
+    <gls.FlexScrollY style={{padding: '10px'}}>
         <div>BODY</div>
         <div>BODY</div>
         <div>BODY</div>
@@ -540,7 +540,7 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
     <SampleContentSmall/>
     <SampleButton/>
     <SampleButton/>
-    
+
     <gls.Content>
         <SampleButton/>
         <SampleButton/>
@@ -693,6 +693,14 @@ class Demo extends React.Component<{}, { selectedTabIndex?: number, samples?: Sa
                     />
 
                 <DemoComponent code={sample.code} horizontal={!!sample.horizontal}/>
+
+                <gls.Content style={csx.extend(csx.centerCenter,{ backgroundColor:'#333'})}>
+                    <a
+                        style={{textDecoration:'none',fontFamily:'monospace', color:'white'}}
+                        href="https://github.com/basarat/gls"
+                        title="Fork me on GitHub"
+                        target="_blank">FORK ME ON GITHUB</a>
+                </gls.Content>
             </gls.FlexVertical>
         );
     }
