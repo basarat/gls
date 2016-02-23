@@ -254,11 +254,10 @@ interface GridMarginedProps extends PrimitiveProps {
  * - Children: get the Width : sized by content
  * - Children: get the Height : sized by content
  * - ThisComponent: Puts a margin between each item.
- *
- * // Warning: Its up to you to put this in a layout that has at least enough padding at the TOP and LEFT borders as the margin
+ * - ThisComponent: Puts a negative margin on itself to offset the margins of the children (prevents them from leaking out)
  */
 export const GridMargined  = (props:GridMarginedProps) => {
-    const style = csx.extend(props.style || {},csx.wrap);
+    const style = csx.extend(props.style || {}, csx.wrap, { marginTop: '-' + props.margin, marginLeft: '-' + props.margin });
     return (
         <ContentHorizontal {...props} style={style}>
             {React.Children.map(props.children,

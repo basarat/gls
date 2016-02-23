@@ -91,7 +91,7 @@ exports.ContentVerticalPadded = function (props) {
 };
 exports.ContentVerticalPadded.displayName = "ContentVerticalPadded";
 exports.GridMargined = function (props) {
-    var style = csx.extend(props.style || {}, csx.wrap);
+    var style = csx.extend(props.style || {}, csx.wrap, { marginTop: '-' + props.margin, marginLeft: '-' + props.margin });
     return (React.createElement(exports.ContentHorizontal, React.__spread({}, props, {style: style}), React.Children.map(props.children, function (child, i) { return React.createElement(exports.Content, {key: i, style: { marginLeft: props.margin, marginTop: props.margin }}, child); })));
 };
 exports.GridMargined.displayName = "GridMargined";
