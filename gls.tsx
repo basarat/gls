@@ -153,13 +153,43 @@ interface PaddedProps extends PrimitiveProps {
 
 /**
  * Lays out the children horizontally with
+ * - ThisComponent: gets the overall Height (by max) of the children
+ * - Children: get the Width : equally distributed from the parent Width
+ * - Children: get the Height : sized by content
+ * - ThisComponent: Puts a horizontal padding between each item
+ */
+export const ContentHorizontalFlexPadded = (props:PaddedProps) => {
+    const basicPadding = props.padding;
+
+    const last = React.Children.count(props.children) - 1;
+    const itemPadding = (index: number) => {
+        if (index == last) {
+            return csx.Box.padding(0);
+        }
+        else {
+            return csx.Box.padding(0, basicPadding, 0, 0);
+        }
+    }
+
+    return (
+        <ContentHorizontal {...props}>
+            {React.Children.map(props.children,
+                (child, i) => <Flex key={i} style={itemPadding(i)}>{child}</Flex>)
+            }
+        </ContentHorizontal>
+    );
+}
+ContentHorizontalFlexPadded.displayName = "ContentHorizontalFlexPadded";
+
+/**
+ * Lays out the children horizontally with
  * - Parent: gets to chose the Width
  * - ThisComponent: gets the overall Height (by max) of the children
  * - Children: get the Width : equally distributed from the parent Width
  * - Children: get the Height : sized by content
  * - ThisComponent: Puts a horizontal padding between each item
  */
-export const FlexHorizontalPadded = (props:PaddedProps) => {
+export const FlexHorizontalFlexPadded = (props:PaddedProps) => {
     const basicPadding = props.padding;
 
     const last = React.Children.count(props.children) - 1;
@@ -180,7 +210,8 @@ export const FlexHorizontalPadded = (props:PaddedProps) => {
         </FlexHorizontal>
     );
 }
-FlexHorizontalPadded.displayName = "FlexHorizontalPadded";
+FlexHorizontalFlexPadded.displayName = "FlexHorizontalFlexPadded";
+
 
 /**
  * Lays out the children horizontally with
@@ -190,7 +221,7 @@ FlexHorizontalPadded.displayName = "FlexHorizontalPadded";
  * - Children: get the Height : sized by content
  * - ThisComponent: Puts a horizontal padding between each item
  */
-export const ContentHorizontalPadded = (props:PaddedProps) => {
+export const ContentHorizontalContentPadded = (props:PaddedProps) => {
     const basicPadding = props.padding;
 
     const last = React.Children.count(props.children) - 1;
@@ -211,7 +242,7 @@ export const ContentHorizontalPadded = (props:PaddedProps) => {
         </ContentHorizontal>
     );
 }
-ContentHorizontalPadded.displayName = "ContentHorizontalPadded";
+ContentHorizontalContentPadded.displayName = "ContentHorizontalContentPadded";
 
 /**
  * Lays out the children vertically with
@@ -221,7 +252,7 @@ ContentHorizontalPadded.displayName = "ContentHorizontalPadded";
  * - Children: get the Height : sized by content
  * - ThisComponent: Puts a vertical padding between each item
  */
-export const ContentVerticalPadded  = (props:PaddedProps) => {
+export const ContentVerticalContentPadded  = (props:PaddedProps) => {
     const basicPadding = props.padding;
 
     const last = React.Children.count(props.children) - 1;
@@ -242,7 +273,7 @@ export const ContentVerticalPadded  = (props:PaddedProps) => {
         </ContentVertical>
     );
 }
-ContentVerticalPadded.displayName = "ContentVerticalPadded";
+ContentVerticalContentPadded.displayName = "ContentVerticalContentPadded";
 
 interface GridMarginedProps extends PrimitiveProps {
     margin: number | string;
