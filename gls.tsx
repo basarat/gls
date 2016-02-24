@@ -161,7 +161,8 @@ interface PaddedProps extends PrimitiveProps {
 export const ContentHorizontalFlexPadded = (props:PaddedProps) => {
     const basicPadding = props.padding;
 
-    const last = React.Children.count(props.children) - 1;
+    const children = React.Children.toArray(props.children).filter(c=>!!c);
+    const last = children.length - 1;
     const itemPadding = (index: number) => {
         if (index == last) {
             return csx.Box.padding(0);
@@ -173,8 +174,8 @@ export const ContentHorizontalFlexPadded = (props:PaddedProps) => {
 
     return (
         <ContentHorizontal {...props}>
-            {React.Children.map(props.children,
-                (child, i) => <Flex key={i} style={itemPadding(i)}>{child}</Flex>)
+            {
+                children.map((child, i) => <Flex key={i} style={itemPadding(i)}>{child}</Flex>)
             }
         </ContentHorizontal>
     );
@@ -192,7 +193,8 @@ ContentHorizontalFlexPadded.displayName = "ContentHorizontalFlexPadded";
 export const FlexHorizontalFlexPadded = (props:PaddedProps) => {
     const basicPadding = props.padding;
 
-    const last = React.Children.count(props.children) - 1;
+    const children = React.Children.toArray(props.children).filter(c=>!!c);
+    const last = children.length - 1;
     const itemPadding = (index: number) => {
         if (index == last) {
             return csx.Box.padding(0);
@@ -204,8 +206,8 @@ export const FlexHorizontalFlexPadded = (props:PaddedProps) => {
 
     return (
         <FlexHorizontal {...props}>
-            {React.Children.map(props.children,
-                (child, i) => <Flex key={i} style={itemPadding(i)}>{child}</Flex>)
+            {
+                children.map((child, i) => <Flex key={i} style={itemPadding(i)}>{child}</Flex>)
             }
         </FlexHorizontal>
     );
@@ -224,7 +226,8 @@ FlexHorizontalFlexPadded.displayName = "FlexHorizontalFlexPadded";
 export const ContentHorizontalContentPadded = (props:PaddedProps) => {
     const basicPadding = props.padding;
 
-    const last = React.Children.count(props.children) - 1;
+    const children = React.Children.toArray(props.children).filter(c=>!!c);
+    const last = children.length - 1;
     const itemPadding = (index: number) => {
         if (index == last) {
             return csx.Box.padding(0);
@@ -236,8 +239,8 @@ export const ContentHorizontalContentPadded = (props:PaddedProps) => {
 
     return (
         <ContentHorizontal {...props}>
-            {React.Children.map(props.children,
-                (child, i) => <Content key={i} style={itemPadding(i)}>{child}</Content>)
+            {
+                children.map((child, i) => <Content key={i} style={itemPadding(i)}>{child}</Content>)
             }
         </ContentHorizontal>
     );
@@ -255,7 +258,8 @@ ContentHorizontalContentPadded.displayName = "ContentHorizontalContentPadded";
 export const ContentVerticalContentPadded  = (props:PaddedProps) => {
     const basicPadding = props.padding;
 
-    const last = React.Children.count(props.children) - 1;
+    const children = React.Children.toArray(props.children).filter(c=>!!c);
+    const last = children.length - 1;
     const itemPadding = (index: number) => {
         if (index == last) {
             return csx.Box.padding(0);
@@ -267,8 +271,8 @@ export const ContentVerticalContentPadded  = (props:PaddedProps) => {
 
     return (
         <ContentVertical {...props}>
-            {React.Children.map(props.children,
-                (child, i) => <Content key={i} style={itemPadding(i)}>{child}</Content>)
+            {
+                children.map((child, i) => <Content key={i} style={itemPadding(i)}>{child}</Content>)
             }
         </ContentVertical>
     );
@@ -289,10 +293,11 @@ interface GridMarginedProps extends PrimitiveProps {
  */
 export const GridMargined  = (props:GridMarginedProps) => {
     const style = csx.extend(props.style || {}, csx.wrap, { marginTop: '-' + props.margin, marginLeft: '-' + props.margin });
+    const children = React.Children.toArray(props.children).filter(c=>!!c);
     return (
         <ContentHorizontal {...props} style={style}>
-            {React.Children.map(props.children,
-                (child, i) => <Content key={i} style={{marginLeft:props.margin,marginTop:props.margin}}>{child}</Content>)
+            {
+                children.map((child, i) => <Content key={i} style={{marginLeft:props.margin,marginTop:props.margin}}>{child}</Content>)
             }
         </ContentHorizontal>
     );
