@@ -4,47 +4,47 @@ var Radium = require("radium");
 var React = require("react");
 ;
 exports.Content = Radium(function (props) {
-    var style = csx.extend(props.style || {}, csx.content);
+    var style = csx.extend(csx.content, props.style || {});
     return (React.createElement("div", React.__spread({"data-comment": "Content"}, props, {style: style}), props.children));
 });
 exports.Content.displayName = "Content";
 exports.InlineBlock = Radium(function (props) {
-    var style = csx.extend(props.style || {}, { display: 'inline-block' });
+    var style = csx.extend({ display: 'inline-block' }, props.style || {});
     return (React.createElement("div", React.__spread({"data-comment": "InlineBlock"}, props, {style: style}), props.children));
 });
 exports.InlineBlock.displayName = "InlineBlock";
 exports.Flex = Radium(function (props) {
-    var style = csx.extend(props.style || {}, csx.pass, csx.flex);
+    var style = csx.extend(csx.pass, csx.flex, props.style || {});
     return (React.createElement("div", React.__spread({"data-comment": "Flex"}, props, {style: style}), props.children));
 });
 exports.Flex.displayName = "Flex";
 exports.FlexScrollY = Radium(function (props) {
-    var style = csx.extend(props.style || {}, csx.pass, csx.flex, { overflowY: 'auto' });
+    var style = csx.extend(csx.pass, csx.flex, { overflowY: 'auto' }, props.style || {});
     return (React.createElement("div", React.__spread({"data-comment": "FlexScrollY"}, props, {style: style}), props.children));
 });
 exports.FlexScrollY.displayName = "FlexScrollY";
 exports.Pass = Radium(function (props) {
-    var style = csx.extend(props.style || {}, csx.pass);
+    var style = csx.extend(csx.pass, props.style || {});
     return (React.createElement("div", React.__spread({"data-comment": "Pass"}, props, {style: style}), props.children));
 });
 exports.Pass.displayName = "Pass";
 exports.ContentVertical = Radium(function (props) {
-    var style = csx.extend(props.style || {}, csx.content, csx.vertical);
+    var style = csx.extend(csx.content, csx.vertical, props.style || {});
     return (React.createElement("div", React.__spread({"data-comment": "ContentVertical"}, props, {style: style}), props.children));
 });
 exports.ContentVertical.displayName = "ContentVertical";
 exports.ContentHorizontal = Radium(function (props) {
-    var style = csx.extend(props.style || {}, csx.content, csx.horizontal);
+    var style = csx.extend(csx.content, csx.horizontal, props.style || {});
     return (React.createElement("div", React.__spread({"data-comment": "ContentHorizontal"}, props, {style: style}), props.children));
 });
 exports.ContentHorizontal.displayName = "ContentHorizontal";
 exports.FlexVertical = Radium(function (props) {
-    var style = csx.extend(props.style || {}, csx.flex, csx.vertical, { maxWidth: '100%' });
+    var style = csx.extend(csx.flex, csx.vertical, { maxWidth: '100%' }, props.style || {});
     return (React.createElement("div", React.__spread({"data-comment": "FlexVertical"}, props, {style: style}), props.children));
 });
 exports.FlexVertical.displayName = "FlexVertical";
 exports.FlexHorizontal = Radium(function (props) {
-    var style = csx.extend(props.style || {}, csx.flex, csx.horizontal);
+    var style = csx.extend(csx.flex, csx.horizontal, props.style || {});
     return (React.createElement("div", React.__spread({"data-comment": "FlexHorizontal"}, props, {style: style}), props.children));
 });
 exports.FlexHorizontal.displayName = "FlexHorizontal";
@@ -109,7 +109,7 @@ exports.ContentVerticalContentPadded = function (props) {
 };
 exports.ContentVerticalContentPadded.displayName = "ContentVerticalContentPadded";
 exports.GridMargined = function (props) {
-    var style = csx.extend(props.style || {}, csx.wrap, { marginTop: '-' + props.margin, marginLeft: '-' + props.margin });
+    var style = csx.extend(csx.wrap, { marginTop: '-' + props.margin, marginLeft: '-' + props.margin }, props.style || {});
     var children = React.Children.toArray(props.children).filter(function (c) { return !!c; });
     return (React.createElement(exports.ContentHorizontal, React.__spread({}, props, {style: style}), children.map(function (child, i) { return React.createElement(exports.Content, {key: i, style: { marginLeft: props.margin, marginTop: props.margin }}, child); })));
 };

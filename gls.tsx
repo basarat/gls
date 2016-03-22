@@ -8,7 +8,7 @@ import * as React from "react";
 
 declare global {
     interface Function {
-        displayName: string;
+        displayName?: string;
     }
 }
 
@@ -28,7 +28,7 @@ interface PrimitiveProps extends React.HTMLProps<HTMLDivElement>{};
  * Takes as much space as it needs, no more, no less
  */
 export const Content = Radium((props: PrimitiveProps) => {
-    const style = csx.extend(props.style || {},csx.content);
+    const style = csx.extend(csx.content, props.style || {});
     return (
         <div data-comment="Content" {...props} style={style}>
             {props.children}
@@ -41,7 +41,7 @@ Content.displayName = "Content";
  * Takes as much space as it needs, no more, no less
  */
 export const InlineBlock = Radium((props: PrimitiveProps) => {
-    const style = csx.extend(props.style || {},{display:'inline-block'});
+    const style = csx.extend({display:'inline-block'},props.style || {});
     return (
         <div data-comment="InlineBlock" {...props} style={style}>
             {props.children}
@@ -55,7 +55,7 @@ InlineBlock.displayName = "InlineBlock";
  * Takes up all the parent space, no more, no less
  */
 export const Flex = Radium((props: PrimitiveProps) => {
-    const style = csx.extend(props.style || {},csx.pass,csx.flex);
+    const style = csx.extend(csx.pass, csx.flex, props.style || {});
     return (
         <div data-comment="Flex" {...props} style={style}>
             {props.children}
@@ -68,7 +68,7 @@ Flex.displayName = "Flex";
  * Takes up all the parent space, no more, no less and scrolls the children in Y if needed
  */
 export const FlexScrollY = Radium((props: PrimitiveProps) => {
-    const style = csx.extend(props.style || {},csx.pass,csx.flex,{overflowY:'auto'});
+    const style = csx.extend(csx.pass, csx.flex, { overflowY: 'auto' }, props.style || {});
     return (
         <div data-comment="FlexScrollY" {...props} style={style}>
             {props.children}
@@ -81,7 +81,7 @@ FlexScrollY.displayName = "FlexScrollY";
  * When you need a general purpose container. Use this instead of a `div`
  */
 export const Pass = Radium((props: PrimitiveProps) => {
-    const style = csx.extend(props.style || {},csx.pass);
+    const style = csx.extend(csx.pass, props.style || {});
     return (
         <div data-comment="Pass" {...props} style={style}>
             {props.children}
@@ -94,7 +94,7 @@ Pass.displayName = "Pass";
  * Provides a Vertical Container. For the parent it behaves like content.
  */
 export const ContentVertical = Radium((props: PrimitiveProps) => {
-    const style = csx.extend(props.style || {}, csx.content, csx.vertical);
+    const style = csx.extend(csx.content, csx.vertical, props.style || {});
     return (
         <div data-comment="ContentVertical" {...props} style={style}>
             {props.children}
@@ -107,7 +107,7 @@ ContentVertical.displayName = "ContentVertical";
  * Provides a Horizontal Container. For the parent it behaves like content.
  */
 export const ContentHorizontal = Radium((props: PrimitiveProps) => {
-    const style = csx.extend(props.style || {},csx.content,csx.horizontal);
+    const style = csx.extend(csx.content, csx.horizontal, props.style || {});
     return (
         <div data-comment="ContentHorizontal" {...props} style={style}>
             {props.children}
@@ -120,7 +120,7 @@ ContentHorizontal.displayName = "ContentHorizontal";
  * Provides a Vertical Container. For the parent it behaves like flex.
  */
 export const FlexVertical = Radium((props: PrimitiveProps) => {
-    const style = csx.extend(props.style || {},csx.flex,csx.vertical,{maxWidth:'100%' /*normalizing browser bugs*/});
+    const style = csx.extend(csx.flex,csx.vertical,{maxWidth:'100%' /*normalizing browser bugs*/}, props.style || {});
     return (
         <div data-comment="FlexVertical" {...props} style={style}>
             {props.children}
@@ -133,7 +133,7 @@ FlexVertical.displayName = "FlexVertical";
  * Provides a Horizontal Container. For the parent it behaves like flex.
  */
 export const FlexHorizontal = Radium((props: PrimitiveProps) => {
-    const style = csx.extend(props.style || {},csx.flex,csx.horizontal);
+    const style = csx.extend(csx.flex, csx.horizontal, props.style || {});
     return (
         <div data-comment="FlexHorizontal" {...props} style={style}>
             {props.children}
@@ -292,7 +292,7 @@ interface GridMarginedProps extends PrimitiveProps {
  * - ThisComponent: Puts a negative margin on itself to offset the margins of the children (prevents them from leaking out)
  */
 export const GridMargined  = (props:GridMarginedProps) => {
-    const style = csx.extend(props.style || {}, csx.wrap, { marginTop: '-' + props.margin, marginLeft: '-' + props.margin });
+    const style = csx.extend(csx.wrap, { marginTop: '-' + props.margin, marginLeft: '-' + props.margin }, props.style || {});
     const children = React.Children.toArray(props.children).filter(c=>!!c);
     return (
         <ContentHorizontal {...props} style={style}>
