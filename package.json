@@ -1,6 +1,6 @@
 {
   "name": "gls",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Grid Layout System for React",
   "main": "gls.js",
   "typings": "gls",
