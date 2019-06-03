@@ -31,10 +31,12 @@
   },
   "homepage": "https://github.com/basarat/gls#readme",
   "devDependencies": {
-    "typestyle": "latest",
+    "@types/react": "16.8.19",
+    "@types/react-dom": "16.8.4",
     "csstips": "latest",
-    "typescript": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "typescript": "latest",
+    "typestyle": "latest"
   }
 }
