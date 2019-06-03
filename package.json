@@ -26,14 +26,12 @@
   },
   "peerDependencies": {
     "typestyle": ">0.0.0",
-    "csstips": ">0.0.0",
     "react": ">0.0.0"
   },
   "homepage": "https://github.com/basarat/gls#readme",
   "devDependencies": {
     "@types/react": "16.8.19",
     "@types/react-dom": "16.8.4",
-    "csstips": "latest",
     "react": "latest",
     "react-dom": "latest",
     "typescript": "latest",

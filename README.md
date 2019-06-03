@@ -3,10 +3,10 @@ General Layout System for React.
 
 # Installation
 
-Install `gls` along with its peer dependencies: `react`, `typestyle` (css in js) and `csstips` (underlying css mixins used by our components)
+Install `gls` along with its peer dependencies: `react`, `typestyle` (css in js):
 
 ```sh
-npm i gls react typestyle csstips
+npm i gls react typestyle
 ```
 
 # Concepts
