@@ -1,11 +1,13 @@
 # gls
 General Layout System for React.
 
-## Docs
+# Installation
 
-The concepts of:
-* Content
-* Flex
-* Margin is bad
+Install `gls` along with its peer dependencies: `react`, `typestyle` (css in js) and `csstips` (underlying css mixins used by our components)
 
-are covered in the `csstips` sections of TypeStyle docs : https://typestyle.github.io/
+```sh
+npm i gls react typestyle csstips
+```
+
+# Concepts
+The concepts of `Content` / `Flex` and *margin is bad* are covered in the `csstips` sections of TypeStyle docs : https://typestyle.github.io/
