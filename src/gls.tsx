@@ -1,9 +1,9 @@
 /**
- * This is a level above CSX
- *  - It wraps up the CSX primitives into components
+ * This is a level above csstips
+ *  - It wraps up the csstips primitives into React components
  */
-import * as csx from "csx";
-import * as Radium from "radium";
+import * as csstips from "csstips";
+import { style } from 'typestyle';
 import * as React from "react";
 
 /********
@@ -13,7 +13,7 @@ import * as React from "react";
  ********/
 
 
-interface PrimitiveProps extends React.HTMLProps<HTMLDivElement>{};
+interface PrimitiveProps extends React.HTMLProps<HTMLDivElement> { };
 
 /**
  * Generally prefer an inline block (as that will wrap).
@@ -35,7 +35,7 @@ Content.displayName = "Content";
  * Takes as much space as it needs, no more, no less
  */
 export const InlineBlock = Radium((props: PrimitiveProps) => {
-    const style = csx.extend({display:'inline-block'},props.style || {});
+    const style = csx.extend({ display: 'inline-block' }, props.style || {});
     return (
         <div data-comment="InlineBlock" {...props} style={style}>
             {props.children}
@@ -114,7 +114,7 @@ ContentHorizontal.displayName = "ContentHorizontal";
  * Provides a Vertical Container. For the parent it behaves like flex.
  */
 export const FlexVertical = Radium((props: PrimitiveProps) => {
-    const style = csx.extend(csx.flex,csx.vertical,{maxWidth:'100%' /*normalizing browser bugs*/}, props.style || {});
+    const style = csx.extend(csx.flex, csx.vertical, { maxWidth: '100%' /*normalizing browser bugs*/ }, props.style || {});
     return (
         <div data-comment="FlexVertical" {...props} style={style}>
             {props.children}
@@ -152,10 +152,10 @@ interface PaddedProps extends PrimitiveProps {
  * - Children: get the Height : sized by content
  * - ThisComponent: Puts a horizontal padding between each item
  */
-export const ContentHorizontalFlexPadded = (props:PaddedProps) => {
+export const ContentHorizontalFlexPadded = (props: PaddedProps) => {
     const basicPadding = props.padding;
 
-    const children = React.Children.toArray(props.children).filter(c=>!!c);
+    const children = React.Children.toArray(props.children).filter(c => !!c);
     const last = children.length - 1;
     const itemPadding = (index: number) => {
         if (index == last) {
@@ -184,10 +184,10 @@ ContentHorizontalFlexPadded.displayName = "ContentHorizontalFlexPadded";
  * - Children: get the Height : sized by content
  * - ThisComponent: Puts a horizontal padding between each item
  */
-export const FlexHorizontalFlexPadded = (props:PaddedProps) => {
+export const FlexHorizontalFlexPadded = (props: PaddedProps) => {
     const basicPadding = props.padding;
 
-    const children = React.Children.toArray(props.children).filter(c=>!!c);
+    const children = React.Children.toArray(props.children).filter(c => !!c);
     const last = children.length - 1;
     const itemPadding = (index: number) => {
         if (index == last) {
@@ -217,10 +217,10 @@ FlexHorizontalFlexPadded.displayName = "FlexHorizontalFlexPadded";
  * - Children: get the Height : sized by content
  * - ThisComponent: Puts a horizontal padding between each item
  */
-export const ContentHorizontalContentPadded = (props:PaddedProps) => {
+export const ContentHorizontalContentPadded = (props: PaddedProps) => {
     const basicPadding = props.padding;
 
-    const children = React.Children.toArray(props.children).filter(c=>!!c);
+    const children = React.Children.toArray(props.children).filter(c => !!c);
     const last = children.length - 1;
     const itemPadding = (index: number) => {
         if (index == last) {
@@ -249,10 +249,10 @@ ContentHorizontalContentPadded.displayName = "ContentHorizontalContentPadded";
  * - Children: get the Height : sized by content
  * - ThisComponent: Puts a vertical padding between each item
  */
-export const ContentVerticalContentPadded  = (props:PaddedProps) => {
+export const ContentVerticalContentPadded = (props: PaddedProps) => {
     const basicPadding = props.padding;
 
-    const children = React.Children.toArray(props.children).filter(c=>!!c);
+    const children = React.Children.toArray(props.children).filter(c => !!c);
     const last = children.length - 1;
     const itemPadding = (index: number) => {
         if (index == last) {
@@ -285,13 +285,13 @@ interface GridMarginedProps extends PrimitiveProps {
  * - ThisComponent: Puts a margin between each item.
  * - ThisComponent: Puts a negative margin on itself to offset the margins of the children (prevents them from leaking out)
  */
-export const GridMargined  = (props:GridMarginedProps) => {
+export const GridMargined = (props: GridMarginedProps) => {
     const style = csx.extend(csx.wrap, { marginTop: '-' + props.margin, marginLeft: '-' + props.margin }, props.style || {});
-    const children = React.Children.toArray(props.children).filter(c=>!!c);
+    const children = React.Children.toArray(props.children).filter(c => !!c);
     return (
         <ContentHorizontal {...props} style={style}>
             {
-                children.map((child, i) => <Content key={i} style={{marginLeft:props.margin,marginTop:props.margin}}>{child}</Content>)
+                children.map((child, i) => <Content key={i} style={{ marginLeft: props.margin, marginTop: props.margin }}>{child}</Content>)
             }
         </ContentHorizontal>
     );

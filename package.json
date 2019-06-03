@@ -6,7 +6,10 @@
   "types": "lib",
   "scripts": {
     "build": "tsc -p .",
-    "start": "npm run build -- -w"
+    "start": "npm run build -- -w",
+    "test": "npm run build",
+    "preversion": "npm run test",
+    "postversion": "git push --follow-tags && npm publish"
   },
   "repository": {
     "type": "git",
