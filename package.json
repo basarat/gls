@@ -1,12 +1,12 @@
 {
   "name": "gls",
   "version": "0.0.2",
-  "description": "Grid Layout System for React",
-  "main": "gls.js",
-  "typings": "gls",
+  "description": "General Layout System for React",
+  "main": "lib/index.js",
+  "types": "lib",
   "scripts": {
-    "build": "ntsc -p . && webpack",
-    "watch": "webpack -w"
+    "build": "tsc -p .",
+    "start": "npm run build -- -w"
   },
   "repository": {
     "type": "git",
@@ -22,20 +22,16 @@
     "url": "https://github.com/basarat/gls/issues"
   },
   "peerDependencies": {
-    "radium": ">0.0.0",
-    "csx": ">0.0.0",
+    "typestyle": ">0.0.0",
+    "csstips": ">0.0.0",
     "react": ">0.0.0"
   },
   "homepage": "https://github.com/basarat/gls#readme",
   "devDependencies": {
-    "codemirror": "^5.11.0",
-    "csx": ">0.0.0",
-    "ntypescript": "latest",
-    "radium": ">0.0.0",
-    "react": ">0.0.0",
-    "react-dom": ">0.0.0",
-    "webpack": "latest",
-    "style-loader": "^0.12.3",
-    "css-loader": "^0.17.0"
+    "typestyle": "latest",
+    "csstips": "latest",
+    "typescript": "latest",
+    "react": "latest",
+    "react-dom": "latest"
   }
 }
