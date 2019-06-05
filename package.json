@@ -6,9 +6,12 @@
   "types": "lib",
   "scripts": {
     "clean": "rm -rf ./node_modules & npm i",
-    "build": "tsc -p .",
-    "start": "npm run build -- -w",
-    "test": "npm run build",
+    "compile": "tsc -p .",
+    "compile:live": "npm run compile -- -w",
+    "docs": "echo TODO",
+    "docs:live": "docz dev",
+    "start": "concurrently \"npm run compile:live\" \"npm run docs:live\"",
+    "test": "npm run compile",
     "preversion": "npm run test",
     "postversion": "git push --follow-tags && npm publish"
   },
@@ -36,6 +39,7 @@
   "devDependencies": {
     "@types/react": "16.8.19",
     "@types/react-dom": "16.8.4",
+    "concurrently": "^4.1.0",
     "csstips": "latest",
     "docz": "^1.2.0",
     "react": "latest",
