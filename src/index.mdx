@@ -83,83 +83,36 @@ Furthermore the `Vertical` component itself doesn't bleed into external airspace
 
 Because `margin`s fundamentally result in airspace violation, do not use margins at the root of your components.
 
-> RULE 1: DO NOT USE MARGIN AT THE ROOT OF YOUR COMPONENT
+> RULE 1: Do not use `margin` at the root of your component
 
-This rule is also what makes it possible for parents to space children with margins.
+This rule is also what makes it possible for parents to space children with margins. We also provide a `Horizontal` container to layout children horizontally: 
 
-## Flexible expansion
+<Playground>
+  <Horizontal>
+    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
+    <div style={{backgroundColor: "lightpink"}}>World</div>
+  </Horizontal>
+</Playground>
 
-A common horizontal layout paradigm is a 12 column layout, used by various frameworks, most notably bootstrap and its inspired derivatives. It worked great back when UI's were not as dynamic as they are today. 
-
-Let's simplify 12 down and think of a simple 3 column layout. 
-
-
-
-
-
-* TODO: Talk about column grid driven layouts, show their issue and then talk about flex allowing for dynamic displays. 
-
-> RULE 2: USE FLEX INSTEAD OF COLUMN-COUNT FOR EXPANSION
+> Component design tip: never use margins at the root of your component. Internally it is fine to move a **static number** children around with it. If you have **dynamic number** of children, use our `Vertical`, `Horizontal` etc. 
 
 ## Internal Airspace
 
-We've already talked about how child css selectors can be used to manage the space between children using margins. One final thing worth mentioning is that you can use `padding` to seperate the children from the parent. E.g. here is a vertical with a few children: 
+We've already talked about how child css selectors can be used to manage the space between children using margins. One final thing worth mentioning is that you can use `padding` to seperate the children from the parent. We call these roots as *islands* (something with a background). A common island would be `body`. Another example of an *island* is a button, which normally has a background. We use padding to seperate its content from its border (internal airspace management):
 
-<Playground>
-  <Vertical>
-    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
-    <div style={{backgroundColor: "lightpink"}}>World</div>
-  </Vertical>
-</Playground>
-
-Right now the children are right next the to parent. Lets add a `black` background on the `Vertical` to see that the children are *flush* with the vertical: 
-
-<Playground>
-  <Vertical style={{backgroundColor: 'black'}}>
-    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
-    <div style={{backgroundColor: "lightpink"}}>World</div>
-  </Vertical>
-</Playground>
-
-If we wanted to `Vertical` to space the children from its border, you can use `padding`: 
-
-<Playground>
-  <Vertical style={{backgroundColor: 'black', padding: '24px' }}>
-    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
-    <div style={{backgroundColor: "lightpink"}}>World</div>
-  </Vertical>
-</Playground>
-
-> RULE 3: USE `padding` FOR INTERNAL BORDER AIRSPACE
-
-Normally you would have padding at the root e.g. here are two nested verticals, the border airspace is managed by the root, after all, its the root's border: 
-
-<Playground>
-  <Vertical style={{backgroundColor: 'black', padding: '24px' }}>
-    <Vertical>
-      <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
-      <div style={{backgroundColor: "lightpink"}}>World</div>
-    </Vertical>
-    <Vertical>
-      <div style={{backgroundColor: "lightskyblue"}}>Second Hello</div>
-      <div style={{backgroundColor: "lightpink"}}>Second World</div>
-    </Vertical>
-  </Vertical>
-</Playground>
-
-We call these roots as *islands* (something with a background). A common island would be `body`. Another example of an *island* is a button, which normally has a background. We use padding to seperate its content from its border (internal airspace management):
-
-<Playground>
+<Playground style={{ textAlign: 'center' }}>
   <button style={{backgroundColor: 'lightskyblue', fontSize:'24px', padding: '24px'}}>
     Hello world
   </button>
 </Playground>
 
-Similarly *islands* exist commonly in root level content containers (close children of `body`). For example the island below has a white background and padding:
+> RULE 2: Use `padding` explicitly for internal *border* airspace
+
+Similarly *islands* exist commonly in root level content containers (close children of `body`). For example we are putting a `padding` on the root `Vertical` below to seperate it from its children (sub `Vertical` and `Horizontal` layouts):
 
 <Playground>
   {/** Island */}
-  <Vertical style={{backgroundColor: 'white', padding: '24px' }}>
+  <Vertical style={{ padding: '24px' }}>
     <Vertical>
       <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
       <div style={{backgroundColor: "lightpink"}}>World</div>
@@ -171,6 +124,19 @@ Similarly *islands* exist commonly in root level content containers (close child
   </Vertical>
 </Playground>
 
+> Component design tip: `padding` can be used in any components that have an explict border (e.g buttons, user profile cards) as well as layout containers that might have implicit borders, due to color seperation (e.g. form containers).
+
+## Flexible expansion
+
+A common horizontal layout paradigm is a 12 column layout, used by various frameworks, most notably bootstrap and its inspired derivatives. It worked great back when UI's were not as dynamic as they are today. 
+
+Let's simplify 12 down and think of a simple 3 column layout. 
+
+
+
+* TODO: Talk about column grid driven layouts, show their issue and then talk about flex allowing for dynamic displays. 
+
+> RULE 3: USE FLEX INSTEAD OF FIXED COLUMN COUNT FOR EXPANSION
 
 # Components
 All our components are just `div` elements. They support *all* the properties supported by a `div`. In addition they take some properties like `spacing` which will be mentioned in each component. 
