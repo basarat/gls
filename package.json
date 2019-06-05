@@ -10,7 +10,7 @@
     "compile:live": "npm run compile -- -w --preserveWatchOutput",
     "docs": "docz build",
     "docs:live": "docz dev",
-    "ghpages": "node scripts/ghpages.js",
+    "ghpages": "gh-pages -d .docz/dist -m \"Deploy Docs [skip ci]\"",
     "start": "concurrently \"npm run compile:live\" \"npm run docs:live\"",
     "test": "npm run compile && npm run docs",
     "preversion": "npm run test",
