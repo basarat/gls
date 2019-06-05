@@ -15,18 +15,31 @@ There are two key concepts to maintainable layout in the world of components, on
 ## Airspace
 A fundamental rule (broken quite commonly in the wild sadly) is that a component only renders stuff in its airspace. That is, it does not bleed out resulting in conflicts with its neighbours. 
 
-Consider a simple'ol `div`. We'll give it a background to denote its airspace. It can render whatever it wants in its airspace: 
+Consider a simple'ol `div`. We'll give it a background `lightskyblue` to denote its airspace. It can render whatever it wants in its airspace: 
 
-<Playground>
+<Playground style={{ backgroundColor: "#eee", margin: '-2em', padding: '2em' }}>
   <div style={{backgroundColor: 'lightskyblue'}}>Hello</div>
 </Playground>
 
 Now try and layout two of these divs together, a naive way would be to add margins:  
 
-<Playground>
-  <div style={{backgroundColor: 'lightskyblue', marginBottom: '24px'}}>Hello</div>
-  <div style={{backgroundColor: 'lightskypink', marginTop: '24px'}}>World</div>
+<Playground style={{ backgroundColor: "#eee", margin: '-2em', padding: '2em' }}>
+  <div style={{backgroundColor: "lightskyblue", marginBottom: '24px'}}>Hello</div>
+  <div style={{backgroundColor: "lightpink", marginBottom: '24px'}}>World</div>
+  <div style={{backgroundColor: "darkorange"}}>Spacing</div>
 </Playground>
+
+A fundamental issue with this is that now this `<div style={{marginBottom: '24px'}}>Hello</div>` component is not useable in isolation, if we render it alone, note that its leaking out *assuming* its going to be used by something that's going to add another sibling after it: 
+
+<Playground style={{ backgroundColor: "#eee", margin: '-2em', padding: '2em' }}>
+  <div style={{backgroundColor: "lightskyblue", marginBottom: '24px'}}>Hello</div>
+  <i style={{position:'absolute', bottom:'30px'}}>Notice that excess space at the bottom</i>
+</Playground>
+
+So instead of putting the responsiblity of *space seperation* on the component, it can be better managed by the container, e.g. Here the container will space each of its children (except the last) using a `margin-bottom`: 
+
+
+> RULE 1: DO NOT USE MARGIN AT THE ROOT OF YOUR COMPONENT
 
 # How to generate whitespace
 
