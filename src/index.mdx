@@ -10,9 +10,9 @@ import { Vertical } from '.';
 `gls` is a general purpose maintainable and simple layout componets for react 🌹. 
 
 # Basic concepts
-There are two key concepts to maintainable layout in the world of components, one is *airspace*, the other is *flexible expansion*. Lets tackle them one by one: 
+There are a few key concepts to maintainable layout in the world of components, *external airspace*, *flexible expansion* and *internal airspace*. Lets tackle them one by one: 
 
-## Airspace
+## External Airspace
 A fundamental rule (broken quite commonly in the wild sadly) is that a component only renders stuff in its airspace. That is, it does not bleed out resulting in conflicts with its neighbours. 
 
 Consider a simple'ol `div`. We'll give it a background `lightskyblue` to denote its airspace. It can render whatever it wants in its airspace: 
@@ -29,7 +29,7 @@ Now try and layout two of these divs together, a naive way would be to add margi
   <div style={{backgroundColor: "darkorange"}}>Spacing</div>
 </Playground>
 
-A fundamental issue with this is that now this `<div style={{marginBottom: '24px'}}>Hello</div>` component is not useable in isolation, if we render it alone, note that its leaking out *assuming* its going to be used by something that's going to add another sibling after it: 
+A fundamental issue with `<div style={{marginBottom: '24px'}}>Hello</div>` component, is that its not useable in isolation. If we render it alone, note that its leaking out *assuming* its going to be used by something that's going to add another sibling after it: 
 
 <Playground style={{ backgroundColor: "#eee", margin: '-2em', padding: '2em' }}>
   <div style={{backgroundColor: "lightskyblue", marginBottom: '24px'}}>Hello</div>
@@ -66,7 +66,7 @@ And no leaking margins occur with lesser children:
   </Vertical>
 </Playground>
 
-Furthermore the `Vertical` component itself doesn't bleed margins, allowing you to compose two `Vertical`s seamlessly: 
+Furthermore the `Vertical` component itself doesn't bleed into external airspace, allowing you to compose two `Vertical`s seamlessly: 
 
 <Playground style={{ backgroundColor: "#eee", margin: '-2em', padding: '2em' }}>
   <Vertical>
@@ -81,7 +81,7 @@ Furthermore the `Vertical` component itself doesn't bleed margins, allowing you 
   </Vertical>
 </Playground>
 
-Because `margin`s fundamentally result in airspace violation, do not use margins at the root of your controls.
+Because `margin`s fundamentally result in airspace violation, do not use margins at the root of your components.
 
 > RULE 1: DO NOT USE MARGIN AT THE ROOT OF YOUR COMPONENT
 
@@ -90,6 +90,12 @@ This rule is also what makes it possible for parents to space children with marg
 ## Flexible expansion
 
 * TODO: Talk about column grid driven layouts, show their issue and then talk about flex allowing for dynamic displays. 
+
+> RULE 2: USE FLEX INSTEAD OF COLUMN-COUNT FOR EXPANSION
+
+## Internal Airspace Management
+
+* TODO: talk about padding
 
 # Components
 You can now jump to individual docs for the components using the sidebar 👍🏻.
