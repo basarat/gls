@@ -4,7 +4,7 @@ route: /
 ---
 
 import { Playground } from 'docz';
-import { Vertical } from '.'; 
+import { Vertical, Horizontal, Flex } from '.'; 
 
 # General Layout System
 `gls` is a general purpose maintainable and simple layout componets for react 🌹. 
@@ -93,9 +93,78 @@ This rule is also what makes it possible for parents to space children with marg
 
 > RULE 2: USE FLEX INSTEAD OF COLUMN-COUNT FOR EXPANSION
 
-## Internal Airspace Management
+## Internal Airspace
 
-* TODO: talk about padding
+We've already talked about how child css selectors can be used to manage the space between children using margins. One final thing worth mentioning is that you can use `padding` to seperate the children from the parent. E.g. here is a vertical with a few children: 
+
+<Playground style={{ backgroundColor: "#eee", margin: '-2em', padding: '2em' }}>
+  <Vertical>
+    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
+    <div style={{backgroundColor: "lightpink"}}>World</div>
+  </Vertical>
+</Playground>
+
+Right now the children are right next the to parent. Lets add a `black` background on the `Vertical` to see that the children are *flush* with the vertical: 
+
+<Playground style={{ backgroundColor: "#eee", margin: '-2em', padding: '2em' }}>
+  <Vertical style={{backgroundColor: 'black'}}>
+    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
+    <div style={{backgroundColor: "lightpink"}}>World</div>
+  </Vertical>
+</Playground>
+
+If we wanted to `Vertical` to space the children from its border, you can use `padding`: 
+
+<Playground style={{ backgroundColor: "#eee", margin: '-2em', padding: '2em' }}>
+  <Vertical style={{backgroundColor: 'black', padding: '24px' }}>
+    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
+    <div style={{backgroundColor: "lightpink"}}>World</div>
+  </Vertical>
+</Playground>
+
+> RULE 3: USE `padding` FOR INTERNAL BORDER AIRSPACE
+
+Normally you would have padding at the root e.g. here are two nested verticals, the border airspace is managed by the root, after all, its the root's border: 
+
+<Playground style={{ backgroundColor: "#eee", margin: '-2em', padding: '2em' }}>
+  <Vertical style={{backgroundColor: 'black', padding: '24px' }}>
+    <Vertical>
+      <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
+      <div style={{backgroundColor: "lightpink"}}>World</div>
+    </Vertical>
+    <Vertical>
+      <div style={{backgroundColor: "lightskyblue"}}>Second Hello</div>
+      <div style={{backgroundColor: "lightpink"}}>Second World</div>
+    </Vertical>
+  </Vertical>
+</Playground>
+
+We call these roots as *islands* (something with a background). A common island would be `body`. Another example of an *island* is a button, which normally has a background. We use padding to seperate its content from its border (internal airspace management):
+
+<Playground style={{ backgroundColor: "#eee", margin: '-2em', padding: '2em' }}>
+  <button style={{backgroundColor: 'lightskyblue', fontSize:'24px', padding: '24px'}}>
+    Hello world
+  </button>
+</Playground>
+
+Similarly *islands* exist commonly in root level content containers (close children of `body`). For example the island below has a white background and padding:
+
+<Playground style={{ backgroundColor: "#eee", margin: '-2em', padding: '2em' }}>
+  {/** Island */}
+  <Vertical style={{backgroundColor: 'white', padding: '24px' }}>
+    <Vertical>
+      <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
+      <div style={{backgroundColor: "lightpink"}}>World</div>
+    </Vertical>
+    <Horizontal>
+      <Flex style={{backgroundColor: "lightskyblue"}}>Second Hello</Flex>
+      <Flex style={{backgroundColor: "lightpink"}}>Second World</Flex>
+    </Horizontal>
+  </Vertical>
+</Playground>
+
 
 # Components
-You can now jump to individual docs for the components using the sidebar 👍🏻.
+All our components are just `div` elements. They support *all* the properties supported by a `div`. In addition they take some properties like `spacing` which will be mentioned in each component. 
+
+You can now jump to individual docs for the components (like `Vertical`, `Horizontal` etc.) using the sidebar 👍🏻.
