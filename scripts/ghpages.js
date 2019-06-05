@@ -1,14 +1,20 @@
 const ghpages = require('gh-pages');
 const path = require('path');
+const date = new Date();
 
 /** Directory */
-ghpages.publish(path.resolve(__dirname, '/../.docz/dist'), {
+const directory = path.resolve(__dirname, '/../.docz/dist');
+
+/** Branch */
+const branch = 'gh-pages';
+
+/** Repo */
+const repo = 'https://' + process.env.GH_TOKEN + '@github.com/basarat/gls.git';
+
+ghpages.publish(directory, {
   message: `[ci skip] deployment (${date.getUTCFullYear()}-${date.getUTCMonth() + 1}-${date.getUTCDate()}-${date.getUTCHours()}-${date.getUTCMinutes()})`,
-
-  /** Branch */
-  branch: 'gh-pages',
-  repo: 'https://' + process.env.GH_TOKEN + '@github.com/basarat/gls.git',
-
+  branch: branch,
+  repo: repo,
   user: {
     name: 'basarat',
     email: 'basaratali@gmail.com'
