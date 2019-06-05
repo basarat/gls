@@ -130,13 +130,23 @@ Similarly *islands* exist commonly in root level content containers (close child
 
 A common horizontal layout paradigm is a 12 column layout, used by various frameworks, most notably bootstrap and its inspired derivatives. It worked great back when UI's were not as dynamic as they are today. 
 
-Let's simplify 12 down and think of a simple 3 column layout. 
+Let's simplify 12 down and think of a simple `4` column layout. If you have an input and two buttons, you might do a `50%,25%,25%` split, commonly named with class names like `take-2,take-1,take-1`. Here is an example: 
+
+
+<Playground>
+  <Horizontal>
+    <input style={{width: '50%'}}/>
+    <button style={{width: '25%'}}>Action Foo</button>
+    <button style={{width: '25%'}}>Action Bar</button>
+  </Horizontal>
+</Playground>
+
 
 
 
 * TODO: Talk about column grid driven layouts, show their issue and then talk about flex allowing for dynamic displays. 
 
-> RULE 3: USE FLEX INSTEAD OF FIXED COLUMN COUNT FOR EXPANSION
+> RULE 3: Don't add explicit styles / classes that need to toggle based on external factors (like neighbours).
 
 # Components
 All our components are just `div` elements. They support *all* the properties supported by a `div`. In addition they take some properties like `spacing` which will be mentioned in each component. 
