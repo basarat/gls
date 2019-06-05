@@ -6,7 +6,8 @@ export default {
   themeConfig: {
     styles: {
       playground: `
-        padding: 32px
+        padding: 0px;
+        border: 8px solid #eeee;
       `
     }
   }

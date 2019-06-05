@@ -17,13 +17,13 @@ A fundamental rule (broken quite commonly in the wild sadly) is that a component
 
 Consider a simple'ol `div`. We'll give it a background `lightskyblue` to denote its airspace. It can render whatever it wants in its airspace: 
 
-<Playground style={{ backgroundColor: "#eee", margin: '-2em', padding: '2em' }}>
+<Playground>
   <div style={{backgroundColor: 'lightskyblue'}}>Hello</div>
 </Playground>
 
 Now try and layout two of these divs together, a naive way would be to add margins:  
 
-<Playground style={{ backgroundColor: "#eee", margin: '-2em', padding: '2em' }}>
+<Playground>
   <div style={{backgroundColor: "lightskyblue", marginBottom: '24px'}}>Hello</div>
   <div style={{backgroundColor: "lightpink", marginBottom: '24px'}}>World</div>
   <div style={{backgroundColor: "darkorange"}}>Spacing</div>
@@ -31,9 +31,9 @@ Now try and layout two of these divs together, a naive way would be to add margi
 
 A fundamental issue with `<div style={{marginBottom: '24px'}}>Hello</div>` component, is that its not useable in isolation. If we render it alone, note that its leaking out *assuming* its going to be used by something that's going to add another sibling after it: 
 
-<Playground style={{ backgroundColor: "#eee", margin: '-2em', padding: '2em' }}>
+<Playground>
   <div style={{backgroundColor: "lightskyblue", marginBottom: '24px'}}>Hello</div>
-  <i style={{position:'absolute', bottom:'30px'}}>Notice that excess space at the bottom</i>
+  <i style={{position:'absolute', bottom:'0px', color: 'lightgrey', textAlign: 'center'}}>Notice this excess space at the bottom</i>
 </Playground>
 
 So instead of putting the responsiblity of *space seperation* on the component, it can be better managed by the container, e.g. Here the container will space each of its children (except the last) using `margin-bottom`: 
@@ -49,7 +49,7 @@ parent>*:last-child {
 
 Such a container is the `Vertical` component provided by gls. You can see it seperate the children below:
 
-<Playground style={{ backgroundColor: "#eee", margin: '-2em', padding: '2em' }}>
+<Playground>
   <Vertical>
     <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
     <div style={{backgroundColor: "lightpink"}}>World</div>
@@ -59,7 +59,7 @@ Such a container is the `Vertical` component provided by gls. You can see it sep
 
 And no leaking margins occur with lesser children:
 
-<Playground style={{ backgroundColor: "#eee", margin: '-2em', padding: '2em' }}>
+<Playground>
   <Vertical>
     <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
     <div style={{backgroundColor: "lightpink"}}>World</div>
@@ -68,7 +68,7 @@ And no leaking margins occur with lesser children:
 
 Furthermore the `Vertical` component itself doesn't bleed into external airspace, allowing you to compose two `Vertical`s seamlessly: 
 
-<Playground style={{ backgroundColor: "#eee", margin: '-2em', padding: '2em' }}>
+<Playground>
   <Vertical>
     <Vertical>
       <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
@@ -89,6 +89,14 @@ This rule is also what makes it possible for parents to space children with marg
 
 ## Flexible expansion
 
+A common horizontal layout paradigm is a 12 column layout, used by various frameworks, most notably bootstrap and its inspired derivatives. It worked great back when UI's were not as dynamic as they are today. 
+
+Let's simplify 12 down and think of a simple 3 column layout. 
+
+
+
+
+
 * TODO: Talk about column grid driven layouts, show their issue and then talk about flex allowing for dynamic displays. 
 
 > RULE 2: USE FLEX INSTEAD OF COLUMN-COUNT FOR EXPANSION
@@ -97,7 +105,7 @@ This rule is also what makes it possible for parents to space children with marg
 
 We've already talked about how child css selectors can be used to manage the space between children using margins. One final thing worth mentioning is that you can use `padding` to seperate the children from the parent. E.g. here is a vertical with a few children: 
 
-<Playground style={{ backgroundColor: "#eee", margin: '-2em', padding: '2em' }}>
+<Playground>
   <Vertical>
     <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
     <div style={{backgroundColor: "lightpink"}}>World</div>
@@ -106,7 +114,7 @@ We've already talked about how child css selectors can be used to manage the spa
 
 Right now the children are right next the to parent. Lets add a `black` background on the `Vertical` to see that the children are *flush* with the vertical: 
 
-<Playground style={{ backgroundColor: "#eee", margin: '-2em', padding: '2em' }}>
+<Playground>
   <Vertical style={{backgroundColor: 'black'}}>
     <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
     <div style={{backgroundColor: "lightpink"}}>World</div>
@@ -115,7 +123,7 @@ Right now the children are right next the to parent. Lets add a `black` backgrou
 
 If we wanted to `Vertical` to space the children from its border, you can use `padding`: 
 
-<Playground style={{ backgroundColor: "#eee", margin: '-2em', padding: '2em' }}>
+<Playground>
   <Vertical style={{backgroundColor: 'black', padding: '24px' }}>
     <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
     <div style={{backgroundColor: "lightpink"}}>World</div>
@@ -126,7 +134,7 @@ If we wanted to `Vertical` to space the children from its border, you can use `p
 
 Normally you would have padding at the root e.g. here are two nested verticals, the border airspace is managed by the root, after all, its the root's border: 
 
-<Playground style={{ backgroundColor: "#eee", margin: '-2em', padding: '2em' }}>
+<Playground>
   <Vertical style={{backgroundColor: 'black', padding: '24px' }}>
     <Vertical>
       <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
@@ -141,7 +149,7 @@ Normally you would have padding at the root e.g. here are two nested verticals, 
 
 We call these roots as *islands* (something with a background). A common island would be `body`. Another example of an *island* is a button, which normally has a background. We use padding to seperate its content from its border (internal airspace management):
 
-<Playground style={{ backgroundColor: "#eee", margin: '-2em', padding: '2em' }}>
+<Playground>
   <button style={{backgroundColor: 'lightskyblue', fontSize:'24px', padding: '24px'}}>
     Hello world
   </button>
@@ -149,7 +157,7 @@ We call these roots as *islands* (something with a background). A common island 
 
 Similarly *islands* exist commonly in root level content containers (close children of `body`). For example the island below has a white background and padding:
 
-<Playground style={{ backgroundColor: "#eee", margin: '-2em', padding: '2em' }}>
+<Playground>
   {/** Island */}
   <Vertical style={{backgroundColor: 'white', padding: '24px' }}>
     <Vertical>

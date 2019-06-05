@@ -9,6 +9,8 @@ npm install
 npm start
 ```
 
+> Note: `docz` will generate docs on `http://127.0.0.1:3000/gls/`. 
+
 # Releasing
 * Think if your change is `major (breaking api) / minor (potentially breaking but you tried your best not to) / patch (safe)`.
 * See current version in `package.json` and update `CHANGELOG.md` adding the *planned release version* notes.

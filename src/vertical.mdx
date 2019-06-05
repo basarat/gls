@@ -5,14 +5,15 @@ route: /vertical
 
 import { Playground, Props } from 'docz';
 import { Vertical } from '.'; 
+import * as demos from './demos'; 
 
 # Vertical 
 
 Lays out children in a vertically spaced layout.
 
 <Playground>
-  <Vertical style={{backgroundColor:'aqua'}}>
-    <div>Hello</div>
+  <Vertical>
+    <demos.BlueDiv>Hello</demos.BlueDiv>
     <div>World</div>
   </Vertical>
 </Playground>
