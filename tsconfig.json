@@ -7,6 +7,10 @@
         "jsx": "react",
         "strict": true,
         "noImplicitAny": true,
+        "lib": [
+            "dom", 
+            "es6",
+        ]
     },
     "compileOnSave": false,
     "include": [

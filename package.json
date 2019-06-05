@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "types": "lib",
   "scripts": {
+    "clean": "rm -rf ./node_modules & npm i",
     "build": "tsc -p .",
     "start": "npm run build -- -w",
     "test": "npm run build",
@@ -25,8 +26,11 @@
     "url": "https://github.com/basarat/gls/issues"
   },
   "peerDependencies": {
-    "typestyle": ">0.0.0",
     "react": ">0.0.0"
+  },
+  "dependencies": {
+    "typestyle": ">=2.0.0",
+    "csstips": ">=0.3.0"
   },
   "homepage": "https://github.com/basarat/gls#readme",
   "devDependencies": {
@@ -35,6 +39,7 @@
     "react": "latest",
     "react-dom": "latest",
     "typescript": "latest",
-    "typestyle": "latest"
+    "typestyle": "latest",
+    "csstips": "latest"
   }
 }
