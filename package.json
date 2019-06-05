@@ -32,21 +32,19 @@
   "peerDependencies": {
     "react": ">0.0.0"
   },
-  "dependencies": {
-    "typestyle": ">=2.0.0",
-    "csstips": ">=0.3.0"
-  },
+  "dependencies": {},
   "homepage": "https://github.com/basarat/gls#readme",
   "devDependencies": {
     "@types/react": "16.8.19",
     "@types/react-dom": "16.8.4",
     "concurrently": "4.1.0",
-    "csstips": "latest",
+    "csstips": "0.3.0",
     "docz": "1.2.0",
     "docz-theme-default": "1.2.0",
-    "react": "latest",
-    "react-dom": "latest",
-    "typescript": "latest",
-    "typestyle": "latest"
+    "gh-pages": "2.0.1",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "typescript": "3.5.1",
+    "typestyle": "2.0.2"
   }
 }
