@@ -4,6 +4,7 @@ const date = new Date();
 
 /** Directory */
 const directory = path.resolve(__dirname, '/../.docz/dist');
+console.log(__dirname, path.resolve(__dirname,'/..'));
 
 /** Branch */
 const branch = 'gh-pages';
