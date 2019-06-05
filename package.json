@@ -36,10 +36,11 @@
   "devDependencies": {
     "@types/react": "16.8.19",
     "@types/react-dom": "16.8.4",
+    "csstips": "latest",
+    "docz": "^1.2.0",
     "react": "latest",
     "react-dom": "latest",
     "typescript": "latest",
-    "typestyle": "latest",
-    "csstips": "latest"
+    "typestyle": "latest"
   }
 }
