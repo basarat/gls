@@ -3,10 +3,28 @@ name: General Layout System
 route: /
 ---
 
+import { Playground } from 'docz';
+import { Vertical } from '.'; 
+
 # General Layout System
 `gls` is a general purpose maintainable and simple layout componets for react 🌹. 
 
 # Basic concepts
+There are two key concepts to maintainable layout in the world of components, one is *airspace*, the other is *flex*. Lets tackle them one by one: 
+
+## Airspace
+A fundamental rule (broken quite commonly in the wild sadly) is that a component only renders stuff in its airspace. That is, it does not bleed out resulting in conflicts with its neighbours. 
+
+Consider a simple'ol `div`. We'll give it a background to denote its airspace. It can render whatever it wants in its airspace: 
+
+<Playground>
+  <div style={{backgroundColor: 'aqua'}}>Hello world</div>
+</Playground>
+
+Now try and layout two of these divs together
+
+# How to generate whitespace
+
 * TODO: talk about margins being unmaintainable. Talk about airspace.
 * TODO: talk about flex allowing for dynamic displays.
 
