@@ -6,3 +6,6 @@ lib
 
 # IDE 
 .vscode
+
+# Docz 
+.docz

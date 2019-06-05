@@ -7,7 +7,7 @@
   "scripts": {
     "clean": "rm -rf ./node_modules & npm i",
     "compile": "tsc -p .",
-    "compile:live": "npm run compile -- -w",
+    "compile:live": "npm run compile -- -w --preserveWatchOutput",
     "docs": "echo TODO",
     "docs:live": "docz dev",
     "start": "concurrently \"npm run compile:live\" \"npm run docs:live\"",
