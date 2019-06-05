@@ -18,10 +18,15 @@ A fundamental rule (broken quite commonly in the wild sadly) is that a component
 Consider a simple'ol `div`. We'll give it a background to denote its airspace. It can render whatever it wants in its airspace: 
 
 <Playground>
-  <div style={{backgroundColor: 'aqua'}}>Hello world</div>
+  <div style={{backgroundColor: 'lightskyblue'}}>Hello</div>
 </Playground>
 
-Now try and layout two of these divs together
+Now try and layout two of these divs together, a naive way would be to add margins:  
+
+<Playground>
+  <div style={{backgroundColor: 'lightskyblue', marginBottom: '24px'}}>Hello</div>
+  <div style={{backgroundColor: 'lightskypink', marginTop: '24px'}}>World</div>
+</Playground>
 
 # How to generate whitespace
 
