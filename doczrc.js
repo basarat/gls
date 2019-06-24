@@ -3,7 +3,9 @@ export default {
   base: '/gls/',
   codeSandbox: true,
   typescript: true,
+  indexHtml: 'public/index.html',
   themeConfig: {
+    footerText: 'white',
     styles: {
       playground: `
         padding: 0px;
