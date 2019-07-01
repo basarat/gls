@@ -7,10 +7,10 @@
 
 # Installation
 
-Install `gls` along with its peer dependencies: `react`:
+Install `gls` along with its peer dependencies: `react` (for html) and `typestyle` (for css):
 
 ```sh
-npm i gls react
+npm i gls react typestyle
 ```
 
 # Docs
