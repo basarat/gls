@@ -1,7 +1,7 @@
 export default {
   title: 'General Layout System',
   base: '/gls/',
-  codeSandbox: true,
+  codeSandbox: false,
   typescript: true,
   indexHtml: 'public/index.html',
   themeConfig: {
