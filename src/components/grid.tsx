@@ -24,15 +24,14 @@ export function gridSpaced(topAndBottom: BoxUnit, leftAndRight = topAndBottom): 
   );
 };
 
-export type GridProps = React.HTMLProps<HTMLDivElement> & (
+export interface GridProps extends React.HTMLProps<HTMLDivElement> {
+  spacing?:
+  | BoxUnit
   | {
-    spacing?: BoxUnit
+    vertical: BoxUnit
+    horizontal: BoxUnit
   }
-  | {
-    verticalSpacing: BoxUnit
-    horizontalSpacing: BoxUnit
-  }
-)
+}
 
 /** 
  * Lays out children with a margin between them (horizontal and vertical)
@@ -43,22 +42,22 @@ export const Grid: React.FC<GridProps> = (props) => {
   /** 
    * Figure out the spacing requested 
    */
-  let vertical!: BoxUnit;
   let horizontal!: BoxUnit;
-  if ('spacing' in props) {
+  let vertical!: BoxUnit;
+  if ('spacing' in props && props.spacing != null) {
     delete (otherProps as any).spacing;
-    horizontal = props.spacing != null ? props.spacing : Spacing.grid.horizontal;
-    vertical = horizontal;
-  } else if ('verticalSpacing' in props) {
-    delete (otherProps as any).verticalSpacing;
-    delete (otherProps as any).horizontalSpacing;
-    horizontal = props.horizontalSpacing != null ? props.horizontalSpacing : Spacing.grid.horizontal;
-    vertical = props.verticalSpacing != null ? props.verticalSpacing : Spacing.grid.vertical;
+    if (typeof props.spacing == 'number' || typeof props.spacing == 'string') {
+      horizontal = props.spacing;
+      vertical = horizontal;
+    } else {
+      horizontal = props.spacing.horizontal;
+      vertical = props.spacing.vertical;
+    }
   }
 
   const klass = classes(
     className,
-    gridSpaced(vertical,horizontal),
+    gridSpaced(vertical, horizontal),
   );
   return (
     <div {...otherProps} className={klass} data-comment='Grid' />
