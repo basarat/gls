@@ -33,8 +33,7 @@
     "react": ">0.0.0",
     "typestyle": ">2.0.0"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "homepage": "https://github.com/basarat/gls#readme",
   "devDependencies": {
     "@types/react": "16.8.19",
