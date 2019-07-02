@@ -1,6 +1,6 @@
 export * from './classes/scroll';
 
-export * from './components/common';
+export * from './common';
 export * from './components/grid';
 export * from './components/vertical';
 export * from './components/horizontal';

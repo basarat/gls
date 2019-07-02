@@ -1,5 +1,5 @@
 import * as typestyle from 'typestyle';
-import { BoxUnit, GLSProps } from "../components/common";
+import { BoxUnit, GLSProps } from "../common";
 import * as scrollHelpers from "../classes/scroll";
 
 /**
@@ -19,7 +19,7 @@ export function boxUnitToString(value: BoxUnit): string {
  * Converts common suppoted props into a `klass` + remainder 
  */
 export function processCommonProps<T extends GLSProps>(props: T): { klass: string, otherProps: any } {
-  const { scroll, ...otherProps } = props;
+  const { scroll, padding, ...otherProps } = props;
 
   return {
     klass: typestyle.classes(
@@ -29,6 +29,8 @@ export function processCommonProps<T extends GLSProps>(props: T): { klass: strin
           : props.scroll == 'vertical' ? scrollHelpers.scrollVertical()
             : scrollHelpers.scroll()
       ),
+    /** Padding */
+      props.padding != null && typestyle.style()
     ),
     otherProps
   }

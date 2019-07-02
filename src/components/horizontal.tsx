@@ -1,7 +1,7 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
 import * as csstips from 'csstips';
-import { Spacing } from './common';
+import { Spacing } from '../common';
 
 ///////////////////////////////////
 // Horizontal

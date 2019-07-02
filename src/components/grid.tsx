@@ -1,7 +1,7 @@
 import * as typestyle from 'typestyle';
 import { types, classes } from 'typestyle';
 import * as React from 'react';
-import { Spacing, BoxUnit } from './common';
+import { Spacing, BoxUnit } from '../common';
 import { boxUnitToString } from '../internal/utils';
 
 /**

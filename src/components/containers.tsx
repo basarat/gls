@@ -5,29 +5,29 @@ import * as csstips from 'csstips';
 /** 
  * For providing a *as much as available* amount of space for an item
  */
-export const FlexContainer: React.FC<React.HTMLProps<HTMLDivElement>> = (props) => {
+export const Flex: React.FC<React.HTMLProps<HTMLDivElement>> = (props) => {
   const { className, ...otherProps } = props;
   const klass = typestyle.classes(
     className,
     typestyle.style(csstips.flex)
   );
   return (
-    <div {...otherProps} className={klass} data-comment='FlexContainer' />
+    <div {...otherProps} className={klass} data-comment='Flex' />
   );
 };
-FlexContainer.displayName = 'FlexContainer';
+Flex.displayName = 'Flex';
 
 /** 
  * For providing a *as much as needed* amount of space for an item
  */
-export const ContentContainer: React.FC<React.HTMLProps<HTMLDivElement>> = (props) => {
+export const Content: React.FC<React.HTMLProps<HTMLDivElement>> = (props) => {
   const { className, ...otherProps } = props;
   const klass = typestyle.classes(
     className,
     typestyle.style(csstips.content)
   );
   return (
-    <div {...otherProps} className={klass} data-comment='ContentContainer' />
+    <div {...otherProps} className={klass} data-comment='Content' />
   );
 };
-ContentContainer.displayName = 'ContentContainer';
+Content.displayName = 'Content';
