@@ -24,47 +24,44 @@ export function gridSpaced(topAndBottom: BoxUnit, leftAndRight = topAndBottom): 
   );
 };
 
-export interface GridUniformProps extends React.HTMLProps<HTMLDivElement> {
-  spacing?: BoxUnit
-}
+export type GridProps = React.HTMLProps<HTMLDivElement> & (
+  | {
+    spacing?: BoxUnit
+  }
+  | {
+    verticalSpacing: BoxUnit
+    horizontalSpacing: BoxUnit
+  }
+)
 
 /** 
  * Lays out children with a margin between them (horizontal and vertical)
  */
-export const GridUniform: React.FC<GridUniformProps> = (props) => {
-  const { className, spacing = Spacing.grid.horizontal, ...otherProps } = props;
+export const Grid: React.FC<GridProps> = (props) => {
+  const { className, ...otherProps } = props;
+
+  /** 
+   * Figure out the spacing requested 
+   */
+  let vertical!: BoxUnit;
+  let horizontal!: BoxUnit;
+  if ('spacing' in props) {
+    delete (otherProps as any).spacing;
+    horizontal = props.spacing != null ? props.spacing : Spacing.grid.horizontal;
+    vertical = horizontal;
+  } else if ('verticalSpacing' in props) {
+    delete (otherProps as any).verticalSpacing;
+    delete (otherProps as any).horizontalSpacing;
+    horizontal = props.horizontalSpacing != null ? props.horizontalSpacing : Spacing.grid.horizontal;
+    vertical = props.verticalSpacing != null ? props.verticalSpacing : Spacing.grid.vertical;
+  }
+
   const klass = classes(
     className,
-    gridSpaced(spacing),
+    gridSpaced(vertical,horizontal),
   );
   return (
-    <div {...otherProps} className={klass} data-comment='GridUniform' />
+    <div {...otherProps} className={klass} data-comment='Grid' />
   );
 }
-GridUniform.displayName = 'GridUniform';
-
-
-export interface GridAspectProps extends React.HTMLProps<HTMLDivElement> {
-  vertical?: BoxUnit
-  horizontal?: BoxUnit
-}
-
-/** 
- * Lays out children with a margin between them (horizontal and vertical)
- */
-export const GridAspect: React.FC<GridAspectProps> = (props) => {
-  const {
-    className,
-    vertical = Spacing.grid.vertical,
-    horizontal = Spacing.grid.horizontal,
-    ...otherProps
-  } = props;
-  const klass = classes(
-    className,
-    gridSpaced(vertical, horizontal),
-  );
-  return (
-    <div {...otherProps} className={klass} data-comment='GridAspect' />
-  );
-}
-GridAspect.displayName = 'GridAspect';
+Grid.displayName = 'Grid';
