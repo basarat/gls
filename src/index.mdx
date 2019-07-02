@@ -87,7 +87,7 @@ This rule is also what makes it possible for parents to space children with marg
 
 ## Internal Airspace
 
-We've already talked about how child css selectors can be used to manage the space between children using margins. One final thing worth mentioning is that you can use `padding` to seperate the children from the parent. We call these roots as *islands* (something with a background). A common island would be `body`. Another example of an *island* is a button, which normally has a background. We use padding to seperate its content from its border (internal airspace management):
+A parent uses `margin`s to create visual space *between its children*. A parent can use *padding* to insert space *inside* its border to push the children (internal airspace management). For example a button is a common example that has padding to seperate its content from its border:
 
 <Playground style={{ textAlign: 'center' }}>
   <button style={{backgroundColor: 'lightskyblue', fontSize:'24px', padding: '24px'}}>
@@ -97,7 +97,7 @@ We've already talked about how child css selectors can be used to manage the spa
 
 > RULE 2: Use `padding` explicitly for internal *border* airspace
 
-Similarly *islands* exist commonly in root level content containers (close children of `body`). For example we are putting a `padding` on the root `Vertical` below to seperate it from its children (sub `Vertical` and `Horizontal` layouts):
+Commonly in root level content containers (close children of `body`) will use padding to create an *island* effect. For example we are putting a `padding` on the root `Vertical` below to seperate it from its children (sub `Vertical` and `Horizontal` layouts):
 
 <Playground>
   {/** Island */}
