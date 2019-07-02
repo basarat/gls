@@ -8,12 +8,12 @@ export const scroll = () => typestyle.style({
   overflow: 'auto'
 });
 
-export const scrollHorizontal= () => typestyle.style({
+export const scrollHorizontal = () => typestyle.style({
   '-webkit-overflow-scrolling': 'touch',
   overflowX: 'auto'
 });
 
-export const scrollVertical= () => typestyle.style({
+export const scrollVertical = () => typestyle.style({
   '-webkit-overflow-scrolling': 'touch',
   overflowY: 'auto'
 });
