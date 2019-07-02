@@ -1,4 +1,6 @@
-import { BoxUnit } from "../components/common";
+import * as typestyle from 'typestyle';
+import { BoxUnit, GLSProps } from "../components/common";
+import * as scrollHelpers from "../classes/scroll";
 
 /**
  * For `number` we assume pixels e.g. 5 => '5px'
@@ -10,5 +12,24 @@ export function boxUnitToString(value: BoxUnit): string {
   }
   else {
     return value;
+  }
+}
+
+/** 
+ * Converts common suppoted props into a `klass` + remainder 
+ */
+export function processCommonProps<T extends GLSProps>(props: T): { klass: string, otherProps: any } {
+  const { scroll, ...otherProps } = props;
+
+  return {
+    klass: typestyle.classes(
+      /** Scroll */
+      props.scroll != null && (
+        props.scroll == 'horizontal' ? scrollHelpers.scrollHorizontal()
+          : props.scroll == 'vertical' ? scrollHelpers.scrollVertical()
+            : scrollHelpers.scroll()
+      ),
+    ),
+    otherProps
   }
 }

@@ -21,3 +21,11 @@ export const Spacing = {
  * - '5rem'
  */
 export type BoxUnit = number | string;
+
+
+/** 
+ * Props accepted by all our components 
+ */
+export interface GLSProps extends React.HTMLProps<HTMLDivElement> {
+  scroll?: 'both' | 'vertical' | 'horizontal';
+}
