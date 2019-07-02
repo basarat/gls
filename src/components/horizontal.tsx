@@ -14,7 +14,7 @@ export interface HorizontalProps extends React.HTMLProps<HTMLDivElement> {
   verticalAlign?: 'top' /** default */ | 'center' | 'bottom',
 }
 
-export const Horizontal: React.SFC<HorizontalProps> = (props) => {
+export const Horizontal: React.FC<HorizontalProps> = (props) => {
   const {
     className,
     horizontalAlign,

@@ -17,7 +17,7 @@ export interface VerticalProps extends React.HTMLProps<HTMLDivElement> {
 /** 
  * Layout out children with a vertical margin between them
  */
-export const Vertical: React.SFC<VerticalProps> = (props) => {
+export const Vertical: React.FC<VerticalProps> = (props) => {
   const {
     className,
     horizontalAlign,

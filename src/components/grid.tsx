@@ -15,7 +15,7 @@ export interface GridProps extends React.HTMLProps<HTMLDivElement> {
 /** 
  * Lays out children with a margin between them (horizontal and vertical)
  */
-export const Grid: React.SFC<GridProps> = (props) => {
+export const Grid: React.FC<GridProps> = (props) => {
   const { className, ...otherProps } = props;
   const klass = classes(
     className,

@@ -14,3 +14,10 @@ export const Spacing = {
     horizontal: 24,
   }
 }
+
+/** 
+ * Example: 
+ * - 5 (implies 5px)
+ * - '5rem'
+ */
+export type BoxUnit = number | string;

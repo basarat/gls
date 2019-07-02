@@ -5,7 +5,7 @@ import * as csstips from 'csstips';
 /** 
  * For providing a *as much as available* amount of space for an item
  */
-export const FlexContainer: React.SFC<React.HTMLProps<HTMLDivElement>> = (props) => {
+export const FlexContainer: React.FC<React.HTMLProps<HTMLDivElement>> = (props) => {
   const { className, ...otherProps } = props;
   const klass = typestyle.classes(
     className,
@@ -20,7 +20,7 @@ FlexContainer.displayName = 'FlexContainer';
 /** 
  * For providing a *as much as needed* amount of space for an item
  */
-export const ContentContainer: React.SFC<React.HTMLProps<HTMLDivElement>> = (props) => {
+export const ContentContainer: React.FC<React.HTMLProps<HTMLDivElement>> = (props) => {
   const { className, ...otherProps } = props;
   const klass = typestyle.classes(
     className,
