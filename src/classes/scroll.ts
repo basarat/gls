@@ -3,7 +3,7 @@
  */
 import * as typestyle from 'typestyle';
 
-export const scroll = () => typestyle.style({
+export const scrollBoth = () => typestyle.style({
   '-webkit-overflow-scrolling': 'touch',
   overflow: 'auto'
 });
@@ -21,8 +21,8 @@ export const scrollVertical = () => typestyle.style({
 /**
  * If you expect a child somewhere down in the tree to scroll
  * you need to tell the browser to prevent a scroll bar. 
- * Use : `parent(someChildWillScroll) > child(scroll)`
+ * Use : `parent(scrollDisabled) > child(scroll)`
  */
-export const someChildWillScroll = () => typestyle.style({
+export const scrollDisabled = () => typestyle.style({
   overflow: 'hidden'
 });

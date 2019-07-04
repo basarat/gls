@@ -47,6 +47,6 @@ export type Box =
  * Props accepted by all our components 
  */
 export interface GLSProps extends React.HTMLProps<HTMLDivElement> {
-  scroll?: 'both' | 'vertical' | 'horizontal';
+  scroll?: 'both' | 'vertical' | 'horizontal' | 'disabled';
   padding?: Box;
 }

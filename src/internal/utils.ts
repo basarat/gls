@@ -28,9 +28,10 @@ export function processGLSProps<T extends GLSProps>(props: T): Omit<T, 'scroll' 
 
       /** Scroll */
       props.scroll != null && (
-        props.scroll == 'horizontal' ? scrollHelpers.scrollHorizontal()
+        props.scroll == 'disabled' ? scrollHelpers.scrollDisabled()
+        : props.scroll == 'horizontal' ? scrollHelpers.scrollHorizontal()
           : props.scroll == 'vertical' ? scrollHelpers.scrollVertical()
-            : scrollHelpers.scroll()
+            : scrollHelpers.scrollBoth()
       ),
       /** Padding */
       padding != null && box.padding(padding)
