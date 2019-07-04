@@ -23,19 +23,19 @@ export function processGLSProps<T extends GLSProps>(props: T): Omit<T, 'scroll' 
   const { scroll, padding, ...otherProps } = props;
 
   return {
+    ...otherProps,
     className: typestyle.classes(
       props.className,
 
       /** Scroll */
       props.scroll != null && (
-        props.scroll == 'disabled' ? scrollHelpers.scrollDisabled()
-        : props.scroll == 'horizontal' ? scrollHelpers.scrollHorizontal()
-          : props.scroll == 'vertical' ? scrollHelpers.scrollVertical()
-            : scrollHelpers.scrollBoth()
+        props.scroll == 'disabled' ? scrollHelpers.disa()
+          : props.scroll == 'horizontal' ? scrollHelpers.scrollHorizontal()
+            : props.scroll == 'vertical' ? scrollHelpers.scrollVertical()
+              : scrollHelpers.scrollBoth()
       ),
       /** Padding */
       padding != null && box.padding(padding)
     ),
-    ...otherProps
   }
 }
