@@ -18,7 +18,7 @@ export function boxUnitToString(value: BoxUnit): string {
 /** 
  * Converts common suppoted props into a `klass` + remainder 
  */
-export function processCommonProps<T extends GLSProps>(props: T): { klass: string, otherProps: any } {
+export function processGLSProps<T extends GLSProps>(props: T): { klass: string, otherProps: any } {
   const { scroll, padding, ...otherProps } = props;
 
   return {

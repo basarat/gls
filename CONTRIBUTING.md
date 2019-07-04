@@ -44,3 +44,8 @@ const klass = classes(
 ```ts
 WrappingGrid.displayName = 'WrappingGrid';
 ```
+
+# GLSProps
+The props we want to be supported by a potential wysiwyg editor get added to `GLSProps`. 
+
+Potentially all of these can be done by the user in `style` Or `className`, but its just easier this way.

@@ -34,20 +34,21 @@ export interface BoxFunction<T> {
   (top: BoxUnit, right: BoxUnit, bottom: BoxUnit, left: BoxUnit): T;
 }
 
-/**
- * Common props for a box
+/** 
+ * DataStructure for common prop tuple representation 
  */
-export type Box = {
-  top: string;
-  right: string;
-  bottom: string;
-  left: string;
-}
+export type Box =
+  /** top,right,bottom,left */
+  | BoxUnit
+  /** Top&Bottom, Left&Right */
+  | [BoxUnit, BoxUnit]
+  /** Top, Right, Bottom, Left */
+  | [BoxUnit, BoxUnit, BoxUnit, BoxUnit];
 
 /** 
  * Props accepted by all our components 
  */
 export interface GLSProps extends React.HTMLProps<HTMLDivElement> {
   scroll?: 'both' | 'vertical' | 'horizontal';
-  padding?: BoxUnit;
+  padding?: Box;
 }

@@ -14,15 +14,7 @@ function createBoxFunction<T>(mapFromBox: (box: Box) => T): BoxFunction<T> {
       c = a;
       d = b;
     }
-
-    let box = {
-      top: boxUnitToString(a),
-      right: boxUnitToString(b!),
-      bottom: boxUnitToString(c!),
-      left: boxUnitToString(d!)
-    };
-
-    return mapFromBox(box);
+    return mapFromBox([boxUnitToString(a), boxUnitToString(b!), boxUnitToString(c!), boxUnitToString(d!)]);
   }
   return result;
 }

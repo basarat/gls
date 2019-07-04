@@ -27,10 +27,7 @@ export function gridSpaced(topAndBottom: BoxUnit, leftAndRight = topAndBottom): 
 export interface GridProps extends React.HTMLProps<HTMLDivElement> {
   spacing?:
   | BoxUnit
-  | {
-    vertical: BoxUnit
-    horizontal: BoxUnit
-  }
+  | [BoxUnit, BoxUnit]
 }
 
 /** 
@@ -50,8 +47,7 @@ export const Grid: React.FC<GridProps> = (props) => {
       horizontal = props.spacing;
       vertical = horizontal;
     } else {
-      horizontal = props.spacing.horizontal;
-      vertical = props.spacing.vertical;
+      [vertical, horizontal] = props.spacing;
     }
   }
 
