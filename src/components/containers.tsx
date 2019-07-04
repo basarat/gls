@@ -1,12 +1,14 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
 import * as csstips from 'csstips';
+import { GLSProps } from '../common';
+import { processGLSProps } from '../internal/utils';
 
 /** 
  * For providing a *as much as available* amount of space for an item
  */
-export const Flex: React.FC<React.HTMLProps<HTMLDivElement>> = (props) => {
-  const { className, ...otherProps } = props;
+export const Flex: React.FC<GLSProps> = (props) => {
+  const { className, ...otherProps } = processGLSProps(props);
   const klass = typestyle.classes(
     className,
     typestyle.style(csstips.flex)
@@ -20,8 +22,8 @@ Flex.displayName = 'Flex';
 /** 
  * For providing a *as much as needed* amount of space for an item
  */
-export const Content: React.FC<React.HTMLProps<HTMLDivElement>> = (props) => {
-  const { className, ...otherProps } = props;
+export const Content: React.FC<GLSProps> = (props) => {
+  const { className, ...otherProps } = processGLSProps(props);
   const klass = typestyle.classes(
     className,
     typestyle.style(csstips.content)

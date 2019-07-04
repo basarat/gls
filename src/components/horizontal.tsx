@@ -1,13 +1,14 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
 import * as csstips from 'csstips';
-import { Spacing } from '../common';
+import { Spacing, GLSProps } from '../common';
+import { processGLSProps } from '../internal/utils';
 
 ///////////////////////////////////
 // Horizontal
 ///////////////////////////////////
 
-export interface HorizontalProps extends React.HTMLProps<HTMLDivElement> {
+export interface HorizontalProps extends GLSProps {
   spacing?: number,
 
   horizontalAlign?: 'left' /** default */ | 'right' | 'center',
@@ -19,7 +20,7 @@ export const Horizontal: React.FC<HorizontalProps> = (props) => {
     className,
     horizontalAlign,
     verticalAlign,
-    ...otherProps } = props;
+    ...otherProps } = processGLSProps(props);
 
   const klass =
     typestyle.classes(

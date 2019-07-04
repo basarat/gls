@@ -1,13 +1,14 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
 import * as csstips from 'csstips';
-import { Spacing } from '../common';
+import { Spacing, GLSProps } from '../common';
+import { processGLSProps } from '../internal/utils';
 
 ///////////////////////////////////
 // Vertical 
 ///////////////////////////////////
 
-export interface VerticalProps extends React.HTMLProps<HTMLDivElement> {
+export interface VerticalProps extends GLSProps {
   spacing?: number,
 
   verticalAlign?: 'top' /** default */ | 'center' | 'bottom',
@@ -23,7 +24,7 @@ export const Vertical: React.FC<VerticalProps> = (props) => {
     horizontalAlign,
     verticalAlign,
     ...otherProps
-  } = props;
+  } = processGLSProps(props);
 
   const klass = typestyle.classes(
     className,

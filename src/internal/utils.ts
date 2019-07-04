@@ -18,20 +18,22 @@ export function boxUnitToString(value: BoxUnit): string {
 /** 
  * Converts common suppoted props into a `klass` + remainder 
  */
-export function processGLSProps<T extends GLSProps>(props: T): { klass: string, otherProps: any } {
+export function processGLSProps<T extends GLSProps>(props: T): Omit<T, 'scroll' | 'padding'> {
   const { scroll, padding, ...otherProps } = props;
 
   return {
-    klass: typestyle.classes(
+    className: typestyle.classes(
+      props.className,
+      
       /** Scroll */
       props.scroll != null && (
         props.scroll == 'horizontal' ? scrollHelpers.scrollHorizontal()
           : props.scroll == 'vertical' ? scrollHelpers.scrollVertical()
             : scrollHelpers.scroll()
       ),
-    /** Padding */
-      props.padding != null && typestyle.style()
+      /** Padding */
+      props.padding != null && typestyle.style({})
     ),
-    otherProps
+    ...otherProps
   }
 }

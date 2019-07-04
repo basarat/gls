@@ -1,8 +1,8 @@
 import * as typestyle from 'typestyle';
 import { types, classes } from 'typestyle';
 import * as React from 'react';
-import { BoxUnit } from '../common';
-import { boxUnitToString } from '../internal/utils';
+import { BoxUnit, GLSProps } from '../common';
+import { boxUnitToString, processGLSProps } from '../internal/utils';
 
 /**
  * Puts a (horizontal AND vertical) margin between each child
@@ -24,7 +24,7 @@ export function gridSpaced(topAndBottom: BoxUnit, leftAndRight = topAndBottom): 
   );
 };
 
-export interface GridProps extends React.HTMLProps<HTMLDivElement> {
+export interface GridProps extends GLSProps {
   spacing?:
   | BoxUnit
   | [BoxUnit, BoxUnit]
@@ -34,7 +34,7 @@ export interface GridProps extends React.HTMLProps<HTMLDivElement> {
  * Lays out children with a margin between them (horizontal and vertical)
  */
 export const Grid: React.FC<GridProps> = (props) => {
-  const { className, ...otherProps } = props;
+  const { className, ...otherProps } = processGLSProps(props);
 
   /** 
    * Figure out the spacing requested 
