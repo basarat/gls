@@ -1,6 +1,7 @@
 import * as typestyle from 'typestyle';
 import { BoxUnit, GLSProps } from "../common";
 import * as scrollHelpers from "../classes/scroll";
+import * as box from "../classes/box";
 
 /**
  * For `number` we assume pixels e.g. 5 => '5px'
@@ -24,7 +25,7 @@ export function processGLSProps<T extends GLSProps>(props: T): Omit<T, 'scroll' 
   return {
     className: typestyle.classes(
       props.className,
-      
+
       /** Scroll */
       props.scroll != null && (
         props.scroll == 'horizontal' ? scrollHelpers.scrollHorizontal()
@@ -32,7 +33,7 @@ export function processGLSProps<T extends GLSProps>(props: T): Omit<T, 'scroll' 
             : scrollHelpers.scroll()
       ),
       /** Padding */
-      props.padding != null && typestyle.style({})
+      padding != null && box.padding(padding)
     ),
     ...otherProps
   }

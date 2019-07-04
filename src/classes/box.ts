@@ -3,8 +3,8 @@ import { boxUnitToString } from "../internal/utils";
 import * as typestyle from "typestyle";
 
 /**
- * Takes a function that expects a full Box to be passed into it
- * and creates a BoxFunction
+ * @param mapFromBox function that expects a full `Box`
+ * @returns a function that can work with any partial `Box`
  */
 function createBoxFunction(
   mapFromBox: (box: [BoxUnit, BoxUnit, BoxUnit, BoxUnit]) => typestyle.types.NestedCSSProperties
@@ -32,17 +32,5 @@ export const padding = createBoxFunction(([top, right, bottom, left]) => {
     paddingRight: right,
     paddingBottom: bottom,
     paddingLeft: left
-  };
-});
-
-/** 
- * Border
- */
-export const border = createBoxFunction(([top, right, bottom, left]) => {
-  return {
-    borderTop: top,
-    borderRight: right,
-    borderBottom: bottom,
-    borderLeft: left
   };
 });
