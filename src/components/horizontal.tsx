@@ -11,7 +11,7 @@ import { processGLSProps } from '../internal/utils';
 export interface HorizontalProps extends GLSProps {
   spacing?: number,
 
-  horizontalAlign?: 'left' /** default */ | 'right' | 'center',
+  horizontalAlign?: 'left' /** default */ | 'center' | 'right',
   verticalAlign?: 'top' /** default */ | 'center' | 'bottom',
 }
 

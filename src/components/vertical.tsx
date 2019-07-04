@@ -12,7 +12,7 @@ export interface VerticalProps extends GLSProps {
   spacing?: number,
 
   verticalAlign?: 'top' /** default */ | 'center' | 'bottom',
-  horizontalAlign?: 'left' /** default */ | 'right' | 'center',
+  horizontalAlign?: 'left' /** default */ | 'center' | 'right',
 }
 
 /** 
