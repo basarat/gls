@@ -27,12 +27,10 @@ export type BoxUnit = number | string;
  * - all
  * - topAndBottom + leftRight
  * - top + right + bottom + left
+ * 
+ * And generate a CSS classname from it.
  */
-export interface BoxFunction<T> {
-  (all: BoxUnit): T;
-  (topAndBottom: BoxUnit, leftAndRight: BoxUnit): T;
-  (top: BoxUnit, right: BoxUnit, bottom: BoxUnit, left: BoxUnit): T;
-}
+export type BoxFunction = (all: Box) => string;
 
 /** 
  * DataStructure for common prop tuple representation 
