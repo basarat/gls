@@ -1,0 +1,2 @@
+# Fix `gh-pages` langauge detection
+*.js linguist-language=TypeScript
