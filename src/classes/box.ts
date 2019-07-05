@@ -12,12 +12,12 @@ function createBoxFunction(
   const result: BoxFunction = (box: Box) => {
     if (typeof box == 'string' || typeof box == 'number') {
       const united = boxUnitToString(box);
-      return typestyle.style(mapFromBox([united, united, united, united]));
+      return mapFromBox([united, united, united, united]);
     } else if (box.length == 2) {
       const [topBottom, leftRight] = box.map(boxUnitToString);
-      return typestyle.style(mapFromBox([topBottom, leftRight, topBottom, leftRight]));
+      return mapFromBox([topBottom, leftRight, topBottom, leftRight]);
     } else {
-      return typestyle.style(mapFromBox(box.map(boxUnitToString) as any));
+      return mapFromBox(box.map(boxUnitToString) as any);
     }
   }
   return result;

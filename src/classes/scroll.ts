@@ -1,28 +1,28 @@
 /**
  * @module scroll helpers
  */
-import * as typestyle from 'typestyle';
+import { types } from 'typestyle';
 
-export const scrollBoth = () => typestyle.style({
+export const scrollBoth: types.NestedCSSProperties = {
   '-webkit-overflow-scrolling': 'touch',
   overflow: 'auto'
-});
+};
 
-export const scrollHorizontal = () => typestyle.style({
+export const scrollHorizontal: types.NestedCSSProperties = {
   '-webkit-overflow-scrolling': 'touch',
   overflowX: 'auto'
-});
+};
 
-export const scrollVertical = () => typestyle.style({
+export const scrollVertical: types.NestedCSSProperties = {
   '-webkit-overflow-scrolling': 'touch',
   overflowY: 'auto'
-});
+};
 
 /**
  * If you expect a child somewhere down in the tree to scroll
  * you need to tell the browser to prevent a scroll bar. 
- * Use : `parent(scrollDisabled) > child(scroll)`
+ * Example use : `parent(scrollDisabled) > child(scroll)`
  */
-export const scrollDisabled = () => typestyle.style({
+export const scrollDisabled: types.NestedCSSProperties = {
   overflow: 'hidden'
-});
+};

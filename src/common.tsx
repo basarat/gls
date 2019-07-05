@@ -1,3 +1,5 @@
+import { types } from "typestyle";
+
 /** 
  * The default spacing used by the layout components 
  * You can customize it e.g. 
@@ -30,7 +32,7 @@ export type BoxUnit = number | string;
  * 
  * And generate a CSS classname from it.
  */
-export type BoxFunction = (all: Box) => string;
+export type BoxFunction = (all: Box) => types.NestedCSSProperties;
 
 /** 
  * DataStructure for common prop tuple representation 
