@@ -19,8 +19,8 @@ export function boxUnitToString(value: BoxUnit): string {
 /** 
  * Converts common suppoted props into a `klass` + remainder 
  */
-export function processGLSProps<T extends GLSProps>(props: T): Omit<T, 'scroll' | 'padding'> {
-  const { scroll, padding, ...otherProps } = props;
+export function processGLSProps<T extends GLSProps>(props: T): Omit<T, 'scroll' | 'padding' | 'styles'> {
+  const { scroll, padding, styles = [], ...otherProps } = props;
 
   return {
     ...otherProps,
@@ -35,7 +35,9 @@ export function processGLSProps<T extends GLSProps>(props: T): Omit<T, 'scroll' 
                 : scrollHelpers.scrollBoth
         ),
         /** Padding */
-        padding != null && box.padding(padding)
+        padding != null && box.padding(padding),
+        /** Any user customizations */
+        ...styles,
       )
     ),
   }

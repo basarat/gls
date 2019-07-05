@@ -51,4 +51,5 @@ export type Box =
 export interface GLSProps extends React.HTMLProps<HTMLDivElement> {
   scroll?: 'both' | 'vertical' | 'horizontal' | 'disabled';
   padding?: Box;
+  styles?: [types.NestedCSSProperties | null | false]
 }
