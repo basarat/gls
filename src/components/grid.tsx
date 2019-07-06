@@ -1,7 +1,7 @@
 import * as typestyle from 'typestyle';
-import { types, classes } from 'typestyle';
+import { classes } from 'typestyle';
 import * as React from 'react';
-import { BoxUnit, GLSProps } from '../common';
+import { BoxUnit, GLSProps, VerticalSpacingConsumer, HorizontalSpacingConsumer } from '../common';
 import { boxUnitToString, processGLSProps } from '../internal/utils';
 
 /**
@@ -16,11 +16,13 @@ export function gridSpaced(topAndBottom: BoxUnit, leftAndRight = topAndBottom): 
     {
       marginTop: '-' + vertical,
       marginLeft: '-' + horizontal,
-      '&>*': {
-        marginTop: vertical,
-        marginLeft: horizontal,
+      $nest: {
+        '&>*': {
+          marginTop: vertical,
+          marginLeft: horizontal,
+        }
       }
-    } as types.CSSProperties
+    }
   );
 };
 
@@ -41,7 +43,7 @@ export const Grid: React.FC<GridProps> = (props) => {
    */
   let horizontal!: BoxUnit;
   let vertical!: BoxUnit;
-  if ('spacing' in props && props.spacing != null) {
+  if (props.spacing != null) {
     delete (otherProps as any).spacing;
     if (typeof props.spacing == 'number' || typeof props.spacing == 'string') {
       horizontal = props.spacing;
@@ -49,14 +51,31 @@ export const Grid: React.FC<GridProps> = (props) => {
     } else {
       [vertical, horizontal] = props.spacing;
     }
+    const klass = classes(
+      className,
+      gridSpaced(vertical, horizontal),
+    );
+    return (
+      <div {...otherProps} className={klass} data-comment='Grid' />
+    );
+  } else {
+    return (<VerticalSpacingConsumer>{
+      (vertical) => {
+        return (
+          <HorizontalSpacingConsumer>
+            {(horizontal) => {
+              const klass = classes(
+                className,
+                gridSpaced(vertical, horizontal),
+              );
+              return (
+                <div {...otherProps} className={klass} data-comment='Grid' />
+              );
+            }}
+          </HorizontalSpacingConsumer>
+        )
+      }
+    }</VerticalSpacingConsumer>);
   }
-
-  const klass = classes(
-    className,
-    gridSpaced(vertical, horizontal),
-  );
-  return (
-    <div {...otherProps} className={klass} data-comment='Grid' />
-  );
 }
 Grid.displayName = 'Grid';
