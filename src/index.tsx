@@ -1,4 +1,4 @@
-export * from './classes/scroll';
+export * from './styles/scroll';
 
 export * from './common';
 export * from './components/grid';

@@ -29,27 +29,17 @@ export type BoxUnit = number | string;
  * - all
  * - topAndBottom + leftRight
  * - top + right + bottom + left
- * 
- * And generate a CSS classname from it.
  */
-export type BoxFunction = (all: Box) => types.NestedCSSProperties;
-
-/** 
- * DataStructure for common prop tuple representation 
- */
-export type Box =
-  /** top,right,bottom,left */
-  | BoxUnit
-  /** Top&Bottom, Left&Right */
-  | [BoxUnit, BoxUnit]
-  /** Top, Right, Bottom, Left */
-  | [BoxUnit, BoxUnit, BoxUnit, BoxUnit];
+export interface BoxFunction<T> {
+  (all: BoxUnit): T;
+  (topAndBottom: BoxUnit, leftAndRight: BoxUnit): T;
+  (top: BoxUnit, right: BoxUnit, bottom: BoxUnit, left: BoxUnit): T;
+}
 
 /** 
  * Props accepted by all our components 
  */
 export interface GLSProps extends React.HTMLProps<HTMLDivElement> {
   scroll?: 'both' | 'vertical' | 'horizontal' | 'disabled';
-  padding?: Box;
   styles?: [types.NestedCSSProperties | null | false]
 }
