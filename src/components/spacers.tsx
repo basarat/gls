@@ -1,7 +1,7 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
 import * as csstips from 'csstips';
-import { Spacing, BoxUnit } from '../common';
+import { BoxUnit, VerticalSpacingConsumer, HorizontalSpacingConsumer } from '../common';
 import { boxUnitToString } from '../internal/utils';
 
 /** 
@@ -31,14 +31,20 @@ interface SpaceProps extends React.HTMLProps<HTMLDivElement> {
  */
 export const HorizontalSpace: React.FC<SpaceProps> = (props) => {
   const { style, ...otherProps } = props;
-  const width = boxUnitToString(props.space == null ? Spacing.horizontal : props.space);
-  const styles: React.CSSProperties = {
-    display: 'inline-block',
-    width: width,
-    ...style
-  };
   return (
-    <div {...otherProps} style={styles} data-comment='HorizontalSpace' />
+    <HorizontalSpacingConsumer>
+      {
+        (horizontal) => {
+          const width = boxUnitToString(props.space == null ? horizontal : props.space);
+          const styles: React.CSSProperties = {
+            display: 'inline-block',
+            width: width,
+            ...style
+          };
+          return <div {...otherProps} style={styles} data-comment='HorizontalSpace' />;
+        }
+      }
+    </HorizontalSpacingConsumer>
   );
 };
 HorizontalSpace.displayName = 'HorizontalSpace';
@@ -49,13 +55,20 @@ HorizontalSpace.displayName = 'HorizontalSpace';
  */
 export const VerticalSpace: React.FC<SpaceProps> = (props) => {
   const { style, ...otherProps } = props;
-  const height = boxUnitToString(props.space == null ? Spacing.vertical : props.space);
-  const styles: React.CSSProperties = {
-    height: height,
-    ...style
-  };
+
   return (
-    <div {...otherProps} style={styles} data-comment='VerticalSpace' />
+    <VerticalSpacingConsumer>
+      {
+        (vertical) => {
+          const height = boxUnitToString(props.space == null ? vertical : props.space);
+          const styles: React.CSSProperties = {
+            height: height,
+            ...style
+          };
+          return <div {...otherProps} style={styles} data-comment='VerticalSpace' />;
+        }
+      }
+    </VerticalSpacingConsumer>
   );
 };
 VerticalSpace.displayName = 'VerticalSpace';

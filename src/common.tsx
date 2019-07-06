@@ -1,21 +1,21 @@
 import { types } from "typestyle";
+import React from 'react';
 
 /** 
- * The default spacing used by the layout components 
- * You can customize it e.g. 
- * ```ts
- * import { Spacing } from 'gls';
- * Spacing.vertical = 30;
- * ```
+ * Default spacing used in the Vertical axis
  */
-export const Spacing = {
-  vertical: 24,
-  horizontal: 24,
-  grid: {
-    vertical: 24,
-    horizontal: 24,
-  }
-}
+export const {
+  Provider: VerticalSpacingProvider,
+  Consumer: VerticalSpacingConsumer
+} = React.createContext(24);
+
+/** 
+ * Default spacing used in the Horizontal axis
+ */
+export const {
+  Provider: HorizontalSpacingProvider,
+  Consumer: HorizontalSpacingConsumer
+} = React.createContext(24);
 
 /** 
  * Example: 

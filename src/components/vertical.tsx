@@ -1,7 +1,7 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
 import * as csstips from 'csstips';
-import { Spacing, GLSProps } from '../common';
+import { GLSProps, VerticalSpacingConsumer } from '../common';
 import { processGLSProps } from '../internal/utils';
 
 ///////////////////////////////////
@@ -26,21 +26,24 @@ export const Vertical: React.FC<VerticalProps> = (props) => {
     ...otherProps
   } = processGLSProps(props);
 
-  const klass = typestyle.classes(
-    className,
-    typestyle.style(
-      csstips.content,
-      csstips.vertical,
-      csstips.verticallySpaced(props.spacing == null ? Spacing.vertical : props.spacing),
-      verticalAlign == 'center' && csstips.centerJustified,
-      verticalAlign == 'bottom' && csstips.endJustified,
-      horizontalAlign == 'right' && csstips.end,
-      horizontalAlign == 'center' && csstips.center,
-    )
-  );
-
   return (
-    <div {...otherProps} className={klass} data-comment='Vertical' />
+    <VerticalSpacingConsumer>{
+      (vertical) => {
+        const klass = typestyle.classes(
+          className,
+          typestyle.style(
+            csstips.content,
+            csstips.vertical,
+            csstips.verticallySpaced(props.spacing == null ? vertical : props.spacing),
+            verticalAlign == 'center' && csstips.centerJustified,
+            verticalAlign == 'bottom' && csstips.endJustified,
+            horizontalAlign == 'right' && csstips.end,
+            horizontalAlign == 'center' && csstips.center,
+          )
+        );
+        return <div {...otherProps} className={klass} data-comment='Vertical' />
+      }
+    }</VerticalSpacingConsumer>
   );
 }
 Vertical.displayName = 'Vertical';

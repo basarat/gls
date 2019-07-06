@@ -1,7 +1,7 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
 import * as csstips from 'csstips';
-import { Spacing, GLSProps } from '../common';
+import { GLSProps, HorizontalSpacingConsumer } from '../common';
 import { processGLSProps } from '../internal/utils';
 
 ///////////////////////////////////
@@ -22,22 +22,25 @@ export const Horizontal: React.FC<HorizontalProps> = (props) => {
     verticalAlign,
     ...otherProps } = processGLSProps(props);
 
-  const klass =
-    typestyle.classes(
-      className,
-      typestyle.style(
-        csstips.content,
-        csstips.horizontal,
-        csstips.horizontallySpaced(props.spacing == null ? Spacing.horizontal : props.spacing),
-        horizontalAlign == 'right' && csstips.endJustified,
-        horizontalAlign == 'center' && csstips.centerJustified,
-        verticalAlign == 'center' && csstips.center,
-        verticalAlign == 'bottom' && csstips.end,
-      )
-    );
-
   return (
-    <div {...otherProps} className={klass} data-comment='Horizontal' />
+    <HorizontalSpacingConsumer>{
+      (horizontal) => {
+        const klass =
+          typestyle.classes(
+            className,
+            typestyle.style(
+              csstips.content,
+              csstips.horizontal,
+              csstips.horizontallySpaced(props.spacing == null ? horizontal : props.spacing),
+              horizontalAlign == 'right' && csstips.endJustified,
+              horizontalAlign == 'center' && csstips.centerJustified,
+              verticalAlign == 'center' && csstips.center,
+              verticalAlign == 'bottom' && csstips.end,
+            )
+          );
+        return <div {...otherProps} className={klass} data-comment='Horizontal' />
+      }
+    }</HorizontalSpacingConsumer>
   );
 }
 Horizontal.displayName = 'Horizontal';
