@@ -46,9 +46,5 @@ export function processGLSProps<T extends GLSProps>(props: T): Omit<T, 'scroll' 
  */
 export function processFlexProp(prop: FlexProp): typestyle.types.CSSProperties {
   const { flex: fx } = prop;
-  if (fx == null || fx == 'content') {
-    return content;
-  } else {
-    return flex(fx);
-  }
+  return (fx == null || fx == 'content') ? content : flex(fx);
 }
