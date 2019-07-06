@@ -48,3 +48,17 @@ export const border = createBoxFunction((top, right, bottom, left) => {
     borderLeft: left
   };
 });
+
+/** 
+ * Width 
+ */
+export const width = (value: BoxUnit) => {
+  return { width: boxUnitToString(value) };
+}
+
+/** 
+ * Height
+ */
+export const height = (value: BoxUnit) => {
+  return { height: boxUnitToString(value) };
+}
