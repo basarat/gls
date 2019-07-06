@@ -45,14 +45,9 @@ export interface GLSProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 /** 
- * Specifies `flex` interaction with parent 
+ * Constrained set of supported flex ratios
  */
-export interface FlexProp {
-  /** 
-   * Specifies `flex` interaction with parent 
-   */
-  flex?:
-  | 'content' /** default */
+export type FlexGrow =
   | 1
   | 2
   | 3
@@ -65,4 +60,15 @@ export interface FlexProp {
   | 10
   | 11
   | 12;
+
+/** 
+ * Specifies `flex` interaction with parent 
+ */
+export interface FlexProp {
+  /** 
+   * Specifies `flex` interaction with parent 
+   */
+  flex?:
+  | 'content' /** default */
+  | FlexGrow;
 }
