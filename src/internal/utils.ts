@@ -8,12 +8,7 @@ import { content, flex } from '../styles/flex';
  * For `string` *you* should provide the unit e.g. '5px'
  */
 export function boxUnitToString(value: BoxUnit): string {
-  if (typeof value === 'number') {
-    return value.toString() + 'px';
-  }
-  else {
-    return value;
-  }
+  return typeof value === 'number' ? value + 'px' : value;
 }
 
 /** 
