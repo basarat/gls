@@ -70,5 +70,6 @@ export interface FlexProp {
    */
   flex?:
   | 'content' /** default */
+  | 'flex' /** Same as `1` */
   | FlexGrow;
 }

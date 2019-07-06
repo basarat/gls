@@ -40,6 +40,8 @@ export function processGLSProps<T extends GLSProps>(props: T): Omit<T, 'scroll' 
  * Generates the appropriate styles to handle the flex interaction 
  */
 export function processFlexProp(prop: FlexProp): typestyle.types.CSSProperties {
-  const { flex: fx } = prop;
-  return (fx == null || fx == 'content') ? content : flex(fx);
+  const { flex: fx = 'content' } = prop;
+  return fx == 'content' ? content
+    : fx == 'flex' ? flex(1)
+      : flex(fx);
 }

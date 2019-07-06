@@ -35,7 +35,7 @@ export const content: types.CSSProperties = {
   '-webkit-flex-shrink': 0,
   flexShrink: 0,
   flexBasis: 'auto',
-} as any;
+} as types.CSSProperties;
 
 export const flex = (flex: FlexGrow = 1): types.CSSProperties => {
   return {
@@ -53,17 +53,17 @@ export const start: types.CSSProperties = {
   '-ms-flex-align': 'start',
   '-webkit-align-items': 'flex-start',
   alignItems: 'flex-start'
-};
+} as types.CSSProperties;
 export const center: types.CSSProperties = {
   '-ms-flex-align': 'center',
   '-webkit-align-items': 'center',
   alignItems: 'center'
-};
+} as types.CSSProperties;
 export const end: types.CSSProperties = {
   '-ms-flex-align': 'end',
   '-webkit-align-items': 'flex-end',
   alignItems: 'flex-end'
-};
+} as types.CSSProperties;
 
 ////////////////////////////
 // Alignment in main axis //
@@ -73,14 +73,14 @@ export const startJustified: types.CSSProperties = {
   '-ms-flex-pack': 'start',
   '-webkit-justify-content': 'flex-start',
   justifyContent: 'flex-start'
-};
+} as types.CSSProperties;
 export const centerJustified: types.CSSProperties = {
   '-ms-flex-pack': 'center',
   '-webkit-justify-content': 'center',
   justifyContent: 'center'
-};
+} as types.CSSProperties;
 export const endJustified: types.CSSProperties = {
   '-ms-flex-pack': 'end',
   '-webkit-justify-content': 'flex-end',
   justifyContent: 'flex-end'
-};
+} as types.CSSProperties;
