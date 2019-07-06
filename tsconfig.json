@@ -3,6 +3,9 @@
         "target": "es5",
         "module": "commonjs",
         "moduleResolution": "node",
+        "declaration": true,
+        "declarationMap": true,
+        "sourceMap": true,
         "isolatedModules": false,
         "esModuleInterop": true,
         "jsx": "react",
@@ -11,7 +14,7 @@
         "noUnusedParameters": true,
         "noImplicitAny": true,
         "lib": [
-            "dom", 
+            "dom",
             "es6",
         ],
         "outDir": "lib"

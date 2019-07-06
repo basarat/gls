@@ -21,8 +21,9 @@
     "url": "git+https://github.com/basarat/gls.git"
   },
   "keywords": [
-    "grid",
-    "layout"
+    "layout",
+    "react",
+    "typescript"
   ],
   "author": "basaratali@gmail.com",
   "license": "MIT",
@@ -39,7 +40,6 @@
     "@types/react": "16.8.19",
     "@types/react-dom": "16.8.4",
     "concurrently": "4.1.0",
-    "csstips": "1.1.0",
     "docz": "1.2.0",
     "docz-theme-default": "1.2.0",
     "gh-pages": "2.0.1",

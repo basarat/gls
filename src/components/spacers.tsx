@@ -1,17 +1,21 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import * as csstips from 'csstips';
-import { BoxUnit, VerticalSpacingConsumer, HorizontalSpacingConsumer } from '../common';
+import { BoxUnit, VerticalSpacingConsumer, HorizontalSpacingConsumer, FlexGrow } from '../common';
 import { boxUnitToString } from '../internal/utils';
+import { flex } from '../styles/flex';
+
+export interface FlexSpaceProps extends React.HTMLProps<HTMLDivElement> {
+  flex?: FlexGrow;
+}
 
 /** 
  * Flexes into any available space 
  */
-export const FlexSpace: React.FC<React.HTMLProps<HTMLDivElement>> = (props) => {
-  const { className, ...otherProps } = props;
+export const FlexSpace: React.FC<FlexSpaceProps> = (props) => {
+  const { className, flex: fx, ...otherProps } = props;
   const klass = typestyle.classes(
     className,
-    typestyle.style(csstips.flex)
+    typestyle.style(flex(fx))
   );
   return (
     <div {...otherProps} className={klass} data-comment='FlexSpace' />
@@ -22,7 +26,7 @@ FlexSpace.displayName = 'FlexSpace';
 /** 
  * Common interface for space props 
  */
-interface SpaceProps extends React.HTMLProps<HTMLDivElement> {
+export interface SpaceProps extends React.HTMLProps<HTMLDivElement> {
   space?: BoxUnit;
 }
 
