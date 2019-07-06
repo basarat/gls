@@ -1,6 +1,11 @@
+/** Common */
+export * from './common';
+
+/** Styles */
+export * from './styles/box';
 export * from './styles/scroll';
 
-export * from './common';
+/** Components */
 export * from './components/grid';
 export * from './components/vertical';
 export * from './components/horizontal';
