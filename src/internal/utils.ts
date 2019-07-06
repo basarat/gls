@@ -1,6 +1,7 @@
 import * as typestyle from 'typestyle';
-import { BoxUnit, GLSProps } from "../common";
+import { BoxUnit, GLSProps, FlexProp } from "../common";
 import * as scrollHelpers from "../styles/scroll";
+import { content } from '../styles/flex';
 
 /**
  * For `number` we assume pixels e.g. 5 => '5px'
@@ -37,5 +38,21 @@ export function processGLSProps<T extends GLSProps>(props: T): Omit<T, 'scroll' 
         ...styles,
       )
     ),
+  }
+}
+
+/** 
+ * Generates the appropriate styles to handle the flex interaction 
+ */
+export function processFlexProp(prop: FlexProp): typestyle.types.CSSProperties {
+  const { flex } = prop;
+  if (flex == null || flex == 'content') {
+    return content;
+  } else {
+    return {
+      '-ms-flex': flex,
+      '-webkit-flex': flex,
+      flex: flex,
+    };
   }
 }

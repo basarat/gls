@@ -1,9 +1,9 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { GLSProps, VerticalSpacingConsumer, BoxUnit } from '../common';
-import { processGLSProps, boxUnitToString } from '../internal/utils';
+import { GLSProps, VerticalSpacingConsumer, BoxUnit, FlexProp } from '../common';
+import { processGLSProps, boxUnitToString, processFlexProp } from '../internal/utils';
 import { types } from 'typestyle';
-import { content, vertical, centerJustified, endJustified, end, center } from '../styles/flex';
+import { vertical, centerJustified, endJustified, end, center } from '../styles/flex';
 
 /**
  * Puts a vertical margin between each child
@@ -22,21 +22,7 @@ export const verticallySpaced = (margin: BoxUnit) => {
   );
 };
 
-export interface VerticalProps extends GLSProps {
-  flex?:
-  | 'content' /** default */
-  | 1
-  | 2
-  | 3
-  | 4
-  | 5
-  | 6
-  | 7
-  | 8
-  | 9
-  | 10
-  | 11
-  | 12,
+export interface VerticalProps extends GLSProps, FlexProp {
   spacing?: number,
 
   verticalAlign?: 'top' /** default */ | 'center' | 'bottom',
@@ -60,7 +46,7 @@ export const Vertical: React.FC<VerticalProps> = (props) => {
         const klass = typestyle.classes(
           className,
           typestyle.style(
-            content,
+            processFlexProp(props),
             vertical,
             verticallySpaced(props.spacing == null ? verticalSpacing : props.spacing),
             verticalAlign == 'center' && centerJustified,

@@ -41,5 +41,25 @@ export interface BoxFunction<T> {
  */
 export interface GLSProps extends React.HTMLProps<HTMLDivElement> {
   scroll?: 'both' | 'vertical' | 'horizontal' | 'disabled';
-  styles?: [types.NestedCSSProperties | null | false]
+  styles?: (types.NestedCSSProperties | null | false)[];
+}
+
+/** 
+ * Specifies `flex` interaction with parent 
+ */
+export interface FlexProp {
+  flex?:
+  | 'content' /** default */
+  | 1
+  | 2
+  | 3
+  | 4
+  | 5
+  | 6
+  | 7
+  | 8
+  | 9
+  | 10
+  | 11
+  | 12;
 }
