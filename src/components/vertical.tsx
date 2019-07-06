@@ -1,14 +1,42 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import * as csstips from 'csstips';
-import { GLSProps, VerticalSpacingConsumer } from '../common';
-import { processGLSProps } from '../internal/utils';
+import { GLSProps, VerticalSpacingConsumer, BoxUnit } from '../common';
+import { processGLSProps, boxUnitToString } from '../internal/utils';
+import { types } from 'typestyle';
+import { content, vertical, centerJustified, endJustified, end, center } from '../styles/flex';
 
-///////////////////////////////////
-// Vertical 
-///////////////////////////////////
+/**
+ * Puts a vertical margin between each child
+ */
+export const verticallySpaced = (margin: BoxUnit) => {
+  const spacing = boxUnitToString(margin);
+  return (
+    {
+      '&>*': {
+        marginBottom: spacing + ' !important'
+      },
+      '&>*:last-child': {
+        marginBottom: '0px !important',
+      }
+    } as types.CSSProperties
+  );
+};
 
 export interface VerticalProps extends GLSProps {
+  flex?:
+  | 'content' /** default */
+  | 1
+  | 2
+  | 3
+  | 4
+  | 5
+  | 6
+  | 7
+  | 8
+  | 9
+  | 10
+  | 11
+  | 12,
   spacing?: number,
 
   verticalAlign?: 'top' /** default */ | 'center' | 'bottom',
@@ -28,17 +56,17 @@ export const Vertical: React.FC<VerticalProps> = (props) => {
 
   return (
     <VerticalSpacingConsumer>{
-      (vertical) => {
+      (verticalSpacing) => {
         const klass = typestyle.classes(
           className,
           typestyle.style(
-            csstips.content,
-            csstips.vertical,
-            csstips.verticallySpaced(props.spacing == null ? vertical : props.spacing),
-            verticalAlign == 'center' && csstips.centerJustified,
-            verticalAlign == 'bottom' && csstips.endJustified,
-            horizontalAlign == 'right' && csstips.end,
-            horizontalAlign == 'center' && csstips.center,
+            content,
+            vertical,
+            verticallySpaced(props.spacing == null ? verticalSpacing : props.spacing),
+            verticalAlign == 'center' && centerJustified,
+            verticalAlign == 'bottom' && endJustified,
+            horizontalAlign == 'right' && end,
+            horizontalAlign == 'center' && center,
           )
         );
         return <div {...otherProps} className={klass} data-comment='Vertical' />
