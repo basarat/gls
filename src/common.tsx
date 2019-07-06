@@ -48,6 +48,9 @@ export interface GLSProps extends React.HTMLProps<HTMLDivElement> {
  * Specifies `flex` interaction with parent 
  */
 export interface FlexProp {
+  /** 
+   * Specifies `flex` interaction with parent 
+   */
   flex?:
   | 'content' /** default */
   | 1

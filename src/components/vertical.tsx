@@ -30,13 +30,14 @@ export interface VerticalProps extends GLSProps, FlexProp {
 }
 
 /** 
- * Layout out children with a vertical margin between them
+ * Layout out children vertically with a margin between them
  */
 export const Vertical: React.FC<VerticalProps> = (props) => {
   const {
     className,
     horizontalAlign,
     verticalAlign,
+    flex,
     ...otherProps
   } = processGLSProps(props);
 
