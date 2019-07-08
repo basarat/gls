@@ -36,19 +36,18 @@ export interface GridProps extends GLSProps {
  * Lays out children with a margin between them (horizontal and vertical)
  */
 export const Grid: React.FC<GridProps> = (props) => {
-  const { className, ...otherProps } = processGLSProps(props);
+  const { className, spacing, ...otherProps } = processGLSProps(props);
 
   /** 
    * Figure out the spacing requested 
    */
   let { verticalSpacing, horizontalSpacing } = useGLSDefaults()
-  if (props.spacing != null) {
-    delete (otherProps as any).spacing;
-    if (typeof props.spacing == 'number' || typeof props.spacing == 'string') {
-      horizontalSpacing = props.spacing;
+  if (spacing != null) {
+    if (typeof spacing == 'number' || typeof spacing == 'string') {
+      horizontalSpacing = spacing;
       verticalSpacing = horizontalSpacing;
     } else {
-      [verticalSpacing, horizontalSpacing] = props.spacing;
+      [verticalSpacing, horizontalSpacing] = spacing;
     }
   }
 
