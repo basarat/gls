@@ -1,11 +1,11 @@
 {
-  "vendors.js": "/gls/static/js/vendors.32e53890.js",
-  "vendors.js.map": "/gls/static/js/vendors.c942ba1a2c9e10959810.js.map",
-  "app.js": "/gls/static/js/app.c942ba1a2c9e10959810.js",
-  "app.js.map": "/gls/static/js/app.c942ba1a2c9e10959810.js.map",
-  "src-index.js": "/gls/static/js/src-index.21dfeb7a.js",
-  "src-index.js.map": "/gls/static/js/src-index.c942ba1a2c9e10959810.js.map",
-  "src-vertical.js": "/gls/static/js/src-vertical.c3fbdda3.js",
-  "src-vertical.js.map": "/gls/static/js/src-vertical.c942ba1a2c9e10959810.js.map",
+  "vendors.js": "/gls/static/js/vendors.e75ea83c.js",
+  "vendors.js.map": "/gls/static/js/vendors.8f45ff209ff50d15c38a.js.map",
+  "app.js": "/gls/static/js/app.8f45ff209ff50d15c38a.js",
+  "app.js.map": "/gls/static/js/app.8f45ff209ff50d15c38a.js.map",
+  "src-index.js": "/gls/static/js/src-index.8e99c7c9.js",
+  "src-index.js.map": "/gls/static/js/src-index.8f45ff209ff50d15c38a.js.map",
+  "src-vertical.js": "/gls/static/js/src-vertical.cb66a817.js",
+  "src-vertical.js.map": "/gls/static/js/src-vertical.8f45ff209ff50d15c38a.js.map",
   "index.html": "/gls/index.html"
 }
