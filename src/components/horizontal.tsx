@@ -1,7 +1,7 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
 import { GLSProps, HorizontalSpacingConsumer, FlexProp, BoxUnit } from '../common';
-import { processGLSProps, processFlexProp, boxUnitToString } from '../internal/utils';
+import { processGLSProps, processFlexProp, boxUnitToString, useGLSDefaults } from '../internal/utils';
 import { horizontal, endJustified, centerJustified, center, end } from '../styles/flex';
 import { types } from 'typestyle';
 
@@ -40,25 +40,21 @@ export const Horizontal: React.FC<HorizontalProps> = (props) => {
     flex,
     ...otherProps } = processGLSProps(props);
 
-  return (
-    <HorizontalSpacingConsumer>{
-      (horizontalSpacing) => {
-        const klass =
-          typestyle.classes(
-            className,
-            typestyle.style(
-              processFlexProp(props),
-              horizontal,
-              horizontallySpaced(props.spacing == null ? horizontalSpacing : props.spacing),
-              horizontalAlign == 'right' && endJustified,
-              horizontalAlign == 'center' && centerJustified,
-              verticalAlign == 'center' && center,
-              verticalAlign == 'bottom' && end,
-            )
-          );
-        return <div {...otherProps} className={klass} data-comment='Horizontal' />
-      }
-    }</HorizontalSpacingConsumer>
-  );
+  const { horizontalSpacing } = useGLSDefaults();
+
+  const klass =
+    typestyle.classes(
+      className,
+      typestyle.style(
+        processFlexProp(props),
+        horizontal,
+        horizontallySpaced(props.spacing == null ? horizontalSpacing : props.spacing),
+        horizontalAlign == 'right' && endJustified,
+        horizontalAlign == 'center' && centerJustified,
+        verticalAlign == 'center' && center,
+        verticalAlign == 'bottom' && end,
+      )
+    );
+  return <div {...otherProps} className={klass} data-comment='Horizontal' />;
 }
 Horizontal.displayName = 'Horizontal';

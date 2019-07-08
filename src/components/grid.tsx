@@ -1,8 +1,8 @@
 import * as typestyle from 'typestyle';
 import { classes } from 'typestyle';
 import * as React from 'react';
-import { BoxUnit, GLSProps, VerticalSpacingConsumer, HorizontalSpacingConsumer } from '../common';
-import { boxUnitToString, processGLSProps } from '../internal/utils';
+import { BoxUnit, GLSProps, GLSDefaults } from '../common';
+import { boxUnitToString, processGLSProps, useGLSDefaults } from '../internal/utils';
 
 /**
  * Puts a (horizontal AND vertical) margin between each child
@@ -41,41 +41,23 @@ export const Grid: React.FC<GridProps> = (props) => {
   /** 
    * Figure out the spacing requested 
    */
-  let horizontal!: BoxUnit;
-  let vertical!: BoxUnit;
+  let { verticalSpacing, horizontalSpacing } = useGLSDefaults()
   if (props.spacing != null) {
     delete (otherProps as any).spacing;
     if (typeof props.spacing == 'number' || typeof props.spacing == 'string') {
-      horizontal = props.spacing;
-      vertical = horizontal;
+      horizontalSpacing = props.spacing;
+      verticalSpacing = horizontalSpacing;
     } else {
-      [vertical, horizontal] = props.spacing;
+      [verticalSpacing, horizontalSpacing] = props.spacing;
     }
-    const klass = classes(
-      className,
-      gridSpaced(vertical, horizontal),
-    );
-    return (
-      <div {...otherProps} className={klass} data-comment='Grid' />
-    );
-  } else {
-    return (<VerticalSpacingConsumer>{
-      (vertical) => {
-        return (
-          <HorizontalSpacingConsumer>
-            {(horizontal) => {
-              const klass = classes(
-                className,
-                gridSpaced(vertical, horizontal),
-              );
-              return (
-                <div {...otherProps} className={klass} data-comment='Grid' />
-              );
-            }}
-          </HorizontalSpacingConsumer>
-        )
-      }
-    }</VerticalSpacingConsumer>);
   }
+
+  const klass = classes(
+    className,
+    gridSpaced(verticalSpacing, horizontalSpacing),
+  );
+  return (
+    <div {...otherProps} className={klass} data-comment='Grid' />
+  );
 }
 Grid.displayName = 'Grid';

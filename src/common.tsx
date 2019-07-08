@@ -1,21 +1,16 @@
 import { types } from "typestyle";
 import React from 'react';
 
-/** 
- * Default spacing used in the Vertical axis
+/**
+ * Default values for components 
  */
-export const {
-  Provider: VerticalSpacingProvider,
-  Consumer: VerticalSpacingConsumer
-} = React.createContext(24);
-
-/** 
- * Default spacing used in the Horizontal axis
- */
-export const {
-  Provider: HorizontalSpacingProvider,
-  Consumer: HorizontalSpacingConsumer
-} = React.createContext(24);
+export const GLSDefaults = React.createContext<{
+  verticalSpacing?: BoxUnit,
+  horizontalSpacing?: BoxUnit,
+}>({
+  verticalSpacing: 24,
+  horizontalSpacing: 24
+});
 
 /** 
  * Example: 

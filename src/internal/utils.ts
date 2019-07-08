@@ -1,7 +1,8 @@
 import * as typestyle from 'typestyle';
-import { BoxUnit, GLSProps, FlexProp } from "../common";
+import { BoxUnit, GLSProps, FlexProp, GLSDefaults } from "../common";
 import * as scrollHelpers from "../styles/scroll";
 import { content, flex } from '../styles/flex';
+import { useContext } from 'react';
 
 /**
  * For `number` we assume pixels e.g. 5 => '5px'
@@ -44,4 +45,15 @@ export function processFlexProp(prop: FlexProp): typestyle.types.CSSProperties {
   return fx == 'content' ? content
     : fx == 'flex' ? flex(1)
       : flex(fx);
+}
+
+/** 
+ * Uses the defaults safely 
+ */
+export function useGLSDefaults() {
+  const context = useContext(GLSDefaults);
+  return {
+    verticalSpacing: context.verticalSpacing == null ? 24 : context.verticalSpacing,
+    horizontalSpacing: context.horizontalSpacing == null ? 24 : context.horizontalSpacing
+  }
 }

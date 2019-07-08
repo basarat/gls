@@ -1,7 +1,7 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
 import { GLSProps, VerticalSpacingConsumer, BoxUnit, FlexProp } from '../common';
-import { processGLSProps, boxUnitToString, processFlexProp } from '../internal/utils';
+import { processGLSProps, boxUnitToString, processFlexProp, useGLSDefaults } from '../internal/utils';
 import { types } from 'typestyle';
 import { vertical, centerJustified, endJustified, end, center } from '../styles/flex';
 
@@ -41,24 +41,20 @@ export const Vertical: React.FC<VerticalProps> = (props) => {
     ...otherProps
   } = processGLSProps(props);
 
-  return (
-    <VerticalSpacingConsumer>{
-      (verticalSpacing) => {
-        const klass = typestyle.classes(
-          className,
-          typestyle.style(
-            processFlexProp(props),
-            vertical,
-            verticallySpaced(props.spacing == null ? verticalSpacing : props.spacing),
-            verticalAlign == 'center' && centerJustified,
-            verticalAlign == 'bottom' && endJustified,
-            horizontalAlign == 'right' && end,
-            horizontalAlign == 'center' && center,
-          )
-        );
-        return <div {...otherProps} className={klass} data-comment='Vertical' />
-      }
-    }</VerticalSpacingConsumer>
+  const { verticalSpacing } = useGLSDefaults();
+
+  const klass = typestyle.classes(
+    className,
+    typestyle.style(
+      processFlexProp(props),
+      vertical,
+      verticallySpaced(props.spacing == null ? verticalSpacing : props.spacing),
+      verticalAlign == 'center' && centerJustified,
+      verticalAlign == 'bottom' && endJustified,
+      horizontalAlign == 'right' && end,
+      horizontalAlign == 'center' && center,
+    )
   );
+  return <div {...otherProps} className={klass} data-comment='Vertical' />;
 }
 Vertical.displayName = 'Vertical';
