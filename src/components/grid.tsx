@@ -1,7 +1,7 @@
 import * as typestyle from 'typestyle';
 import { classes } from 'typestyle';
 import * as React from 'react';
-import { BoxUnit, GLSProps, GLSDefaults } from '../common';
+import { BoxUnit, GLSProps } from '../common';
 import { boxUnitToString, processGLSProps, useGLSDefaults } from '../internal/utils';
 
 /**

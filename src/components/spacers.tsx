@@ -1,7 +1,7 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { BoxUnit, VerticalSpacingConsumer, HorizontalSpacingConsumer, FlexGrow } from '../common';
-import { boxUnitToString } from '../internal/utils';
+import { BoxUnit, FlexGrow } from '../common';
+import { boxUnitToString, useGLSDefaults } from '../internal/utils';
 import { flex } from '../styles/flex';
 
 export interface FlexSpaceProps extends React.HTMLProps<HTMLDivElement> {
@@ -35,21 +35,14 @@ export interface SpaceProps extends React.HTMLProps<HTMLDivElement> {
  */
 export const HorizontalSpace: React.FC<SpaceProps> = (props) => {
   const { style, ...otherProps } = props;
-  return (
-    <HorizontalSpacingConsumer>
-      {
-        (horizontal) => {
-          const width = boxUnitToString(props.space == null ? horizontal : props.space);
-          const styles: React.CSSProperties = {
-            display: 'inline-block',
-            width: width,
-            ...style
-          };
-          return <div {...otherProps} style={styles} data-comment='HorizontalSpace' />;
-        }
-      }
-    </HorizontalSpacingConsumer>
-  );
+  const { horizontalSpacing } = useGLSDefaults();
+  const width = boxUnitToString(props.space == null ? horizontalSpacing : props.space);
+  const styles: React.CSSProperties = {
+    display: 'inline-block',
+    width: width,
+    ...style
+  };
+  return <div {...otherProps} style={styles} data-comment='HorizontalSpace' />;
 };
 HorizontalSpace.displayName = 'HorizontalSpace';
 
@@ -59,20 +52,12 @@ HorizontalSpace.displayName = 'HorizontalSpace';
  */
 export const VerticalSpace: React.FC<SpaceProps> = (props) => {
   const { style, ...otherProps } = props;
-
-  return (
-    <VerticalSpacingConsumer>
-      {
-        (vertical) => {
-          const height = boxUnitToString(props.space == null ? vertical : props.space);
-          const styles: React.CSSProperties = {
-            height: height,
-            ...style
-          };
-          return <div {...otherProps} style={styles} data-comment='VerticalSpace' />;
-        }
-      }
-    </VerticalSpacingConsumer>
-  );
+  const { verticalSpacing } = useGLSDefaults();
+  const height = boxUnitToString(props.space == null ? verticalSpacing : props.space);
+  const styles: React.CSSProperties = {
+    height: height,
+    ...style
+  };
+  return <div {...otherProps} style={styles} data-comment='VerticalSpace' />;
 };
 VerticalSpace.displayName = 'VerticalSpace';

@@ -1,6 +1,6 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { GLSProps, HorizontalSpacingConsumer, FlexProp, BoxUnit } from '../common';
+import { GLSProps, FlexProp, BoxUnit } from '../common';
 import { processGLSProps, processFlexProp, boxUnitToString, useGLSDefaults } from '../internal/utils';
 import { horizontal, endJustified, centerJustified, center, end } from '../styles/flex';
 import { types } from 'typestyle';
