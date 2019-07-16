@@ -37,15 +37,15 @@
   "dependencies": {},
   "homepage": "https://github.com/basarat/gls#readme",
   "devDependencies": {
-    "@types/react": "16.8.19",
+    "@types/react": "16.8.23",
     "@types/react-dom": "16.8.4",
-    "concurrently": "4.1.0",
+    "concurrently": "4.1.1",
     "docz": "1.2.0",
     "docz-theme-default": "1.2.0",
     "gh-pages": "2.0.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "typescript": "3.5.1",
-    "typestyle": "2.0.2"
+    "typescript": "3.5.3",
+    "typestyle": "2.0.3"
   }
 }
