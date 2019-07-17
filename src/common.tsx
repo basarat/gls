@@ -34,10 +34,54 @@ export interface BoxFunction<T> {
 }
 
 /** 
+ * Constrained set of supported flex ratios
+ */
+export type FlexGrow =
+  | 1
+  | 2
+  | 3
+  | 4
+  | 5
+  | 6
+  | 7
+  | 8
+  | 9
+  | 10
+  | 11
+  | 12;
+
+/** 
+ * Specifies `flex` interaction with parent 
+ */
+export interface FlexProp {
+  /** 
+   * Specifies `flex` interaction with parent 
+   */
+  flex?:
+  | 'content' /** default */
+  | 'flex' /** Same as `1` */
+  | FlexGrow;
+}
+
+/** 
+ * Props accepted by all our container components
+ */
+export interface GLSProps extends ScrollProp, StylesProp, TagProps {
+  className: string,
+}
+
+/** 
  * Add on anything to add support for controlling the scroll
  */
 export interface ScrollProp {
   scroll?: 'both' | 'vertical' | 'horizontal' | 'disabled';
+}
+
+/** 
+ * Add to add support for mixing in NestedCSSProperties 
+ */
+export interface StylesProp {
+  styles?: (types.NestedCSSProperties | null | false)[];
 }
 
 /** 
@@ -74,48 +118,4 @@ export interface TagProps {
     props?: Omit<React.HTMLProps<HTMLAnchorElement>, 'className'>;
   }
   // TODO: heading paragraph
-}
-
-/** 
- * Add to add support for mixing in NestedCSSProperties 
- */
-export interface StylesProp {
-  styles?: (types.NestedCSSProperties | null | false)[];
-}
-
-/** 
- * Props accepted by all our container components
- */
-export interface GLSProps extends ScrollProp, StylesProp, TagProps {
-  className: string,
-}
-
-/** 
- * Constrained set of supported flex ratios
- */
-export type FlexGrow =
-  | 1
-  | 2
-  | 3
-  | 4
-  | 5
-  | 6
-  | 7
-  | 8
-  | 9
-  | 10
-  | 11
-  | 12;
-
-/** 
- * Specifies `flex` interaction with parent 
- */
-export interface FlexProp {
-  /** 
-   * Specifies `flex` interaction with parent 
-   */
-  flex?:
-  | 'content' /** default */
-  | 'flex' /** Same as `1` */
-  | FlexGrow;
 }
