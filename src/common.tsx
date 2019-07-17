@@ -32,11 +32,60 @@ export interface BoxFunction<T> {
 }
 
 /** 
- * Props accepted by all our components 
+ * Add on anything to add support for controlling the scroll
  */
-export interface GLSProps extends React.HTMLProps<HTMLDivElement> {
+export interface ScrollProp {
   scroll?: 'both' | 'vertical' | 'horizontal' | 'disabled';
+}
+
+/** 
+ * Props supported by the underlying tag 
+ */
+export interface TagProps {
+  tag:
+  {
+    /** name default: div */
+    props: Omit<React.HTMLProps<HTMLDivElement>, 'className'>;
+  }
+  | {
+    name: 'div';
+    props?: Omit<React.HTMLProps<HTMLDivElement>, 'className'>;
+  }
+  | {
+    name: 'button';
+    props?: Omit<React.HTMLProps<HTMLButtonElement>, 'className'>;
+  }
+  | {
+    name?: 'input';
+    props?: Omit<React.HTMLProps<HTMLInputElement>, 'className'>;
+  }
+  | {
+    name?: 'select';
+    props?: Omit<React.HTMLProps<HTMLSelectElement>, 'className'>;
+  }
+  | {
+    name?: 'section';
+    props?: Omit<React.HTMLProps<HTMLDivElement>, 'className'>;
+  }
+  | {
+    name?: 'a';
+    props?: Omit<React.HTMLProps<HTMLAnchorElement>, 'className'>;
+  }
+  // TODO: heading paragraph
+}
+
+/** 
+ * Add to add support for mixing in NestedCSSProperties 
+ */
+export interface StylesProp {
   styles?: (types.NestedCSSProperties | null | false)[];
+}
+
+/** 
+ * Props accepted by all our container components
+ */
+export interface GLSProps extends ScrollProp, StylesProp, TagProps {
+  className: string,
 }
 
 /** 

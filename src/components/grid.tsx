@@ -1,8 +1,7 @@
 import * as typestyle from 'typestyle';
-import { classes } from 'typestyle';
 import * as React from 'react';
 import { BoxUnit, GLSProps } from '../common';
-import { boxUnitToString, processGLSProps, useGLSDefaults } from '../internal/utils';
+import { boxUnitToString, createGLSTag, useGLSDefaults } from '../internal/utils';
 
 /**
  * Puts a (horizontal AND vertical) margin between each child
@@ -36,12 +35,12 @@ export interface GridProps extends GLSProps {
  * Lays out children with a margin between them (horizontal and vertical)
  */
 export const Grid: React.FC<GridProps> = (props) => {
-  const { className, spacing, ...otherProps } = processGLSProps(props);
+  const { spacing, ...otherProps } = props;
 
   /** 
    * Figure out the spacing requested 
    */
-  let { verticalSpacing, horizontalSpacing } = useGLSDefaults()
+  let { verticalSpacing, horizontalSpacing } = useGLSDefaults();
   if (spacing != null) {
     if (typeof spacing == 'number' || typeof spacing == 'string') {
       horizontalSpacing = spacing;
@@ -51,12 +50,9 @@ export const Grid: React.FC<GridProps> = (props) => {
     }
   }
 
-  const klass = classes(
-    className,
-    gridSpaced(verticalSpacing, horizontalSpacing),
-  );
+  const klass = gridSpaced(verticalSpacing, horizontalSpacing);
   return (
-    <div {...otherProps} className={klass} data-comment='Grid' />
+    createGLSTag(otherProps, klass, 'Grid')
   );
 }
 Grid.displayName = 'Grid';

@@ -1,7 +1,7 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
 import { GLSProps, FlexProp, BoxUnit } from '../common';
-import { processGLSProps, processFlexProp, boxUnitToString, useGLSDefaults } from '../internal/utils';
+import { createGLSTag, processFlexProp, boxUnitToString, useGLSDefaults } from '../internal/utils';
 import { horizontal, endJustified, centerJustified, center, end } from '../styles/flex';
 import { types } from 'typestyle';
 
@@ -34,27 +34,22 @@ export interface HorizontalProps extends GLSProps, FlexProp {
  */
 export const Horizontal: React.FC<HorizontalProps> = (props) => {
   const {
-    className,
     horizontalAlign,
     verticalAlign,
     flex,
-    ...otherProps } = processGLSProps(props);
+    ...otherProps } = props;
 
   const { horizontalSpacing } = useGLSDefaults();
 
-  const klass =
-    typestyle.classes(
-      className,
-      typestyle.style(
-        processFlexProp(props),
-        horizontal,
-        horizontallySpaced(props.spacing == null ? horizontalSpacing : props.spacing),
-        horizontalAlign == 'right' && endJustified,
-        horizontalAlign == 'center' && centerJustified,
-        verticalAlign == 'center' && center,
-        verticalAlign == 'bottom' && end,
-      )
-    );
-  return <div {...otherProps} className={klass} data-comment='Horizontal' />;
+  const klass = typestyle.style(
+    processFlexProp(props),
+    horizontal,
+    horizontallySpaced(props.spacing == null ? horizontalSpacing : props.spacing),
+    horizontalAlign == 'right' && endJustified,
+    horizontalAlign == 'center' && centerJustified,
+    verticalAlign == 'center' && center,
+    verticalAlign == 'bottom' && end,
+  );
+  return createGLSTag(otherProps, klass, 'Horizontal');
 }
 Horizontal.displayName = 'Horizontal';
