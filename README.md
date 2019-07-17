@@ -5,6 +5,8 @@
 [![Build Status][travis-image]][travis-url]
 [![NPM version][npm-image]][npm-url]
 
+Current Status: ⚠️ Work in progress ⚠️ [You can checkout the docs as we work on those first](https://basarat.com/gls)🌹
+
 # Installation
 
 Install `gls` along with its peer dependencies: `react` (for html) and `typestyle` (for css):
@@ -13,8 +15,8 @@ Install `gls` along with its peer dependencies: `react` (for html) and `typestyl
 npm i gls react typestyle
 ```
 
-# Docs
-Available online : https://basarat.com/gls
+# Get Started
+[Docs and demos are available online 🌹](https://basarat.com/gls)
 
 [travis-image]:https://travis-ci.org/basarat/gls.svg?branch=master
 [travis-url]:https://travis-ci.org/basarat/gls
