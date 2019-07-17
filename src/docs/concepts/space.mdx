@@ -36,11 +36,11 @@ So the question: If the components are coming without margins, how are they bein
 
 Lets discuss that next.
 
-## How to do spacing correctly
+## How to do space maintainably
 
 Realize that a component's external space, is its parent's internal space. A parent is free to manage its internal space anyway it wants. So really space management between components is the responsibility of the container (and we provide plenty of such containers).
 
-- The parent can set margins on its children to provide `spacing`
+- Parent `spacing` prop can space children with pure CSS margins.
 
 Remember good components don't come with bleedy margins. Since components don't use margins, our containers can easily create spacing between their children by adding margins with pure CSS (pseudocode: `CSS-selector(all children except last-child): CSS-property(margin)`).
 
