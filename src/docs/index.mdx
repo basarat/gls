@@ -3,126 +3,19 @@ name: General Layout System
 route: /
 ---
 
-import { Playground } from 'docz';
-import { Vertical, Horizontal, Flex } from '..'; 
-
 # General Layout System
 `gls` is a simple (but powerful) general purpose layout system for React 🌹. 
 
-# CSS concepts
-There are a few key CSS concepts developed with GLS for maintainable layouts in the world of components:
+# CSS principles
+There are a few key CSS principles developed with GLS for maintainable layouts in the world of components:
 
-* Space
-* Flex
-
-## External Airspace
-A fundamental rule (broken quite commonly in the wild sadly) is that a component only renders stuff in its airspace. That is, it does not bleed out resulting in conflicts with its neighbours. 
-
-Consider a simple'ol `div`. We'll give it a background `lightskyblue` to denote its airspace. It can render whatever it wants in its airspace: 
-
-<Playground>
-  <div style={{backgroundColor: 'lightskyblue'}}>Hello</div>
-</Playground>
-
-Now try and layout two of these divs together, a naive way would be to add margins:  
-
-<Playground>
-  <div style={{backgroundColor: "lightskyblue", marginBottom: '24px'}}>Hello</div>
-  <div style={{backgroundColor: "lightpink", marginBottom: '24px'}}>World</div>
-  <div style={{backgroundColor: "darkorange"}}>Spacing</div>
-</Playground>
-
-A fundamental issue with `<div style={{marginBottom: '24px'}}>Hello</div>` component, is that its not useable in isolation. If we render it alone, note that its leaking out *assuming* its going to be used by something that's going to add another sibling after it: 
-
-<Playground>
-  <div style={{backgroundColor: "lightskyblue", marginBottom: '24px'}}>Hello</div>
-  <i style={{position:'absolute', bottom:'0px', color: 'lightgrey', textAlign: 'center'}}>Notice this excess space at the bottom</i>
-</Playground>
-
-So instead of putting the responsiblity of *space seperation* on the component, it can be better managed by the container, e.g. the `Vertical` component provided by gls can drive the margins of its children to create vertical spacing between them.
-
-<Playground>
-  <Vertical>
-    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
-    <div style={{backgroundColor: "lightpink"}}>World</div>
-    <div style={{backgroundColor: "darkorange"}}>Spacing</div>
-  </Vertical>
-</Playground>
-
-And no leaking margins occur with lesser children:
-
-<Playground>
-  <Vertical>
-    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
-    <div style={{backgroundColor: "lightpink"}}>World</div>
-  </Vertical>
-</Playground>
-
-Furthermore the `Vertical` component itself doesn't bleed into external airspace, allowing you to compose two `Vertical`s seamlessly: 
-
-<Playground>
-  <Vertical>
-    <Vertical>
-      <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
-      <div style={{backgroundColor: "lightpink"}}>World</div>
-    </Vertical>
-    <Vertical>
-      <div style={{backgroundColor: "lightskyblue"}}>Second Hello</div>
-      <div style={{backgroundColor: "lightpink"}}>Second World</div>
-    </Vertical>
-  </Vertical>
-</Playground>
-
-Because `margin`s fundamentally result in airspace violation, do not use margins at the root of your components.
-
-> RULE 1: Do not use `margin` at the root of your component
-
-This rule is also what makes it possible for parents to space children with margins. We also provide a `Horizontal` container to layout children horizontally: 
-
-<Playground>
-  <Horizontal>
-    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
-    <div style={{backgroundColor: "lightpink"}}>World</div>
-  </Horizontal>
-</Playground>
-
-> Component design tip: never use margins at the root of your component. Internally it is fine to move a **static number** children around with it. If you have **dynamic number** of children, use our `Vertical`, `Horizontal` etc. 
-
-## Internal Airspace
-
-A parent uses `margin`s to create visual space *between its children*. A parent can use *padding* to insert space *inside* its border to push the children (internal airspace management). For example a button is a common example that has padding to seperate its content from its border:
-
-<Playground style={{ textAlign: 'center' }}>
-  <button style={{backgroundColor: 'lightskyblue', fontSize:'24px', padding: '24px'}}>
-    Hello world
-  </button>
-</Playground>
-
-> RULE 2: Use `padding` explicitly for internal *border* airspace
-
-Commonly in root level content containers (close children of `body`) will use padding to create an *island* effect. For example we are putting a `padding` on the root `Vertical` below to seperate it from its children (sub `Vertical` and `Horizontal` layouts):
-
-<Playground>
-  {/** Island */}
-  <Vertical style={{ padding: '24px' }}>
-    <Vertical>
-      <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
-      <div style={{backgroundColor: "lightpink"}}>World</div>
-    </Vertical>
-    <Horizontal>
-      <Flex style={{backgroundColor: "lightskyblue"}}>Second Hello</Flex>
-      <Flex style={{backgroundColor: "lightpink"}}>Second World</Flex>
-    </Horizontal>
-  </Vertical>
-</Playground>
-
-> Component design tip: `padding` can be used in any components that have an explict border (e.g buttons, user profile cards) as well as layout containers that might have implicit borders, due to color seperation (e.g. form containers).
-
-
+* Space principle
+* Flex principle
 
 # Components
-All our components are just `div` elements with atom CSS generated by typestyle. 
+All our components are just `div` elements (configurable to be a different tag) with atomic CSS generated by typestyle. 
+
+* They take some custom properties as needed e.g. `spacing` and `padding` are common ones for layout parents.
 * They support *all* the properties supported by a `div`.
-* They take some additional prxzoperties as needed e.g. `spacing` is a common one for layout parents.
 
 You can now jump to individual docs for the components (like `Vertical`, `Horizontal` etc.) using the sidebar 👍🏻.
