@@ -13,10 +13,22 @@ Lays out children in a vertically spaced layout.
 
 <Playground>
   <Vertical>
-    <demos.BlueDiv>Hello</demos.BlueDiv>
-    <div>World</div>
+    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
+    <div style={{backgroundColor: "lightpink"}}>World</div>
   </Vertical>
 </Playground>
 
+Since `Vertical` follows the *space principal* you can compose / nest `Vertical`s easily:
 
-
+<Playground>
+  <Vertical>
+    <Vertical>
+      <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
+      <div style={{backgroundColor: "lightpink"}}>World</div>
+    </Vertical>
+    <Vertical>
+      <div style={{backgroundColor: "lightskyblue"}}>Second Hello</div>
+      <div style={{backgroundColor: "lightpink"}}>Second World</div>
+    </Vertical>
+  </Vertical>
+</Playground>
