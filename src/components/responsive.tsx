@@ -1,9 +1,9 @@
 import * as React from 'react';
 // import * as typestyle from 'typestyle';
-// import { processGLSProps, processFlexProp, useGLSDefaults } from '../internal/utils';
 // import { horizontal, endJustified, centerJustified, center, end } from '../styles/flex';
 import { HorizontalProps } from './horizontal';
 import { VerticalProps } from './vertical';
+import { createGLSTag, useGLSDefaults, processFlexProp } from '../internal/utils';
 
 export interface ResponsiveProps extends React.HTMLProps<HTMLDivElement> {
   /** 
@@ -19,29 +19,30 @@ export interface ResponsiveProps extends React.HTMLProps<HTMLDivElement> {
   verticalMode?: VerticalProps;
 }
 
-// /** 
-//  * Layout out children horizontally with a margin between them
-//  */
+/** 
+ * Layout out children 
+ * - vertically till breakpoint
+ * - horizontally above breakpoint
+ */
 // export const Responsive: React.FC<ResponsiveProps> = (props) => {
 //   const {
-//     className,
-//     ...otherProps } = processGLSProps(props);
+//     horizontalAlign,
+//     verticalAlign,
+//     flex,
+//     ...otherProps
+//   } = props;
 
-//   const { horizontalSpacing } = useGLSDefaults();
+//   const { verticalSpacing } = useGLSDefaults();
 
-//   const klass =
-//     typestyle.classes(
-//       className,
-//       typestyle.style(
-//         processFlexProp(props),
-//         horizontal,
-//         horizontallySpaced(props.spacing == null ? horizontalSpacing : props.spacing),
-//         horizontalAlign == 'right' && endJustified,
-//         horizontalAlign == 'center' && centerJustified,
-//         verticalAlign == 'center' && center,
-//         verticalAlign == 'bottom' && end,
-//       )
-//     );
-//   return <div {...otherProps} className={klass} data-comment='Responsive' />;
+//   const klass = typestyle.style(
+//     processFlexProp(props),
+//     vertical,
+//     verticallySpaced(props.spacing == null ? verticalSpacing : props.spacing),
+//     verticalAlign == 'center' && centerJustified,
+//     verticalAlign == 'bottom' && endJustified,
+//     horizontalAlign == 'right' && end,
+//     horizontalAlign == 'center' && center,
+//   );
+//   return createGLSTag(otherProps, klass, 'Responsive');
 // }
 // Responsive.displayName = 'Responsive';
