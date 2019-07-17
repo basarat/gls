@@ -1,16 +1,17 @@
 {
   "vendors.js": "/gls/static/js/vendors.8564937d.js",
-  "vendors.js.map": "/gls/static/js/vendors.c0289397722ed79afcd0.js.map",
-  "app.js": "/gls/static/js/app.c0289397722ed79afcd0.js",
-  "app.js.map": "/gls/static/js/app.c0289397722ed79afcd0.js.map",
+  "vendors.js.map": "/gls/static/js/vendors.5fa8d3027c13e9b03fa2.js.map",
+  "app.js": "/gls/static/js/app.5fa8d3027c13e9b03fa2.js",
+  "app.js.map": "/gls/static/js/app.5fa8d3027c13e9b03fa2.js.map",
   "src-docs-concepts-flex.js": "/gls/static/js/src-docs-concepts-flex.1e888aa5.js",
-  "src-docs-concepts-flex.js.map": "/gls/static/js/src-docs-concepts-flex.c0289397722ed79afcd0.js.map",
-  "src-docs-concepts-space.js": "/gls/static/js/src-docs-concepts-space.79ec70b5.js",
-  "src-docs-concepts-space.js.map": "/gls/static/js/src-docs-concepts-space.c0289397722ed79afcd0.js.map",
+  "src-docs-concepts-flex.js.map": "/gls/static/js/src-docs-concepts-flex.5fa8d3027c13e9b03fa2.js.map",
+  "src-docs-concepts-space.js": "/gls/static/js/src-docs-concepts-space.2e4717e9.js",
+  "src-docs-concepts-space.js.map": "/gls/static/js/src-docs-concepts-space.5fa8d3027c13e9b03fa2.js.map",
   "src-docs-index.js": "/gls/static/js/src-docs-index.76c8eecc.js",
-  "src-docs-index.js.map": "/gls/static/js/src-docs-index.c0289397722ed79afcd0.js.map",
+  "src-docs-index.js.map": "/gls/static/js/src-docs-index.5fa8d3027c13e9b03fa2.js.map",
   "src-docs-vertical.js": "/gls/static/js/src-docs-vertical.4f879357.js",
-  "src-docs-vertical.js.map": "/gls/static/js/src-docs-vertical.c0289397722ed79afcd0.js.map",
+  "src-docs-vertical.js.map": "/gls/static/js/src-docs-vertical.5fa8d3027c13e9b03fa2.js.map",
   "index.html": "/gls/index.html",
-  "static/img/margincollapse.png": "/gls/static/img/margincollapse.5e3abf25.png"
+  "static/img/margincollapse.png": "/gls/static/img/margincollapse.5e3abf25.png",
+  "static/img/marginplacement.png": "/gls/static/img/marginplacement.e27ea215.png"
 }
