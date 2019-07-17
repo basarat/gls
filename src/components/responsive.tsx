@@ -3,7 +3,7 @@ import * as React from 'react';
 // import { horizontal, endJustified, centerJustified, center, end } from '../styles/flex';
 import { HorizontalProps } from './horizontal';
 import { VerticalProps } from './vertical';
-import { createGLSTag, useGLSDefaults, processFlexProp } from '../internal/utils';
+// import { createGLSTag, useGLSDefaults, processFlexProp } from '../internal/utils';
 
 export interface ResponsiveProps extends React.HTMLProps<HTMLDivElement> {
   /** 
