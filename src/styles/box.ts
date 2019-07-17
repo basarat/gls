@@ -62,3 +62,17 @@ export const width = (value: BoxUnit) => {
 export const height = (value: BoxUnit) => {
   return { height: boxUnitToString(value) };
 }
+
+/** 
+ * Max Width 
+ */
+export const maxWidth = (value: BoxUnit) => {
+  return { maxWidth: boxUnitToString(value) };
+}
+
+/** 
+ * Max Height
+ */
+export const maxHeight = (value: BoxUnit) => {
+  return { maxHeight: boxUnitToString(value) };
+}

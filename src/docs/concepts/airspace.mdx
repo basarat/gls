@@ -1,0 +1,29 @@
+# External Airspace
+
+Fundamental rule: Don't camp on external airspace. 
+Fundamental rule breaker: Border margins.
+
+Issues: 
+- Collapses. Fundamentally hard to manage
+- Reduces reuse. Can't be placed pixel perfectly e.g. at the corner 
+- Pollutes layout with logic. If a button is on the right that may or may not show, you end up needing to change the margin on the second last button. 
+
+Solution: 
+No margins on components. 
+- show simple button 
+- show simple label+input
+- show simple three label+input
+
+# Better Way
+
+Realize: your external space, is your parents internal space. Any component is free to manage its internal space anyway it wants. 
+
+- Sub children margins using css for children. 
+
+Remember how components don't come with bleedy margins, since compoenents don't use margins, our containers can easily create vertical (or horizontal) spacing between their children by adding margins with pure CSS (pseudocode: `all children except last-child : add margin`).
+
+- Padding for border whitespace.
+
+
+# Components 
+This is exactly what our container components `Vertical` / `Horizontal` provide (and many more features).
