@@ -40,13 +40,11 @@ Lets discuss that next.
 
 Realize that a component's external space, is its parent's internal space. A parent is free to manage its internal space anyway it wants. So really space management between components is the responsibility of the container (and we provide plenty of such containers).
 
-- Parent `spacing` prop can space children with pure CSS margins.
+Parent `spacing` prop can space children: Remember good components don't come with bleedy margins. Since components don't use margins, our containers can easily create spacing between their children by adding margins with pure CSS (pseudocode: `CSS-selector(all children except last-child): CSS-property(margin)`).
 
-Remember good components don't come with bleedy margins. Since components don't use margins, our containers can easily create spacing between their children by adding margins with pure CSS (pseudocode: `CSS-selector(all children except last-child): CSS-property(margin)`).
+Lets look at some examples of external-margin-free components and how they nicely compose. First a simple component e.g. an input:
 
-Lets look at some examples of components. First a simple component e.g. an input:
-
-Because the input was margin free, it can easily reuseable in any given context. It can easily be composed into a `label+input` set:
+Because the input was margin free, it can easily reuseable in any given context. It can easily be composed with a`label` to create a `label+input` set:
 
 
 Once again the set we've created is external margin free, allowing us to create a composite of composites e.g. 3 x label+input
