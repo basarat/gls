@@ -1,11 +1,11 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { BoxUnit, FlexGrow } from '../common';
+import { BoxUnit } from '../common';
 import { boxUnitToString, useGLSDefaults } from '../internal/utils';
 import { flex } from '../styles/flex';
 
 export interface FlexSpaceProps extends React.HTMLProps<HTMLDivElement> {
-  flex?: FlexGrow;
+  flex?: number;
 }
 
 /** 

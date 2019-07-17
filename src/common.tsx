@@ -45,23 +45,6 @@ export interface BoxFunction<T> {
 }
 
 /** 
- * Constrained set of supported flex ratios
- */
-export type FlexGrow =
-  | 1
-  | 2
-  | 3
-  | 4
-  | 5
-  | 6
-  | 7
-  | 8
-  | 9
-  | 10
-  | 11
-  | 12;
-
-/** 
  * Specifies `flex` interaction with parent 
  */
 export interface FlexProp {
@@ -71,7 +54,7 @@ export interface FlexProp {
   flex?:
   | 'content' /** default */
   | 'flex' /** Same as `1` */
-  | FlexGrow;
+  | number;
 }
 
 /** 

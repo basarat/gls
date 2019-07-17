@@ -1,11 +1,11 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { GLSProps, FlexGrow } from '../common';
+import { GLSProps } from '../common';
 import { createGLSTag } from '../internal/utils';
 import { content, flex } from '../styles/flex';
 
 export interface FlexProps extends GLSProps {
-  flex?: FlexGrow;
+  flex?: number;
 }
 
 /** 

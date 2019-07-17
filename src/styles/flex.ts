@@ -1,5 +1,4 @@
 import { types, extend } from "typestyle";
-import { FlexGrow } from "../common";
 
 /**
  * 
@@ -37,7 +36,7 @@ export const content: types.CSSProperties = {
   flexBasis: 'auto',
 } as types.CSSProperties;
 
-export const flex = (flex: FlexGrow = 1): types.CSSProperties => {
+export const flex = (flex: number = 1): types.CSSProperties => {
   return {
     '-ms-flex': flex,
     '-webkit-flex': flex,
