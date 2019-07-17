@@ -92,7 +92,7 @@ export interface PaddingProp {
  * Add on anything to add support for controlling the scroll
  */
 export interface ScrollProp {
-  scroll?: 'both' | 'vertical' | 'horizontal' | 'disabled';
+  scroll?: 'both' /** default */ | 'vertical' | 'horizontal' | 'disabled';
 }
 
 /** 
