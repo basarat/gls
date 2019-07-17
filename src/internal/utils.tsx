@@ -70,6 +70,7 @@ export function useGLSDefaults() {
   const context = useContext(GLSDefaults);
   return {
     verticalSpacing: context.verticalSpacing == null ? 24 : context.verticalSpacing,
-    horizontalSpacing: context.horizontalSpacing == null ? 24 : context.horizontalSpacing
+    horizontalSpacing: context.horizontalSpacing == null ? 24 : context.horizontalSpacing,
+    breakpoint: context.breakpoint == null ? 480 : context.breakpoint,
   }
 }

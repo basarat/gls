@@ -7,9 +7,11 @@ import React from 'react';
 export const GLSDefaults = React.createContext<{
   verticalSpacing?: BoxUnit,
   horizontalSpacing?: BoxUnit,
+  breakpoint?: number
 }>({
   verticalSpacing: 24,
-  horizontalSpacing: 24
+  horizontalSpacing: 24,
+  breakpoint: 480,
 });
 
 /** 
