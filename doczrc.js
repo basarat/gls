@@ -12,5 +12,9 @@ export default {
         border: 8px solid #eeee;
       `
     }
-  }
+  },
+  menu: [
+    'General Layout System',
+    'Airspace'
+  ]
 }
