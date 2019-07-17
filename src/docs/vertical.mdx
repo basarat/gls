@@ -33,14 +33,32 @@ Since `Vertical` follows the *space principal* you can compose / nest `Vertical`
   </Vertical>
 </Playground>
 
-## Spacing
-`spacing?: BoxUnit`: Controls spacing between children.
+## Props
+* `spacing?: BoxUnit` Controls spacing between children.
 
 <Playground>
   <Vertical spacing={10}>
     <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
     <div style={{backgroundColor: "lightpink"}}>World</div>
     <div style={{backgroundColor: "darkorange"}}>Again</div>
+  </Vertical>
+</Playground>
+
+* `verticalAlign?: 'top' /** default */ | 'center' | 'bottom'` Controls vertical alignment of children.
+
+<Playground>
+  <Vertical verticalAlign='bottom' style={{height: '100px'}} spacing={10}>
+    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
+    <div style={{backgroundColor: "lightpink"}}>World</div>
+  </Vertical>
+</Playground>
+
+* `horizontalAlign?: 'left' /** default */ | 'center' | 'right'` Controls horizontal alignment of children.
+
+<Playground>
+  <Vertical horizontalAlign='right'>
+    <button>Hello</button>
+    <button>World</button>
   </Vertical>
 </Playground>
 

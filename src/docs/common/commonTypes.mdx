@@ -48,3 +48,33 @@ tag?: {
   props?: React.HTMLProps // props passed to the tag
 }
 ```
+
+## FlexProp
+
+The `flex?` prop: 
+
+```ts
+/** 
+ * Specifies `flex` interaction with parent 
+ */
+export interface FlexProp {
+  /** 
+   * Specifies `flex` interaction with parent 
+   */
+  flex?:
+  | 'content' /** default */
+  | 'flex' /** Same as `1` */
+  | 1
+  | 2
+  | 3
+  | 4
+  | 5
+  | 6
+  | 7
+  | 8
+  | 9
+  | 10
+  | 11
+  | 12
+}
+```
