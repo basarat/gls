@@ -1,7 +1,5 @@
 # gls
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/basarat/gls.svg)](https://greenkeeper.io/)
-
 > General Layout System for React.
 
 [![Build Status][travis-image]][travis-url]
