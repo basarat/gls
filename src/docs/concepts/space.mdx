@@ -12,9 +12,19 @@ The difference between pixel perfect and good enough mostly boils down to whites
 Fundamental rule: Don't camp on external space. 
 Fundamental rule in CSS terms: Components should not have external margins.
 
-Issues with margins: 
-- Collapses. Fundamentally hard to manage
-- Reduces reuse. Can't be placed pixel perfectly e.g. at the corner 
+### Issues with margins: 
+- Fundamentally external e.g. outside the width of the component in the recommended `border-box` box sizing:
+
+![borderbox](../images/borderbox.png)
+
+- Collapses. You set a value, but it renders as something else depending on the neighbours.
+
+![margincollapse](../images/margincollapse.png)
+
+- Reduces reuse. Margins on components disable placement for pixel perfectly.
+
+
+
 - Pollutes layout with logic. If a button is on the right that may or may not show, you end up needing to change the margin on the second last button. 
 
 Lets look at some examples of components. First a simple component e.g. input: 

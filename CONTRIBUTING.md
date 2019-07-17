@@ -49,3 +49,8 @@ WrappingGrid.displayName = 'WrappingGrid';
 The props we want to be supported by a potential wysiwyg editor get added to `GLSProps`. 
 
 Potentially all of these can be done by the user in `style` Or `className`, but its just easier this way.
+
+
+# Docs Images
+
+Drawn using [draw.io](https://draw.io). Just open the xml files from the images directory.
