@@ -11,12 +11,12 @@ Issues:
 Solution: 
 No margins on components. 
 - show simple button 
-- show simple label+input
+- show simple label+input+test
 - show simple three label+input
 
 # Better Way
 
-Realize: your external space, is your parents internal space. Any component is free to manage its internal space anyway it wants. 
+Realize: your external space, is your parents internal space. Any component is free to manage its internal space anyway it wants. So really whitespace management between components is the responsibility of the container (and we provide plenty of such containers).
 
 - Sub children margins using css for children. 
 
@@ -24,6 +24,11 @@ Remember how components don't come with bleedy margins, since compoenents don't 
 
 - Padding for border whitespace.
 
+Continuing on the three input form, we can easily wrap it in a padding.
 
-# Components 
-This is exactly what our container components `Vertical` / `Horizontal` provide (and many more features).
+# Example with our components 
+Here is a nice behaving demo input component we showed previously: 
+
+Using our vertical layout we can stack them to create a form quite nicely:
+
+And then we can even stack two forms in another vertical layout seemlessly: 
