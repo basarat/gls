@@ -43,10 +43,10 @@ export function createGLSTag<T extends GLSProps>(
   /** Comment to help with debuggin */
   comment: string,
 ) {
-  const { className, scroll, padding, styles = [], tag = {}, ...otherProps } = props;
+  const { className, scroll, padding, styles = [], tag, ...otherProps } = props;
 
   return React.createElement(
-    (('name' in tag) && tag.name != null) ? tag.name : 'div',
+    (tag != null && ('name' in tag) && tag.name != null) ? tag.name : 'div',
     {
       className: typestyle.classes(
         className,
@@ -67,7 +67,7 @@ export function createGLSTag<T extends GLSProps>(
       ),
       'data-comment': comment,
       ...otherProps,
-      ...(tag.props != null ? props.tag.props : {}),
+      ...((tag != null && tag.props != null) ? tag.props : {}),
     }
   )
 }
