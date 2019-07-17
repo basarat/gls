@@ -10,7 +10,6 @@ export default {
   // Some cleanups
   codeSandbox: false,
   typescript: true,
-  hashRouter: true,
   indexHtml: 'public/index.html',
   themeConfig: {
     footerText: 'white',
