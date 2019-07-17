@@ -1,6 +1,6 @@
 ---
-name: Airspace
-route: /airspace
+name: Space
+route: /space
 ---
 
 # External Airspace
@@ -19,9 +19,9 @@ No margins on components.
 - Applies to composite e.g. label+input
 - And composite of composites e.g. 3 x label+input
 
-# Better Way
+# How to do spacing correctly
 
-Realize: your external space, is your parents internal space. Any component is free to manage its internal space anyway it wants. So really whitespace management between components is the responsibility of the container (and we provide plenty of such containers).
+Realize: your external airspace, is your parents internal airspace. Any component is free to manage its internal space anyway it wants. So really whitespace management between components is the responsibility of the container (and we provide plenty of such containers).
 
 - Sub children margins using css for children. 
 
@@ -34,6 +34,20 @@ Continuing on the three input form, we can easily wrap it in a padding.
 # Example with our components 
 Here is a nice behaving demo input component we showed previously: 
 
-Using our vertical layout we can stack them to create a form quite nicely:
+`<DemoInput label="Name"/>`
+
+Using our vertical layout we can stack them to create a composite input quite nicely:
+
+`<DemoInput label="First Name"/> middle last`
+
+Similarly here is a nice demo button with no bleedy margins:
+
+`Submit`
+
+And two of these in a nice horizontal composite component: 
+
+`    Verify Submit` 
 
 And then we can even stack two forms in another vertical layout seemlessly: 
+
+`<DemoInput label="First Name"/> middle last , cancel submit`

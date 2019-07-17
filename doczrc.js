@@ -3,7 +3,8 @@ export default {
   base: '/gls/',
   menu: [
     'General Layout System',
-    'Airspace'
+    'Space',
+    'Flex',
   ],
 
   // Some cleanups
