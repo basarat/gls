@@ -79,6 +79,7 @@ export interface FlexProp {
  */
 export interface GLSProps extends PaddingProp, ScrollProp, StylesProp, TagProps {
   className?: string,
+  style?: React.CSSProperties,
 }
 
 /** 
@@ -106,34 +107,34 @@ export interface StylesProp {
  * Props supported by the underlying tag 
  */
 export interface TagProps {
-  tag:
+  tag?:
   {
     /** name default: div */
-    props: Omit<React.HTMLProps<HTMLDivElement>, 'className'>;
+    props: Omit<React.HTMLProps<HTMLDivElement>, 'className' | 'style'>;
   }
   | {
     name: 'div';
-    props?: Omit<React.HTMLProps<HTMLDivElement>, 'className'>;
+    props?: Omit<React.HTMLProps<HTMLDivElement>, 'className' | 'style'>;
   }
   | {
     name: 'button';
-    props?: Omit<React.HTMLProps<HTMLButtonElement>, 'className'>;
+    props?: Omit<React.HTMLProps<HTMLButtonElement>, 'className' | 'style'>;
   }
   | {
-    name?: 'input';
-    props?: Omit<React.HTMLProps<HTMLInputElement>, 'className'>;
+    name: 'input';
+    props?: Omit<React.HTMLProps<HTMLInputElement>, 'className' | 'style'>;
   }
   | {
-    name?: 'select';
-    props?: Omit<React.HTMLProps<HTMLSelectElement>, 'className'>;
+    name: 'select';
+    props?: Omit<React.HTMLProps<HTMLSelectElement>, 'className' | 'style'>;
   }
   | {
-    name?: 'section';
-    props?: Omit<React.HTMLProps<HTMLDivElement>, 'className'>;
+    name: 'section';
+    props?: Omit<React.HTMLProps<HTMLDivElement>, 'className' | 'style'>;
   }
   | {
-    name?: 'a';
-    props?: Omit<React.HTMLProps<HTMLAnchorElement>, 'className'>;
+    name: 'a';
+    props?: Omit<React.HTMLProps<HTMLAnchorElement>, 'className' | 'style'>;
   }
   // TODO: heading paragraph
 }

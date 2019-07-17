@@ -33,7 +33,18 @@ export type BoxSet =
 ## GLSProps
 Objective: A consistent set of customization options. Members:
 
-* `className?: string`: css class name.
 * `padding?: BoxSet`: the padding.
 * `scroll?: 'both' /** default */ | 'vertical' | 'horizontal' | 'disabled'`: specify scrolling behaviours.
-* `styles?: typestyle.types.NestedCSSProperties[]`: any custom typestyle `style` objects you want to pass in.
+* `styles?: (typestyle.types.NestedCSSProperties | falsy)[]`: an array of custom typestyle `style` objects. Any falsy array members will be safely ignored.
+
+From react: 
+* `className?: string`: css class name.
+* `style?: React.CSSProperties`: any custom react `style` you want to pass in.
+
+For the tag control: 
+```ts
+tag?: {
+  name?: 'div' | 'a' | 'button' // etc.
+  props: React.HTMLProps // props passed to the tag
+}
+```
