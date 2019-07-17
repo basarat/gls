@@ -7,29 +7,35 @@ route: /space/
 
 The difference between pixel perfect and good enough mostly boils down to whitespace management. Here we discuss the `Space` thought pattern developed in GLS.
 
-## External Airspace
+## External Space
 
-Fundamental rule: Don't camp on external airspace. 
+Fundamental rule: Don't camp on external space. 
 Fundamental rule in CSS terms: Components should not have external margins.
 
-Issues: 
+Issues with margins: 
 - Collapses. Fundamentally hard to manage
 - Reduces reuse. Can't be placed pixel perfectly e.g. at the corner 
 - Pollutes layout with logic. If a button is on the right that may or may not show, you end up needing to change the margin on the second last button. 
 
-Solution: 
-No margins on components. 
-- Applies to simple components e.g. input
-- Applies to composite e.g. label+input
-- And composite of composites e.g. 3 x label+input
+Lets look at some examples of components. First a simple component e.g. input: 
+
+Because the input was margin free, it can easily reuseable in any given context. It can easily be composed into a `label+input` set.
+
+
+Once again the set we've created is external margin free, allowing us to create a composite of composites e.g. 3 x label+input
+
+
+Notice that this composite of composites is also external margin free, and we can continue down this path of reuse.
+
+So the question: If the components are coming without margins, how are they being spaced correctly e.g. how is the label and the input spaced? Lets discuss that next.
 
 ## How to do spacing correctly
 
-Realize: your external airspace, is your parents internal airspace. Any component is free to manage its internal space anyway it wants. So really whitespace management between components is the responsibility of the container (and we provide plenty of such containers).
+Realize: your external space, is your parents internal space. Any component is free to manage its internal space anyway it wants. So really space management between components is the responsibility of the container (and we provide plenty of such containers).
 
 - Sub children margins using css for children. 
 
-Remember how components don't come with bleedy margins, since compoenents don't use margins, our containers can easily create vertical (or horizontal) spacing between their children by adding margins with pure CSS (pseudocode: `all children except last-child : add margin`).
+Remember how components don't come with bleedy margins, since compoenents don't use margins, our containers can easily create vertical (or horizontal) spacing between their children by adding margins with pure CSS (pseudocode: `CSS-selector(all children except last-child): CSS-property(margin)`).
 
 - Padding for border whitespace.
 
