@@ -32,21 +32,21 @@ The difference between pixel perfect and good enough mostly boils down to whites
 
 So the question: If the components are coming without margins, how are they being spaced from their neighbours e.g. how is the margin-free label and the input spaced? 
 
-<!-- ![margin] -->
+![marginfree](../images/marginfree.png)
 
 Lets discuss that next.
 
 ## How to do spacing correctly
 
-Realize: your external space, is your parents internal space. Any component is free to manage its internal space anyway it wants. So really space management between components is the responsibility of the container (and we provide plenty of such containers).
+Realize that a component's external space, is its parent's internal space. A parent is free to manage its internal space anyway it wants. So really space management between components is the responsibility of the container (and we provide plenty of such containers).
 
-- Sub children margins using css for children. 
+- The parent can set margins on its children to provide `spacing`
 
-Remember how components don't come with bleedy margins, since compoenents don't use margins, our containers can easily create vertical (or horizontal) spacing between their children by adding margins with pure CSS (pseudocode: `CSS-selector(all children except last-child): CSS-property(margin)`).
+Remember good components don't come with bleedy margins. Since components don't use margins, our containers can easily create spacing between their children by adding margins with pure CSS (pseudocode: `CSS-selector(all children except last-child): CSS-property(margin)`).
 
-Lets look at some examples of components. First a simple component e.g. input: 
+Lets look at some examples of components. First a simple component e.g. an input:
 
-Because the input was margin free, it can easily reuseable in any given context. It can easily be composed into a `label+input` set.
+Because the input was margin free, it can easily reuseable in any given context. It can easily be composed into a `label+input` set:
 
 
 Once again the set we've created is external margin free, allowing us to create a composite of composites e.g. 3 x label+input
