@@ -3,11 +3,15 @@ name: Space
 route: /space/
 ---
 
+import { Playground } from 'docz';
+import { Vertical } from '../..'; 
+import * as demos from '../../demos'; 
+
 # Space
 
 The difference between pixel perfect and good enough mostly boils down to whitespace management. Here we discuss the `Space` thought pattern developed in GLS.
 
-## External Space
+## External space
 
 * Fundamental rule: Don't camp on external space. 
 * Fundamental rule in CSS terms: Components should not have external margins.
@@ -40,41 +44,65 @@ Lets discuss that next.
 
 Realize that a component's external space, is its parent's internal space. A parent is free to manage its internal space anyway it wants. So really space management between components is the responsibility of the container (and we provide plenty of such containers).
 
-Parent `spacing` prop can space children: Remember good components don't come with bleedy margins. Since components don't use margins, our containers can easily create spacing between their children by adding margins with pure CSS (pseudocode: `CSS-selector(all children except last-child): CSS-property(margin)`).
+### Space among children: `spacing` prop
+Remember good components don't come with bleedy margins. Since components don't use margins, our containers can easily create spacing between their children by adding margins with pure CSS (pseudocode: `CSS-selector(all children except last-child): CSS-property(margin)`).
 
 Lets look at some examples of external-margin-free components and how they nicely compose. First a simple component e.g. an input:
 
+<Playground>
+  <demos.Input/>
+</Playground>
+
 Because the input was margin free, it can easily reuseable in any given context. It can easily be composed with a`label` to create a `label+input` set:
 
+<Playground>
+  <Vertical spacing={5}>
+    <demos.Label>Name</demos.Label>
+    <demos.Input/>
+  </Vertical>
+</Playground>
 
-Once again the set we've created is external margin free, allowing us to create a composite of composites e.g. 3 x label+input
+In the above example, notice
+- the spacing is coming from the parent `Vertical spacing=5`. So our `input` and `label` don't have to fight each other to see whose margin wins.
+- the vertical itself has no external margins. So the `Vertical(input+label)` set is once again resuseable.
 
+We can easily compose multiple `Vertical(input+label)` into another `Vertical`, demonstrating creating a composite of composites e.g. 3 x label+input:
 
-Notice that this composite of composites is also external margin free, and we can continue down this path of reuse.
+<Playground>
+  <Vertical spacing={15}>
+    <Vertical spacing={5}>
+      <demos.Label>First name</demos.Label>
+      <demos.Input/>
+    </Vertical>
+    <Vertical spacing={5}>
+      <demos.Label>Middle name</demos.Label>
+      <demos.Input/>
+    </Vertical>
+    <Vertical spacing={5}>
+      <demos.Label>Last name</demos.Label>
+      <demos.Input/>
+    </Vertical>
+  </Vertical>
+</Playground>
 
+Notice that this composite of composites (`Vertical( 3 x Vertical(label+input) )`) is also external margin free, and we can continue down this path of reuse. Lets stop here.
 
-- Padding for border whitespace.
+### Space at the border: `padding` prop
+We've talked about spacing children among each other, one final thing to talk about is how to seperate children from the parent border. The answer is to simply use padding: 
 
-Continuing on the three input form, we can easily wrap it in a padding.
-
-## Code example with gls components
-
-Here is a nice behaving demo input component we showed previously: 
-
-`<DemoInput label="Name"/>`
-
-Using our vertical layout we can stack them to create a composite input quite nicely:
-
-`<DemoInput label="First Name"/> middle last`
-
-Similarly here is a nice demo button with no bleedy margins:
-
-`Submit`
-
-And two of these in a nice horizontal composite component: 
-
-`    Verify Submit` 
-
-And then we can even stack two forms in another vertical layout seemlessly: 
-
-`<DemoInput label="First Name"/> middle last , cancel submit`
+<Playground>
+  <Vertical spacing={15} padding={15}>
+    <Vertical spacing={5}>
+      <demos.Label>First name</demos.Label>
+      <demos.Input/>
+    </Vertical>
+    <Vertical spacing={5}>
+      <demos.Label>Middle name</demos.Label>
+      <demos.Input/>
+    </Vertical>
+    <Vertical spacing={5}>
+      <demos.Label>Last name</demos.Label>
+      <demos.Input/>
+    </Vertical>
+  </Vertical>
+</Playground>
