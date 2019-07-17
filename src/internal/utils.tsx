@@ -13,6 +13,23 @@ export function boxUnitToString(value: BoxUnit): string {
 }
 
 /** 
+ * Utility to unwrap the three ways a padding might be provided 
+ */
+function _processPadding(box: BoxUnit | [BoxUnit, BoxUnit] | [BoxUnit, BoxUnit, BoxUnit, BoxUnit])
+  : typestyle.types.NestedCSSProperties {
+  if (typeof box == 'number' || typeof box == 'string') {
+    const value = boxUnitToString(box);
+    return { paddingTop: value, paddingRight: value, paddingBottom: value, paddingLeft: value };
+  } else if (box.length == 2) {
+    const [topBottom, leftRight] = box.map(boxUnitToString);
+    return { paddingTop: topBottom, paddingRight: leftRight, paddingBottom: topBottom, paddingLeft: leftRight };
+  } else {
+    const [top, right, bottom, left] = box.map(boxUnitToString);
+    return { paddingTop: top, paddingRight: right, paddingBottom: bottom, paddingLeft: left };
+  }
+}
+
+/** 
  * Creates the appropriate tag
  * - Does any processing of GLSProps if required
  * - Then creates the approvate react tag
@@ -26,7 +43,7 @@ export function createGLSTag<T extends GLSProps>(
   /** Comment to help with debuggin */
   comment: string,
 ) {
-  const { className, scroll, styles = [], tag = {}, ...otherProps } = props;
+  const { className, scroll, padding, styles = [], tag = {}, ...otherProps } = props;
 
   return React.createElement(
     (('name' in tag) && tag.name != null) ? tag.name : 'div',
@@ -42,6 +59,8 @@ export function createGLSTag<T extends GLSProps>(
                 : scroll == 'vertical' ? scrollHelpers.scrollVertical
                   : scrollHelpers.scrollBoth
           ),
+          /** Padding */
+          padding != null && (_processPadding(padding)),
           /** Any user customizations */
           ...styles,
         )

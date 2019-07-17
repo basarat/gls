@@ -66,8 +66,15 @@ export interface FlexProp {
 /** 
  * Props accepted by all our container components
  */
-export interface GLSProps extends ScrollProp, StylesProp, TagProps {
+export interface GLSProps extends PaddingProp, ScrollProp, StylesProp, TagProps {
   className: string,
+}
+
+/** 
+ * Add support for padding
+ */
+export interface PaddingProp {
+  padding?: BoxUnit | [BoxUnit, BoxUnit] | [BoxUnit, BoxUnit, BoxUnit, BoxUnit]
 }
 
 /** 
