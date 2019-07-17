@@ -1,8 +1,15 @@
 export default {
   title: 'General Layout System',
   base: '/gls/',
+  menu: [
+    'General Layout System',
+    'Airspace'
+  ],
+
+  // Some cleanups
   codeSandbox: false,
   typescript: true,
+  hashRouter: true,
   indexHtml: 'public/index.html',
   themeConfig: {
     footerText: 'white',
@@ -13,8 +20,4 @@ export default {
       `
     }
   },
-  menu: [
-    'General Layout System',
-    'Airspace'
-  ]
 }
