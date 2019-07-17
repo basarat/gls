@@ -1,0 +1,37 @@
+---
+name: Common Types and Props
+route: /common-types/
+---
+
+# Common Types and Props
+We have a common set of props that are supported by a number of components. These will be mentioned in the docs for the individual components as well. We present them below with a reference component.
+
+Before we do that, we present some common types referenced by the props.
+
+## BoxUnit
+`type BoxUnit = number | string`. 
+
+Examples: 
+* 5 (implies 5px)
+* '5rem'
+
+## BoxSet
+
+Various versions of providing common shorthand properties
+
+```ts
+export type BoxSet =
+  /** top,right,left,bottom */
+  | BoxUnit
+  /** [topBottom,leftRight] */
+  | [BoxUnit, BoxUnit]
+  /** [top,right,bottom,left] */
+  | [BoxUnit, BoxUnit, BoxUnit, BoxUnit]
+```
+
+
+## GLSProps
+Objective: A consistent set of customization options. Members:
+
+* `className?: string`: css class name.
+* `padding?: BoxSet`: the padding.

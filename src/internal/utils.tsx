@@ -1,5 +1,5 @@
 import * as typestyle from 'typestyle';
-import { BoxUnit, GLSProps, FlexProp, GLSDefaults } from "../common";
+import { BoxUnit, GLSProps, FlexProp, GLSDefaults, BoxSet } from "../common";
 import * as scrollHelpers from "../styles/scroll";
 import { content, flex } from '../styles/flex';
 import React, { useContext } from 'react';
@@ -15,7 +15,7 @@ export function boxUnitToString(value: BoxUnit): string {
 /** 
  * Utility to unwrap the three ways a padding might be provided 
  */
-function _processPadding(box: BoxUnit | [BoxUnit, BoxUnit] | [BoxUnit, BoxUnit, BoxUnit, BoxUnit])
+function _processPadding(box: BoxSet)
   : typestyle.types.NestedCSSProperties {
   if (typeof box == 'number' || typeof box == 'string') {
     const value = boxUnitToString(box);

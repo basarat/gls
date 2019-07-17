@@ -5,6 +5,8 @@ export default {
     'General Layout System',
     'Space principle',
     'Flex principle',
+    'Common Types and Props',
+    'Vertical',
   ],
 
   // Some cleanups

@@ -18,7 +18,7 @@ Lays out children in a vertically spaced layout.
   </Vertical>
 </Playground>
 
-Since `Vertical` follows the *space principal* you can compose / nest `Vertical`s easily:
+Since `Vertical` follows the *space principal* you can compose / nest `Vertical`s easily. The following example has three `Verticals` in a `Vertical(Vertical(blue,pink),Vertical(blue,pink))` heirarchy but to the user it looks seemless. This ability to nest allows you to easily create and reuse components without having to worry about how they will get used.
 
 <Playground>
   <Vertical>
@@ -32,3 +32,7 @@ Since `Vertical` follows the *space principal* you can compose / nest `Vertical`
     </Vertical>
   </Vertical>
 </Playground>
+
+## GLSProps
+
+`Vertical` supports all `GLSProps`.

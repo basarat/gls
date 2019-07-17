@@ -21,6 +21,17 @@ export const GLSDefaults = React.createContext<{
  */
 export type BoxUnit = number | string;
 
+/** 
+ * Various versions of providing common shorthand properties
+ */
+export type BoxSet =
+  /** top,right,left,bottom */
+  | BoxUnit
+  /** [topBottom,leftRight] */
+  | [BoxUnit, BoxUnit]
+  /** [top,right,bottom,left] */
+  | [BoxUnit, BoxUnit, BoxUnit, BoxUnit]
+
 /**
  * A box function is something that can take:
  * - all
@@ -67,14 +78,14 @@ export interface FlexProp {
  * Props accepted by all our container components
  */
 export interface GLSProps extends PaddingProp, ScrollProp, StylesProp, TagProps {
-  className: string,
+  className?: string,
 }
 
 /** 
  * Add support for padding
  */
 export interface PaddingProp {
-  padding?: BoxUnit | [BoxUnit, BoxUnit] | [BoxUnit, BoxUnit, BoxUnit, BoxUnit]
+  padding?: BoxSet,
 }
 
 /** 
