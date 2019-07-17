@@ -33,6 +33,24 @@ Since `Vertical` follows the *space principal* you can compose / nest `Vertical`
   </Vertical>
 </Playground>
 
+## Spacing
+`spacing?: BoxUnit`: Controls spacing between children.
+
+<Playground>
+  <Vertical spacing={10}>
+    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
+    <div style={{backgroundColor: "lightpink"}}>World</div>
+    <div style={{backgroundColor: "darkorange"}}>Again</div>
+  </Vertical>
+</Playground>
+
 ## GLSProps
 
-`Vertical` supports all `GLSProps`.
+`Vertical` supports all `GLSProps`. e.g. `padding`: 
+
+<Playground>
+  <Vertical padding={20}>
+    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
+    <div style={{backgroundColor: "lightpink"}}>World</div>
+  </Vertical>
+</Playground>
