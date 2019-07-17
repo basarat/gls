@@ -3,7 +3,9 @@ name: Space
 route: /space/
 ---
 
-# External Airspace
+The difference between pixel perfect and good enough mostly boils down to whitespace management. Here we discuss the `airspace` thought pattern developed in GLS.
+
+## External Airspace
 
 Fundamental rule: Don't camp on external airspace. 
 Fundamental rule in CSS terms: Components should not have external margins.
@@ -19,7 +21,7 @@ No margins on components.
 - Applies to composite e.g. label+input
 - And composite of composites e.g. 3 x label+input
 
-# How to do spacing correctly
+## How to do spacing correctly
 
 Realize: your external airspace, is your parents internal airspace. Any component is free to manage its internal space anyway it wants. So really whitespace management between components is the responsibility of the container (and we provide plenty of such containers).
 
@@ -31,7 +33,8 @@ Remember how components don't come with bleedy margins, since compoenents don't 
 
 Continuing on the three input form, we can easily wrap it in a padding.
 
-# Example with our components 
+## Code example with gls components
+
 Here is a nice behaving demo input component we showed previously: 
 
 `<DemoInput label="Name"/>`
