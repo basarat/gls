@@ -1,0 +1,133 @@
+---
+name: Scrolling principle
+route: /principle-scrolling/
+---
+
+import { Playground } from 'docz';
+import { Vertical, Content } from '../..'; 
+import * as demos from '../../demos'; 
+
+# Scrolling
+
+Setting up when a scroll bar should show is not particularly hard, but worth covering. We provide the following scrolling options as a prop to our container components:
+
+```ts
+export interface ScrollProp {
+  scroll?:
+  | 'overflow' /** default */
+  | 'both'
+  | 'vertical'
+  | 'horizontal'
+  | 'disable';
+}
+```
+
+## overflow
+By default content will overflow its container. In the example below we force the container to be small (with explicit sizing 80px) and then throw a bunch of content inside it.
+
+<Playground>
+  {/* force a small size container */}
+  <Vertical height={80} style={{backgroundColor: "lightskyblue"}}>
+    <div style={{backgroundColor: 'lightpink'}}>Lots of content to make it overflow</div>
+    <div style={{backgroundColor: 'lightpink'}}>Lots of content to make it overflow</div>
+    <div style={{backgroundColor: 'lightpink'}}>Lots of content to make it overflow</div>
+  </Vertical>
+</Playground>
+
+There is no need to be alarmed by this default value. You normally *don't use explicit sizing* (covered in the [sizing principle][principle-sizing]). Content will overflow to the body, and the browser will add a scrollbar on the body for you (by default).
+
+## both | vertical | horizontal
+
+Add `scroll: 'both'| 'vertical' | 'horizontal'` to finely control where you want your scroll bar to appear. 
+
+Some configuration handled for you: 
+* The scrollbar will only show if the content actually overflow.
+* The scrolling section is touch-smooth-scroll enabled.
+
+Here is an example where content doesn't overflow: 
+
+<Playground>
+  {/* force a small size container */}
+  <Vertical height={80} scroll='both' style={{backgroundColor: "lightskyblue"}}>
+    <div style={{backgroundColor: 'lightpink'}}>Not enough content to cause overflow</div>
+  </Vertical>
+</Playground>
+
+Here is an example where content does overflow: 
+
+<Playground>
+  {/* force a small size container */}
+  <Vertical height={80} scroll='both' style={{backgroundColor: "lightskyblue"}}>
+    <div style={{backgroundColor: 'lightpink'}}>Lots of content to make it overflow</div>
+    <div style={{backgroundColor: 'lightpink'}}>Lots of content to make it overflow</div>
+    <div style={{backgroundColor: 'lightpink'}}>Lots of content to make it overflow</div>
+  </Vertical>
+</Playground>
+
+## disable
+There are actually two reasons why you might want disable scroll (`scroll='disable'`): 
+
+### 1. Hide content when it overflows
+
+This is actually the less common use case. It behaves exactly like you would expect, cutting off overflowing content and not letting you scroll to it: 
+
+<Playground>
+  {/* force a small size container */}
+  <Vertical height={80} scroll='disable' style={{backgroundColor: "lightskyblue"}}>
+    <div style={{backgroundColor: 'lightpink'}}>Lots of content to make it overflow, but it will get hidden</div>
+    <div style={{backgroundColor: 'lightpink'}}>Lots of content to make it overflow, but it will get hidden</div>
+    <div style={{backgroundColor: 'lightpink'}}>Lots of content to make it overflow, but it will get hidden</div>
+  </Vertical>
+</Playground>
+
+### 2. Fine tune scroll bar location
+
+The browser will try to put the scroll-bar as high up in the tree as it can find by default. Even if you have `scroll: both` on your container, the browser might choose to put the scroll-bar on the body. 
+
+
+An example is shown below, notice that the scrolling is happening on the `body` level instead of the `main section` level (despite `scroll:'both'`):
+
+<Playground style={{overflow: 'auto'}}>
+  <Vertical height={200} spacing={0} style={{backgroundColor: "lightskyblue"}}>
+
+    {/* You want this header to stick to top */}
+    <Content style={{backgroundColor: 'darkorange', textAlign: 'center', height: '50px', fontSize: '35px'}}>Header</Content>
+
+    {/* You only want this section to scroll */}
+    <Vertical sizing='flex' scroll='both'>
+      <div style={{backgroundColor: 'lightpink'}}>Main section with lots of text to make it overflow</div>
+      <div style={{backgroundColor: 'lightpink'}}>Main section with lots of text to make it overflow</div>
+      <div style={{backgroundColor: 'lightpink'}}>Main section with lots of text to make it overflow</div>
+      <div style={{backgroundColor: 'lightpink'}}>Main section with lots of text to make it overflow</div>
+      <div style={{backgroundColor: 'lightpink'}}>Main section with lots of text to make it overflow</div>
+      <div style={{backgroundColor: 'lightpink'}}>Main section with lots of text to make it overflow</div>
+      <div style={{backgroundColor: 'lightpink'}}>Main section with lots of text to make it overflow</div>
+    </Vertical>
+
+  </Vertical>
+</Playground>
+
+To fix it, we tell the browser to disable scroll (`scroll:'disable'`) at the parent of the item we want to scroll:
+
+<Playground style={{overflow: 'auto'}}>
+  {/* scroll:disable => your way of telling the browser insert scroll bars on something inside if it needs to */}
+  <Vertical scroll='disable' height={200} spacing={0} style={{backgroundColor: "lightskyblue"}}>
+
+    {/* You want this header to stick to top */}
+    <Content style={{backgroundColor: 'darkorange', textAlign: 'center', height: '50px', fontSize: '35px'}}>Header</Content>
+
+    {/* You only want this section to scroll */}
+    <Vertical sizing='flex' scroll='both'>
+      <div style={{backgroundColor: 'lightpink'}}>Main section with lots of text to make it overflow</div>
+      <div style={{backgroundColor: 'lightpink'}}>Main section with lots of text to make it overflow</div>
+      <div style={{backgroundColor: 'lightpink'}}>Main section with lots of text to make it overflow</div>
+      <div style={{backgroundColor: 'lightpink'}}>Main section with lots of text to make it overflow</div>
+      <div style={{backgroundColor: 'lightpink'}}>Main section with lots of text to make it overflow</div>
+      <div style={{backgroundColor: 'lightpink'}}>Main section with lots of text to make it overflow</div>
+      <div style={{backgroundColor: 'lightpink'}}>Main section with lots of text to make it overflow</div>
+    </Vertical>
+
+  </Vertical>
+</Playground>
+
+[principle-sizing]:../principle-sizing/

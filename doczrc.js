@@ -5,6 +5,7 @@ export default {
     'General Layout System',
     'Spacing principle',
     'Sizing principle',
+    'Scrolling principle',
     'Common Types and Props',
     'Vertical',
   ],
