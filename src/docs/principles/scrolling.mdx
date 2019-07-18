@@ -64,30 +64,9 @@ Here is an example where content does overflow:
   </Vertical>
 </Playground>
 
-## disable
-There are actually two reasons why you might want disable scroll (`scroll='disable'`): 
-
-### 1. Hide content when it overflows
-
-This is actually the less common use case. It behaves exactly like you would expect, cutting off overflowing content and not letting you scroll to it: 
+You can use it to fine tune the scroll bar location e.g. below we want the header to stay outside the scroll bar:
 
 <Playground>
-  {/* force a small size container */}
-  <Vertical height={80} scroll='disable' style={{backgroundColor: "lightskyblue"}}>
-    <div style={{backgroundColor: 'lightpink'}}>Lots of content to make it overflow, but it will get hidden</div>
-    <div style={{backgroundColor: 'lightpink'}}>Lots of content to make it overflow, but it will get hidden</div>
-    <div style={{backgroundColor: 'lightpink'}}>Lots of content to make it overflow, but it will get hidden</div>
-  </Vertical>
-</Playground>
-
-### 2. Fine tune scroll bar location
-
-The browser will try to put the scroll-bar as high up in the tree as it can find by default. Even if you have `scroll: both` on your container, the browser might choose to put the scroll-bar on the body. 
-
-
-An example is shown below, notice that the scrolling is happening on the `body` level instead of the `main section` level (despite `scroll:'both'`):
-
-<Playground style={{overflow: 'auto'}}>
   <Vertical height={200} spacing={0} style={{backgroundColor: "lightskyblue"}}>
 
     {/* You want this header to stick to top */}
@@ -107,26 +86,15 @@ An example is shown below, notice that the scrolling is happening on the `body` 
   </Vertical>
 </Playground>
 
-To fix it, we tell the browser to disable scroll (`scroll:'disable'`) at the parent of the item we want to scroll:
+## disable
+It behaves exactly like you would expect, cutting off overflowing content and not letting you scroll to it: 
 
-<Playground style={{overflow: 'auto'}}>
-  {/* scroll:disable => your way of telling the browser insert scroll bars on something inside if it needs to */}
-  <Vertical scroll='disable' height={200} spacing={0} style={{backgroundColor: "lightskyblue"}}>
-
-    {/* You want this header to stick to top */}
-    <Content style={{backgroundColor: 'darkorange', textAlign: 'center', height: '50px', fontSize: '35px'}}>Header</Content>
-
-    {/* You only want this section to scroll */}
-    <Vertical sizing='flex' scroll='both'>
-      <div style={{backgroundColor: 'lightpink'}}>Main section with lots of text to make it overflow</div>
-      <div style={{backgroundColor: 'lightpink'}}>Main section with lots of text to make it overflow</div>
-      <div style={{backgroundColor: 'lightpink'}}>Main section with lots of text to make it overflow</div>
-      <div style={{backgroundColor: 'lightpink'}}>Main section with lots of text to make it overflow</div>
-      <div style={{backgroundColor: 'lightpink'}}>Main section with lots of text to make it overflow</div>
-      <div style={{backgroundColor: 'lightpink'}}>Main section with lots of text to make it overflow</div>
-      <div style={{backgroundColor: 'lightpink'}}>Main section with lots of text to make it overflow</div>
-    </Vertical>
-
+<Playground>
+  {/* force a small size container */}
+  <Vertical height={80} scroll='disable' style={{backgroundColor: "lightskyblue"}}>
+    <div style={{backgroundColor: 'lightpink'}}>Lots of content to make it overflow, but it will get hidden</div>
+    <div style={{backgroundColor: 'lightpink'}}>Lots of content to make it overflow, but it will get hidden</div>
+    <div style={{backgroundColor: 'lightpink'}}>Lots of content to make it overflow, but it will get hidden</div>
   </Vertical>
 </Playground>
 

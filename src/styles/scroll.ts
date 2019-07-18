@@ -19,9 +19,7 @@ export const scrollVertical: types.NestedCSSProperties = {
 };
 
 /**
- * If you expect a child somewhere down in the tree to scroll
- * you need to tell the browser to prevent a scroll bar. 
- * Example use : `parent(scrollDisable) > child(scroll)`
+ * Cuts off the exccess content and disables the scroll bar
  */
 export const scrollDisable: types.NestedCSSProperties = {
   overflow: 'hidden'
