@@ -78,7 +78,12 @@ export interface SizeProps {
  * Add on anything to add support for controlling the scroll
  */
 export interface ScrollProp {
-  scroll?: 'both' /** default */ | 'vertical' | 'horizontal' | 'disabled';
+  scroll?:
+  | 'overflow' /** default */
+  | 'both'
+  | 'vertical'
+  | 'horizontal'
+  | 'disabled';
 }
 
 /** 

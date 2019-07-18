@@ -68,17 +68,18 @@ export function createGLSTag<T extends GLSProps>(
             scroll == 'disabled' ? scrollHelpers.scrollDisabled
               : scroll == 'horizontal' ? scrollHelpers.scrollHorizontal
                 : scroll == 'vertical' ? scrollHelpers.scrollVertical
-                  : scrollHelpers.scrollBoth
+                  : scroll == 'both' ? scrollHelpers.scrollBoth
+                    : null
           ),
           /** Padding */
           padding != null && (_processPadding(padding)),
           /** Size props */
-          height != null && { height: boxUnitToString(height)},
-          minHeight != null && { minHeight: boxUnitToString(minHeight)},
+          height != null && { height: boxUnitToString(height) },
+          minHeight != null && { minHeight: boxUnitToString(minHeight) },
           maxHeight != null && { maxHeight: boxUnitToString(maxHeight) },
-          width != null && { width: boxUnitToString(width)},
-          minWidth != null && { minWidth: boxUnitToString(minWidth)},
-          maxWidth != null && { maxWidth: boxUnitToString(maxWidth)},
+          width != null && { width: boxUnitToString(width) },
+          minWidth != null && { minWidth: boxUnitToString(minWidth) },
+          maxWidth != null && { maxWidth: boxUnitToString(maxWidth) },
           /** Any user customizations */
           ...styles,
         )
