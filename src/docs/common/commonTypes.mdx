@@ -23,18 +23,19 @@ Various versions of providing common shorthand properties
 export type BoxSet =
   /** top,right,left,bottom */
   | BoxUnit
-  /** [topBottom,leftRight] */
+  /** [top & bottom, left & right] */
   | [BoxUnit, BoxUnit]
   /** [top,right,bottom,left] */
   | [BoxUnit, BoxUnit, BoxUnit, BoxUnit]
 ```
 
+e.g. `5` (means `5px` top,right,left,bottom), `['5rem','10px']` (means `5rem` top & bottom, `10px` left & right), `[10,5,'10rem', 15]` (means `10px` top, `5px` right, `10rem` bottom, `15px` left).
 
 ## GLSProps
 Objective: A consistent set of customization options. Members:
 
 * `padding?: BoxSet`: The padding. Using it effectively is covered in the [spacing principle][principle-spacing] section.
-* `scroll?: 'both' /** default */ | 'vertical' | 'horizontal' | 'disabled'`: specify scrolling behaviours.
+* `scroll?`: specify scrolling behaviours. Covered in [scrolling principle][principle-scrolling].
 * `styles?: (typestyle.types.NestedCSSProperties | falsy)[]`: an array of custom typestyle `style` objects. Any falsy array members will be safely ignored.
 
 From react: 
