@@ -60,7 +60,7 @@ export interface FlexProp {
 /** 
  * Props accepted by all our container components
  */
-export interface GLSProps extends PaddingProp, ScrollProp, StylesProp, TagProps {
+export interface GLSProps extends PaddingProp, SizeProps, ScrollProp, StylesProp, TagProps {
   className?: string,
   style?: React.CSSProperties,
 }
@@ -70,6 +70,20 @@ export interface GLSProps extends PaddingProp, ScrollProp, StylesProp, TagProps 
  */
 export interface PaddingProp {
   padding?: BoxSet,
+}
+
+
+/** 
+ * Add support for explicit sizing
+ */
+export interface SizeProps {
+  height?: BoxUnit,
+  minHeight?: BoxUnit,
+  maxHeight?: BoxUnit,
+
+  width?: BoxUnit,
+  minWidth?: BoxUnit,
+  maxWidth?: BoxUnit,
 }
 
 /** 

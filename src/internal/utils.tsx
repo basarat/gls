@@ -43,7 +43,18 @@ export function createGLSTag<T extends GLSProps>(
   /** Comment to help with debuggin */
   comment: string,
 ) {
-  const { className, scroll, padding, styles = [], tag, ...otherProps } = props;
+  const {
+    className,
+    padding,
+    height,
+    minHeight,
+    maxHeight,
+    width,
+    minWidth,
+    maxWidth,
+    scroll,
+    styles = [],
+    tag, ...otherProps } = props;
 
   return React.createElement(
     (tag != null && ('name' in tag) && tag.name != null) ? tag.name : 'div',
@@ -61,6 +72,13 @@ export function createGLSTag<T extends GLSProps>(
           ),
           /** Padding */
           padding != null && (_processPadding(padding)),
+          /** Size props */
+          height != null && { height: boxUnitToString(height)},
+          minHeight != null && { minHeight: boxUnitToString(minHeight)},
+          maxHeight != null && { maxHeight: boxUnitToString(maxHeight) },
+          width != null && { width: boxUnitToString(width)},
+          minWidth != null && { minWidth: boxUnitToString(minWidth)},
+          maxWidth != null && { maxWidth: boxUnitToString(maxWidth)},
           /** Any user customizations */
           ...styles,
         )
