@@ -45,13 +45,13 @@ export interface BoxFunction<T> {
 }
 
 /** 
- * Specifies `flex` interaction with parent 
+ * Specifies sizing interaction
  */
-export interface FlexProp {
+export interface SizingProp {
   /** 
-   * Specifies `flex` interaction with parent 
+   * Specifies `sizing` interaction
    */
-  flex?:
+  sizing?:
   | 'content' /** default */
   | 'flex' /** Same as `1` */
   | number;

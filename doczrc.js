@@ -3,7 +3,7 @@ export default {
   base: '/gls/',
   menu: [
     'General Layout System',
-    'Space principle',
+    'Spacing principle',
     'Sizing principle',
     'Common Types and Props',
     'Vertical',

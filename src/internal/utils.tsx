@@ -1,5 +1,5 @@
 import * as typestyle from 'typestyle';
-import { BoxUnit, GLSProps, FlexProp, GLSDefaults, BoxSet } from "../common";
+import { BoxUnit, GLSProps, SizingProp, GLSDefaults, BoxSet } from "../common";
 import * as scrollHelpers from "../styles/scroll";
 import { content, flex } from '../styles/flex';
 import React, { useContext } from 'react';
@@ -93,8 +93,8 @@ export function createGLSTag<T extends GLSProps>(
 /** 
  * Generates the appropriate styles to handle the flex interaction 
  */
-export function processFlexProp(prop: FlexProp): typestyle.types.CSSProperties {
-  const { flex: fx = 'content' } = prop;
+export function processFlexProp(prop: SizingProp): typestyle.types.CSSProperties {
+  const { sizing: fx = 'content' } = prop;
   return fx == 'content' ? content
     : fx == 'flex' ? flex(1)
       : flex(fx);

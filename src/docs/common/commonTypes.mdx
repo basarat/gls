@@ -33,7 +33,7 @@ export type BoxSet =
 ## GLSProps
 Objective: A consistent set of customization options. Members:
 
-* `padding?: BoxSet`: the padding.
+* `padding?: BoxSet`: The padding. Using it effectively is covered in our *spacing principal* section.
 * `scroll?: 'both' /** default */ | 'vertical' | 'horizontal' | 'disabled'`: specify scrolling behaviours.
 * `styles?: (typestyle.types.NestedCSSProperties | falsy)[]`: an array of custom typestyle `style` objects. Any falsy array members will be safely ignored.
 
@@ -49,21 +49,22 @@ tag?: {
 }
 ```
 
-## FlexProp
+## SizingProp
 
-The `flex?` prop: 
+The `sizing` prop:
 
 ```ts
 /** 
- * Specifies `flex` interaction with parent 
+ * Specifies sizing interaction
  */
-export interface FlexProp {
+export interface SizingProp {
   /** 
-   * Specifies `flex` interaction with parent 
+   * Specifies `sizing` interaction
    */
-  flex?:
+  sizing?:
   | 'content' /** default */
   | 'flex' /** Same as `1` */
-  | number
+  | number;
 }
 ```
+It is covered in our *sizing principal* section.

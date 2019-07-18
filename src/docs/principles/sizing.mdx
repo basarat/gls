@@ -3,10 +3,29 @@ name: Sizing principle
 route: /principle-sizing/
 ---
 
-# Sizing
-The ability to control the sizing of a container is what fundamentally makes it possible to mix *fixed sized* (simple) / *flex sized* (powerful) and *flexible* (super-powerful) layout items in your designs.
+import { Playground } from 'docz';
+import { Vertical, Horizontal } from '../..'; 
 
-The concepts under the flex principal are 
-* flex sized
-* content sized
-* explicit sized
+# Sizing
+The ability to control the sizing of a container is what fundamentally makes it possible to mix *explicit sized* (simple) / *flex sized* (powerful) and *flexible* (super-powerful) layout items in your designs. We cover them one by one below.
+
+
+## Explicit sized
+Driven by explicit `width,height` arguments. Here we have a simple `Vertical` container with explicit `height`: 
+
+<Playground>
+  <Vertical height={100} style={{backgroundColor: "lightskyblue"}}>
+    Hello world
+  </Vertical>
+</Playground>
+
+
+This is essentially what you are doing in most design tools out there. Sadly explicit sizing does not scale to *real* applications where sizes need to be reactive to either their parent or their content. Fortunately we provide concepts to handle these cases.
+
+## Flex sized
+A flex sized component takes up as much space as offered by the parent. 
+
+
+Here we have an explicit sized `Vertical` (background `darkorange`) with an inner flex sized `Vertical` (background `lightskyblue`). The inner vertical keeps it size to match that of the outer container
+
+# Content sized

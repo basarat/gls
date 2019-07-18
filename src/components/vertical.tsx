@@ -1,6 +1,6 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { GLSProps, BoxUnit, FlexProp } from '../common';
+import { GLSProps, BoxUnit, SizingProp } from '../common';
 import { createGLSTag, boxUnitToString, processFlexProp, useGLSDefaults } from '../internal/utils';
 import { types } from 'typestyle';
 import { vertical, centerJustified, endJustified, end, center } from '../styles/flex';
@@ -22,7 +22,7 @@ export const verticallySpaced = (margin: BoxUnit) => {
   );
 };
 
-export interface VerticalProps extends GLSProps, FlexProp {
+export interface VerticalProps extends GLSProps, SizingProp {
   spacing?: number,
 
   verticalAlign?: 'top' /** default */ | 'center' | 'bottom',
@@ -36,7 +36,7 @@ export const Vertical: React.FC<VerticalProps> = (props) => {
   const {
     horizontalAlign,
     verticalAlign,
-    flex,
+    sizing: flex,
     ...otherProps
   } = props;
 
