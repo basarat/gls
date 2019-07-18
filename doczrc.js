@@ -4,7 +4,7 @@ export default {
   menu: [
     'General Layout System',
     'Space principle',
-    'Flex principle',
+    'Sizing principle',
     'Common Types and Props',
     'Vertical',
   ],
