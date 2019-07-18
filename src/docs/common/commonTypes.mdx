@@ -8,25 +8,25 @@ We have a common set of props that are supported by a number of components. Thes
 
 Before we do that, we present some common types referenced by the props.
 
-## BoxUnit
-`type BoxUnit = number | string`. 
+## CSSLength
+`type CSSLength = number | string`. 
 
 Examples: 
 * 5 (implies 5px)
 * '5rem'
 
-## BoxSet
+## CSSBox
 
 Various versions of providing common shorthand properties
 
 ```ts
-export type BoxSet =
+export type CSSBox =
   /** top,right,left,bottom */
-  | BoxUnit
+  | CSSLength
   /** [top & bottom, left & right] */
-  | [BoxUnit, BoxUnit]
+  | [CSSLength, CSSLength]
   /** [top,right,bottom,left] */
-  | [BoxUnit, BoxUnit, BoxUnit, BoxUnit]
+  | [CSSLength, CSSLength, CSSLength, CSSLength]
 ```
 
 e.g. `5` (means `5px` top,right,left,bottom), `['5rem','10px']` (means `5rem` top & bottom, `10px` left & right), `[10,5,'10rem', 15]` (means `10px` top, `5px` right, `10rem` bottom, `15px` left).

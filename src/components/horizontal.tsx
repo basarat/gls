@@ -1,15 +1,15 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { GLSProps, SizingProp, BoxUnit } from '../common';
-import { createGLSTag, processFlexProp, boxUnitToString, useGLSDefaults } from '../internal/utils';
+import { GLSProps, SizingProp, CSSLength } from '../common';
+import { createGLSTag, processFlexProp, cssLengthToString, useGLSDefaults } from '../internal/utils';
 import { horizontal, endJustified, centerJustified, center, end } from '../styles/flex';
 import { types } from 'typestyle';
 
 /**
  * Puts a horizontal margin between each child
  */
-export const horizontallySpaced = (margin: BoxUnit) => {
-  const spacing = boxUnitToString(margin);
+export const horizontallySpaced = (margin: CSSLength) => {
+  const spacing = cssLengthToString(margin);
   return (
     {
       '&>*': {

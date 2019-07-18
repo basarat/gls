@@ -5,8 +5,8 @@ import React from 'react';
  * Default values for components 
  */
 export const GLSDefaults = React.createContext<{
-  verticalSpacing?: BoxUnit,
-  horizontalSpacing?: BoxUnit,
+  verticalSpacing?: CSSLength,
+  horizontalSpacing?: CSSLength,
   breakpoint?: number
 }>({
   verticalSpacing: 24,
@@ -19,18 +19,18 @@ export const GLSDefaults = React.createContext<{
  * - 5 (implies 5px)
  * - '5rem'
  */
-export type BoxUnit = number | string;
+export type CSSLength = number | string;
 
 /** 
  * Various versions of providing common shorthand properties
  */
-export type BoxSet =
+export type CSSBox =
   /** top,right,left,bottom */
-  | BoxUnit
-  /** [topBottom,leftRight] */
-  | [BoxUnit, BoxUnit]
+  | CSSLength
+  /** [top & bottom, left & right] */
+  | [CSSLength, CSSLength]
   /** [top,right,bottom,left] */
-  | [BoxUnit, BoxUnit, BoxUnit, BoxUnit]
+  | [CSSLength, CSSLength, CSSLength, CSSLength]
 
 /** 
  * Specifies sizing interaction
@@ -57,7 +57,7 @@ export interface GLSProps extends PaddingProp, SizeProps, ScrollProp, StylesProp
  * Add support for padding
  */
 export interface PaddingProp {
-  padding?: BoxSet,
+  padding?: CSSBox,
 }
 
 
@@ -65,13 +65,13 @@ export interface PaddingProp {
  * Add support for explicit sizing
  */
 export interface SizeProps {
-  height?: BoxUnit,
-  minHeight?: BoxUnit,
-  maxHeight?: BoxUnit,
+  height?: CSSLength,
+  minHeight?: CSSLength,
+  maxHeight?: CSSLength,
 
-  width?: BoxUnit,
-  minWidth?: BoxUnit,
-  maxWidth?: BoxUnit,
+  width?: CSSLength,
+  minWidth?: CSSLength,
+  maxWidth?: CSSLength,
 }
 
 /** 

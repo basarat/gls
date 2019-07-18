@@ -1,16 +1,16 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { BoxUnit, GLSProps } from '../common';
-import { boxUnitToString, createGLSTag, useGLSDefaults } from '../internal/utils';
+import { CSSLength, GLSProps } from '../common';
+import { cssLengthToString, createGLSTag, useGLSDefaults } from '../internal/utils';
 
 /**
  * Puts a (horizontal AND vertical) margin between each child
  */
-export function gridSpaced(both: BoxUnit): string;
-export function gridSpaced(topAndBottom: BoxUnit, leftAndRight: BoxUnit): string;
-export function gridSpaced(topAndBottom: BoxUnit, leftAndRight = topAndBottom): string {
-  const vertical = boxUnitToString(topAndBottom);
-  const horizontal = boxUnitToString(leftAndRight);
+export function gridSpaced(both: CSSLength): string;
+export function gridSpaced(topAndBottom: CSSLength, leftAndRight: CSSLength): string;
+export function gridSpaced(topAndBottom: CSSLength, leftAndRight = topAndBottom): string {
+  const vertical = cssLengthToString(topAndBottom);
+  const horizontal = cssLengthToString(leftAndRight);
   return typestyle.style(
     {
       marginTop: '-' + vertical,
@@ -27,8 +27,8 @@ export function gridSpaced(topAndBottom: BoxUnit, leftAndRight = topAndBottom): 
 
 export interface GridProps extends GLSProps {
   spacing?:
-  | BoxUnit
-  | [BoxUnit, BoxUnit]
+  | CSSLength
+  | [CSSLength, CSSLength]
 }
 
 /** 

@@ -1,7 +1,7 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { BoxUnit } from '../common';
-import { boxUnitToString, useGLSDefaults } from '../internal/utils';
+import { CSSLength } from '../common';
+import { cssLengthToString, useGLSDefaults } from '../internal/utils';
 import { flex } from '../styles/flex';
 
 export interface FlexSpaceProps extends React.HTMLProps<HTMLDivElement> {
@@ -27,7 +27,7 @@ FlexSpace.displayName = 'FlexSpace';
  * Common interface for space props 
  */
 export interface SpaceProps extends React.HTMLProps<HTMLDivElement> {
-  space?: BoxUnit;
+  space?: CSSLength;
 }
 
 /**
@@ -36,7 +36,7 @@ export interface SpaceProps extends React.HTMLProps<HTMLDivElement> {
 export const HorizontalSpace: React.FC<SpaceProps> = (props) => {
   const { style, ...otherProps } = props;
   const { horizontalSpacing } = useGLSDefaults();
-  const width = boxUnitToString(props.space == null ? horizontalSpacing : props.space);
+  const width = cssLengthToString(props.space == null ? horizontalSpacing : props.space);
   const styles: React.CSSProperties = {
     display: 'inline-block',
     width: width,
@@ -53,7 +53,7 @@ HorizontalSpace.displayName = 'HorizontalSpace';
 export const VerticalSpace: React.FC<SpaceProps> = (props) => {
   const { style, ...otherProps } = props;
   const { verticalSpacing } = useGLSDefaults();
-  const height = boxUnitToString(props.space == null ? verticalSpacing : props.space);
+  const height = cssLengthToString(props.space == null ? verticalSpacing : props.space);
   const styles: React.CSSProperties = {
     height: height,
     ...style
