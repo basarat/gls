@@ -113,7 +113,7 @@ You normally:
 * don't put `padding` on any *layout* components that you want to *compose* into other layouts.
 * put `padding` on *page level* layout components.
 
-So a page level form layout component would have padding, whereas a simple composite reusable form component would not. You can observe this pattern in the example below where the `Vertical`s for the reuseable `First/Middle/Last` name component does not have a padding (enabling seemless reuse): 
+So a page level form layout component would have padding, whereas a reusable form component would not. You can observe this pattern in the example below where the `Vertical`s for the reuseable `First/Middle/Last` name component does not have a padding (enabling seemless reuse): 
 
 <Playground>
   {/* Not meant to be nested further */}
