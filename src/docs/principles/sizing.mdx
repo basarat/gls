@@ -25,7 +25,28 @@ This is essentially what you are doing in most design tools out there. Sadly exp
 ## Flex sized
 A flex sized component takes up as much space as offered by the parent. 
 
+In the example below, we have an explicit sized `Vertical` (background `lightskyblue`) with an inner flex sized `Vertical` (background `darkorange`). The inner vertical keeps it size to match that of the outer container (observed below as you don't see the background of the parent as it is filled in by the child).
 
-Here we have an explicit sized `Vertical` (background `darkorange`) with an inner flex sized `Vertical` (background `lightskyblue`). The inner vertical keeps it size to match that of the outer container
+<Playground>
+  <Vertical height={100} style={{backgroundColor: "lightskyblue"}}>
+    <Vertical sizing={'flex'} style={{backgroundColor: "darkorange"}}>
+        I'm taking up all the space from the parent
+    </Vertical>  
+  </Vertical>
+</Playground>
 
-# Content sized
+
+## Content sized
+A content sized component takes up as much space as offered by the parent. This is the most common sizing that you want and is therefore the default.
+
+In the example below, we have an explicit sized `Vertical` (background `lightskyblue`) with an inner content-sized `Vertical` (background `darkorange`). The inner vertical keeps it size to match whatever is needed by its children (observed below as you see the background of the parent where the child ends)
+
+<Playground>
+  <Vertical height={100} style={{backgroundColor: "lightskyblue"}}>
+    <Vertical style={{backgroundColor: "darkorange"}}>
+        I'm taking up as much space as needed by my children
+    </Vertical>  
+  </Vertical>
+</Playground>
+
+> You can set it explicitly as well if you want `sizing={'content'}`
