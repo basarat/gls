@@ -107,4 +107,49 @@ We've talked about spacing children among each other, one final thing to talk ab
   </Vertical>
 </Playground>
 
-> Component design tip: `padding` can be used in any components that have an explict border (e.g buttons, user profile cards) as well as layout containers that might have implicit borders, due to color seperation (e.g. form containers).
+> Component design tip: `padding` can be used in any components that have an explict border (e.g buttons, user profile cards).
+
+You normally:
+* don't put `padding` on any *layout* components that you want to *compose* into other layouts.
+* put `padding` on *page level* layout components.
+
+So a page level form layout component would have padding, whereas a simple composite reusable form component would not. You can observe this pattern in the example below where the `Vertical`s for the reuseable `First/Middle/Last` name component does not have a padding (enabling seemless reuse): 
+
+<Playground>
+  {/* Not meant to be nested further */}
+  <Vertical spacing={15} padding={15}>
+    
+    { /* User A: Reusable child */ }
+    <Vertical spacing={15}>
+      <Vertical spacing={5}>
+        <demos.Label>UserA first name</demos.Label>
+        <demos.Input/>
+      </Vertical>
+      <Vertical spacing={5}>
+        <demos.Label>UserA middle name</demos.Label>
+        <demos.Input/>
+      </Vertical>
+      <Vertical spacing={5}>
+        <demos.Label>UserA last name</demos.Label>
+        <demos.Input/>
+      </Vertical>
+    </Vertical>
+
+    { /* User B: Reusing the same code as A, inline here, but you can componentify */ }
+    <Vertical spacing={15}>
+      <Vertical spacing={5}>
+        <demos.Label>UserB first name</demos.Label>
+        <demos.Input/>
+      </Vertical>
+      <Vertical spacing={5}>
+        <demos.Label>UserB middle name</demos.Label>
+        <demos.Input/>
+      </Vertical>
+      <Vertical spacing={5}>
+        <demos.Label>UserB last name</demos.Label>
+        <demos.Input/>
+      </Vertical>
+    </Vertical>
+
+  </Vertical>
+</Playground>
