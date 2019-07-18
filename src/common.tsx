@@ -42,7 +42,7 @@ export interface SizingProp {
   sizing?:
   | 'content' /** default */
   | 'flex' /** Same as `1` */
-  | number;
+  | number /** A flex ratio */;
 }
 
 /** 
