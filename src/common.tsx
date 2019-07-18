@@ -32,18 +32,6 @@ export type BoxSet =
   /** [top,right,bottom,left] */
   | [BoxUnit, BoxUnit, BoxUnit, BoxUnit]
 
-/**
- * A box function is something that can take:
- * - all
- * - topAndBottom + leftRight
- * - top + right + bottom + left
- */
-export interface BoxFunction<T> {
-  (all: BoxUnit): T;
-  (topAndBottom: BoxUnit, leftAndRight: BoxUnit): T;
-  (top: BoxUnit, right: BoxUnit, bottom: BoxUnit, left: BoxUnit): T;
-}
-
 /** 
  * Specifies sizing interaction
  */
