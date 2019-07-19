@@ -46,6 +46,18 @@ export interface SizingProp {
 }
 
 /** 
+ * Specifies children layout options 
+ */
+export interface ChildPlacementProps {
+  /** Spacing between each child */
+  spacing?: number,
+  /** Child alignment in vertical axis */
+  verticalAlign?: 'top' /** default */ | 'center' | 'bottom',
+  /** Child alignment in horizontal axis */
+  horizontalAlign?: 'left' /** default */ | 'center' | 'right',
+}
+
+/** 
  * Props accepted by all our container components
  */
 export interface GLSProps extends PaddingProp, SizeProps, ScrollProp, StylesProp, TagProps {

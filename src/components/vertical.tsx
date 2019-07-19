@@ -1,6 +1,6 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { GLSProps, CSSLength, SizingProp } from '../common';
+import { GLSProps, CSSLength, SizingProp, ChildPlacementProps } from '../common';
 import { createGLSTag, cssLengthToString, processFlexProp, useGLSDefaults } from '../internal/utils';
 import { types } from 'typestyle';
 import { vertical, centerJustified, endJustified, end, center } from '../styles/flex';
@@ -22,11 +22,7 @@ export const verticallySpaced = (margin: CSSLength) => {
   );
 };
 
-export interface VerticalProps extends GLSProps, SizingProp {
-  spacing?: number,
-
-  verticalAlign?: 'top' /** default */ | 'center' | 'bottom',
-  horizontalAlign?: 'left' /** default */ | 'center' | 'right',
+export interface VerticalProps extends GLSProps, SizingProp, ChildPlacementProps {
 }
 
 /** 
