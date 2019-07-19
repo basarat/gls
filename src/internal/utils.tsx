@@ -72,7 +72,7 @@ export function createGLSTag<T extends GLSProps>(
         typestyle.style(
           /** Scroll */
           scroll != null && (
-            scroll == 'disable' ? scrollHelpers.scrollDisable
+            scroll == 'hidden' ? scrollHelpers.scrollHidden
               : scroll == 'horizontal' ? scrollHelpers.scrollHorizontal
                 : scroll == 'vertical' ? scrollHelpers.scrollVertical
                   : scroll == 'both' ? scrollHelpers.scrollBoth

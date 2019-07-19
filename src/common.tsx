@@ -83,7 +83,7 @@ export interface ScrollProp {
   | 'both'
   | 'vertical'
   | 'horizontal'
-  | 'disable';
+  | 'hidden';
 }
 
 /** 

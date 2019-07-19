@@ -18,7 +18,7 @@ export interface ScrollProp {
   | 'both'
   | 'vertical'
   | 'horizontal'
-  | 'disable';
+  | 'hidden';
 }
 ```
 
@@ -86,12 +86,12 @@ You can use it to fine tune the scroll bar location e.g. below we want the heade
   </Vertical>
 </Playground>
 
-## disable
+## hidden
 It behaves exactly like you would expect, cutting off overflowing content and not letting you scroll to it: 
 
 <Playground>
   {/* force a small size container */}
-  <Vertical height={80} scroll='disable' style={{backgroundColor: "lightskyblue"}}>
+  <Vertical height={80} scroll='hidden' style={{backgroundColor: "lightskyblue"}}>
     <div style={{backgroundColor: 'lightpink'}}>Lots of content to make it overflow, but it will get hidden</div>
     <div style={{backgroundColor: 'lightpink'}}>Lots of content to make it overflow, but it will get hidden</div>
     <div style={{backgroundColor: 'lightpink'}}>Lots of content to make it overflow, but it will get hidden</div>

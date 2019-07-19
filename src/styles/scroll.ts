@@ -21,6 +21,6 @@ export const scrollVertical: types.NestedCSSProperties = {
 /**
  * Cuts off the exccess content and disables the scroll bar
  */
-export const scrollDisable: types.NestedCSSProperties = {
+export const scrollHidden: types.NestedCSSProperties = {
   overflow: 'hidden'
 };
