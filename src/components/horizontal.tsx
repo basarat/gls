@@ -1,7 +1,7 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
 import { GLSProps, SizingProp, CSSLength, ChildPlacementProps } from '../common';
-import { createGLSTag, processFlexProp, cssLengthToString, useGLSDefaults } from '../internal/utils';
+import { createGLSTag, processSizingProp, cssLengthToString, useGLSDefaults } from '../internal/utils';
 import { horizontal, endJustified, centerJustified, center, end } from '../styles/flex';
 import { types } from 'typestyle';
 
@@ -38,7 +38,7 @@ export const Horizontal: React.FC<HorizontalProps> = (props) => {
   const { horizontalSpacing } = useGLSDefaults();
 
   const klass = typestyle.style(
-    processFlexProp(props),
+    processSizingProp(props),
     horizontal,
     horizontallySpaced(props.spacing == null ? horizontalSpacing : props.spacing),
     horizontalAlign == 'right' && endJustified,

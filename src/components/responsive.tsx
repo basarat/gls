@@ -1,5 +1,3 @@
-import { HorizontalProps } from './horizontal';
-import { VerticalProps } from './vertical';
 import { GLSProps, SizingProp } from '../common';
 // import * as typestyle from 'typestyle';
 // import { horizontal, endJustified, centerJustified, center, end } from '../styles/flex';

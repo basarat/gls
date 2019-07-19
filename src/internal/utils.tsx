@@ -101,7 +101,7 @@ export function createGLSTag<T extends GLSProps>(
 /** 
  * Generates the appropriate styles to handle the flex interaction 
  */
-export function processFlexProp(prop: SizingProp): typestyle.types.CSSProperties {
+export function processSizingProp(prop: SizingProp): typestyle.types.CSSProperties {
   const { sizing: fx = 'content' } = prop;
   return fx == 'content' ? content
     : fx == 'flex' ? flex(1)
