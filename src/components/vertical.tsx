@@ -29,19 +29,19 @@ export interface VerticalProps extends GLSProps, SizingProp, ChildPlacementProps
  * Layout out children vertically with a margin between them
  */
 export const Vertical: React.FC<VerticalProps> = (props) => {
+  const { verticalSpacing } = useGLSDefaults();
   const {
+    spacing = verticalSpacing,
     horizontalAlign,
     verticalAlign,
     sizing,
     ...otherProps
   } = props;
 
-  const { verticalSpacing } = useGLSDefaults();
-
   const klass = typestyle.style(
     processSizingProp(props),
     vertical,
-    verticallySpaced(props.spacing == null ? verticalSpacing : props.spacing),
+    verticallySpaced(spacing),
     verticalAlign == 'center' && centerJustified,
     verticalAlign == 'bottom' && endJustified,
     horizontalAlign == 'right' && end,

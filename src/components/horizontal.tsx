@@ -29,18 +29,18 @@ export interface HorizontalProps extends GLSProps, SizingProp, ChildPlacementPro
  * Layout out children horizontally with a margin between them
  */
 export const Horizontal: React.FC<HorizontalProps> = (props) => {
+  const { horizontalSpacing } = useGLSDefaults();
   const {
+    spacing = horizontalSpacing,
     horizontalAlign,
     verticalAlign,
     sizing,
     ...otherProps } = props;
 
-  const { horizontalSpacing } = useGLSDefaults();
-
   const klass = typestyle.style(
     processSizingProp(props),
     horizontal,
-    horizontallySpaced(props.spacing == null ? horizontalSpacing : props.spacing),
+    horizontallySpaced(horizontalSpacing),
     horizontalAlign == 'right' && endJustified,
     horizontalAlign == 'center' && centerJustified,
     verticalAlign == 'center' && center,
