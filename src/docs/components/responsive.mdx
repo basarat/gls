@@ -9,10 +9,12 @@ import * as demos from '../../demos';
 
 # Responsive 
 
-Lays out children in a vertically or horizontally spaced layout based on given breakpoint.
+Lays out children in a vertically or horizontally spaced layout based on given breakpoint (default is 480). 
+
+As an example, resize your browser window to see the following layout change from horizontal to vertical at 500px:
 
 <Playground>
-  <Responsive>
+  <Responsive breakpoint={500}>
     <Flex style={{backgroundColor: "lightskyblue"}}>Hello</Flex>
     <Flex style={{backgroundColor: "lightpink"}}>World</Flex>
   </Responsive>
