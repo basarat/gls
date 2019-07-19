@@ -1,6 +1,6 @@
 ---
-name: Vertical
-route: /vertical/
+name: Spacers
+route: /spacers/
 ---
 
 import { Playground } from 'docz';
@@ -9,14 +9,24 @@ import * as demos from '../../demos';
 
 # Spacers 
 
-We've discussed how to manage space reliably in our [spacing-principle][principle-spacing].
+Spacers are used to add *space* to your designs. Spacers should not be abused, but they can be super handy. Consider a simple button on the screen: 
 
 <Playground>
-  <Vertical>
-    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
-    <div style={{backgroundColor: "lightpink"}}>World</div>
-  </Vertical>
-</Playground>
+  <demos.Button>
+    Just a button minding its own business
+  </demos.Button>
+</Playground>  
+
+Let's say the design wants you to add some space on top of the button. You can do that easily with `margin-top`: 
+
+<Playground>
+  <demos.Button style={{marginTop: '15px'}}>
+    Just a button minding its own business
+  </demos.Button>
+</Playground>  
+
+We've covered issues with using margin (specifically their collapsing nature which makes them hard to manage and maintain reliably) in our [spacing-principle][principle-spacing].
+
 
 [common-types]:../common-types/
 [principle-spacing]:../principle-spacing/

@@ -9,6 +9,7 @@ export default {
     'Common Types and Props',
     'Vertical',
     'Responsive',
+    'Spacers',
   ],
 
   // Some cleanups
