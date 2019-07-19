@@ -1,0 +1,23 @@
+---
+name: Vertical
+route: /vertical/
+---
+
+import { Playground } from 'docz';
+import { Vertical, FlexSpace, VerticalSpace, HorizontalSpace } from '../..'; 
+import * as demos from '../../demos'; 
+
+# Spacers 
+
+We've discussed how to manage space reliably in our [spacing-principle][principle-spacing].
+
+<Playground>
+  <Vertical>
+    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
+    <div style={{backgroundColor: "lightpink"}}>World</div>
+  </Vertical>
+</Playground>
+
+[common-types]:../common-types/
+[principle-spacing]:../principle-spacing/
+[principle-sizing]:../principle-sizing/
