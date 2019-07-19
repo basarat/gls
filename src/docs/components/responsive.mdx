@@ -12,37 +12,23 @@ import * as demos from '../../demos';
 Lays out children in a vertically or horizontally spaced layout based on given breakpoint.
 
 <Playground>
-  <Vertical>
+  <Responsive>
     <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
     <div style={{backgroundColor: "lightpink"}}>World</div>
-  </Vertical>
+  </Responsive>
 </Playground>
-
-Since `Vertical` follows the [spacing principle][principle-spacing] you can compose / nest `Vertical`s easily. The following example has three `Verticals` in a `Vertical(Vertical(blue,pink),Vertical(blue,pink))` heirarchy but to the user it looks seemless. This ability to nest allows you to easily create and reuse components without having to worry about how they will get used.
-
-<Playground>
-  <Vertical>
-    <Vertical>
-      <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
-      <div style={{backgroundColor: "lightpink"}}>World</div>
-    </Vertical>
-    <Vertical>
-      <div style={{backgroundColor: "lightskyblue"}}>Second Hello</div>
-      <div style={{backgroundColor: "lightpink"}}>Second World</div>
-    </Vertical>
-  </Vertical>
-</Playground>
-
-## Props
-
 
 ## GLSProps
 
-`Vertical` [supports all `GLSProps`][common-types]
+`Responsive` [supports all `GLSProps`][common-types].
+
+## ChildPlacementProps
+
+`Responsive` [supports all `ChildPlacementProps`][common-types].
 
 ## SizingProp
 
-`Vertical` supports the `sizing` prop as explained in the [sizing principle][principle-sizing].
+`Responsive` supports the `sizing` prop as explained in the [sizing principle][principle-sizing].
 
 
 [common-types]:../common-types/
