@@ -33,50 +33,17 @@ Since `Vertical` follows the [spacing principle][principle-spacing] you can comp
   </Vertical>
 </Playground>
 
-## Props
-* `spacing?: CSSLength` Controls spacing between children ([concepts covered in spacing principle][principle-spacing]).
+## ChildPlacementProps
 
-<Playground>
-  <Vertical spacing={10}>
-    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
-    <div style={{backgroundColor: "lightpink"}}>World</div>
-    <div style={{backgroundColor: "darkorange"}}>Again</div>
-  </Vertical>
-</Playground>
-
-* `verticalAlign?: 'top' /** default */ | 'center' | 'bottom'` Controls vertical alignment of children.
-
-<Playground>
-  <Vertical verticalAlign='bottom' style={{height: '100px'}} spacing={10}>
-    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
-    <div style={{backgroundColor: "lightpink"}}>World</div>
-  </Vertical>
-</Playground>
-
-* `horizontalAlign?: 'left' /** default */ | 'center' | 'right'` Controls horizontal alignment of children.
-
-<Playground>
-  <Vertical horizontalAlign='right'>
-    <button>Hello</button>
-    <button>World</button>
-  </Vertical>
-</Playground>
+`Vertical` [supports all `ChildPlacementProps`][common-types].
 
 ## GLSProps
 
-`Vertical` [supports all `GLSProps` e.g. `padding`][common-types]: 
-
-<Playground>
-  <Vertical padding={20}>
-    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
-    <div style={{backgroundColor: "lightpink"}}>World</div>
-  </Vertical>
-</Playground>
+`Vertical` [supports all `GLSProps`][common-types].
 
 ## SizingProp
 
 `Vertical` supports the `sizing` prop as explained in the [sizing principle][principle-sizing].
-
 
 [common-types]:../common-types/
 [principle-spacing]:../principle-spacing/
