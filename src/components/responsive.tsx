@@ -4,8 +4,15 @@ import { createGLSTag, useGLSDefaults, processSizingProp } from '../internal/uti
 import { verticallySpaced } from './vertical';
 import { horizontallySpaced } from './horizontal';
 import { vertical, horizontal, centerJustified, endJustified, end, center } from '../styles/flex';
-// import { horizontal, endJustified, centerJustified, center, end } from '../styles/flex';
 
+
+/** 
+ * Props that can be specified at root of `Responsive` and overridden for `vertical`/`horizontal` options
+ */
+export interface ResponsiveOverridableProps extends
+  SizingProp,
+  ChildPlacementProps {
+}
 
 /** 
  * Props per mode (vertical/horizontal)
@@ -13,14 +20,13 @@ import { vertical, horizontal, centerJustified, endJustified, end, center } from
 export interface ResponsiveModeProps extends
   StyleProp,
   StylesProp,
-  SizingProp,
-  ChildPlacementProps {
+  ResponsiveOverridableProps {
 }
 
 /** 
  * Props for the Responsive component
  */
-export interface ResponsiveProps extends GLSProps, SizingProp, ChildPlacementProps {
+export interface ResponsiveProps extends GLSProps, ResponsiveOverridableProps {
   /** 
    * windowWidth <= breakpoint : it is vertical (mobile)
    * else                      : it is horizontal (desktop)
@@ -105,8 +111,10 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
       verticalModeHorizontalAlign == 'right' && end,
       verticalModeHorizontalAlign == 'center' && center,
       verticalOptions && verticalOptions.style,
-      // verticalOptions && verticalOptions.styles != null && ...(verticalOptions.styles),
     ),
+    verticalOptions && verticalOptions.styles && typestyle.media({ minWidth: 0, maxWidth: breakpoint },
+      ...verticalOptions.styles),
+
     /** Bigger than breakpoint: Horizontal */
     typestyle.media({ minWidth: breakpoint + 1 },
       processSizingProp({ sizing: horizontalSizing }),
@@ -117,8 +125,9 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
       horizontalModeVerticalAlign == 'center' && center,
       horizontalModeVerticalAlign == 'bottom' && end,
       horizontalOptions && horizontalOptions.style,
-      // horizontalOptions !=null && ...(horizontalOptions.styles),
-    )
+    ),
+    horizontalOptions && horizontalOptions.styles && typestyle.media({ minWidth: breakpoint + 1 },
+      ...horizontalOptions.styles),
   );
   return createGLSTag(otherProps, klass, 'Responsive');
 }
