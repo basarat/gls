@@ -3,6 +3,9 @@ name: Common Types and Props
 route: /common-types/
 ---
 
+import { Playground } from 'docz';
+import { Vertical } from '../..'; 
+
 # Common Types and Props
 We have a common set of props that are supported by a number of components. These will be mentioned in the docs for the individual components as well. We present them below with a reference component.
 
@@ -70,6 +73,49 @@ export interface SizingProp {
 ```
 The `content`/`flex`/`flex ratio` are covered in our [sizing principle][principle-sizing] section.
 
+## ChildPlacementProps
+
+```ts
+/** 
+ * Specifies children layout options 
+ */
+export interface ChildPlacementProps {
+  /** Spacing between each child */
+  spacing?: number,
+  /** Child alignment in vertical axis */
+  verticalAlign?: 'top' /** default */ | 'center' | 'bottom',
+  /** Child alignment in horizontal axis */
+  horizontalAlign?: 'left' /** default */ | 'center' | 'right',
+}
+```
+
+* `spacing?: CSSLength` Controls spacing between children ([concepts covered in spacing principle][principle-spacing]). e.g. `spacing={10}` gives us:
+
+<Playground>
+  <Vertical spacing={10}>
+    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
+    <div style={{backgroundColor: "lightpink"}}>World</div>
+    <div style={{backgroundColor: "darkorange"}}>Again</div>
+  </Vertical>
+</Playground>
+
+* `verticalAlign?: 'top' /** default */ | 'center' | 'bottom'` Controls vertical alignment of children. e.g. `verticalAlign='bottom'` gives us:
+
+<Playground>
+  <Vertical verticalAlign='bottom' style={{height: '100px'}} spacing={10}>
+    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
+    <div style={{backgroundColor: "lightpink"}}>World</div>
+  </Vertical>
+</Playground>
+
+* `horizontalAlign?: 'left' /** default */ | 'center' | 'right'` Controls horizontal alignment of children. e.g. `horizontalAlign='right'` gives us:
+
+<Playground>
+  <Vertical horizontalAlign='right'>
+    <button>Hello</button>
+    <button>World</button>
+  </Vertical>
+</Playground>
 
 [principle-spacing]:../principle-spacing/
 [principle-sizing]:../principle-sizing/
