@@ -8,6 +8,7 @@ export default {
     'Scrolling principle',
     'Common Types and Props',
     'Vertical',
+    'Responsive',
   ],
 
   // Some cleanups
