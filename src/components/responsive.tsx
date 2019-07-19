@@ -1,6 +1,6 @@
 import * as typestyle from 'typestyle';
 import { GLSProps, SizingProp, StylesProp, ChildPlacementProps, StyleProp } from '../common';
-import { createGLSTag, useGLSDefaults } from '../internal/utils';
+import { createGLSTag, useGLSDefaults, processSizingProp } from '../internal/utils';
 import { verticallySpaced } from './vertical';
 import { horizontallySpaced } from './horizontal';
 import { vertical, horizontal, centerJustified, endJustified, end, center } from '../styles/flex';
@@ -60,6 +60,14 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
     ...otherProps
   } = props;
 
+  /** Determine sizings */
+  const verticalSizing = (verticalOptions && verticalOptions.sizing != null)
+    ? verticalOptions.sizing
+    : sizing;
+  const horizontalSizing = (horizontalOptions && horizontalOptions.sizing != null)
+    ? horizontalOptions.sizing
+    : sizing;
+
   /** Determine spacings  */
   const verticalSpacing = (verticalOptions && verticalOptions.spacing != null) ? verticalOptions.spacing
     : spacing != null ? spacing
@@ -80,9 +88,8 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
 
   const klass = typestyle.style(
     /** Till breakpoint: Vertical */
-    typestyle.media(
-      { minWidth: 0, maxWidth: breakpoint },
-      // processSizingProp(props),
+    typestyle.media({ minWidth: 0, maxWidth: breakpoint },
+      processSizingProp({ sizing: verticalSizing }),
       vertical,
       verticalSpacing !== 0 && verticallySpaced(verticalSpacing),
       verticalModeVerticalAlignment == 'center' && centerJustified,
@@ -92,6 +99,7 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
     ),
     /** Bigger than breakpoint: Horizontal */
     typestyle.media({ minWidth: breakpoint + 1 },
+      processSizingProp({ sizing: horizontalSizing }),
       horizontal,
       horizontallySpaced(horizontalSpacing),
       /** TODO: remaining horizontal props */
