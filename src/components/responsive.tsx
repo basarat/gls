@@ -104,7 +104,8 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
       verticalModeVerticalAlign == 'bottom' && endJustified,
       verticalModeHorizontalAlign == 'right' && end,
       verticalModeHorizontalAlign == 'center' && center,
-      /** styles, style */
+      verticalOptions && verticalOptions.style,
+      // verticalOptions && verticalOptions.styles != null && ...(verticalOptions.styles),
     ),
     /** Bigger than breakpoint: Horizontal */
     typestyle.media({ minWidth: breakpoint + 1 },
@@ -115,7 +116,8 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
       horizontalModeHorizontalAlign == 'center' && centerJustified,
       horizontalModeVerticalAlign == 'center' && center,
       horizontalModeVerticalAlign == 'bottom' && end,
-      /** styles, style */
+      horizontalOptions && horizontalOptions.style,
+      // horizontalOptions !=null && ...(horizontalOptions.styles),
     )
   );
   return createGLSTag(otherProps, klass, 'Responsive');
