@@ -3,6 +3,7 @@ import { GLSProps, SizingProp, StylesProp, ChildPlacementProps, StyleProp } from
 import { createGLSTag, useGLSDefaults } from '../internal/utils';
 import { verticallySpaced } from './vertical';
 import { horizontallySpaced } from './horizontal';
+import { vertical, horizontal } from '../styles/flex';
 // import { horizontal, endJustified, centerJustified, center, end } from '../styles/flex';
 
 
@@ -50,8 +51,8 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
   const {
     sizing,
     breakpoint = bp,
-    vertical,
-    horizontal,
+    vertical: verticalOptions,
+    horizontal: horizontalOptions,
 
     /** Overridable */
     spacing,
@@ -62,10 +63,10 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
   } = props;
 
   /** Determine spacings  */
-  const verticalSpacing = (vertical && vertical.spacing != null) ? vertical.spacing
+  const verticalSpacing = (verticalOptions && verticalOptions.spacing != null) ? verticalOptions.spacing
     : spacing != null ? spacing
       : defaultVerticalSpacing;
-  const horizontalSpacing = (horizontal && horizontal.spacing != null) ? horizontal.spacing
+  const horizontalSpacing = (horizontalOptions && horizontalOptions.spacing != null) ? horizontalOptions.spacing
     : spacing != null ? spacing
       : defaultHorizontalSpacing;
 
@@ -73,12 +74,14 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
     /** Till breakpoint: Vertical */
     typestyle.media(
       { minWidth: 0, maxWidth: breakpoint },
-      /** TODO: remaining vertical props */
+      vertical,
       verticallySpaced(verticalSpacing),
+      /** TODO: remaining vertical props */
     ),
     /** Bigger than breakpoint: Horizontal */
     typestyle.media({ minWidth: breakpoint + 1 },
-      horizontallySpaced(horizontalSpacing)
+      horizontal,
+      horizontallySpaced(horizontalSpacing),
       /** TODO: remaining horizontal props */
     )
     //   typestyle.media({},
