@@ -4,7 +4,7 @@ route: /responsive/
 ---
 
 import { Playground } from 'docz';
-import { Responsive } from '../..'; 
+import { Responsive, Flex } from '../..'; 
 import * as demos from '../../demos'; 
 
 # Responsive 
@@ -13,8 +13,8 @@ Lays out children in a vertically or horizontally spaced layout based on given b
 
 <Playground>
   <Responsive>
-    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
-    <div style={{backgroundColor: "lightpink"}}>World</div>
+    <Flex style={{backgroundColor: "lightskyblue"}}>Hello</Flex>
+    <Flex style={{backgroundColor: "lightpink"}}>World</Flex>
   </Responsive>
 </Playground>
 
