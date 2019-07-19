@@ -1,6 +1,8 @@
 import * as typestyle from 'typestyle';
 import { GLSProps, SizingProp, StylesProp, ChildPlacementProps, StyleProp } from '../common';
-import { createGLSTag } from '../internal/utils';
+import { createGLSTag, useGLSDefaults } from '../internal/utils';
+import { verticallySpaced } from './vertical';
+import { horizontallySpaced } from './horizontal';
 // import { horizontal, endJustified, centerJustified, center, end } from '../styles/flex';
 
 
@@ -40,25 +42,54 @@ export interface ResponsiveProps extends GLSProps, SizingProp, ChildPlacementPro
  */
 export const Responsive: React.FC<ResponsiveProps> = (props) => {
   const {
+    verticalSpacing: defaultVerticalSpacing,
+    horizontalSpacing: defaultHorizontalSpacing,
+    breakpoint: bp
+  } = useGLSDefaults();
+
+  const {
+    sizing,
+    breakpoint = bp,
+    vertical,
+    horizontal,
+
+    /** Overridable */
+    spacing,
     horizontalAlign,
     verticalAlign,
-    spacing,
-    sizing,
+
     ...otherProps
   } = props;
 
-  // const { verticalSpacing, horizontalSpacing, breakpoint } = useGLSDefaults();
+  /** Determine spacings  */
+  const verticalSpacing = (vertical && vertical.spacing != null) ? vertical.spacing
+    : spacing != null ? spacing
+      : defaultVerticalSpacing;
+  const horizontalSpacing = (horizontal && horizontal.spacing != null) ? horizontal.spacing
+    : spacing != null ? spacing
+      : defaultHorizontalSpacing;
 
   const klass = typestyle.style(
-  //   typestyle.media({},
-  //   )
-  //   // processSizingProp(props),
-  //   // vertical,
-  //   // verticallySpaced(props.spacing == null ? verticalSpacing : props.spacing),
-  //   // verticalAlign == 'center' && centerJustified,
-  //   // verticalAlign == 'bottom' && endJustified,
-  //   // horizontalAlign == 'right' && end,
-  //   // horizontalAlign == 'center' && center,
+    /** Till breakpoint: Vertical */
+    typestyle.media(
+      { minWidth: 0, maxWidth: breakpoint },
+      /** TODO: remaining vertical props */
+      verticallySpaced(verticalSpacing),
+    ),
+    /** Bigger than breakpoint: Horizontal */
+    typestyle.media({ minWidth: breakpoint + 1 },
+      horizontallySpaced(horizontalSpacing)
+      /** TODO: remaining horizontal props */
+    )
+    //   typestyle.media({},
+    //   )
+    //   // processSizingProp(props),
+    //   // vertical,
+    //   // verticallySpaced(props.spacing == null ? verticalSpacing : props.spacing),
+    //   // verticalAlign == 'center' && centerJustified,
+    //   // verticalAlign == 'bottom' && endJustified,
+    //   // horizontalAlign == 'right' && end,
+    //   // horizontalAlign == 'center' && center,
   );
   return createGLSTag(otherProps, klass, 'Responsive');
 }
