@@ -32,7 +32,7 @@ export const Horizontal: React.FC<HorizontalProps> = (props) => {
   const {
     horizontalAlign,
     verticalAlign,
-    sizing: flex,
+    sizing,
     ...otherProps } = props;
 
   const { horizontalSpacing } = useGLSDefaults();

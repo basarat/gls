@@ -32,7 +32,7 @@ export const Vertical: React.FC<VerticalProps> = (props) => {
   const {
     horizontalAlign,
     verticalAlign,
-    sizing: flex,
+    sizing,
     ...otherProps
   } = props;
 
