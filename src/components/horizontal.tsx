@@ -40,7 +40,7 @@ export const Horizontal: React.FC<HorizontalProps> = (props) => {
   const klass = typestyle.style(
     processSizingProp(props),
     horizontal,
-    horizontallySpaced(horizontalSpacing),
+    horizontalSpacing !== 0 && horizontallySpaced(horizontalSpacing),
     horizontalAlign == 'right' && endJustified,
     horizontalAlign == 'center' && centerJustified,
     verticalAlign == 'center' && center,
