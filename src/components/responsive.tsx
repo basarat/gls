@@ -3,7 +3,7 @@ import { GLSProps, SizingProp, StylesProp, ChildPlacementProps, StyleProp } from
 import { createGLSTag, useGLSDefaults } from '../internal/utils';
 import { verticallySpaced } from './vertical';
 import { horizontallySpaced } from './horizontal';
-import { vertical, horizontal } from '../styles/flex';
+import { vertical, horizontal, centerJustified, endJustified, end, center } from '../styles/flex';
 // import { horizontal, endJustified, centerJustified, center, end } from '../styles/flex';
 
 
@@ -13,9 +13,7 @@ import { vertical, horizontal } from '../styles/flex';
 export interface ResponsiveModeProps extends
   StyleProp,
   StylesProp,
-  /** 
-   * Defaults for `ChildPlacementProps` can be provided at the `ResponsiveProps` level 
-   **/
+  SizingProp,
   ChildPlacementProps {
 }
 
@@ -49,15 +47,15 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
   } = useGLSDefaults();
 
   const {
-    sizing,
     breakpoint = bp,
     vertical: verticalOptions,
     horizontal: horizontalOptions,
 
     /** Overridable */
+    sizing,
     spacing,
-    horizontalAlign,
     verticalAlign,
+    horizontalAlign,
 
     ...otherProps
   } = props;
@@ -70,13 +68,27 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
     : spacing != null ? spacing
       : defaultHorizontalSpacing;
 
+  /** Determine alignments */
+  const verticalModeVerticalAlignment =
+    (verticalOptions && verticalOptions.verticalAlign != null) ? verticalOptions.verticalAlign
+      : verticalAlign != null ? verticalAlign
+        : null;
+  const verticalModeHorizontalAlignment =
+    (verticalOptions && verticalOptions.horizontalAlign != null) ? verticalOptions.horizontalAlign
+      : horizontalAlign != null ? horizontalAlign
+        : null;
+
   const klass = typestyle.style(
     /** Till breakpoint: Vertical */
     typestyle.media(
       { minWidth: 0, maxWidth: breakpoint },
+      // processSizingProp(props),
       vertical,
-      verticallySpaced(verticalSpacing),
-      /** TODO: remaining vertical props */
+      verticalSpacing !== 0 && verticallySpaced(verticalSpacing),
+      verticalModeVerticalAlignment == 'center' && centerJustified,
+      verticalModeVerticalAlignment == 'bottom' && endJustified,
+      verticalModeHorizontalAlignment == 'right' && end,
+      verticalModeHorizontalAlignment == 'center' && center,
     ),
     /** Bigger than breakpoint: Horizontal */
     typestyle.media({ minWidth: breakpoint + 1 },
