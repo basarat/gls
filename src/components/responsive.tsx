@@ -1,27 +1,40 @@
-import { GLSProps, SizingProp } from '../common';
+import { GLSProps, SizingProp, StylesProp, ChildPlacementProps, StyleProp } from '../common';
 // import * as typestyle from 'typestyle';
 // import { horizontal, endJustified, centerJustified, center, end } from '../styles/flex';
 // import { createGLSTag, useGLSDefaults, processFlexProp } from '../internal/utils';
 
-export interface ResponsiveConditionalProps {
+
+/** 
+ * Props per mode (vertical/horizontal)
+ */
+export interface ResponsiveModeProps extends
+  StyleProp,
+  StylesProp,
+  /** 
+   * Defaults for `ChildPlacementProps` can be provided at the `ResponsiveProps` level 
+   **/
+  ChildPlacementProps {
 }
 
-export interface ResponsiveProps extends GLSProps, SizingProp, ResponsiveConditionalProps {
+/** 
+ * Props for the Responsive component
+ */
+export interface ResponsiveProps extends GLSProps, SizingProp, ChildPlacementProps {
   /** 
    * windowWidth <= breakpoint : it is vertical (mobile)
    * else                      : it is horizontal (desktop)
    **/
   breakpoint?: number;
 
-  /** Horizontal mode configuration */
-  horizontal?: ResponsiveConditionalProps;
-
   /** Vertical mode configuration */
-  vertical?: ResponsiveConditionalProps;
+  vertical?: ResponsiveModeProps;
+
+  /** Horizontal mode configuration */
+  horizontal?: ResponsiveModeProps;
 }
 
-/** 
- * Layout out children 
+/**
+ * Layout out children
  * - vertically till breakpoint
  * - horizontally above breakpoint
  */

@@ -97,19 +97,25 @@ export interface ScrollProp {
 }
 
 /** 
- * Add to add support for mixing in NestedCSSProperties 
+ * Support for mixing in NestedCSSProperties 
  */
 export interface StylesProp {
   styles?: (types.NestedCSSProperties | null | false)[];
 }
 
 /** 
+ * Support for React `style` property
+ */
+export interface StyleProp {
+  style?: React.CSSProperties;
+}
+
+/** 
  * Props supported by the underlying tag 
  */
-export interface TagProps {
-  style?: React.CSSProperties,
+export interface TagProps extends StyleProp {
   className?: string,
-  
+
   tag?:
   {
     /** name default: div */
