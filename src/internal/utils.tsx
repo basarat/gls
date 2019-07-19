@@ -13,20 +13,27 @@ export function cssLengthToString(value: CSSLength): string {
 }
 
 /** 
+ * Ensures all four members of box are present
+ */
+function boxToFullBox(box: CSSBox): [CSSLength, CSSLength, CSSLength, CSSLength] {
+  if (typeof box == 'number' || typeof box == 'string') {
+    const value = cssLengthToString(box);
+    return [value, value, value, value];
+  } else if (box.length == 2) {
+    const [topBottom, leftRight] = box.map(cssLengthToString);
+    return [topBottom, leftRight, topBottom, leftRight];
+  } else {
+    return box.map(cssLengthToString) as [CSSLength, CSSLength, CSSLength, CSSLength];
+  }
+}
+
+/** 
  * Utility to unwrap the three ways a padding might be provided 
  */
 function _processPadding(box: CSSBox)
   : typestyle.types.NestedCSSProperties {
-  if (typeof box == 'number' || typeof box == 'string') {
-    const value = cssLengthToString(box);
-    return { paddingTop: value, paddingRight: value, paddingBottom: value, paddingLeft: value };
-  } else if (box.length == 2) {
-    const [topBottom, leftRight] = box.map(cssLengthToString);
-    return { paddingTop: topBottom, paddingRight: leftRight, paddingBottom: topBottom, paddingLeft: leftRight };
-  } else {
-    const [top, right, bottom, left] = box.map(cssLengthToString);
-    return { paddingTop: top, paddingRight: right, paddingBottom: bottom, paddingLeft: left };
-  }
+  const [paddingTop, paddingRight, paddingBottom, paddingLeft] = boxToFullBox(box);
+  return { paddingTop, paddingRight, paddingBottom, paddingLeft };
 }
 
 /** 
