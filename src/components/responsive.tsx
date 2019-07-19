@@ -77,12 +77,20 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
       : defaultHorizontalSpacing;
 
   /** Determine alignments */
-  const verticalModeVerticalAlignment =
+  const verticalModeVerticalAlign =
     (verticalOptions && verticalOptions.verticalAlign != null) ? verticalOptions.verticalAlign
       : verticalAlign != null ? verticalAlign
         : null;
-  const verticalModeHorizontalAlignment =
+  const verticalModeHorizontalAlign =
     (verticalOptions && verticalOptions.horizontalAlign != null) ? verticalOptions.horizontalAlign
+      : horizontalAlign != null ? horizontalAlign
+        : null;
+  const horizontalModeVerticalAlign =
+    (horizontalOptions && horizontalOptions.verticalAlign != null) ? horizontalOptions.verticalAlign
+      : verticalAlign != null ? verticalAlign
+        : null;
+  const horizontalModeHorizontalAlign =
+    (horizontalOptions && horizontalOptions.horizontalAlign != null) ? horizontalOptions.horizontalAlign
       : horizontalAlign != null ? horizontalAlign
         : null;
 
@@ -92,27 +100,23 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
       processSizingProp({ sizing: verticalSizing }),
       vertical,
       verticalSpacing !== 0 && verticallySpaced(verticalSpacing),
-      verticalModeVerticalAlignment == 'center' && centerJustified,
-      verticalModeVerticalAlignment == 'bottom' && endJustified,
-      verticalModeHorizontalAlignment == 'right' && end,
-      verticalModeHorizontalAlignment == 'center' && center,
+      verticalModeVerticalAlign == 'center' && centerJustified,
+      verticalModeVerticalAlign == 'bottom' && endJustified,
+      verticalModeHorizontalAlign == 'right' && end,
+      verticalModeHorizontalAlign == 'center' && center,
+      /** styles, style */
     ),
     /** Bigger than breakpoint: Horizontal */
     typestyle.media({ minWidth: breakpoint + 1 },
       processSizingProp({ sizing: horizontalSizing }),
       horizontal,
-      horizontallySpaced(horizontalSpacing),
-      /** TODO: remaining horizontal props */
+      horizontalSpacing !== 0 && horizontallySpaced(horizontalSpacing),
+      horizontalModeHorizontalAlign == 'right' && endJustified,
+      horizontalModeHorizontalAlign == 'center' && centerJustified,
+      horizontalModeVerticalAlign == 'center' && center,
+      horizontalModeVerticalAlign == 'bottom' && end,
+      /** styles, style */
     )
-    //   typestyle.media({},
-    //   )
-    //   // processSizingProp(props),
-    //   // vertical,
-    //   // verticallySpaced(props.spacing == null ? verticalSpacing : props.spacing),
-    //   // verticalAlign == 'center' && centerJustified,
-    //   // verticalAlign == 'bottom' && endJustified,
-    //   // horizontalAlign == 'right' && end,
-    //   // horizontalAlign == 'center' && center,
   );
   return createGLSTag(otherProps, klass, 'Responsive');
 }
