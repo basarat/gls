@@ -5,14 +5,14 @@ import { createGLSTag } from '../internal/utils';
 import { content, flex } from '../styles/flex';
 
 export interface FlexProps extends GLSProps {
-  flex?: number;
+  sizing?: number;
 }
 
 /** 
  * For providing a *as much as available* amount of space for an item
  */
 export const Flex: React.FC<FlexProps> = (props) => {
-  const klass = typestyle.style(flex(props.flex));
+  const klass = typestyle.style(flex(props.sizing));
   return createGLSTag(props, klass, 'Flex');
 };
 Flex.displayName = 'Flex';

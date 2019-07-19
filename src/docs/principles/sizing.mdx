@@ -4,7 +4,7 @@ route: /principle-sizing/
 ---
 
 import { Playground } from 'docz';
-import { Vertical, Horizontal } from '../..'; 
+import { Vertical, Horizontal, Flex, Content } from '../..'; 
 
 # Sizing
 The ability to control the sizing of a container is what fundamentally makes it possible to mix *explicit sized* (simple) / *flex sized* (powerful) and *flexible* (super-powerful) layout items in your designs. We cover them one by one below.
@@ -50,3 +50,31 @@ In the example below, we have an explicit sized `Vertical` (background `lightsky
 </Playground>
 
 > You can set it explicitly as well if you want `sizing={'content'}`
+
+## Ratios in flex sizing
+With flex sizing, you can specify `number` values on how much you want differnt items to flex. e.g. We have `1` and `2` as the sizing on the children of the following horizontal:
+
+<Playground>
+  <Horizontal height={100} spacing={0} style={{backgroundColor: "lightskyblue"}}>
+    <Flex sizing={1} style={{backgroundColor: "darkorange"}}>
+        I'm taking 1
+    </Flex>  
+    <Flex sizing={2} style={{backgroundColor: "lightpink"}}>
+        I'm taking 2
+    </Flex>
+  </Horizontal>
+</Playground>
+
+You can even mix `Flex` and `Content` sizing if you want: 
+
+<Playground>
+  <Horizontal height={100} spacing={0} style={{backgroundColor: "lightskyblue"}}>
+    <Content width={100}>Exactly 100px</Content>
+    <Flex sizing={1} style={{backgroundColor: "darkorange"}}>
+        I'm taking 1 from remainder
+    </Flex>  
+    <Flex sizing={2} style={{backgroundColor: "lightpink"}}>
+        I'm taking 2 from remainder
+    </Flex>
+  </Horizontal>
+</Playground>
