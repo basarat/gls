@@ -61,8 +61,6 @@ export interface ChildPlacementProps {
  * Props accepted by all our container components
  */
 export interface GLSProps extends PaddingProp, SizeProps, ScrollProp, StylesProp, TagProps {
-  className?: string,
-  style?: React.CSSProperties,
 }
 
 /** 
@@ -109,6 +107,9 @@ export interface StylesProp {
  * Props supported by the underlying tag 
  */
 export interface TagProps {
+  style?: React.CSSProperties,
+  className?: string,
+  
   tag?:
   {
     /** name default: div */

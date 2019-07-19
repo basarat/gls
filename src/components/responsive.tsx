@@ -1,11 +1,14 @@
-import * as React from 'react';
-// import * as typestyle from 'typestyle';
-// import { horizontal, endJustified, centerJustified, center, end } from '../styles/flex';
 import { HorizontalProps } from './horizontal';
 import { VerticalProps } from './vertical';
+import { GLSProps, SizingProp } from '../common';
+// import * as typestyle from 'typestyle';
+// import { horizontal, endJustified, centerJustified, center, end } from '../styles/flex';
 // import { createGLSTag, useGLSDefaults, processFlexProp } from '../internal/utils';
 
-export interface ResponsiveProps extends React.HTMLProps<HTMLDivElement> {
+export interface ResponsiveConditionalProps {
+}
+
+export interface ResponsiveProps extends GLSProps, SizingProp, ResponsiveConditionalProps {
   /** 
    * windowWidth <= breakpoint : it is vertical (mobile)
    * else                      : it is horizontal (desktop)
@@ -13,10 +16,10 @@ export interface ResponsiveProps extends React.HTMLProps<HTMLDivElement> {
   breakpoint?: number;
 
   /** Horizontal mode configuration */
-  horizontal?: HorizontalProps;
+  horizontal?: ResponsiveConditionalProps;
 
   /** Vertical mode configuration */
-  verticalMode?: VerticalProps;
+  vertical?: ResponsiveConditionalProps;
 }
 
 /** 
