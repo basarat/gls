@@ -28,13 +28,22 @@ export interface GridProps extends GLSProps, SizingProp {
   spacing?:
   | CSSLength
   | [/** Vertical */ CSSLength, /** Horizontal */ CSSLength]
+
+  justification?:
+  | 'left' /** default */
+  | 'center'
+  | 'right'
 }
 
 /** 
  * Lays out children with a margin between them (horizontal and vertical)
  */
 export const Grid: React.FC<GridProps> = (props) => {
-  const { spacing, ...otherProps } = props;
+  const {
+    sizing,
+    spacing,
+    justification,
+    ...otherProps } = props;
 
   /** 
    * Figure out the spacing requested 
@@ -51,8 +60,7 @@ export const Grid: React.FC<GridProps> = (props) => {
 
   const klass = typestyle.style(
     processSizingProp(props),
-    horizontal,
-    wrap,
+    horizontal, wrap,
     gridSpaced(verticalSpacing, horizontalSpacing),
   );
   return (
