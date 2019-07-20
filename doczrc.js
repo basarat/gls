@@ -12,6 +12,7 @@ export default {
     'Responsive',
     'Grid',
     'Spacers',
+    'Containers',
   ],
 
   // Some cleanups
