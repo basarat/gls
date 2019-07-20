@@ -1,7 +1,7 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { CSSLength, GLSProps } from '../common';
-import { cssLengthToString, createGLSTag, useGLSDefaults } from '../internal/utils';
+import { CSSLength, GLSProps, SizingProp } from '../common';
+import { cssLengthToString, createGLSTag, useGLSDefaults, processSizingProp } from '../internal/utils';
 
 /**
  * Puts a (horizontal AND vertical) margin between each child
@@ -23,7 +23,7 @@ export function gridSpaced(topAndBottom: CSSLength, leftAndRight = topAndBottom)
   };
 };
 
-export interface GridProps extends GLSProps {
+export interface GridProps extends GLSProps, SizingProp {
   spacing?:
   | CSSLength
   | [CSSLength, CSSLength]
@@ -49,6 +49,7 @@ export const Grid: React.FC<GridProps> = (props) => {
   }
 
   const klass = typestyle.style(
+    processSizingProp(props),
     gridSpaced(verticalSpacing, horizontalSpacing),
   );
   return (
