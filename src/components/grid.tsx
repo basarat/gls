@@ -1,28 +1,9 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
 import { CSSLength, GLSProps, SizingProp } from '../common';
-import { cssLengthToString, createGLSTag, useGLSDefaults, processSizingProp } from '../internal/utils';
+import { createGLSTag, useGLSDefaults, processSizingProp } from '../internal/utils';
 import { horizontal, wrap, endJustified, centerJustified, betweenJustified } from '../styles/flex';
-
-/**
- * Puts a (horizontal AND vertical) margin between each child
- */
-export function gridSpaced(both: CSSLength): typestyle.types.NestedCSSProperties;
-export function gridSpaced(topAndBottom: CSSLength, leftAndRight: CSSLength): typestyle.types.NestedCSSProperties;
-export function gridSpaced(topAndBottom: CSSLength, leftAndRight = topAndBottom): typestyle.types.NestedCSSProperties {
-  const verticalSpacing = cssLengthToString(topAndBottom);
-  const horizontalSpacing = cssLengthToString(leftAndRight);
-  return {
-    marginTop: '-' + verticalSpacing + ' !important',
-    marginLeft: '-' + horizontalSpacing + ' !important',
-    $nest: {
-      '&>*': {
-        marginTop: verticalSpacing + ' !important',
-        marginLeft: horizontalSpacing + ' !important',
-      }
-    }
-  };
-};
+import { gridSpaced } from '../styles/spacing';
 
 export interface GridProps extends GLSProps, SizingProp {
   /** 
@@ -35,11 +16,11 @@ export interface GridProps extends GLSProps, SizingProp {
   /** 
    * Controls how the extra space around the children is handled
    */
-  justification?:
+  justify?:
   /** Controls by content */
-  | 'left' /** default */
-  | 'center'
-  | 'right'
+  | 'content-left' /** default */
+  | 'content-center'
+  | 'content-right'
   /** Controls by space */
   | 'space-between'
 }
@@ -51,7 +32,7 @@ export const Grid: React.FC<GridProps> = (props) => {
   const {
     sizing,
     spacing,
-    justification,
+    justify,
     ...otherProps } = props;
 
   /** 
@@ -71,9 +52,9 @@ export const Grid: React.FC<GridProps> = (props) => {
     processSizingProp(props),
     horizontal, wrap,
     gridSpaced(verticalSpacing, horizontalSpacing),
-    justification == 'center' && centerJustified,
-    justification == 'right' && endJustified,
-    justification == 'space-between' && betweenJustified,
+    justify == 'content-center' && centerJustified,
+    justify == 'content-right' && endJustified,
+    justify == 'space-between' && betweenJustified,
   );
   return (
     createGLSTag(otherProps, klass, 'Grid')
