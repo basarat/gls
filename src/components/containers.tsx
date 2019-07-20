@@ -49,13 +49,13 @@ export const Content: React.FC<ContentProps> = (props) => {
   } = props;
   const klass = typestyle.style(
     content,
-    horizontal,
-    horizontalAlign == 'left' && startJustified,
-    horizontalAlign == 'center' && centerJustified,
-    horizontalAlign == 'right' && endJustified,
-    verticalAlign == 'top' && start,
-    verticalAlign == 'center' && center,
-    verticalAlign == 'bottom' && end,
+    vertical,
+    verticalAlign == 'top' && startJustified,
+    verticalAlign == 'center' && centerJustified,
+    verticalAlign == 'bottom' && endJustified,
+    horizontalAlign == 'left' && start,
+    horizontalAlign == 'center' && center,
+    horizontalAlign == 'right' && end,
   );
   return createGLSTag(otherProps, klass, 'Content');
 };
