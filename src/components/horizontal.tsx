@@ -17,8 +17,8 @@ export const Horizontal: React.FC<HorizontalProps> = (props) => {
     sizing,
 
     spacing = horizontalSpacing,
-    horizontalAlign,
     verticalAlign,
+    horizontalAlign,
     
     ...otherProps } = props;
 

@@ -1,10 +1,10 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { GLSProps } from '../common';
+import { GLSProps, AlignmentProps } from '../common';
 import { createGLSTag } from '../internal/utils';
-import { content, flex } from '../styles/flex';
+import { content, flex, vertical, centerJustified, endJustified, center, end } from '../styles/flex';
 
-export interface FlexProps extends GLSProps {
+export interface FlexProps extends GLSProps, AlignmentProps {
   sizing?: number;
 }
 
@@ -12,8 +12,23 @@ export interface FlexProps extends GLSProps {
  * For providing a *as much as available* amount of space for an item
  */
 export const Flex: React.FC<FlexProps> = (props) => {
-  const klass = typestyle.style(flex(props.sizing));
-  return createGLSTag(props, klass, 'Flex');
+  const {
+    sizing,
+
+    verticalAlign,
+    horizontalAlign,
+
+    ...otherProps
+  } = props;
+  const klass = typestyle.style(
+    flex(sizing),
+    vertical,
+    verticalAlign == 'center' && centerJustified,
+    verticalAlign == 'bottom' && endJustified,
+    horizontalAlign == 'center' && center,
+    horizontalAlign == 'right' && end,
+  );
+  return createGLSTag(otherProps, klass, 'Flex');
 };
 Flex.displayName = 'Flex';
 
