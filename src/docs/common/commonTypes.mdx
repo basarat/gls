@@ -73,19 +73,12 @@ export interface SizingProp {
 ```
 The `content`/`flex`/`flex ratio` are covered in our [sizing principle][principle-sizing] section.
 
-## ChildPlacementProps
+## SpacingProp
 
 ```ts
-/** 
- * Specifies children layout options 
- */
-export interface ChildPlacementProps {
+export interface SpacingProp {
   /** Spacing between each child */
-  spacing?: number,
-  /** Child alignment in vertical axis */
-  verticalAlign?: 'top' /** default */ | 'center' | 'bottom',
-  /** Child alignment in horizontal axis */
-  horizontalAlign?: 'left' /** default */ | 'center' | 'right',
+  spacing?: CSSLength,
 }
 ```
 
@@ -96,24 +89,6 @@ export interface ChildPlacementProps {
     <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
     <div style={{backgroundColor: "lightpink"}}>World</div>
     <div style={{backgroundColor: "darkorange"}}>Again</div>
-  </Vertical>
-</Playground>
-
-* `verticalAlign?: 'top' /** default */ | 'center' | 'bottom'` Controls vertical alignment of children. e.g. `verticalAlign='bottom'` gives us:
-
-<Playground>
-  <Vertical verticalAlign='bottom' style={{height: '100px'}} spacing={10}>
-    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
-    <div style={{backgroundColor: "lightpink"}}>World</div>
-  </Vertical>
-</Playground>
-
-* `horizontalAlign?: 'left' /** default */ | 'center' | 'right'` Controls horizontal alignment of children. e.g. `horizontalAlign='right'` gives us:
-
-<Playground>
-  <Vertical horizontalAlign='right'>
-    <button>Hello</button>
-    <button>World</button>
   </Vertical>
 </Playground>
 

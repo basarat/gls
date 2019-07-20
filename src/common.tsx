@@ -47,7 +47,7 @@ export interface SizingProp {
 
 export interface SpacingProp {
   /** Spacing between each child */
-  spacing?: number,
+  spacing?: CSSLength,
 }
 
 export interface AlignmentProps {
