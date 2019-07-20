@@ -11,7 +11,7 @@ export default {
     'Horizontal',
     'Responsive',
     'Grid',
-    'Spacers',
+    'Space',
   ],
 
   // Some cleanups
