@@ -55,25 +55,25 @@ Example (`vertical spacing=40px, horizontal spacing=20px`):
   </Grid>
 </Playground>
 
-## Justification
+## Justify
 
 ```ts
-  /** 
+/** 
    * Controls how the extra space around the children is handled
    */
-  justification?:
+  justify?:
   /** Controls by content */
-  | 'left' /** default */
-  | 'center'
-  | 'right'
+  | 'content-left' /** default */
+  | 'content-center'
+  | 'content-right'
   /** Controls by space */
   | 'space-between'
 ```
 
-Example `center`:
+Example `content-center` (the extra space gets put around the content):
 
 <Playground>
-  <Grid justification="center">
+  <Grid justify="content-center">
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
@@ -88,10 +88,10 @@ Example `center`:
   </Grid>
 </Playground>
 
-Example `right`: 
+Example `content-right` (the extra space gets put at the left): 
 
 <Playground>
-  <Grid justification="right">
+  <Grid justify="content-right">
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
@@ -106,10 +106,10 @@ Example `right`:
   </Grid>
 </Playground>
 
-Example `space-between` (focuses on putting the extra space between items): 
+Example `space-between` (the extra space goes between items): 
 
 <Playground>
-  <Grid justification="space-between">
+  <Grid justify="space-between">
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
