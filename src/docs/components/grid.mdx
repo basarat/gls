@@ -9,16 +9,47 @@ import * as demos from '../../demos';
 
 # Grid 
 
-Lays out children in a vertically + horizontally spaced layout.
+Lays out children in a vertically + horizontally spaced layout. You normally use it with fixed size children as shown below:
 
 <Playground>
   <Grid>
-    <Content width={200} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
-    <Content width={200} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
-    <Content width={200} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
-    <Content width={200} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
-    <Content width={200} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
-    <Content width={200} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+  </Grid>
+</Playground>
+
+## Spacing
+
+You can control the spacing between children with the spacing prop:
+```ts
+  spacing?:
+    | CSSLength
+    | [/** Vertical */ CSSLength, /** Horizontal */ CSSLength]
+```
+Example (vertical:10, horizontal:20): 
+
+<Playground>
+  <Grid spacing={[10,20]}>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
   </Grid>
 </Playground>
 

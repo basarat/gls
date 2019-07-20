@@ -27,7 +27,7 @@ export function gridSpaced(topAndBottom: CSSLength, leftAndRight = topAndBottom)
 export interface GridProps extends GLSProps, SizingProp {
   spacing?:
   | CSSLength
-  | [CSSLength, CSSLength]
+  | [/** Vertical */ CSSLength, /** Horizontal */ CSSLength]
 }
 
 /** 
