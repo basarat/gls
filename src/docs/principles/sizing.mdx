@@ -51,7 +51,7 @@ In the example below, we have an explicit sized `Vertical` (background `lightsky
 
 > You can set it explicitly as well if you want `sizing={'content'}`
 
-## Ratios in flex sizing
+## Flex sized ratios
 With flex sizing, you can specify `number` values on how much you want differnt items to flex. e.g. We have `1` and `2` as the sizing on the children of the following horizontal:
 
 <Playground>
@@ -69,7 +69,7 @@ You can even mix `Flex` and `Content` sizing if you want:
 
 <Playground>
   <Horizontal height={100} spacing={0} style={{backgroundColor: "lightskyblue"}}>
-    <Content width={100}>Exactly 100px</Content>
+    <Content width={100} style={{backgroundColor: "limegreen"}}>Exactly 100px</Content>
     <Flex sizing={1} style={{backgroundColor: "darkorange"}}>
         I'm taking 1 from remainder
     </Flex>  
