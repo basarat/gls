@@ -33,9 +33,28 @@ Since `Horizontal` follows the [spacing principle][principle-spacing] you can co
   </Horizontal>
 </Playground>
 
-## ChildPlacementProps
+## Alignment
+* `verticalAlign?: 'stretch' /** default */ | 'top' | 'center' | 'bottom'` Controls vertical alignment of children. e.g. `verticalAlign='bottom'` gives us:
 
-`Horizontal` [supports all `ChildPlacementProps`][common-types].
+<Playground>
+  <Horizontal verticalAlign='bottom' style={{height: '100px'}} spacing={10}>
+    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
+    <div style={{backgroundColor: "lightpink"}}>World</div>
+  </Horizontal>
+</Playground>
+
+* `horizontalAlign?: 'left' /** default */ | 'center' | 'right'` Controls horizontal alignment of children. e.g. `horizontalAlign='right'` gives us:
+
+<Playground>
+  <Horizontal horizontalAlign='right'>
+    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
+    <div style={{backgroundColor: "lightpink"}}>World</div>
+  </Horizontal>
+</Playground>
+
+## Spacing
+
+`Horizontal` [supports `spacing`][common-types].
 
 ## GLSProps
 
