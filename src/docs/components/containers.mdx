@@ -37,6 +37,25 @@ In the example below, we have an explicit sized `Vertical` (background `lightsky
   </Horizontal>
 </Playground>
 
+# Content
+Content takes up as much space as needed its child.
+
+In the example below we throw a few `Content` items in a `Vertical(Content,Content,Content)` structure: 
+
+<Playground>
+  <Vertical style={{backgroundColor: "lightskyblue"}}>
+    <Content style={{backgroundColor: "darkorange"}}>
+        I'm taking up as much space as needed by this text
+    </Content>
+    <Content style={{backgroundColor: "lightpink"}}>
+        I'm taking up as much space as needed by this text
+    </Content>
+    <Content style={{backgroundColor: "limegreen"}}>
+        I'm taking up as much space as needed by this text
+    </Content>
+  </Vertical>
+</Playground>
+
 
 [common-types]:../common-types/
 [principle-spacing]:../principle-spacing/
