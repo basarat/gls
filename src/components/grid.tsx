@@ -2,7 +2,7 @@ import * as typestyle from 'typestyle';
 import * as React from 'react';
 import { CSSLength, GLSProps, SizingProp } from '../common';
 import { createGLSTag, useGLSDefaults, processSizingProp } from '../internal/utils';
-import { horizontal, wrap, endJustified, centerJustified, betweenJustified } from '../styles/flex';
+import { horizontal, wrap, endJustified, centerJustified, betweenJustified, aroundJustified } from '../styles/flex';
 import { gridSpaced } from '../styles/spacing';
 
 export interface GridProps extends GLSProps, SizingProp {
@@ -23,6 +23,7 @@ export interface GridProps extends GLSProps, SizingProp {
   | 'right'
   /** Controls by space */
   | 'space-between'
+  | 'space-around'
 }
 
 /** 
@@ -55,6 +56,7 @@ export const Grid: React.FC<GridProps> = (props) => {
     justify == 'center' && centerJustified,
     justify == 'right' && endJustified,
     justify == 'space-between' && betweenJustified,
+    justify == 'space-around' && aroundJustified,
   );
   return (
     createGLSTag(otherProps, klass, 'Grid')

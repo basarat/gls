@@ -68,6 +68,7 @@ Example (`vertical spacing=40px, horizontal spacing=20px`):
   | 'right'
   /** Controls by space */
   | 'space-between'
+  | 'space-around'
 ```
 
 > We've seen the default `left` already (the extra space gets put on the right). We cover the rest below.
@@ -112,6 +113,24 @@ Example `space-between` (the extra space goes between items):
 
 <Playground>
   <Grid justify="space-between">
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+  </Grid>
+</Playground>
+
+Example `space-around` (the extra space goes around items): 
+
+<Playground>
+  <Grid justify="space-around">
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>

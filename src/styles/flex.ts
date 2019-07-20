@@ -96,3 +96,9 @@ export const betweenJustified = {
   '-webkit-justify-content': 'space-between',
   justifyContent: 'space-between'
 } as types.CSSProperties;
+
+export const aroundJustified = {
+  '-ms-flex-pack': 'distribute',
+  '-webkit-justify-content': 'space-around',
+  justifyContent: 'space-around'
+} as types.CSSProperties;
