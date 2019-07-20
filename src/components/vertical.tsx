@@ -1,26 +1,9 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { GLSProps, CSSLength, SizingProp, ChildPlacementProps } from '../common';
-import { createGLSTag, cssLengthToString, processSizingProp, useGLSDefaults } from '../internal/utils';
-import { types } from 'typestyle';
+import { GLSProps, SizingProp, ChildPlacementProps } from '../common';
+import { createGLSTag, processSizingProp, useGLSDefaults } from '../internal/utils';
 import { vertical, centerJustified, endJustified, end, center } from '../styles/flex';
-
-/**
- * Puts a vertical margin between each child
- */
-export const verticallySpaced = (margin: CSSLength) => {
-  const spacing = cssLengthToString(margin);
-  return (
-    {
-      '&>*': {
-        marginBottom: spacing + ' !important'
-      },
-      '&>*:last-child': {
-        marginBottom: '0px !important',
-      }
-    } as types.NestedCSSProperties
-  );
-};
+import { verticallySpaced } from '../styles/spacing';
 
 export interface VerticalProps extends GLSProps, SizingProp, ChildPlacementProps {
 }

@@ -1,9 +1,8 @@
 import * as typestyle from 'typestyle';
 import { GLSProps, SizingProp, StylesProp, ChildPlacementProps, StyleProp } from '../common';
 import { createGLSTag, useGLSDefaults, processSizingProp } from '../internal/utils';
-import { verticallySpaced } from './vertical';
-import { horizontallySpaced } from './horizontal';
 import { vertical, horizontal, centerJustified, endJustified, end, center } from '../styles/flex';
+import { verticallySpaced, horizontallySpaced } from '../styles/spacing';
 
 
 /** 

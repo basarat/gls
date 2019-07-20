@@ -1,26 +1,9 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { GLSProps, SizingProp, CSSLength, ChildPlacementProps } from '../common';
-import { createGLSTag, processSizingProp, cssLengthToString, useGLSDefaults } from '../internal/utils';
+import { GLSProps, SizingProp, ChildPlacementProps } from '../common';
+import { createGLSTag, processSizingProp, useGLSDefaults } from '../internal/utils';
 import { horizontal, endJustified, centerJustified, center, end } from '../styles/flex';
-import { types } from 'typestyle';
-
-/**
- * Puts a horizontal margin between each child
- */
-export const horizontallySpaced = (margin: CSSLength) => {
-  const spacing = cssLengthToString(margin);
-  return (
-    {
-      '&>*': {
-        marginRight: spacing + ' !important'
-      },
-      '&>*:last-child': {
-        marginRight: '0px !important',
-      }
-    } as types.CSSProperties
-  );
-};
+import { horizontallySpaced } from '../styles/spacing';
 
 export interface HorizontalProps extends GLSProps, SizingProp, ChildPlacementProps {
 }
