@@ -29,16 +29,18 @@ Lays out children in a vertically + horizontally spaced layout. You normally use
 
 ## Spacing
 
-You can control the spacing between children with the spacing prop:
 ```ts
+ /** 
+   * Minimum spacing between children
+   */
   spacing?:
     | CSSLength
     | [/** Vertical */ CSSLength, /** Horizontal */ CSSLength]
 ```
-Example (vertical:10, horizontal:20): 
+Example (`vertical spacing=40px, horizontal spacing=20px`): 
 
 <Playground>
-  <Grid spacing={[10,20]}>
+  <Grid spacing={[40,20]}>
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
@@ -53,6 +55,17 @@ Example (vertical:10, horizontal:20):
   </Grid>
 </Playground>
 
+## Justification
+
+```ts
+  /** 
+   * Controls how the extra space around the children is handled
+   */
+  justification?:
+  | 'left' /** default */
+  | 'center'
+  | 'right'
+```
 
 ## GLSProps
 

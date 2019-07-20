@@ -25,10 +25,16 @@ export function gridSpaced(topAndBottom: CSSLength, leftAndRight = topAndBottom)
 };
 
 export interface GridProps extends GLSProps, SizingProp {
+  /** 
+   * Minimum spacing between children
+   */
   spacing?:
   | CSSLength
   | [/** Vertical */ CSSLength, /** Horizontal */ CSSLength]
 
+  /** 
+   * Controls how the extra space around the children is handled
+   */
   justification?:
   | 'left' /** default */
   | 'center'
