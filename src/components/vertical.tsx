@@ -36,7 +36,7 @@ export const Vertical: React.FC<VerticalProps> = (props) => {
     spacing = verticalSpacing,
     horizontalAlign,
     verticalAlign,
-    
+
     ...otherProps
   } = props;
 
@@ -46,8 +46,8 @@ export const Vertical: React.FC<VerticalProps> = (props) => {
     verticalSpacing !== 0 && verticallySpaced(spacing),
     verticalAlign == 'center' && centerJustified,
     verticalAlign == 'bottom' && endJustified,
-    horizontalAlign == 'right' && end,
     horizontalAlign == 'center' && center,
+    horizontalAlign == 'right' && end,
   );
   return createGLSTag(otherProps, klass, 'Vertical');
 }
