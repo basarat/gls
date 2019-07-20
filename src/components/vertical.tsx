@@ -31,10 +31,12 @@ export interface VerticalProps extends GLSProps, SizingProp, ChildPlacementProps
 export const Vertical: React.FC<VerticalProps> = (props) => {
   const { verticalSpacing } = useGLSDefaults();
   const {
+    sizing,
+
     spacing = verticalSpacing,
     horizontalAlign,
     verticalAlign,
-    sizing,
+    
     ...otherProps
   } = props;
 

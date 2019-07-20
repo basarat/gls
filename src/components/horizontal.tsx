@@ -31,10 +31,12 @@ export interface HorizontalProps extends GLSProps, SizingProp, ChildPlacementPro
 export const Horizontal: React.FC<HorizontalProps> = (props) => {
   const { horizontalSpacing } = useGLSDefaults();
   const {
+    sizing,
+    
     spacing = horizontalSpacing,
     horizontalAlign,
     verticalAlign,
-    sizing,
+    
     ...otherProps } = props;
 
   const klass = typestyle.style(
