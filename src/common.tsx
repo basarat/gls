@@ -58,12 +58,6 @@ export interface AlignmentProps {
 }
 
 /** 
- * Specifies children layout options 
- */
-export interface ChildPlacementProps extends SpacingProp, AlignmentProps {
-}
-
-/** 
  * Props accepted by all our container components
  */
 export interface GLSProps extends PaddingProp, SizeProps, ScrollProp, StylesProp, TagProps {

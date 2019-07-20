@@ -1,11 +1,15 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { GLSProps, SizingProp, ChildPlacementProps } from '../common';
+import { GLSProps, SizingProp, SpacingProp } from '../common';
 import { createGLSTag, processSizingProp, useGLSDefaults } from '../internal/utils';
-import { horizontal, endJustified, centerJustified, center, end } from '../styles/flex';
+import { horizontal, endJustified, centerJustified, center, end, start } from '../styles/flex';
 import { horizontallySpaced } from '../styles/spacing';
 
-export interface HorizontalProps extends GLSProps, SizingProp, ChildPlacementProps {
+export interface HorizontalProps extends GLSProps, SizingProp, SpacingProp {
+  /** Child alignment in vertical axis */
+  verticalAlign?: 'stretch' /** default */ | 'top' | 'center' | 'bottom',
+  /** Child alignment in horizontal axis */
+  horizontalAlign?: 'left' /** default */ | 'center' | 'right',
 }
 
 /** 
@@ -19,7 +23,7 @@ export const Horizontal: React.FC<HorizontalProps> = (props) => {
     spacing = horizontalSpacing,
     verticalAlign,
     horizontalAlign,
-    
+
     ...otherProps } = props;
 
   const klass = typestyle.style(
@@ -28,6 +32,7 @@ export const Horizontal: React.FC<HorizontalProps> = (props) => {
     horizontalSpacing !== 0 && horizontallySpaced(spacing),
     horizontalAlign == 'center' && centerJustified,
     horizontalAlign == 'right' && endJustified,
+    verticalAlign == 'top' && start,
     verticalAlign == 'center' && center,
     verticalAlign == 'bottom' && end,
   );

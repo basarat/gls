@@ -1,5 +1,5 @@
 import * as typestyle from 'typestyle';
-import { GLSProps, SizingProp, StylesProp, ChildPlacementProps, StyleProp } from '../common';
+import { GLSProps, SizingProp, StylesProp, StyleProp, SpacingProp } from '../common';
 import { createGLSTag, useGLSDefaults, processSizingProp } from '../internal/utils';
 import { vertical, horizontal, centerJustified, endJustified, end, center } from '../styles/flex';
 import { verticallySpaced, horizontallySpaced } from '../styles/spacing';
@@ -9,8 +9,11 @@ import { verticallySpaced, horizontallySpaced } from '../styles/spacing';
  * Props that can be specified at root of `Responsive` and overridden for `vertical`/`horizontal` options
  */
 export interface ResponsiveOverridableProps extends
-  SizingProp,
-  ChildPlacementProps {
+  SizingProp, SpacingProp {
+  /** Child alignment in vertical axis */
+  verticalAlign?: 'top' /** default */ | 'center' | 'bottom',
+  /** Child alignment in horizontal axis */
+  horizontalAlign?: 'left' /** default */ | 'center' | 'right',
 }
 
 /** 
