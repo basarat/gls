@@ -31,3 +31,33 @@ A simple `Vertical(Content,Flex,Content)` takes care of this common layout:
 
   </Vertical>
 </Playground>
+
+## Header Sidebar Body Sidebar Footer
+
+`Vertical(Content-Header,Horizontal(Content-Sidebar, Flex-Body, Content-Sidebar),Content-Footer)` takes care of this common layout: 
+
+<Playground style={{height: '200px'}}>
+  <Vertical height={'100%'} spacing={0}>
+    
+    <Content style={{backgroundColor: "lightskyblue"}}>
+      Header
+    </Content>
+    
+    <Horizontal sizing='flex' spacing={0}>
+      <Content padding={[0,10]} style={{backgroundColor: "limegreen"}}>
+        Sidebar 1
+      </Content>
+      <Flex style={{backgroundColor: "darkorange"}}>
+        Body
+      </Flex>
+      <Content padding={[0,10]} style={{backgroundColor: "gold"}}>
+        Sidebar 2
+      </Content>
+    </Horizontal>
+    
+    <Content style={{backgroundColor: "lightpink"}}>
+      Footer
+    </Content>
+
+  </Vertical>
+</Playground>
