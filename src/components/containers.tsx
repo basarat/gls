@@ -2,7 +2,7 @@ import * as typestyle from 'typestyle';
 import * as React from 'react';
 import { GLSProps, AlignmentProps } from '../common';
 import { createGLSTag } from '../internal/utils';
-import { content, flex, centerJustified, endJustified, center, end, flexRoot, vertical, start, startJustified } from '../styles/flex';
+import { content, flex, centerJustified, endJustified, center, end, vertical, start, startJustified, horizontal } from '../styles/flex';
 
 export interface FlexProps extends GLSProps, AlignmentProps {
   sizing?: number;
@@ -34,11 +34,29 @@ export const Flex: React.FC<FlexProps> = (props) => {
 };
 Flex.displayName = 'Flex';
 
+export interface ContentProps extends GLSProps, AlignmentProps {
+}
+
 /** 
  * For providing a *as much as needed* amount of space for an item
  */
-export const Content: React.FC<GLSProps> = (props) => {
-  const klass = typestyle.style(content);
-  return createGLSTag(props, klass, 'Content');
+export const Content: React.FC<ContentProps> = (props) => {
+  const {
+    verticalAlign = 'top',
+    horizontalAlign = 'left',
+
+    ...otherProps
+  } = props;
+  const klass = typestyle.style(
+    content,
+    horizontal,
+    horizontalAlign == 'left' && startJustified,
+    horizontalAlign == 'center' && centerJustified,
+    horizontalAlign == 'right' && endJustified,
+    verticalAlign == 'top' && start,
+    verticalAlign == 'center' && center,
+    verticalAlign == 'bottom' && end,
+  );
+  return createGLSTag(otherProps, klass, 'Content');
 };
 Content.displayName = 'Content';
