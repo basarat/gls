@@ -18,7 +18,7 @@ export const verticallySpaced = (margin: CSSLength) => {
       '&>*:last-child': {
         marginBottom: '0px !important',
       }
-    } as types.CSSProperties
+    } as types.NestedCSSProperties
   );
 };
 

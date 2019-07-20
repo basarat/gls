@@ -6,23 +6,21 @@ import { cssLengthToString, createGLSTag, useGLSDefaults } from '../internal/uti
 /**
  * Puts a (horizontal AND vertical) margin between each child
  */
-export function gridSpaced(both: CSSLength): string;
-export function gridSpaced(topAndBottom: CSSLength, leftAndRight: CSSLength): string;
-export function gridSpaced(topAndBottom: CSSLength, leftAndRight = topAndBottom): string {
-  const vertical = cssLengthToString(topAndBottom);
-  const horizontal = cssLengthToString(leftAndRight);
-  return typestyle.style(
-    {
-      marginTop: '-' + vertical,
-      marginLeft: '-' + horizontal,
-      $nest: {
-        '&>*': {
-          marginTop: vertical,
-          marginLeft: horizontal,
-        }
+export function gridSpaced(both: CSSLength): typestyle.types.NestedCSSProperties;
+export function gridSpaced(topAndBottom: CSSLength, leftAndRight: CSSLength): typestyle.types.NestedCSSProperties;
+export function gridSpaced(topAndBottom: CSSLength, leftAndRight = topAndBottom): typestyle.types.NestedCSSProperties {
+  const verticalSpacing = cssLengthToString(topAndBottom);
+  const horizontalSpacing = cssLengthToString(leftAndRight);
+  return {
+    marginTop: '-' + verticalSpacing + ' !important',
+    marginLeft: '-' + horizontalSpacing + ' !important',
+    $nest: {
+      '&>*': {
+        marginTop: verticalSpacing + ' !important',
+        marginLeft: horizontalSpacing + ' !important',
       }
     }
-  );
+  };
 };
 
 export interface GridProps extends GLSProps {
@@ -50,7 +48,9 @@ export const Grid: React.FC<GridProps> = (props) => {
     }
   }
 
-  const klass = gridSpaced(verticalSpacing, horizontalSpacing);
+  const klass = typestyle.style(
+    gridSpaced(verticalSpacing, horizontalSpacing),
+  );
   return (
     createGLSTag(otherProps, klass, 'Grid')
   );
