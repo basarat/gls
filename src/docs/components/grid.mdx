@@ -63,17 +63,19 @@ Example (`vertical spacing=40px, horizontal spacing=20px`):
    */
   justify?:
   /** Controls by content */
-  | 'content-left' /** default */
-  | 'content-center'
-  | 'content-right'
+  | 'left' /** default */
+  | 'center'
+  | 'right'
   /** Controls by space */
   | 'space-between'
 ```
 
-Example `content-center` (the extra space gets put around the content):
+> We've seen the default `left` already (the extra space gets put on the right). We cover the rest below.
+
+Example `center` (the extra space gets put around the content):
 
 <Playground>
-  <Grid justify="content-center">
+  <Grid justify="center">
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
@@ -88,10 +90,10 @@ Example `content-center` (the extra space gets put around the content):
   </Grid>
 </Playground>
 
-Example `content-right` (the extra space gets put at the left): 
+Example `right` (the extra space gets put at the left): 
 
 <Playground>
-  <Grid justify="content-right">
+  <Grid justify="right">
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>

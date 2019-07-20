@@ -18,9 +18,9 @@ export interface GridProps extends GLSProps, SizingProp {
    */
   justify?:
   /** Controls by content */
-  | 'content-left' /** default */
-  | 'content-center'
-  | 'content-right'
+  | 'left' /** default */
+  | 'center'
+  | 'right'
   /** Controls by space */
   | 'space-between'
 }
@@ -52,8 +52,8 @@ export const Grid: React.FC<GridProps> = (props) => {
     processSizingProp(props),
     horizontal, wrap,
     gridSpaced(verticalSpacing, horizontalSpacing),
-    justify == 'content-center' && centerJustified,
-    justify == 'content-right' && endJustified,
+    justify == 'center' && centerJustified,
+    justify == 'right' && endJustified,
     justify == 'space-between' && betweenJustified,
   );
   return (
