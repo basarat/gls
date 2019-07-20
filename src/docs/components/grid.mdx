@@ -62,10 +62,12 @@ Example (`vertical spacing=40px, horizontal spacing=20px`):
    * Controls how the extra space around the children is handled
    */
   justification?:
+  /** Controls by content */
   | 'left' /** default */
   | 'center'
   | 'right'
-  | 'between'
+  /** Controls by space */
+  | 'space-between'
 ```
 
 Example `center`:
@@ -104,10 +106,10 @@ Example `right`:
   </Grid>
 </Playground>
 
-Example `between`: 
+Example `space-between` (focuses on putting the extra space between items): 
 
 <Playground>
-  <Grid justification="between">
+  <Grid justification="space-between">
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>

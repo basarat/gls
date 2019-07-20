@@ -36,10 +36,12 @@ export interface GridProps extends GLSProps, SizingProp {
    * Controls how the extra space around the children is handled
    */
   justification?:
+  /** Controls by content */
   | 'left' /** default */
   | 'center'
   | 'right'
-  | 'between'
+  /** Controls by space */
+  | 'space-between'
 }
 
 /** 
@@ -71,7 +73,7 @@ export const Grid: React.FC<GridProps> = (props) => {
     gridSpaced(verticalSpacing, horizontalSpacing),
     justification == 'center' && centerJustified,
     justification == 'right' && endJustified,
-    justification == 'between' && betweenJustified,
+    justification == 'space-between' && betweenJustified,
   );
   return (
     createGLSTag(otherProps, klass, 'Grid')
