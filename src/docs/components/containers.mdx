@@ -9,8 +9,33 @@ import * as demos from '../../demos';
 
 # Containers
 
-We have two general purpose containers, `Flex` and `Content`. The ideas of *flex* and *content* are explained in the [sizing principle][principle-sizing]. If you have more than one child item, you probably want to use something like a [Vertical][vertical] or [Horizontal][horizontal].
+We have two general purpose *single child* containers `Flex` and `Content`. The ideas of *flex* and *content* are explained in the [sizing principle][principle-sizing]. If you have more than one child item, you probably want to use something like a [Vertical][vertical] or [Horizontal][horizontal].
 
+# Flex
+Flexes into the parent container.
+
+In the example below, we have an explicit sized `Vertical` (background `lightskyblue`) with an inner `Flex` (background `darkorange`). The inner `Flex` keeps its size to match that of the outer container (observed below as you don't see the background of the parent as it is filled in by the child).
+
+<Playground>
+  <Vertical height={100} style={{backgroundColor: "lightskyblue"}}>
+    <Flex style={{backgroundColor: "darkorange"}}>
+        I'm taking up all the space from the parent
+    </Flex>  
+  </Vertical>
+</Playground>
+
+`sizing?: number` prop allows you to control the flex ratio (concept covered in [sizing principle][principle-sizing]) eg. a 1,2 ratio (`Horizontal(Flex:1,Flex:2)`) is shown below:
+
+<Playground>
+  <Horizontal height={100} spacing={0} style={{backgroundColor: "lightskyblue"}}>
+    <Flex sizing={1} style={{backgroundColor: "darkorange"}}>
+        I'm taking 1
+    </Flex>  
+    <Flex sizing={2} style={{backgroundColor: "lightpink"}}>
+        I'm taking 2
+    </Flex>
+  </Horizontal>
+</Playground>
 
 
 [common-types]:../common-types/
