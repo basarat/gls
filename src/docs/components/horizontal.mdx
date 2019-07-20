@@ -1,0 +1,50 @@
+---
+name: Horizontal
+route: /horizontal/
+---
+
+import { Playground } from 'docz';
+import { Horizontal, Vertical, Flex } from '../..'; 
+import * as demos from '../../demos'; 
+
+# Horizontal 
+
+Lays out children in a horiztonally spaced layout.
+
+<Playground>
+  <Horizontal>
+    <Flex style={{backgroundColor: "lightskyblue"}}>Hello</Flex>
+    <Flex style={{backgroundColor: "lightpink"}}>World</Flex>
+  </Horizontal>
+</Playground>
+
+Since `Horizontal` follows the [spacing principle][principle-spacing] you can compose / nest `Horizontal`s easily. The following example has two `Horizontal`s in a `Horizontal(Horizontal(blue,pink),Horizontal(blue,pink)` heirarchy but to the user it looks seemless (like a single `Horizontal(blue,pink,blue,pink)`). This ability to nest allows you to easily create and reuse components without having to worry about how they will get used.
+
+<Playground>
+  <Horizontal>
+    <Horizontal sizing="flex">
+      <Flex style={{backgroundColor: "lightskyblue"}}>Hello</Flex>
+      <Flex style={{backgroundColor: "lightpink"}}>World</Flex>
+    </Horizontal>
+    <Horizontal sizing="flex">
+      <Flex style={{backgroundColor: "lightskyblue"}}>Hello</Flex>
+      <Flex style={{backgroundColor: "lightpink"}}>World</Flex>
+    </Horizontal>
+  </Horizontal>
+</Playground>
+
+## ChildPlacementProps
+
+`Horizontal` [supports all `ChildPlacementProps`][common-types].
+
+## GLSProps
+
+`Horizontal` [supports all `GLSProps`][common-types].
+
+## SizingProp
+
+`Horizontal` supports the `sizing` prop as explained in the [sizing principle][principle-sizing].
+
+[common-types]:../common-types/
+[principle-spacing]:../principle-spacing/
+[principle-sizing]:../principle-sizing/
