@@ -4,36 +4,36 @@ import { CSSLength } from '../common';
 import { cssLengthToString, useGLSDefaults } from '../internal/utils';
 import { flex } from '../styles/flex';
 
-export interface FlexSpaceProps extends React.HTMLProps<HTMLDivElement> {
+export interface FlexSpacerProps extends React.HTMLProps<HTMLDivElement> {
   flex?: number;
 }
 
 /** 
  * Flexes into any available space 
  */
-export const FlexSpace: React.FC<FlexSpaceProps> = (props) => {
+export const FlexSpacer: React.FC<FlexSpacerProps> = (props) => {
   const { className, flex: fx, ...otherProps } = props;
   const klass = typestyle.classes(
     className,
     typestyle.style(flex(fx))
   );
   return (
-    <div {...otherProps} className={klass} data-comment='FlexSpace' />
+    <div {...otherProps} className={klass} data-comment='FlexSpacer' />
   );
 };
-FlexSpace.displayName = 'FlexSpace';
+FlexSpacer.displayName = 'FlexSpacer';
 
 /** 
  * Common interface for space props 
  */
-export interface SpaceProps extends React.HTMLProps<HTMLDivElement> {
+export interface SpacerProps extends React.HTMLProps<HTMLDivElement> {
   space?: CSSLength;
 }
 
 /**
  * Takes a fixed amount of horizontal space
  */
-export const HorizontalSpace: React.FC<SpaceProps> = (props) => {
+export const HorizontalSpacer: React.FC<SpacerProps> = (props) => {
   const { style, ...otherProps } = props;
   const { horizontalSpacing } = useGLSDefaults();
   const width = cssLengthToString(props.space == null ? horizontalSpacing : props.space);
@@ -42,15 +42,15 @@ export const HorizontalSpace: React.FC<SpaceProps> = (props) => {
     width: width,
     ...style
   };
-  return <div {...otherProps} style={styles} data-comment='HorizontalSpace' />;
+  return <div {...otherProps} style={styles} data-comment='HorizontalSpacer' />;
 };
-HorizontalSpace.displayName = 'HorizontalSpace';
+HorizontalSpacer.displayName = 'HorizontalSpacer';
 
 
 /**
  * Takes a fixed amount of vertical space
  */
-export const VerticalSpace: React.FC<SpaceProps> = (props) => {
+export const VerticalSpacer: React.FC<SpacerProps> = (props) => {
   const { style, ...otherProps } = props;
   const { verticalSpacing } = useGLSDefaults();
   const height = cssLengthToString(props.space == null ? verticalSpacing : props.space);
@@ -58,6 +58,6 @@ export const VerticalSpace: React.FC<SpaceProps> = (props) => {
     height: height,
     ...style
   };
-  return <div {...otherProps} style={styles} data-comment='VerticalSpace' />;
+  return <div {...otherProps} style={styles} data-comment='VerticalSpacer' />;
 };
-VerticalSpace.displayName = 'VerticalSpace';
+VerticalSpacer.displayName = 'VerticalSpacer';

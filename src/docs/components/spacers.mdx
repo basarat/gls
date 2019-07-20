@@ -1,15 +1,15 @@
 ---
-name: Space
-route: /space/
+name: Spacers
+route: /spacers/
 ---
 
 import { Playground } from 'docz';
-import { Vertical, Horizontal, FlexSpace, VerticalSpace, HorizontalSpace } from '../..'; 
+import { Vertical, Horizontal, FlexSpacer, VerticalSpacer, HorizontalSpacer } from '../..'; 
 import * as demos from '../../demos'; 
 
-# Space
+# Spacer
 
-Space components add *space* to your designs. Spacers should not be abused, but they can be super handy. Consider a simple button on the screen: 
+Spacers add *space* to your designs. Spacers should not be abused, but they can be super handy. Consider a simple button on the screen: 
 
 <Playground>
   <demos.Button>
@@ -27,75 +27,75 @@ Let's say the design wants you to add some space on top of the button. You can d
 
 We've covered issues with using margin (specifically their collapsing nature which makes them hard to manage and maintain reliably) in our [spacing-principle][principle-spacing]. Another issue is in the future this `marginTop` can easily get lost in code reviews. 
 
-So instead you can use a simple `VerticalSpace`, which doesn't collapse (i.e. magically disappear), and shows up in code reviews: 
+So instead you can use a simple `VerticalSpacer`, which doesn't collapse (i.e. magically disappear), and shows up in code reviews: 
 
 <Playground>
-  <VerticalSpace space={25}/>
+  <VerticalSpacer space={25}/>
   <demos.Button>
     Just a button minding its own business
   </demos.Button>
 </Playground>  
 
-# HorizontalSpace
-Takes the `space?:CSSLength` prop to generate a horizontal space. e.g. you can see the button pushed a bit to the right by a `HorizontalSpace`: 
+# HorizontalSpacer
+Takes the `space?:CSSLength` prop to generate a horizontal space. e.g. you can see the button pushed a bit to the right by a `HorizontalSpacer`: 
 
 <Playground>
-  <HorizontalSpace space={25}/>
+  <HorizontalSpacer space={25}/>
   <demos.Button>
     Just a button minding its own business
   </demos.Button>
 </Playground>  
 
-# VerticalSpace
-Takes the `space?:CSSLength` prop to generate a vertical space. e.g. you can see the button pushed a bit to the bottom by a `VerticalSpace`: 
+# VerticalSpacer
+Takes the `space?:CSSLength` prop to generate a vertical space. e.g. you can see the button pushed a bit to the bottom by a `VerticalSpacer`: 
 
 <Playground>
-  <VerticalSpace space={25}/>
+  <VerticalSpacer space={25}/>
   <demos.Button>
     Just a button minding its own business
   </demos.Button>
 </Playground>  
 
-# FlexSpace 
+# FlexSpacer 
 Takes the `flex?:number` prop ([flex ratio concept covered in sizing principle][principle-sizing]) to generate a flex amount of space.
 
-`FlexSpace` comes really handy when you want to split items to the sides (left & right) with a flex space in between as shown below:
+`FlexSpacer` comes really handy when you want to split items to the sides (left & right) with a flex space in between as shown below:
 
 <Playground>
   <Horizontal>
     <demos.Button>
       On left
     </demos.Button>
-    <FlexSpace/>
+    <FlexSpacer/>
     <demos.Button>
       On right
     </demos.Button>
   </Horizontal>
 </Playground>
 
-Here is a button pushed to the bottom of its parent `Vertical` by a preceding `FlexSpace`: 
+Here is a button pushed to the bottom of its parent `Vertical` by a preceding `FlexSpacer`: 
 
 <Playground>
   <Vertical height={100}>
-    <FlexSpace/>
+    <FlexSpacer/>
     <demos.Button>
       Just a button minding its own business
     </demos.Button>
   </Vertical>
 </Playground>  
 
-And here is a button pushed to the right of its parent `Horizontal` by a preceding `FlexSpace`: 
+And here is a button pushed to the right of its parent `Horizontal` by a preceding `FlexSpacer`: 
 
 <Playground>
   <Horizontal>
-    <FlexSpace/>
+    <FlexSpacer/>
     <demos.Button>
       Just a button minding its own business
     </demos.Button>
   </Horizontal>
 </Playground>
 
-Note that when don't want to split items (all child items are grouped together), you can use the [alignment properties][common-types] on `Vertical`/`Horizontal` to achieve the same effect (no `FlexSpace` in the below example):
+Note that when don't want to split items (all child items are grouped together), you can use the [alignment properties][common-types] on `Vertical`/`Horizontal` to achieve the same effect (no `FlexSpacer` in the below example):
 
 <Playground>
   <Horizontal horizontalAlign='right'>
