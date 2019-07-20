@@ -1,0 +1,36 @@
+---
+name: Grid
+route: /grid/
+---
+
+import { Playground } from 'docz';
+import { Grid, Content } from '../..'; 
+import * as demos from '../../demos'; 
+
+# Grid 
+
+Lays out children in a vertically + horizontally spaced layout.
+
+<Playground>
+  <Grid>
+    <Content width={200} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={200} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={200} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={200} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={200} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={200} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+  </Grid>
+</Playground>
+
+
+## GLSProps
+
+`Grid` [supports all `GLSProps`][common-types].
+
+## SizingProp
+
+`Grid` supports the `sizing` prop as explained in the [sizing principle][principle-sizing].
+
+[common-types]:../common-types/
+[principle-spacing]:../principle-spacing/
+[principle-sizing]:../principle-sizing/

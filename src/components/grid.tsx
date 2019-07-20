@@ -2,6 +2,7 @@ import * as typestyle from 'typestyle';
 import * as React from 'react';
 import { CSSLength, GLSProps, SizingProp } from '../common';
 import { cssLengthToString, createGLSTag, useGLSDefaults, processSizingProp } from '../internal/utils';
+import { horizontal, wrap } from '../styles/flex';
 
 /**
  * Puts a (horizontal AND vertical) margin between each child
@@ -50,6 +51,8 @@ export const Grid: React.FC<GridProps> = (props) => {
 
   const klass = typestyle.style(
     processSizingProp(props),
+    horizontal,
+    wrap,
     gridSpaced(verticalSpacing, horizontalSpacing),
   );
   return (

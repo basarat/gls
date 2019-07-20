@@ -22,7 +22,11 @@ export const vertical: types.CSSProperties = extend(flexRoot, {
   '-webkit-flex-direction': 'column',
   flexDirection: 'column'
 });
-
+export const wrap: types.CSSProperties = {
+  '-ms-flex-wrap': 'wrap',
+  '-webkit-flex-wrap': 'wrap',
+  flexWrap: 'wrap'
+} as types.CSSProperties;
 
 /**
  * If you want items to be sized automatically by their children use this

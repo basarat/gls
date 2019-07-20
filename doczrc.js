@@ -10,6 +10,7 @@ export default {
     'Vertical',
     'Horizontal',
     'Responsive',
+    'Grid',
     'Spacers',
   ],
 
