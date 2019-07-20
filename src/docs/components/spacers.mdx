@@ -4,7 +4,7 @@ route: /spacers/
 ---
 
 import { Playground } from 'docz';
-import { Vertical, FlexSpace, VerticalSpace, HorizontalSpace } from '../..'; 
+import { Vertical, Horizontal, FlexSpace, VerticalSpace, HorizontalSpace } from '../..'; 
 import * as demos from '../../demos'; 
 
 # Spacers 
@@ -36,7 +36,74 @@ So instead you can use a simple `VerticalSpace`, which doesn't collapse (i.e. ma
   </demos.Button>
 </Playground>  
 
+# HorizontalSpace
+Takes the `space?:CSSLength` prop to generate a horizontal space. e.g. you can see the button pushed a bit to the right by a `HorizontalSpace`: 
 
+<Playground>
+  <HorizontalSpace space={25}/>
+  <demos.Button>
+    Just a button minding its own business
+  </demos.Button>
+</Playground>  
+
+# VerticalSpace
+Takes the `space?:CSSLength` prop to generate a vertical space. e.g. you can see the button pushed a bit to the bottom by a `VerticalSpace`: 
+
+<Playground>
+  <VerticalSpace space={25}/>
+  <demos.Button>
+    Just a button minding its own business
+  </demos.Button>
+</Playground>  
+
+# FlexSpace 
+Takes the `flex?:number` prop ([flex ratio concept covered in sizing principle][principle-sizing]) to generate a flex amount of space.
+
+`FlexSpace` comes really handy when you want to split items to the sides (left & right) with a flex space in between as shown below:
+
+<Playground>
+  <Horizontal>
+    <demos.Button>
+      On left
+    </demos.Button>
+    <FlexSpace/>
+    <demos.Button>
+      On right
+    </demos.Button>
+  </Horizontal>
+</Playground>
+
+Here is a button pushed to the bottom of its parent `Vertical` by a preceding `FlexSpace`: 
+
+<Playground>
+  <Vertical height={100}>
+    <FlexSpace/>
+    <demos.Button>
+      Just a button minding its own business
+    </demos.Button>
+  </Vertical>
+</Playground>  
+
+And here is a button pushed to the right of its parent `Horizontal` by a preceding `FlexSpace`: 
+
+<Playground>
+  <Horizontal>
+    <FlexSpace/>
+    <demos.Button>
+      Just a button minding its own business
+    </demos.Button>
+  </Horizontal>
+</Playground>
+
+Note that when don't want to split items (all child items are grouped together), you can use the [alignment properties][common-types] on `Vertical`/`Horizontal` to achieve the same effect (no `FlexSpace` in the below example):
+
+<Playground>
+  <Horizontal horizontalAlign='right'>
+    <demos.Button>
+      Just a button minding its own business
+    </demos.Button>
+  </Horizontal>
+</Playground>
 
 [common-types]:../common-types/
 [principle-spacing]:../principle-spacing/
