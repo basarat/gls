@@ -2,7 +2,7 @@ import * as typestyle from 'typestyle';
 import * as React from 'react';
 import { GLSProps, AlignmentProps } from '../common';
 import { createGLSTag } from '../internal/utils';
-import { content, flex, vertical, centerJustified, endJustified, center, end } from '../styles/flex';
+import { content, flex, centerJustified, endJustified, center, end, flexRoot, vertical, start, startJustified } from '../styles/flex';
 
 export interface FlexProps extends GLSProps, AlignmentProps {
   sizing?: number;
@@ -15,16 +15,18 @@ export const Flex: React.FC<FlexProps> = (props) => {
   const {
     sizing,
 
-    verticalAlign,
-    horizontalAlign,
+    verticalAlign = 'top',
+    horizontalAlign = 'left',
 
     ...otherProps
   } = props;
   const klass = typestyle.style(
     flex(sizing),
     vertical,
+    verticalAlign == 'top' && startJustified,
     verticalAlign == 'center' && centerJustified,
     verticalAlign == 'bottom' && endJustified,
+    horizontalAlign == 'left' && start,
     horizontalAlign == 'center' && center,
     horizontalAlign == 'right' && end,
   );
