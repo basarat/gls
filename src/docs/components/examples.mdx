@@ -1,0 +1,33 @@
+---
+name: Examples
+route: /examples/
+---
+
+import { Playground } from 'docz';
+import { Content, Vertical, Horizontal, Flex } from '../..'; 
+import * as demos from '../../demos'; 
+
+# Examples
+
+We've already presented quite a few examples in the individual component demos. Still we'd like to cover more by providing a few examples below for you to play around with.
+
+## Header Body Footer
+A simple `Vertical(Content,Flex,Content)` takes care of this common layout: 
+
+<Playground style={{height: '200px'}}>
+  <Vertical height={'100%'} spacing={0}>
+    
+    <Content style={{backgroundColor: "lightskyblue"}}>
+      Header
+    </Content>
+    
+    <Flex style={{backgroundColor: "darkorange"}}>
+      Body
+    </Flex>
+    
+    <Content style={{backgroundColor: "lightpink"}}>
+      Footer
+    </Content>
+
+  </Vertical>
+</Playground>
