@@ -60,6 +60,27 @@ In the example below we throw a few `Content` items in a `Vertical(Content,Conte
 
 * `Content` [supports all `GLSProps`][common-types].
 
+## Alignment
+Both `Flex` and `Content` support alignment: 
+
+```ts
+export interface AlignmentProps {
+  /** Child alignment in vertical axis */
+  verticalAlign?: 'top' /** default */ | 'center' | 'bottom',
+  /** Child alignment in horizontal axis */
+  horizontalAlign?: 'left' /** default */ | 'center' | 'right',
+}
+```
+
+Example `center,center`: 
+
+<Playground style={{height: '100px'}}>
+  <Content verticalAlign="center" horizontalAlign="center" height ="100%" style={{backgroundColor: "darkorange"}}>
+    <div style={{backgroundColor: 'lightskyblue'}}>I'm just a div in a orange Content(center,center)</div>
+  </Content>
+</Playground>
+
+
 ## Example use case: Table
 
 It is common to have a table of items with some fixed width, some flexible items. 
@@ -88,6 +109,7 @@ Below we power the table with a `Vertical` containing rows of `Horizontal(Conten
     </Horizontal>
   </Vertical>
 </Playground>
+
 
 [common-types]:../common-types/
 [principle-spacing]:../principle-spacing/
