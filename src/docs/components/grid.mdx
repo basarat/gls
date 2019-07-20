@@ -65,6 +65,7 @@ Example (`vertical spacing=40px, horizontal spacing=20px`):
   | 'left' /** default */
   | 'center'
   | 'right'
+  | 'between'
 ```
 
 Example `center`:
@@ -89,6 +90,24 @@ Example `right`:
 
 <Playground>
   <Grid justification="right">
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+    <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
+  </Grid>
+</Playground>
+
+Example `between`: 
+
+<Playground>
+  <Grid justification="between">
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>
     <Content width={180} height={200} style={{backgroundColor: "lightskyblue"}}>Item</Content>

@@ -87,3 +87,12 @@ export const endJustified: types.CSSProperties = {
   '-webkit-justify-content': 'flex-end',
   justifyContent: 'flex-end'
 } as types.CSSProperties;
+
+////////////////////////////////////////////
+// Alignment in main axis - grid specific //
+////////////////////////////////////////////
+export const betweenJustified = {
+  '-ms-flex-pack': 'justify',
+  '-webkit-justify-content': 'space-between',
+  justifyContent: 'space-between'
+} as types.CSSProperties;
