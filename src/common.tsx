@@ -45,16 +45,22 @@ export interface SizingProp {
   | number /** A flex ratio */;
 }
 
-/** 
- * Specifies children layout options 
- */
-export interface ChildPlacementProps {
+export interface SpacingProp {
   /** Spacing between each child */
   spacing?: number,
+}
+
+export interface AlignmentProps {
   /** Child alignment in vertical axis */
   verticalAlign?: 'top' /** default */ | 'center' | 'bottom',
   /** Child alignment in horizontal axis */
   horizontalAlign?: 'left' /** default */ | 'center' | 'right',
+}
+
+/** 
+ * Specifies children layout options 
+ */
+export interface ChildPlacementProps extends SpacingProp, AlignmentProps {
 }
 
 /** 
