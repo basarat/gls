@@ -4,7 +4,7 @@ route: /horizontal/
 ---
 
 import { Playground } from 'docz';
-import { Horizontal, Vertical, Flex } from '../..'; 
+import { Horizontal, Vertical, Flex, Content } from '../..'; 
 import * as demos from '../../demos'; 
 
 # Horizontal 
@@ -34,10 +34,19 @@ Since `Horizontal` follows the [spacing principle][principle-spacing] you can co
 </Playground>
 
 ## Alignment
+By default `horizontalAlign:left` and `verticalAlign:stretch`. It helps you write simple horizontal layouts that start horizontally at left and fill the vertical space completely: 
+
+<Playground>
+  <Horizontal height={60}>
+    <Content verticalAlign="center" style={{backgroundColor: "lightskyblue"}}>Hello</Content>
+    <Content verticalAlign="center" style={{backgroundColor: "lightpink"}}>World</Content>
+  </Horizontal>
+</Playground>
+
 * `verticalAlign?: 'stretch' /** default */ | 'top' | 'center' | 'bottom'` Controls vertical alignment of children. e.g. `verticalAlign='bottom'` gives us:
 
 <Playground>
-  <Horizontal verticalAlign='bottom' style={{height: '100px'}} spacing={10}>
+  <Horizontal verticalAlign='bottom' height={60}>
     <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
     <div style={{backgroundColor: "lightpink"}}>World</div>
   </Horizontal>
@@ -46,9 +55,9 @@ Since `Horizontal` follows the [spacing principle][principle-spacing] you can co
 * `horizontalAlign?: 'left' /** default */ | 'center' | 'right'` Controls horizontal alignment of children. e.g. `horizontalAlign='right'` gives us:
 
 <Playground>
-  <Horizontal horizontalAlign='right'>
-    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
-    <div style={{backgroundColor: "lightpink"}}>World</div>
+  <Horizontal horizontalAlign='right' height={60}>
+    <Content verticalAlign="center" style={{backgroundColor: "lightskyblue"}}>Hello</Content>
+    <Content verticalAlign="center" style={{backgroundColor: "lightpink"}}>World</Content>
   </Horizontal>
 </Playground>
 
