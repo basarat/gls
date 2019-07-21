@@ -34,12 +34,23 @@ Since `Vertical` follows the [spacing principle][principle-spacing] you can comp
 </Playground>
 
 ## Alignment
+By default `verticalAlign:top` and `horizontalAlign:stretch`. It help you write simple vertical layouts that start vertically at the top and fill the horizontal space completely: 
+
+<Playground>
+  <Vertical>
+    <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
+    <div style={{backgroundColor: "lightpink"}}>World</div>
+    <div style={{backgroundColor: "gold"}}>🌹</div>
+  </Vertical>
+</Playground>
+
 * `verticalAlign?: 'top' /** default */ | 'center' | 'bottom'` Controls vertical alignment of children. e.g. `verticalAlign='bottom'` gives us:
 
 <Playground>
-  <Vertical verticalAlign='bottom' style={{height: '100px'}} spacing={10}>
+  <Vertical verticalAlign='bottom' style={{height: '150px'}} spacing={10}>
     <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
     <div style={{backgroundColor: "lightpink"}}>World</div>
+    <div style={{backgroundColor: "gold"}}>🌹</div>
   </Vertical>
 </Playground>
 
@@ -49,6 +60,7 @@ Since `Vertical` follows the [spacing principle][principle-spacing] you can comp
   <Vertical horizontalAlign='right'>
     <div style={{backgroundColor: "lightskyblue"}}>Hello</div>
     <div style={{backgroundColor: "lightpink"}}>World</div>
+    <div style={{backgroundColor: "gold"}}>🌹</div>
   </Vertical>
 </Playground>
 
