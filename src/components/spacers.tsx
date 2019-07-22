@@ -12,10 +12,10 @@ export interface FlexSpacerProps extends React.HTMLProps<HTMLDivElement> {
  * Flexes into any available space 
  */
 export const FlexSpacer: React.FC<FlexSpacerProps> = (props) => {
-  const { className, flex: fx, ...otherProps } = props;
+  const { className, sizing, ...otherProps } = props;
   const klass = typestyle.classes(
     className,
-    typestyle.style(flex(fx))
+    typestyle.style(flex(sizing))
   );
   return (
     <div {...otherProps} className={klass} data-comment='FlexSpacer' />
