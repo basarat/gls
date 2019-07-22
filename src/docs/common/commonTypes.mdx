@@ -52,11 +52,6 @@ tag?: {
   props?: React.HTMLProps // props passed to the tag
 }
 ```
-
-## SizingProp
-
-The `sizing?` prop is covered in the [sizing principle][principle-sizing] section.
-
 ## SpacingProp
 
 ```ts
@@ -75,6 +70,16 @@ export interface SpacingProp {
     <div style={{backgroundColor: "darkorange"}}>Again</div>
   </Vertical>
 </Playground>
+
+## SizeProps
+
+The size props (`height,minHeight,maxHeight,width,minWidth,maxWidth`) allow for explicit size control as covered in the [sizing principle][principle-sizing] section.
+
+## SizingProp
+
+The `sizing` prop is covered in the [sizing principle][principle-sizing] section.
+
+
 
 [principle-spacing]:../principle-spacing/
 [principle-sizing]:../principle-sizing/

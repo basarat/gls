@@ -9,8 +9,24 @@ import { Vertical, Horizontal, Flex, Content } from '../..';
 # Sizing
 The ability to control the sizing of a container is what fundamentally makes it possible to mix *explicit sized* (simple) / *flex sized* (powerful) and *content* (super-powerful) layout items in your designs. We cover them one by one below.
 
-## Explicit sized
-Driven by explicit `width,height` arguments. Here we have a simple `Vertical` container with explicit `height`: 
+## SizeProps 
+
+```ts
+/** 
+ * Add support for explicit sizing
+ */
+export interface SizeProps {
+  height?: CSSLength,
+  minHeight?: CSSLength,
+  maxHeight?: CSSLength,
+
+  width?: CSSLength,
+  minWidth?: CSSLength,
+  maxWidth?: CSSLength,
+}
+```
+
+Explicit sizes are driven by `width,height,minHeight,minWidth` arguments. You can have an explicit value on only one dimension e.g. here we have a simple `Vertical` container with explicit `height` only: 
 
 <Playground>
   <Vertical height={100} style={{backgroundColor: "lightskyblue"}}>
@@ -19,9 +35,10 @@ Driven by explicit `width,height` arguments. Here we have a simple `Vertical` co
 </Playground>
 
 
-This is essentially what you are doing in most design tools out there. Sadly explicit sizing does not scale to *real* applications where sizes need to be reactive to either their parent or their content. Fortunately we provide concepts to handle these cases.
+This is essentially what you are doing in most design tools out there. Sadly explicit `height+width` sizing does not scale to *real* applications where sizes need to be reactive to either their parent or their content. Fortunately we provide concepts to handle these cases with *sizing* concepts we cover next.
 
-## Sizing Prop 
+
+## SizingProp 
 The `SizingProp` is what controls the content/ flex / flex-ratio features: 
 
 ```ts
