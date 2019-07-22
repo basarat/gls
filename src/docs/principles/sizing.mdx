@@ -7,8 +7,7 @@ import { Playground } from 'docz';
 import { Vertical, Horizontal, Flex, Content } from '../..'; 
 
 # Sizing
-The ability to control the sizing of a container is what fundamentally makes it possible to mix *explicit sized* (simple) / *flex sized* (powerful) and *flexible* (super-powerful) layout items in your designs. We cover them one by one below.
-
+The ability to control the sizing of a container is what fundamentally makes it possible to mix *explicit sized* (simple) / *flex sized* (powerful) and *content* (super-powerful) layout items in your designs. We cover them one by one below.
 
 ## Explicit sized
 Driven by explicit `width,height` arguments. Here we have a simple `Vertical` container with explicit `height`: 
@@ -22,7 +21,27 @@ Driven by explicit `width,height` arguments. Here we have a simple `Vertical` co
 
 This is essentially what you are doing in most design tools out there. Sadly explicit sizing does not scale to *real* applications where sizes need to be reactive to either their parent or their content. Fortunately we provide concepts to handle these cases.
 
-## Flex sized
+## Sizing Prop 
+The `SizingProp` is what controls the content/ flex / flex-ratio features: 
+
+```ts
+/** 
+ * Specifies sizing interaction
+ */
+export interface SizingProp {
+  /** 
+   * Specifies `sizing` interaction
+   */
+  sizing?:
+  | 'content' /** default */
+  | 'flex' /** Same as `1` */
+  | number /** A flex ratio */;
+}
+```
+
+We cover these individually below:
+
+### Flex sized
 A flex sized component takes up as much space as offered by the parent. 
 
 In the example below, we have an explicit sized `Vertical` (background `lightskyblue`) with an inner flex sized `Vertical` (background `darkorange`). The inner vertical keeps its size to match that of the outer container (observed below as you don't see the background of the parent as it is filled in by the child).
@@ -36,7 +55,7 @@ In the example below, we have an explicit sized `Vertical` (background `lightsky
 </Playground>
 
 
-## Content sized
+### Content sized
 A content sized component takes up as much space as needed by the children. This is the most common sizing that you want and is therefore the default.
 
 In the example below, we have an explicit sized `Vertical` (background `lightskyblue`) with an inner content-sized `Vertical` (background `darkorange`). The inner vertical keeps it size to match whatever is needed by its children (observed below as you see the background of the parent where the child ends)
@@ -51,7 +70,7 @@ In the example below, we have an explicit sized `Vertical` (background `lightsky
 
 > You can set it explicitly as well if you want `sizing={'content'}`
 
-## Flex sized ratios
+### Flex sized ratios
 With flex sizing, you can specify `number` values on how much you want differnt items to flex. e.g. We have `1` and `2` as the sizing on the children of the following horizontal:
 
 <Playground>
