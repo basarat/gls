@@ -72,17 +72,19 @@ export interface PaddingProp {
 }
 ```
 
-Allows you to specifiy padding as a [CSSBox](#cssbox).
+Allows you to specifiy padding as a [CSSBox](#cssbox). Using padding effectively is covered in the [spacing principle][principle-spacing] section.
+
+## ScrollProp 
+
+Contains `scroll?` member. Type definition and effective use is coverd in the [scrolling principle][principle-scrolling] section.
 
 ## BaseProps
 Objective: A consistent set of customization options. Collects the following props into a common type:
 
-
-
 Members:
 
-* `padding?: BoxSet`: The padding. Using it effectively is covered in the [spacing principle][principle-spacing] section.
-* `scroll?`: specify scrolling behaviours. Covered in [scrolling principle][principle-scrolling].
+* `PaddingProp`: [Specifies padding](#paddingprop).
+* `ScrollProp`: [Specify scrolling behaviours](scrollprop).
 * `styles?: (typestyle.types.NestedCSSProperties | falsy)[]`: an array of custom typestyle `style` objects. Any falsy array members will be safely ignored.
 
 From react: 
