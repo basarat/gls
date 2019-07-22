@@ -60,7 +60,7 @@ export interface AlignmentProps {
 /** 
  * Props accepted by all our container components
  */
-export interface GLSProps extends
+export interface BaseProps extends
   PaddingProp,
   SizeProps,
   ScrollProp,

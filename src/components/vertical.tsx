@@ -1,11 +1,11 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { GLSProps, SizingProp, SpacingProp } from '../common';
-import { createGLSTag, processSizingProp, useGLSDefaults } from '../internal/utils';
+import { BaseProps, SizingProp, SpacingProp } from '../common';
+import { createBagTag, processSizingProp, useGLSDefaults } from '../internal/utils';
 import { vertical, centerJustified, endJustified, end, center, start } from '../styles/flex';
 import { verticallySpaced } from '../styles/spacing';
 
-export interface VerticalProps extends GLSProps, SizingProp, SpacingProp {
+export interface VerticalProps extends BaseProps, SizingProp, SpacingProp {
   /** Child alignment in vertical axis */
   verticalAlign?: 'top' /** default */ | 'center' | 'bottom',
   /** Child alignment in horizontal axis */
@@ -37,6 +37,6 @@ export const Vertical: React.FC<VerticalProps> = (props) => {
     horizontalAlign == 'center' && center,
     horizontalAlign == 'right' && end,
   );
-  return createGLSTag(otherProps, klass, 'Vertical');
+  return createBagTag(otherProps, klass, 'Vertical');
 }
 Vertical.displayName = 'Vertical';

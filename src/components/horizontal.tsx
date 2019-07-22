@@ -1,11 +1,11 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { GLSProps, SizingProp, SpacingProp } from '../common';
-import { createGLSTag, processSizingProp, useGLSDefaults } from '../internal/utils';
+import { BaseProps, SizingProp, SpacingProp } from '../common';
+import { createBagTag, processSizingProp, useGLSDefaults } from '../internal/utils';
 import { horizontal, endJustified, centerJustified, center, end, start } from '../styles/flex';
 import { horizontallySpaced } from '../styles/spacing';
 
-export interface HorizontalProps extends GLSProps, SizingProp, SpacingProp {
+export interface HorizontalProps extends BaseProps, SizingProp, SpacingProp {
   /** Child alignment in vertical axis */
   verticalAlign?: 'stretch' /** default */ | 'top' | 'center' | 'bottom',
   /** Child alignment in horizontal axis */
@@ -36,6 +36,6 @@ export const Horizontal: React.FC<HorizontalProps> = (props) => {
     verticalAlign == 'center' && center,
     verticalAlign == 'bottom' && end,
   );
-  return createGLSTag(otherProps, klass, 'Horizontal');
+  return createBagTag(otherProps, klass, 'Horizontal');
 }
 Horizontal.displayName = 'Horizontal';

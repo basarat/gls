@@ -1,11 +1,11 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { CSSLength, GLSProps, SizingProp } from '../common';
-import { createGLSTag, useGLSDefaults, processSizingProp } from '../internal/utils';
+import { CSSLength, BaseProps, SizingProp } from '../common';
+import { createBagTag, useGLSDefaults, processSizingProp } from '../internal/utils';
 import { horizontal, wrap, endJustified, centerJustified, betweenJustified, aroundJustified } from '../styles/flex';
 import { gridSpaced } from '../styles/spacing';
 
-export interface GridProps extends GLSProps, SizingProp {
+export interface GridProps extends BaseProps, SizingProp {
   /** 
    * Minimum spacing between children
    */
@@ -59,7 +59,7 @@ export const Grid: React.FC<GridProps> = (props) => {
     justify == 'space-around' && aroundJustified,
   );
   return (
-    createGLSTag(otherProps, klass, 'Grid')
+    createBagTag(otherProps, klass, 'Grid')
   );
 }
 Grid.displayName = 'Grid';

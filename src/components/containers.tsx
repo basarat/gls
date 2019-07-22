@@ -1,10 +1,10 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { GLSProps, AlignmentProps } from '../common';
-import { createGLSTag } from '../internal/utils';
+import { BaseProps, AlignmentProps } from '../common';
+import { createBagTag } from '../internal/utils';
 import { content, flex, centerJustified, endJustified, center, end, vertical, start, startJustified } from '../styles/flex';
 
-export interface FlexProps extends GLSProps, AlignmentProps {
+export interface FlexProps extends BaseProps, AlignmentProps {
   sizing?: number;
 }
 
@@ -30,11 +30,11 @@ export const Flex: React.FC<FlexProps> = (props) => {
     horizontalAlign == 'center' && center,
     horizontalAlign == 'right' && end,
   );
-  return createGLSTag(otherProps, klass, 'Flex');
+  return createBagTag(otherProps, klass, 'Flex');
 };
 Flex.displayName = 'Flex';
 
-export interface ContentProps extends GLSProps, AlignmentProps {
+export interface ContentProps extends BaseProps, AlignmentProps {
 }
 
 /** 
@@ -57,6 +57,6 @@ export const Content: React.FC<ContentProps> = (props) => {
     horizontalAlign == 'center' && center,
     horizontalAlign == 'right' && end,
   );
-  return createGLSTag(otherProps, klass, 'Content');
+  return createBagTag(otherProps, klass, 'Content');
 };
 Content.displayName = 'Content';

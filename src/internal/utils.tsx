@@ -1,5 +1,5 @@
 import * as typestyle from 'typestyle';
-import { CSSLength, GLSProps, SizingProp, GLSDefaults, CSSBox } from "../common";
+import { CSSLength, BaseProps, SizingProp, GLSDefaults, CSSBox } from "../common";
 import * as scrollHelpers from "../styles/scroll";
 import { content, flex } from '../styles/flex';
 import React, { useContext } from 'react';
@@ -37,11 +37,11 @@ function _processPadding(box: CSSBox)
 }
 
 /** 
- * Creates the appropriate tag
- * - Does any processing of GLSProps if required
- * - Then creates the approvate react tag
+ * Creates the React tag
+ * - Does any processing of `BaseProps` if required
+ * - Then creates the appropriate tag
  */
-export function createGLSTag<T extends GLSProps>(
+export function createBagTag<T extends BaseProps>(
   props: T,
 
   /** Any additional customizations done by the component */

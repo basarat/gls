@@ -1,6 +1,6 @@
 import * as typestyle from 'typestyle';
-import { GLSProps, SizingProp, StylesProp, StyleProp, SpacingProp } from '../common';
-import { createGLSTag, useGLSDefaults, processSizingProp } from '../internal/utils';
+import { BaseProps, SizingProp, StylesProp, StyleProp, SpacingProp } from '../common';
+import { createBagTag, useGLSDefaults, processSizingProp } from '../internal/utils';
 import { vertical, horizontal, centerJustified, endJustified, end, center } from '../styles/flex';
 import { verticallySpaced, horizontallySpaced } from '../styles/spacing';
 
@@ -28,7 +28,7 @@ export interface ResponsiveModeProps extends
 /** 
  * Props for the Responsive component
  */
-export interface ResponsiveProps extends GLSProps, ResponsiveOverridableProps {
+export interface ResponsiveProps extends BaseProps, ResponsiveOverridableProps {
   /** 
    * windowWidth <= breakpoint : it is vertical (mobile)
    * else                      : it is horizontal (desktop)
@@ -131,6 +131,6 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
     horizontalOptions && horizontalOptions.styles && typestyle.media({ minWidth: breakpoint + 1 },
       ...horizontalOptions.styles),
   );
-  return createGLSTag(otherProps, klass, 'Responsive');
+  return createBagTag(otherProps, klass, 'Responsive');
 }
 Responsive.displayName = 'Responsive';
