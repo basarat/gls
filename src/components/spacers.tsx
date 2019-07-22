@@ -5,7 +5,7 @@ import { cssLengthToString, useGLSDefaults } from '../internal/utils';
 import { flex } from '../styles/flex';
 
 export interface FlexSpacerProps extends React.HTMLProps<HTMLDivElement> {
-  flex?: number;
+  sizing?: number;
 }
 
 /** 
