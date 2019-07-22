@@ -34,24 +34,6 @@ export type CSSBox =
 
 e.g. `5` (means `5px` top,right,left,bottom), `['5rem','10px']` (means `5rem` top & bottom, `10px` left & right), `[10,5,'10rem', 15]` (means `10px` top, `5px` right, `10rem` bottom, `15px` left).
 
-## GLSProps
-Objective: A consistent set of customization options. Members:
-
-* `padding?: BoxSet`: The padding. Using it effectively is covered in the [spacing principle][principle-spacing] section.
-* `scroll?`: specify scrolling behaviours. Covered in [scrolling principle][principle-scrolling].
-* `styles?: (typestyle.types.NestedCSSProperties | falsy)[]`: an array of custom typestyle `style` objects. Any falsy array members will be safely ignored.
-
-From react: 
-* `className?: string`: css class name.
-* `style?: React.CSSProperties`: any custom react `style` you want to pass in.
-
-For the tag control: 
-```ts
-tag?: {
-  name?: 'div' /** default */ | 'a' | 'button' // etc.
-  props?: React.HTMLProps // props passed to the tag
-}
-```
 ## SpacingProp
 
 ```ts
@@ -79,7 +61,41 @@ The size props (`height,minHeight,maxHeight,width,minWidth,maxWidth`) allow for 
 
 The `sizing` prop is covered in the [sizing principle][principle-sizing] section.
 
+## PaddingProp
 
+```ts
+/** 
+ * Add support for padding
+ */
+export interface PaddingProp {
+  padding?: CSSBox,
+}
+```
+
+Allows you to specifiy padding as a [CSSBox](#cssbox).
+
+## BaseProps
+Objective: A consistent set of customization options. Collects the following props into a common type:
+
+
+
+Members:
+
+* `padding?: BoxSet`: The padding. Using it effectively is covered in the [spacing principle][principle-spacing] section.
+* `scroll?`: specify scrolling behaviours. Covered in [scrolling principle][principle-scrolling].
+* `styles?: (typestyle.types.NestedCSSProperties | falsy)[]`: an array of custom typestyle `style` objects. Any falsy array members will be safely ignored.
+
+From react: 
+* `className?: string`: css class name.
+* `style?: React.CSSProperties`: any custom react `style` you want to pass in.
+
+For the tag control: 
+```ts
+tag?: {
+  name?: 'div' /** default */ | 'a' | 'button' // etc.
+  props?: React.HTMLProps // props passed to the tag
+}
+```
 
 [principle-spacing]:../principle-spacing/
 [principle-sizing]:../principle-sizing/
