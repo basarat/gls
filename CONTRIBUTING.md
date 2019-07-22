@@ -45,11 +45,10 @@ const klass = classes(
 WrappingGrid.displayName = 'WrappingGrid';
 ```
 
-# GLSProps
-The props we want to be supported by a potential wysiwyg editor get added to `GLSProps`. 
+# BaseProps
+The props we want to be supported by a potential wysiwyg editor get added to `BaseProps`. 
 
-Potentially all of these can be done by the user in `style` Or `className`, but its just easier this way.
-
+> Potentially all of these can be done by the user in `style` Or `className`, but its easier this way as we get explicit properties to test on the component (instead of trying to do code flow analysis to determine the calculated styles).
 
 # Docs Images
 
