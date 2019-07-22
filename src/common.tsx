@@ -60,7 +60,14 @@ export interface AlignmentProps {
 /** 
  * Props accepted by all our container components
  */
-export interface GLSProps extends PaddingProp, SizeProps, ScrollProp, StylesProp, TagProps {
+export interface GLSProps extends
+  PaddingProp,
+  SizeProps,
+  ScrollProp,
+  StylesProp,
+  StyleProp,
+  ClassNameProp,
+  TagProps {
 }
 
 /** 
@@ -107,15 +114,20 @@ export interface StylesProp {
  * Support for React `style` property
  */
 export interface StyleProp {
-  style?: React.CSSProperties;
+  style?: React.CSSProperties
+}
+
+/** 
+ * Support for React `className` property 
+ */
+export interface ClassNameProp { 
+  className?: string
 }
 
 /** 
  * Props supported by the underlying tag 
  */
-export interface TagProps extends StyleProp {
-  className?: string,
-
+export interface TagProps {
   tag?:
   {
     /** name default: div */
