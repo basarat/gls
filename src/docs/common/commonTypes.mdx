@@ -78,14 +78,42 @@ Allows you to specifiy padding as a [CSSBox](#cssbox). Using padding effectively
 
 Contains `scroll?` member. Type definition and effective use is coverd in the [scrolling principle][principle-scrolling] section.
 
+## StylesProp 
+
+```ts
+/** 
+ * Support for mixing in TypeStyle NestedCSSProperties (style function arguments) 
+ */
+export interface StylesProp {
+  styles?: (types.NestedCSSProperties | null | false)[];
+}
+```
+`styles` props is an array that gets passed as arguments to the [`typestyle.style` function][typestyle-style].
+
+E.g you can customize the hover color: 
+
+<Playground>
+  <Vertical height={100} styles={[
+    {
+      transition:'.3s', 
+      backgroundColor: 'limegreen', 
+      $nest:{
+        '&:hover': {backgroundColor:'gold'}}
+      }
+  ]}/>  
+</Playground>
+
+> Any falsy array members will be safely ignored just like the `typestyle.style` function.
+
 ## BaseProps
 Objective: A consistent set of customization options. Collects the following props into a common type:
 
 Members:
 
 * `PaddingProp`: [Specifies padding](#paddingprop).
-* `ScrollProp`: [Specify scrolling behaviours](scrollprop).
-* `styles?: (typestyle.types.NestedCSSProperties | falsy)[]`: an array of custom typestyle `style` objects. Any falsy array members will be safely ignored.
+* `ScrollProp`: [Specify scrolling behaviours](#scrollprop).
+* `SizeProps`: [Sepecify explicit size control](#sizeprops).
+* `StylesProp`: [Allows you to use TypeStyle CSS mixins](#stylesprop). 
 
 From react: 
 * `className?: string`: css class name.
@@ -102,3 +130,4 @@ tag?: {
 [principle-spacing]:../principle-spacing/
 [principle-sizing]:../principle-sizing/
 [principle-scrolling]:../principle-scrolling/
+[typestyle-style]:https://typestyle.github.io/#/core/style

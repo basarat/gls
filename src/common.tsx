@@ -104,7 +104,7 @@ export interface ScrollProp {
 }
 
 /** 
- * Support for mixing in NestedCSSProperties 
+ * Support for mixing in TypeStyle NestedCSSProperties (style function arguments) 
  */
 export interface StylesProp {
   styles?: (types.NestedCSSProperties | null | false)[];
