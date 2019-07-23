@@ -39,7 +39,7 @@ This is essentially what you are doing in most design tools out there. Sadly exp
 
 
 ## SizingProp 
-The `SizingProp` is what controls the content/ flex / flex-ratio features: 
+The `SizingProp` is what controls the implicit sizing content / flex / flex-ratio features: 
 
 ```ts
 /** 
@@ -101,11 +101,12 @@ With flex sizing, you can specify `number` values on how much you want differnt 
   </Horizontal>
 </Playground>
 
-You can even mix `Flex` and `Content` sizing if you want: 
+You can even mix `Flex`, `Content` and explicit sizing if you want: 
 
 <Playground>
   <Horizontal height={100} spacing={0} style={{backgroundColor: "lightskyblue"}}>
     <Content width={100} style={{backgroundColor: "limegreen"}}>Exactly 100px</Content>
+    <Content style={{backgroundColor: "gold"}}>As much as I need</Content>
     <Flex sizing={1} style={{backgroundColor: "darkorange"}}>
         I'm taking 1 from remainder
     </Flex>  
