@@ -13,7 +13,7 @@ export default {
     'Grid',
     'Spacers',
     'Containers',
-    'Examples',
+    'Example Layouts',
   ],
 
   // Some cleanups
