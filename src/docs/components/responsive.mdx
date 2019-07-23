@@ -23,16 +23,14 @@ As an example, resize your browser window to see the following layout change fro
 Another example is a common left right layout with buttons: 
 
 <Playground>
-  <Responsive breakpoint={1000} minWidth={390}>
+  <Responsive breakpoint={650} minWidth={250}>
     <Horizontal sizing="flex">
       <demos.Button>Back 1</demos.Button>
       <demos.Button>Back 2</demos.Button>
-      <demos.Button>Back 3</demos.Button>
     </Horizontal>
     <Horizontal sizing="flex" horizontalAlign="right">
       <demos.Button>Next 1</demos.Button>
       <demos.Button>Next 2</demos.Button>
-      <demos.Button>Next 3</demos.Button>
     </Horizontal>
   </Responsive>
 </Playground>
