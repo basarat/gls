@@ -30,7 +30,7 @@ export const Vertical: React.FC<VerticalProps> = (props) => {
   const klass = typestyle.style(
     processSizingProp(props),
     vertical,
-    verticalSpacing !== 0 && verticallySpaced(spacing),
+    spacing !== 0 && verticallySpaced(spacing),
     verticalAlign == 'center' && centerJustified,
     verticalAlign == 'bottom' && endJustified,
     horizontalAlign == 'left' && start,

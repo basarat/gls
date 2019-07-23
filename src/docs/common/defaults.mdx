@@ -1,0 +1,81 @@
+---
+name: Defaults
+route: /defaults/
+---
+
+import { Playground } from 'docz';
+import { Vertical, GLSDefaults } from '../..'; 
+
+# Defaults
+
+There are some default values configured into GLS for spacing and breakpoint: 
+
+```ts
+verticalSpacing: CSSLength = 24;
+horizontalSpacing: CSSLength = 24;
+breakpoint: number = 480;
+```
+
+## Usage by components
+
+The following components use the following defaults if an explicit prop value is not passed in:
+
+* [Vertical][vertical]: `verticalSpacing`
+* [Horizontal][horizontal]: `horizontalSpacing`
+* [Grid][grid]: `verticalSpacing`/`horizontalSpacing`
+* [Responsive][responsive]: `verticalSpacing`/`horizontalSpacing`/`breakpoint`
+
+## Configuring
+These are exported using React Context. You can import it as `import { GLSDefaults } from 'gls'`.
+
+In the pseudo code example below, you can see `Vertical` using default `verticalSpacing` (powered by the parent provider) for its `spacing`, or the explicit value when its passed in:
+
+```ts
+Vertical (will use default 24)
+Vertical {explicit:10} (will use 10)
+GLSDefaults.Provider value={{verticalSpacing:0}}
+  Vertical (will use 0)
+  Vertical {explicit:10} (will use 10)
+  GLSDefaults.Provider value={{verticalSpacing:30}}
+    Vertical (will use 30)
+    Vertical {explicit:10} (will use 10)
+```
+
+Here is the pseudocode coded up, so you can play around with it:
+
+<Playground>
+  <Vertical style={{border:'5px solid black'}}>
+    <div style={{backgroundColor: "lightskyblue"}}>Implicit 24</div>
+    <div style={{backgroundColor: "lightpink"}}>Implicit 24</div>
+  </Vertical>
+  <Vertical spacing={10} style={{border:'5px solid black'}}>
+    <div style={{backgroundColor: "lightskyblue"}}>Explicit 10</div>
+    <div style={{backgroundColor: "lightpink"}}>Explicit 10</div>
+  </Vertical>
+  <GLSDefaults.Provider value={{verticalSpacing:0}}>
+    <Vertical style={{border:'5px solid black'}}>
+      <div style={{backgroundColor: "lightskyblue"}}>Implicit 0</div>
+      <div style={{backgroundColor: "lightpink"}}>Implicit 0</div>
+    </Vertical>
+    <Vertical spacing={10} style={{border:'5px solid black'}}>
+      <div style={{backgroundColor: "lightskyblue"}}>Explicit 10</div>
+      <div style={{backgroundColor: "lightpink"}}>Explicit 10</div>
+    </Vertical>
+    <GLSDefaults.Provider value={{verticalSpacing:30}}>
+      <Vertical style={{border:'5px solid black'}}>
+        <div style={{backgroundColor: "lightskyblue"}}>Implicit 30</div>
+        <div style={{backgroundColor: "lightpink"}}>Implicit 30</div>
+      </Vertical>
+      <Vertical spacing={10} style={{border:'5px solid black'}}>
+        <div style={{backgroundColor: "lightskyblue"}}>Explicit 10</div>
+        <div style={{backgroundColor: "lightpink"}}>Explicit 10</div>
+      </Vertical>
+    </GLSDefaults.Provider>
+  </GLSDefaults.Provider>
+</Playground>
+
+
+[vertical]:../vertical/
+[horizontal]:../horizontal/
+[grid]:../grid/
+[responsive]:../responsive/

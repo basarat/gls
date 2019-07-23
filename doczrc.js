@@ -7,6 +7,7 @@ export default {
     'Sizing principle',
     'Scrolling principle',
     'Common Types and Props',
+    'Defaults',
     'Vertical',
     'Horizontal',
     'Responsive',
