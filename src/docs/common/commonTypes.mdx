@@ -105,6 +105,51 @@ E.g you can customize the hover color:
 
 > Any falsy array members will be safely ignored just like the `typestyle.style` function.
 
+## StyleProp 
+
+```ts
+/** 
+ * Support for React `style` property
+ */
+export interface StyleProp {
+  style?: React.CSSProperties
+}
+```
+Any custom react `style` you want to pass in. 
+
+> Note that React `style` doesn't support things not supported by the html style attribute (e.g. media queries or pseudo elements). For that you can use [StylesProp](#stylesprop).
+
+## ClassNameProp 
+```ts
+/** 
+ * Support for React `className` property 
+ */
+export interface ClassNameProp { 
+  className?: string
+}
+```
+Allows you to add your own CSS classnames to the element.
+
+## TagProps
+```ts
+/** 
+ * Props supported by the underlying tag 
+ */
+export interface TagProps {
+  tag?: {
+    name?: 'div' /** default */ | 'a' | 'button' // etc.
+    props?: React.HTMLProps // props passed to the tag
+  }
+}
+```
+Gives you direct access to the underlying react tag for any customization you might want e.g. generate a `Vertical` as a `section` tag (instead of the default `div` tag):
+
+<Playground>
+  <Vertical 
+    tag={{name:'section'}} 
+    height={100} style={{backgroundColor: 'limegreen'}}/>
+</Playground>
+
 ## BaseProps
 Objective: A consistent set of customization options. Collects the following props into a common type:
 
@@ -114,18 +159,9 @@ Members:
 * `ScrollProp`: [Specify scrolling behaviours](#scrollprop).
 * `SizeProps`: [Sepecify explicit size control](#sizeprops).
 * `StylesProp`: [Allows you to use TypeStyle CSS mixins](#stylesprop). 
-
-From react: 
-* `className?: string`: css class name.
-* `style?: React.CSSProperties`: any custom react `style` you want to pass in.
-
-For the tag control: 
-```ts
-tag?: {
-  name?: 'div' /** default */ | 'a' | 'button' // etc.
-  props?: React.HTMLProps // props passed to the tag
-}
-```
+* `StyleProp`: [Allows you to specify React.CSSProperties](#styleprop).
+* `ClassNameProp`: [Allows you to pass in CSS class names](#classnameprop).
+* `TagProps`: [Allows tag control](#tagprops).
 
 [principle-spacing]:../principle-spacing/
 [principle-sizing]:../principle-sizing/
