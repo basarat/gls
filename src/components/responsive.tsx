@@ -1,5 +1,5 @@
 import * as typestyle from 'typestyle';
-import { BaseProps, SizingProp, StylesProp, StyleProp, SpacingProp } from '../common';
+import { BaseProps, SizingProp, StylesProp, SpacingProp } from '../common';
 import { createBagTag, useGLSDefaults, processSizingProp } from '../internal/utils';
 import { vertical, horizontal, centerJustified, endJustified, end, center, start } from '../styles/flex';
 import { verticallySpaced, horizontallySpaced } from '../styles/spacing';
@@ -18,12 +18,10 @@ export interface ResponsiveOverridableProps extends
 export interface ResponsiveVerticalModeProps extends
   StylesProp,
   ResponsiveOverridableProps {
-
   /** Child alignment in vertical axis */
   verticalAlign?: 'top' /** default */ | 'center' | 'bottom',
   /** Child alignment in horizontal axis */
   horizontalAlign?: 'stretch' /** default */ | 'left' | 'center' | 'right',
-
 }
 
 /** 
@@ -32,12 +30,10 @@ export interface ResponsiveVerticalModeProps extends
 export interface ResponsiveHorizontalModeProps extends
   StylesProp,
   ResponsiveOverridableProps {
-
   /** Child alignment in vertical axis */
   verticalAlign?: 'stretch' /** default */ | 'top' | 'center' | 'bottom',
   /** Child alignment in horizontal axis */
   horizontalAlign?: 'left' /** default */ | 'center' | 'right',
-
 }
 
 /** 
