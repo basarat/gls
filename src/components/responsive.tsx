@@ -12,6 +12,22 @@ export interface ResponsiveOverridableProps extends
   SpacingProp {
 }
 
+export interface BreakpointProp {
+  /** 
+   * windowWidth <= breakpoint : it is vertical (mobile)
+   * else                      : it is horizontal (desktop)
+   **/
+  breakpoint?: number;
+}
+
+export interface ResponsiveModesProps {
+  /** Vertical mode configuration */
+  vertical?: ResponsiveVerticalModeProps;
+
+  /** Horizontal mode configuration */
+  horizontal?: ResponsiveHorizontalModeProps;
+}
+
 /** 
  * Props that can only be specified at the root of the `Responsive` 
  */
@@ -22,7 +38,9 @@ export interface ResponsiveNonOverridableProps extends
   StylesProp,
   StyleProp,
   ClassNameProp,
-  TagProps {
+  TagProps,
+  BreakpointProp,
+  ResponsiveModesProps {
 }
 
 /** 
@@ -46,18 +64,9 @@ export interface ResponsiveHorizontalModeProps extends
 /** 
  * Props for the Responsive component
  */
-export interface ResponsiveProps extends ResponsiveOverridableProps, ResponsiveNonOverridableProps {
-  /** 
-   * windowWidth <= breakpoint : it is vertical (mobile)
-   * else                      : it is horizontal (desktop)
-   **/
-  breakpoint?: number;
-
-  /** Vertical mode configuration */
-  vertical?: ResponsiveVerticalModeProps;
-
-  /** Horizontal mode configuration */
-  horizontal?: ResponsiveHorizontalModeProps;
+export interface ResponsiveProps extends
+  ResponsiveOverridableProps,
+  ResponsiveNonOverridableProps {
 }
 
 /**
