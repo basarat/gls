@@ -8,11 +8,11 @@ import { verticallySpaced, horizontallySpaced } from '../styles/spacing';
  * Props that can be specified at root of `Responsive` and overridden for `vertical`/`horizontal` options
  */
 export interface ResponsiveOverridableProps extends
-  SizingProp,
-  SpacingProp,
+  ScrollProp,
   PaddingProp,
   SizeProps,
-  ScrollProp {
+  SizingProp,
+  SpacingProp {
 }
 
 export interface BreakpointProp {
@@ -87,8 +87,7 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
     horizontal: horizontalOptions,
 
     /** Overridable */
-    sizing,
-    spacing,
+    scroll,
     padding,
     height,
     minHeight,
@@ -96,26 +95,17 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
     width,
     minWidth,
     maxWidth,
-    scroll,
+    sizing,
+    spacing,
 
     ...otherProps
   } = props;
 
-  /** Determine sizings */
-  const verticalSizing = (verticalOptions && verticalOptions.sizing != null)
-    ? verticalOptions.sizing
-    : sizing;
-  const horizontalSizing = (horizontalOptions && horizontalOptions.sizing != null)
-    ? horizontalOptions.sizing
-    : sizing;
-
-  /** Determine spacings  */
-  const verticalSpacing = (verticalOptions && verticalOptions.spacing != null) ? verticalOptions.spacing
-    : spacing != null ? spacing
-      : defaultVerticalSpacing;
-  const horizontalSpacing = (horizontalOptions && horizontalOptions.spacing != null) ? horizontalOptions.spacing
-    : spacing != null ? spacing
-      : defaultHorizontalSpacing;
+  /** Determine scroll */
+  const verticalScroll = (verticalOptions && verticalOptions.scroll != null) ? verticalOptions.scroll
+    : scroll;
+  const horizontalScroll = (horizontalOptions && horizontalOptions.scroll != null) ? horizontalOptions.scroll
+    : scroll;
 
   /** Determine paddings */
   const verticalPadding = (verticalOptions && verticalOptions.padding != null) ? verticalOptions.padding
@@ -149,11 +139,21 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
   const horizontalMaxWidth = (horizontalOptions && horizontalOptions.maxWidth != null) ? horizontalOptions.maxWidth
     : maxWidth;
 
-  /** Determine scroll */
-  const verticalScroll = (verticalOptions && verticalOptions.scroll != null) ? verticalOptions.scroll
-    : scroll;
-  const horizontalScroll = (horizontalOptions && horizontalOptions.scroll != null) ? horizontalOptions.scroll
-    : scroll;
+  /** Determine sizings */
+  const verticalSizing = (verticalOptions && verticalOptions.sizing != null)
+    ? verticalOptions.sizing
+    : sizing;
+  const horizontalSizing = (horizontalOptions && horizontalOptions.sizing != null)
+    ? horizontalOptions.sizing
+    : sizing;
+
+  /** Determine spacings  */
+  const verticalSpacing = (verticalOptions && verticalOptions.spacing != null) ? verticalOptions.spacing
+    : spacing != null ? spacing
+      : defaultVerticalSpacing;
+  const horizontalSpacing = (horizontalOptions && horizontalOptions.spacing != null) ? horizontalOptions.spacing
+    : spacing != null ? spacing
+      : defaultHorizontalSpacing;
 
   /** Determine alignments */
   const verticalModeVerticalAlign =

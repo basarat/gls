@@ -75,9 +75,9 @@ export interface AlignmentInHorizontalProps {
  * Props accepted by all our container components
  */
 export interface BaseProps extends
+  ScrollProp,
   PaddingProp,
   SizeProps,
-  ScrollProp,
   StylesProp,
   StyleProp,
   ClassNameProp,
