@@ -1,15 +1,11 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { BaseProps, SizingProp, SpacingProp } from '../common';
+import { BaseProps, SizingProp, SpacingProp, AlignmentInHorizontalProps } from '../common';
 import { createBagTag, processSizingProp, useGLSDefaults } from '../internal/utils';
 import { horizontal, endJustified, centerJustified, center, end, start } from '../styles/flex';
 import { horizontallySpaced } from '../styles/spacing';
 
-export interface HorizontalProps extends BaseProps, SizingProp, SpacingProp {
-  /** Child alignment in vertical axis */
-  verticalAlign?: 'stretch' /** default */ | 'top' | 'center' | 'bottom',
-  /** Child alignment in horizontal axis */
-  horizontalAlign?: 'left' /** default */ | 'center' | 'right',
+export interface HorizontalProps extends BaseProps, SizingProp, SpacingProp, AlignmentInHorizontalProps {
 }
 
 /** 

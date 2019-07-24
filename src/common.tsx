@@ -57,6 +57,20 @@ export interface AlignmentProps {
   horizontalAlign?: 'left' /** default */ | 'center' | 'right',
 }
 
+export interface AlignmentInVerticalProps {
+  /** Child alignment in vertical axis */
+  verticalAlign?: 'top' /** default */ | 'center' | 'bottom',
+  /** Child alignment in horizontal axis */
+  horizontalAlign?: 'stretch' /** default */ | 'left' | 'center' | 'right',
+}
+
+export interface AlignmentInHorizontalProps {
+  /** Child alignment in vertical axis */
+  verticalAlign?: 'stretch' /** default */ | 'top' | 'center' | 'bottom',
+  /** Child alignment in horizontal axis */
+  horizontalAlign?: 'left' /** default */ | 'center' | 'right',
+}
+
 /** 
  * Props accepted by all our container components
  */
