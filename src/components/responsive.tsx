@@ -16,7 +16,6 @@ export interface ResponsiveOverridableProps extends
  * Props for Vertical mode
  */
 export interface ResponsiveVerticalModeProps extends
-  StyleProp,
   StylesProp,
   ResponsiveOverridableProps {
 
@@ -31,7 +30,6 @@ export interface ResponsiveVerticalModeProps extends
  * Props for Horizontal mode
  */
 export interface ResponsiveHorizontalModeProps extends
-  StyleProp,
   StylesProp,
   ResponsiveOverridableProps {
 
@@ -128,7 +126,6 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
       verticalModeHorizontalAlign == 'left' && start,
       verticalModeHorizontalAlign == 'right' && end,
       verticalModeHorizontalAlign == 'center' && center,
-      verticalOptions && verticalOptions.style,
     ),
     verticalOptions && verticalOptions.styles && typestyle.media({ minWidth: 0, maxWidth: breakpoint },
       ...verticalOptions.styles),
@@ -143,7 +140,6 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
       horizontalModeVerticalAlign == 'top' && start,
       horizontalModeVerticalAlign == 'center' && center,
       horizontalModeVerticalAlign == 'bottom' && end,
-      horizontalOptions && horizontalOptions.style,
     ),
     horizontalOptions && horizontalOptions.styles && typestyle.media({ minWidth: breakpoint + 1 },
       ...horizontalOptions.styles),
