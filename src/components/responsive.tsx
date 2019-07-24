@@ -1,6 +1,6 @@
 import * as typestyle from 'typestyle';
 import { SizingProp, StylesProp, SpacingProp, AlignmentInVerticalProps, AlignmentInHorizontalProps, PaddingProp, SizeProps, ScrollProp, StyleProp, ClassNameProp, TagProps } from '../common';
-import { createBaseTag, useGLSDefaults, _processSizingProp, _processPadding, cssLengthToString } from '../internal/utils';
+import { createBaseTag, useGLSDefaults, _processSizingProp, _processPadding, cssLengthToString, _processScroll } from '../internal/utils';
 import { vertical, horizontal, centerJustified, endJustified, end, center, start } from '../styles/flex';
 import { verticallySpaced, horizontallySpaced } from '../styles/spacing';
 
@@ -149,6 +149,11 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
   const horizontalMaxWidth = (horizontalOptions && horizontalOptions.maxWidth != null) ? horizontalOptions.maxWidth
     : maxWidth;
 
+  /** Determine scroll */
+  const verticalScroll = (verticalOptions && verticalOptions.scroll != null) ? verticalOptions.scroll
+    : scroll;
+  const horizontalScroll = (horizontalOptions && horizontalOptions.scroll != null) ? horizontalOptions.scroll
+    : scroll;
 
   /** Determine alignments */
   const verticalModeVerticalAlign =
@@ -186,6 +191,7 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
       verticalWidth != null && { width: cssLengthToString(verticalWidth) },
       verticalMinWidth != null && { minWidth: cssLengthToString(verticalMinWidth) },
       verticalMaxWidth != null && { maxWidth: cssLengthToString(verticalMaxWidth) },
+      verticalScroll != null && _processScroll(verticalScroll),
     ),
     verticalOptions && verticalOptions.styles && typestyle.media({ minWidth: 0, maxWidth: breakpoint },
       ...verticalOptions.styles),
@@ -207,6 +213,7 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
       horizontalWidth != null && { width: cssLengthToString(horizontalWidth) },
       horizontalMinWidth != null && { minWidth: cssLengthToString(horizontalMinWidth) },
       horizontalMaxWidth != null && { maxWidth: cssLengthToString(horizontalMaxWidth) },
+      horizontalScroll != null && _processScroll(horizontalScroll),
     ),
     horizontalOptions && horizontalOptions.styles && typestyle.media({ minWidth: breakpoint + 1 },
       ...horizontalOptions.styles),
