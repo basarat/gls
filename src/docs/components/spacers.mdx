@@ -75,7 +75,7 @@ Takes the `sizing?:number` prop ([flex ratio concept covered in sizing principle
   </Horizontal>
 </Playground>
 
-Here is a button pushed to the bottom of its parent `Vertical` by a preceding `FlexSpacer`: 
+`FlexSpacer` works automatically for both horizontal and vertical dimensions depending on the parent container. The following two examples demonstrate it with `Vertical(FlexSpacer,Button)` and `Horizontal(FlexSpacer,Button)`: 
 
 <Playground>
   <Vertical height={100}>
@@ -84,9 +84,7 @@ Here is a button pushed to the bottom of its parent `Vertical` by a preceding `F
       Just a button minding its own business
     </demos.Button>
   </Vertical>
-</Playground>  
-
-And here is a button pushed to the right of its parent `Horizontal` by a preceding `FlexSpacer`: 
+</Playground>
 
 <Playground>
   <Horizontal>
