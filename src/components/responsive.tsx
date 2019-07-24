@@ -1,7 +1,7 @@
 import * as typestyle from 'typestyle';
 import { BaseProps, SizingProp, StylesProp, StyleProp, SpacingProp } from '../common';
 import { createBagTag, useGLSDefaults, processSizingProp } from '../internal/utils';
-import { vertical, horizontal, centerJustified, endJustified, end, center } from '../styles/flex';
+import { vertical, horizontal, centerJustified, endJustified, end, center, start } from '../styles/flex';
 import { verticallySpaced, horizontallySpaced } from '../styles/spacing';
 
 
@@ -10,19 +10,36 @@ import { verticallySpaced, horizontallySpaced } from '../styles/spacing';
  */
 export interface ResponsiveOverridableProps extends
   SizingProp, SpacingProp {
-  /** Child alignment in vertical axis */
-  verticalAlign?: 'top' /** default */ | 'center' | 'bottom',
-  /** Child alignment in horizontal axis */
-  horizontalAlign?: 'left' /** default */ | 'center' | 'right',
 }
 
 /** 
- * Props per mode (vertical/horizontal)
+ * Props for Vertical mode
  */
-export interface ResponsiveModeProps extends
+export interface ResponsiveVerticalModeProps extends
   StyleProp,
   StylesProp,
   ResponsiveOverridableProps {
+
+  /** Child alignment in vertical axis */
+  verticalAlign?: 'top' /** default */ | 'center' | 'bottom',
+  /** Child alignment in horizontal axis */
+  horizontalAlign?: 'stretch' /** default */ | 'left' | 'center' | 'right',
+
+}
+
+/** 
+ * Props for Horizontal mode
+ */
+export interface ResponsiveHorizontalModeProps extends
+  StyleProp,
+  StylesProp,
+  ResponsiveOverridableProps {
+
+  /** Child alignment in vertical axis */
+  verticalAlign?: 'stretch' /** default */ | 'top' | 'center' | 'bottom',
+  /** Child alignment in horizontal axis */
+  horizontalAlign?: 'left' /** default */ | 'center' | 'right',
+
 }
 
 /** 
@@ -36,10 +53,10 @@ export interface ResponsiveProps extends BaseProps, ResponsiveOverridableProps {
   breakpoint?: number;
 
   /** Vertical mode configuration */
-  vertical?: ResponsiveModeProps;
+  vertical?: ResponsiveVerticalModeProps;
 
   /** Horizontal mode configuration */
-  horizontal?: ResponsiveModeProps;
+  horizontal?: ResponsiveHorizontalModeProps;
 }
 
 /**
@@ -62,8 +79,6 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
     /** Overridable */
     sizing,
     spacing,
-    verticalAlign,
-    horizontalAlign,
 
     ...otherProps
   } = props;
@@ -86,21 +101,21 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
 
   /** Determine alignments */
   const verticalModeVerticalAlign =
-    (verticalOptions && verticalOptions.verticalAlign != null) ? verticalOptions.verticalAlign
-      : verticalAlign != null ? verticalAlign
-        : null;
+    (verticalOptions && verticalOptions.verticalAlign != null)
+      ? verticalOptions.verticalAlign
+      : null;
   const verticalModeHorizontalAlign =
-    (verticalOptions && verticalOptions.horizontalAlign != null) ? verticalOptions.horizontalAlign
-      : horizontalAlign != null ? horizontalAlign
-        : null;
+    (verticalOptions && verticalOptions.horizontalAlign != null)
+      ? verticalOptions.horizontalAlign
+      : null;
   const horizontalModeVerticalAlign =
-    (horizontalOptions && horizontalOptions.verticalAlign != null) ? horizontalOptions.verticalAlign
-      : verticalAlign != null ? verticalAlign
-        : null;
+    (horizontalOptions && horizontalOptions.verticalAlign != null)
+      ? horizontalOptions.verticalAlign
+      : null;
   const horizontalModeHorizontalAlign =
-    (horizontalOptions && horizontalOptions.horizontalAlign != null) ? horizontalOptions.horizontalAlign
-      : horizontalAlign != null ? horizontalAlign
-        : null;
+    (horizontalOptions && horizontalOptions.horizontalAlign != null)
+      ? horizontalOptions.horizontalAlign
+      : null;
 
   const klass = typestyle.style(
     /** Till breakpoint: Vertical */
@@ -110,6 +125,7 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
       verticalSpacing !== 0 && verticallySpaced(verticalSpacing),
       verticalModeVerticalAlign == 'center' && centerJustified,
       verticalModeVerticalAlign == 'bottom' && endJustified,
+      verticalModeHorizontalAlign == 'left' && start,
       verticalModeHorizontalAlign == 'right' && end,
       verticalModeHorizontalAlign == 'center' && center,
       verticalOptions && verticalOptions.style,
@@ -124,6 +140,7 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
       horizontalSpacing !== 0 && horizontallySpaced(horizontalSpacing),
       horizontalModeHorizontalAlign == 'right' && endJustified,
       horizontalModeHorizontalAlign == 'center' && centerJustified,
+      horizontalModeVerticalAlign == 'top' && start,
       horizontalModeVerticalAlign == 'center' && center,
       horizontalModeVerticalAlign == 'bottom' && end,
       horizontalOptions && horizontalOptions.style,
