@@ -16,7 +16,7 @@ When thinking about the size of a container you need to think about *explicit* s
 
 ```ts
 /** 
- * Add support for explicit sizing
+ * Add support for explicit size
  */
 export interface SizeProps {
   height?: CSSLength,
@@ -29,7 +29,7 @@ export interface SizeProps {
 }
 ```
 
-Explicit sizes are driven by `width,height,minHeight,minWidth` arguments. You can have an explicit value on only one dimension e.g. here we have a simple `Vertical` container with explicit `height` only: 
+Explicit sizes are driven by `width,height,minHeight,minWidth,maxHeight,maxWidth` arguments. You can have an explicit value on only one dimension e.g. here we have a simple `Vertical` container with explicit `height` only: 
 
 <Playground>
   <Vertical height={100} style={{backgroundColor: "lightskyblue"}}>
@@ -38,7 +38,7 @@ Explicit sizes are driven by `width,height,minHeight,minWidth` arguments. You ca
 </Playground>
 
 
-This is essentially what you are doing in most design tools out there. Sadly explicit `height+width` sizing does not scale to *real* applications where sizes need to be reactive to either their parent or their content. Fortunately we provide concepts to handle these cases with ***implicit sizing*** concepts we cover next.
+This is essentially what you are doing in most design tools out there. Sadly explicit `height+width` sizing does not scale to *real* applications, where sizes need to be reactive to either their parent or their content. Fortunately we provide concepts to handle these cases with ***implicit sizing*** concepts we cover next.
 
 
 ## SizingProp (Implicit sizing)
@@ -74,12 +74,12 @@ In the example below, we have an explicit sized `Vertical` (background `lightsky
   </Vertical>
 </Playground>
 
-> You can set it explicitly as well if you want `sizing={'content'}`
+> You can set sizing to `content` explicitly as well if you want (`sizing={'content'}`)
 
 ### Flex sized
 A flex sized component takes up as much space as offered by the parent. 
 
-In the example below, we have an explicit sized `Vertical` (background `lightskyblue`) with an inner flex sized `Vertical` (background `darkorange`). The inner vertical keeps its size to match that of the outer container (observed below as you don't see the background of the parent as it is filled in by the child).
+In the example below, we have an explicit sized `Vertical` (background `lightskyblue`) with an inner flex-sized `Vertical` (background `darkorange`). The inner vertical keeps its size to match that of the outer container (observed below as you don't see the background of the parent as it is filled in by the child).
 
 <Playground>
   <Vertical height={100} style={{backgroundColor: "lightskyblue"}}>

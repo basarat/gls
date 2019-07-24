@@ -79,7 +79,7 @@ export interface PaddingProp {
 
 
 /** 
- * Add support for explicit sizing
+ * Add support for explicit size
  */
 export interface SizeProps {
   height?: CSSLength,
