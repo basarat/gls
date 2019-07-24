@@ -20,7 +20,7 @@ The difference between pixel perfect and good enough, mostly boils down to perfe
 
 ### Issues with external margins
 
-- Fundamentally external e.g. outside the width of the component in the recommended `border-box` box sizing:
+- Fundamentally external e.g. outside the width of the component in the recommended `border-box` box sizing (width of the component only includes the content,padding and border):
 
 ![borderbox](../images/borderbox.png)
 
@@ -36,7 +36,7 @@ The difference between pixel perfect and good enough, mostly boils down to perfe
 
 ![marginplacement](../images/marginplacement.png)
 
-So the question: If the components are coming without margins, how are they being spaced from their neighbours e.g. how is the margin-free label and the input spaced? 
+So the question: If the components are coming without margins, how are they being spaced from their neighbours e.g. how is the margin-free button and the input spaced? 
 
 ![marginfree](../images/marginfree.png)
 
@@ -46,7 +46,7 @@ Lets discuss that next.
 
 Realize that a component's external space, is its parent's internal space. A parent is free to manage its internal space anyway it wants. So really space management between components, is the responsibility of the container (and we provide plenty of such containers).
 
-### Space among children: `spacing` prop
+### Space among children: the `spacing` prop
 Remember good components don't come with bleedy margins. Since components don't use margins, our containers can easily create spacing between their children by adding margins with pure CSS (pseudocode: `CSS-selector(all children except last-child): CSS-property(margin)`).
 
 Lets look at some examples of external-margin-free components and how they nicely compose. First a simple margin-free component e.g. an input:
@@ -89,7 +89,7 @@ We can easily compose multiple `Vertical(label+input)` into another `Vertical`, 
 
 Notice that this composite of composites (`Vertical( 3 x Vertical(label+input) )`) is also external margin free, and we can continue down this path of reuse. We'll stop here, but feel free to play with the provided examples.
 
-### Space at the border: `padding` prop
+### Space at the border: the `padding` prop
 We've talked about spacing children among each other, one final thing to talk about is how to seperate children from the parent border. The answer is to simply use padding: 
 
 <Playground>
@@ -109,13 +109,13 @@ We've talked about spacing children among each other, one final thing to talk ab
   </Vertical>
 </Playground>
 
-> Component design tip: `padding` can be used in any components that have an explict border (e.g buttons, user profile cards).
+> Component design tip: `padding` can be used in any component that has an explict border (e.g buttons, user profile cards).
 
 You normally:
 * don't put `padding` on any *layout* components that you want to *compose* into other layouts.
 * put `padding` on *page level* layout components.
 
-So a page level form layout component would have padding, whereas a reusable form component would not. You can observe this pattern in the example below where the `Vertical`s for the reuseable `First/Middle/Last` name component do not have a padding (enabling seemless reuse): 
+So a page level form layout component would have padding, whereas a reusable form component would not. You can observe this pattern in the example below where the two `Vertical`s for the reuseable `First/Middle/Last` name component do not have a padding (enabling seemless reuse): 
 
 <Playground>
   {/* Not meant to be nested further, hence padding */}

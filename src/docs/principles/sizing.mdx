@@ -64,7 +64,7 @@ We cover these individually below:
 ### Content sized
 A content sized component takes up as much space as needed by the children. This is the most common sizing that you want and is therefore the default for our containers.
 
-In the example below, we have an explicit sized `Vertical` (background `lightskyblue`) with an inner content-sized `Vertical` (background `darkorange`). The inner vertical keeps it size to match whatever is needed by its children (observed below as you see the background of the parent where the child ends)
+In the example below, we have an explicit sized `Vertical` (background `lightskyblue`) with an inner content-sized `Vertical` (background `darkorange`). The inner vertical keeps it size to match whatever is needed by its children (observed below as you see the background of the parent-lightskyblue where the child-darkorange ends).
 
 <Playground>
   <Vertical height={100} style={{backgroundColor: "lightskyblue"}}>
@@ -79,7 +79,7 @@ In the example below, we have an explicit sized `Vertical` (background `lightsky
 ### Flex sized
 A flex sized component takes up as much space as offered by the parent. 
 
-In the example below, we have an explicit sized `Vertical` (background `lightskyblue`) with an inner flex-sized `Vertical` (background `darkorange`). The inner vertical keeps its size to match that of the outer container (observed below as you don't see the background of the parent as it is filled in by the child).
+In the example below, we have an explicit sized `Vertical` (background `lightskyblue`) with an inner flex-sized `Vertical` (background `darkorange`). The inner vertical keeps its size to match that of the outer container (observed below as you don't see the background of the parent-lightskyblue as it is filled in by the child-darkorange).
 
 <Playground>
   <Vertical height={100} style={{backgroundColor: "lightskyblue"}}>
@@ -109,11 +109,15 @@ You can mix `Flex`, `Content` and explicit sizing to match your design requireme
 
 <Playground>
   <Horizontal height={100} spacing={0} style={{backgroundColor: "lightskyblue"}}>
+    {/* Explicit width 100 */ }
     <Content width={100} style={{backgroundColor: "limegreen"}}>Exactly 100px</Content>
+    {/* Implicit content */ }
     <Content style={{backgroundColor: "gold"}}>As much as I need</Content>
+    {/* Implicit flex sizing = 1 */ }
     <Flex sizing={1} style={{backgroundColor: "darkorange"}}>
         I'm taking 1 from remainder
     </Flex>  
+    {/* Implicit flex sizing = 2 */ }
     <Flex sizing={2} style={{backgroundColor: "lightpink"}}>
         I'm taking 2 from remainder
     </Flex>
