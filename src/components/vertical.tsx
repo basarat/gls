@@ -1,7 +1,7 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
 import { BaseProps, SizingProp, SpacingProp, AlignmentInVerticalProps } from '../common';
-import { createBagTag, processSizingProp, useGLSDefaults } from '../internal/utils';
+import { createBaseTag, processSizingProp, useGLSDefaults } from '../internal/utils';
 import { vertical, centerJustified, endJustified, end, center, start } from '../styles/flex';
 import { verticallySpaced } from '../styles/spacing';
 
@@ -33,6 +33,6 @@ export const Vertical: React.FC<VerticalProps> = (props) => {
     horizontalAlign == 'center' && center,
     horizontalAlign == 'right' && end,
   );
-  return createBagTag(otherProps, klass, 'Vertical');
+  return createBaseTag(otherProps, klass, 'Vertical');
 }
 Vertical.displayName = 'Vertical';

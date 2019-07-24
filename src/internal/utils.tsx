@@ -41,7 +41,7 @@ function _processPadding(box: CSSBox)
  * - Does any processing of `BaseProps` if required
  * - Then creates the appropriate tag
  */
-export function createBagTag<T extends BaseProps>(
+export function createBaseTag<T extends BaseProps>(
   props: T,
 
   /** Any additional customizations done by the component */

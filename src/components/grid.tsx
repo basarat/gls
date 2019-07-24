@@ -1,7 +1,7 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
 import { CSSLength, BaseProps, SizingProp } from '../common';
-import { createBagTag, useGLSDefaults, processSizingProp } from '../internal/utils';
+import { createBaseTag, useGLSDefaults, processSizingProp } from '../internal/utils';
 import { horizontal, wrap, endJustified, centerJustified, betweenJustified, aroundJustified } from '../styles/flex';
 import { gridSpaced } from '../styles/spacing';
 
@@ -59,7 +59,7 @@ export const Grid: React.FC<GridProps> = (props) => {
     justify == 'space-around' && aroundJustified,
   );
   return (
-    createBagTag(otherProps, klass, 'Grid')
+    createBaseTag(otherProps, klass, 'Grid')
   );
 }
 Grid.displayName = 'Grid';

@@ -1,6 +1,6 @@
 import * as typestyle from 'typestyle';
 import { SizingProp, StylesProp, SpacingProp, AlignmentInVerticalProps, AlignmentInHorizontalProps, PaddingProp, SizeProps, ScrollProp, StyleProp, ClassNameProp, TagProps } from '../common';
-import { createBagTag, useGLSDefaults, processSizingProp } from '../internal/utils';
+import { createBaseTag, useGLSDefaults, processSizingProp } from '../internal/utils';
 import { vertical, horizontal, centerJustified, endJustified, end, center, start } from '../styles/flex';
 import { verticallySpaced, horizontallySpaced } from '../styles/spacing';
 
@@ -156,6 +156,6 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
     horizontalOptions && horizontalOptions.styles && typestyle.media({ minWidth: breakpoint + 1 },
       ...horizontalOptions.styles),
   );
-  return createBagTag(otherProps, klass, 'Responsive');
+  return createBaseTag(otherProps, klass, 'Responsive');
 }
 Responsive.displayName = 'Responsive';

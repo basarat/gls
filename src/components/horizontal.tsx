@@ -1,7 +1,7 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
 import { BaseProps, SizingProp, SpacingProp, AlignmentInHorizontalProps } from '../common';
-import { createBagTag, processSizingProp, useGLSDefaults } from '../internal/utils';
+import { createBaseTag, processSizingProp, useGLSDefaults } from '../internal/utils';
 import { horizontal, endJustified, centerJustified, center, end, start } from '../styles/flex';
 import { horizontallySpaced } from '../styles/spacing';
 
@@ -32,6 +32,6 @@ export const Horizontal: React.FC<HorizontalProps> = (props) => {
     verticalAlign == 'center' && center,
     verticalAlign == 'bottom' && end,
   );
-  return createBagTag(otherProps, klass, 'Horizontal');
+  return createBaseTag(otherProps, klass, 'Horizontal');
 }
 Horizontal.displayName = 'Horizontal';

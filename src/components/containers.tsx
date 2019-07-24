@@ -1,7 +1,7 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
 import { BaseProps, AlignmentProps } from '../common';
-import { createBagTag } from '../internal/utils';
+import { createBaseTag } from '../internal/utils';
 import { content, flex, centerJustified, endJustified, center, end, vertical, start, startJustified } from '../styles/flex';
 
 export interface FlexProps extends BaseProps, AlignmentProps {
@@ -30,7 +30,7 @@ export const Flex: React.FC<FlexProps> = (props) => {
     horizontalAlign == 'center' && center,
     horizontalAlign == 'right' && end,
   );
-  return createBagTag(otherProps, klass, 'Flex');
+  return createBaseTag(otherProps, klass, 'Flex');
 };
 Flex.displayName = 'Flex';
 
@@ -57,6 +57,6 @@ export const Content: React.FC<ContentProps> = (props) => {
     horizontalAlign == 'center' && center,
     horizontalAlign == 'right' && end,
   );
-  return createBagTag(otherProps, klass, 'Content');
+  return createBaseTag(otherProps, klass, 'Content');
 };
 Content.displayName = 'Content';
