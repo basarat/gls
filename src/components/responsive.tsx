@@ -1,6 +1,6 @@
 import * as typestyle from 'typestyle';
 import { SizingProp, StylesProp, SpacingProp, AlignmentInVerticalProps, AlignmentInHorizontalProps, PaddingProp, SizeProps, ScrollProp, StyleProp, ClassNameProp, TagProps } from '../common';
-import { createBaseTag, useGLSDefaults, processSizingProp } from '../internal/utils';
+import { createBaseTag, useGLSDefaults, _processSizingProp, _processPadding } from '../internal/utils';
 import { vertical, horizontal, centerJustified, endJustified, end, center, start } from '../styles/flex';
 import { verticallySpaced, horizontallySpaced } from '../styles/spacing';
 
@@ -9,7 +9,10 @@ import { verticallySpaced, horizontallySpaced } from '../styles/spacing';
  */
 export interface ResponsiveOverridableProps extends
   SizingProp,
-  SpacingProp {
+  SpacingProp,
+  PaddingProp,
+  SizeProps,
+  ScrollProp {
 }
 
 export interface BreakpointProp {
@@ -32,9 +35,6 @@ export interface ResponsiveModesProps {
  * Props that can only be specified at the root of the `Responsive` 
  */
 export interface ResponsiveNonOverridableProps extends
-  PaddingProp,
-  SizeProps,
-  ScrollProp,
   StylesProp,
   StyleProp,
   ClassNameProp,
@@ -89,6 +89,14 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
     /** Overridable */
     sizing,
     spacing,
+    padding,
+    height,
+    minHeight,
+    maxHeight,
+    width,
+    minWidth,
+    maxWidth,
+    scroll,
 
     ...otherProps
   } = props;
@@ -108,6 +116,12 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
   const horizontalSpacing = (horizontalOptions && horizontalOptions.spacing != null) ? horizontalOptions.spacing
     : spacing != null ? spacing
       : defaultHorizontalSpacing;
+
+  /** Determine paddings */
+  const verticalPadding = (verticalOptions && verticalOptions.padding != null) ? verticalOptions.padding
+    : padding;
+  const horizontalPadding = (horizontalOptions && horizontalOptions.padding != null) ? horizontalOptions.padding
+    : padding;
 
   /** Determine alignments */
   const verticalModeVerticalAlign =
@@ -130,7 +144,8 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
   const klass = typestyle.style(
     /** Till breakpoint: Vertical */
     typestyle.media({ minWidth: 0, maxWidth: breakpoint },
-      processSizingProp({ sizing: verticalSizing }),
+      _processSizingProp({ sizing: verticalSizing }),
+      verticalPadding != null && _processPadding(verticalPadding),
       vertical,
       verticalSpacing !== 0 && verticallySpaced(verticalSpacing),
       verticalModeVerticalAlign == 'center' && centerJustified,
@@ -144,7 +159,8 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
 
     /** Bigger than breakpoint: Horizontal */
     typestyle.media({ minWidth: breakpoint + 1 },
-      processSizingProp({ sizing: horizontalSizing }),
+      _processSizingProp({ sizing: horizontalSizing }),
+      horizontalPadding != null && _processPadding(horizontalPadding),
       horizontal,
       horizontalSpacing !== 0 && horizontallySpaced(horizontalSpacing),
       horizontalModeHorizontalAlign == 'right' && endJustified,

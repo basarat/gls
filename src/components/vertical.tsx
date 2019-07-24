@@ -1,7 +1,7 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
 import { BaseProps, SizingProp, SpacingProp, AlignmentInVerticalProps } from '../common';
-import { createBaseTag, processSizingProp, useGLSDefaults } from '../internal/utils';
+import { createBaseTag, _processSizingProp, useGLSDefaults } from '../internal/utils';
 import { vertical, centerJustified, endJustified, end, center, start } from '../styles/flex';
 import { verticallySpaced } from '../styles/spacing';
 
@@ -24,7 +24,7 @@ export const Vertical: React.FC<VerticalProps> = (props) => {
   } = props;
 
   const klass = typestyle.style(
-    processSizingProp(props),
+    _processSizingProp(props),
     vertical,
     spacing !== 0 && verticallySpaced(spacing),
     verticalAlign == 'center' && centerJustified,

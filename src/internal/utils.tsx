@@ -105,7 +105,7 @@ export function createBaseTag<T extends BaseProps>(
 /** 
  * Generates the appropriate styles to handle the flex interaction 
  */
-export function processSizingProp(prop: SizingProp): typestyle.types.CSSProperties {
+export function _processSizingProp(prop: SizingProp): typestyle.types.CSSProperties {
   const { sizing: fx = 'content' } = prop;
   return fx == 'content' ? content
     : fx == 'flex' ? flex(1)
