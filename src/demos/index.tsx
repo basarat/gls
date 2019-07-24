@@ -5,6 +5,23 @@
 import React from "react";
 import * as typestyle from "typestyle";
 
+export const Star: React.FC = () => {
+  const link = "https://ghbtns.com/github-btn.html?user=basarat&repo=gls&type=star&count=true"
+  return (
+    <div style={{ marginTop: '20px' }}>
+      <a
+        style={{ marginRight: '15px' }}
+        href={link}
+        target="_blank">Powered by your ⭐s</a>
+      <iframe
+        src={link}
+        style={{ border: 'none', marginBottom: '-3px' }}
+        scrolling="0"
+        width="170px" height="20px" />
+    </div>
+  );
+}
+
 export const BlueDiv: React.FC = (props) => <div style={{ backgroundColor: "lightskyblue" }} children={props.children} />;
 export const PinkDiv: React.FC = (props) => <div style={{ backgroundColor: "lightpink" }} children={props.children} />;
 
