@@ -1,15 +1,28 @@
 import * as typestyle from 'typestyle';
-import { BaseProps, SizingProp, StylesProp, SpacingProp, AlignmentInVerticalProps, AlignmentInHorizontalProps } from '../common';
+import { SizingProp, StylesProp, SpacingProp, AlignmentInVerticalProps, AlignmentInHorizontalProps, PaddingProp, SizeProps, ScrollProp, StyleProp, ClassNameProp, TagProps } from '../common';
 import { createBagTag, useGLSDefaults, processSizingProp } from '../internal/utils';
 import { vertical, horizontal, centerJustified, endJustified, end, center, start } from '../styles/flex';
 import { verticallySpaced, horizontallySpaced } from '../styles/spacing';
-
 
 /** 
  * Props that can be specified at root of `Responsive` and overridden for `vertical`/`horizontal` options
  */
 export interface ResponsiveOverridableProps extends
-  SizingProp, SpacingProp {
+  SizingProp,
+  SpacingProp {
+}
+
+/** 
+ * Props that can only be specified at the root of the `Responsive` 
+ */
+export interface ResponsiveNonOverridableProps extends
+  PaddingProp,
+  SizeProps,
+  ScrollProp,
+  StylesProp,
+  StyleProp,
+  ClassNameProp,
+  TagProps {
 }
 
 /** 
@@ -33,7 +46,7 @@ export interface ResponsiveHorizontalModeProps extends
 /** 
  * Props for the Responsive component
  */
-export interface ResponsiveProps extends BaseProps, ResponsiveOverridableProps {
+export interface ResponsiveProps extends ResponsiveOverridableProps, ResponsiveNonOverridableProps {
   /** 
    * windowWidth <= breakpoint : it is vertical (mobile)
    * else                      : it is horizontal (desktop)
