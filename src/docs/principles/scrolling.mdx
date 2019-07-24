@@ -11,7 +11,7 @@ import * as demos from '../../demos';
 
 # Scrolling
 
-Setting up when a scroll bar should show is not particularly hard, but worth covering. We provide the following scrolling options as a prop to our container components:
+The `scroll` prop can be used to set up when a scroll bar should show. We provide the following scrolling options on our container components:
 
 ```ts
 export interface ScrollProp {
@@ -25,7 +25,7 @@ export interface ScrollProp {
 ```
 
 ## overflow
-By default content will overflow its container. In the example below we force the container to be small (with explicit sizing 80px) and then throw a bunch of content inside it.
+By *default* content will overflow its container. In the example below we force the container to be small (with explicit sizing 80px) and then throw a bunch of content inside it.
 
 <Playground>
   {/* force a small size container */}
@@ -36,7 +36,7 @@ By default content will overflow its container. In the example below we force th
   </Vertical>
 </Playground>
 
-There is no need to be alarmed by this default value. You normally *don't use explicit sizing* (covered in the [sizing principle][principle-sizing]). Content will overflow to the body, and the browser will add a scrollbar on the body for you (by default).
+> There is no need to be alarmed by this default value. You normally *don't use explicit sizing* (covered in the [sizing principle][principle-sizing]). Content will overflow to the body, and the browser will add a scrollbar on the body for you (by default).
 
 ## both | vertical | horizontal
 
