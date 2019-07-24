@@ -31,7 +31,7 @@ The following components use the following defaults if an explicit prop value is
 ## Configuring
 These are exported using React Context. You can import it as `import { GLSDefaults } from 'gls'`.
 
-In the pseudo code example below, you can see `Vertical` using default `verticalSpacing` (powered by the parent provider) for its `spacing`, or the explicit value when its passed in:
+In the pseudo code example below, you can see `Vertical` using default `verticalSpacing` (powered by the closest parent provider) for its `spacing`, or the explicit value when its passed in:
 
 ```ts
 Vertical (will use default 24)

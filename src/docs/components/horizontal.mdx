@@ -11,7 +11,7 @@ import * as demos from '../../demos';
 
 # Horizontal 
 
-Lays out children in a horiztonally spaced layout ([default is 24px][defaults]).
+Lays out children in a horiztonally spaced layout ([default spacing is 24px][defaults]).
 
 <Playground>
   <Horizontal>
@@ -20,7 +20,7 @@ Lays out children in a horiztonally spaced layout ([default is 24px][defaults]).
   </Horizontal>
 </Playground>
 
-Since `Horizontal` follows the [spacing principle][principle-spacing] you can compose / nest `Horizontal`s easily. The following example has two `Horizontal`s in a `Horizontal(Horizontal(blue,pink),Horizontal(blue,pink)` heirarchy but to the user it looks seemless (like a single `Horizontal(blue,pink,blue,pink)`). This ability to nest allows you to easily create and reuse components without having to worry about how they will get used.
+Since `Horizontal` follows the [spacing principle][principle-spacing] you can compose / nest `Horizontal`s easily. The following example has two `Horizontal`s in a `Horizontal(Horizontal(blue,pink),Horizontal(blue,pink))` heirarchy but to the user it looks seemless (like a single `Horizontal(blue,pink,blue,pink)`). This ability to nest allows you to easily create and reuse components without having to worry about how they will get used.
 
 <Playground>
   <Horizontal>
