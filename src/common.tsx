@@ -105,16 +105,18 @@ export interface SizeProps {
   maxWidth?: CSSLength,
 }
 
-/** 
- * Add on anything to add support for controlling the scroll
- */
-export interface ScrollProp {
-  scroll?:
+export type Scroll =
   | 'overflow' /** default */
   | 'both'
   | 'vertical'
   | 'horizontal'
   | 'hidden';
+
+/** 
+ * Add on anything to add support for controlling the scroll
+ */
+export interface ScrollProp {
+  scroll?: Scroll;
 }
 
 /** 
@@ -134,7 +136,7 @@ export interface StyleProp {
 /** 
  * Support for React `className` property 
  */
-export interface ClassNameProp { 
+export interface ClassNameProp {
   className?: string
 }
 

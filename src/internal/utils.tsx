@@ -1,5 +1,5 @@
 import * as typestyle from 'typestyle';
-import { CSSLength, BaseProps, SizingProp, GLSDefaults, CSSBox } from "../common";
+import { CSSLength, BaseProps, SizingProp, GLSDefaults, CSSBox, Scroll } from "../common";
 import * as scrollHelpers from "../styles/scroll";
 import { content, flex } from '../styles/flex';
 import React, { useContext } from 'react';
@@ -30,10 +30,20 @@ function boxToFullBox(box: CSSBox): [CSSLength, CSSLength, CSSLength, CSSLength]
 /** 
  * Utility to unwrap the three ways a padding might be provided 
  */
-function _processPadding(box: CSSBox)
+export function _processPadding(box: CSSBox)
   : typestyle.types.NestedCSSProperties {
   const [paddingTop, paddingRight, paddingBottom, paddingLeft] = boxToFullBox(box);
   return { paddingTop, paddingRight, paddingBottom, paddingLeft };
+}
+
+export function _processScroll(scroll: Scroll) {
+  return (
+    scroll == 'hidden' ? scrollHelpers.scrollHidden
+      : scroll == 'horizontal' ? scrollHelpers.scrollHorizontal
+        : scroll == 'vertical' ? scrollHelpers.scrollVertical
+          : scroll == 'both' ? scrollHelpers.scrollBoth
+            : null
+  );
 }
 
 /** 
@@ -71,15 +81,9 @@ export function createBaseTag<T extends BaseProps>(
         klass,
         typestyle.style(
           /** Scroll */
-          scroll != null && (
-            scroll == 'hidden' ? scrollHelpers.scrollHidden
-              : scroll == 'horizontal' ? scrollHelpers.scrollHorizontal
-                : scroll == 'vertical' ? scrollHelpers.scrollVertical
-                  : scroll == 'both' ? scrollHelpers.scrollBoth
-                    : null
-          ),
+          scroll != null && _processScroll(scroll),
           /** Padding */
-          padding != null && (_processPadding(padding)),
+          padding != null && _processPadding(padding),
           /** Size props */
           height != null && { height: cssLengthToString(height) },
           minHeight != null && { minHeight: cssLengthToString(minHeight) },
