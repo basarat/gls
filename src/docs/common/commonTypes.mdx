@@ -9,10 +9,9 @@ import * as demos from '../../demos';
 
 <demos.Star/>
 
-# Common Types and Props
-We have a common set of props that are supported by a number of components. These will be mentioned in the docs for the individual components as well. We present them below with a reference component.
+# Common Types
 
-Before we do that, we present some common types referenced by the props.
+We present some common types referenced by the props.
 
 ## CSSLength
 `type CSSLength = number | string`. 
@@ -23,7 +22,7 @@ Examples:
 
 ## CSSBox
 
-Various versions of providing common shorthand properties
+Various versions of providing common shorthand properties.
 
 ```ts
 export type CSSBox =
@@ -36,6 +35,10 @@ export type CSSBox =
 ```
 
 e.g. `5` (means `5px` top,right,left,bottom), `['5rem','10px']` (means `5rem` top & bottom, `10px` left & right), `[10,5,'10rem', 15]` (means `10px` top, `5px` right, `10rem` bottom, `15px` left).
+
+# Common Props
+
+We have a common set of props that are supported by a number of components. These will be mentioned in the docs for the individual components as well. We present them below with a reference component.
 
 ## SpacingProp
 
@@ -58,11 +61,11 @@ export interface SpacingProp {
 
 ## SizeProps
 
-The size props (`height,minHeight,maxHeight,width,minWidth,maxWidth`) allow for explicit size control as covered in the [sizing principle][principle-sizing] section.
+The explicit size props (`height,minHeight,maxHeight,width,minWidth,maxWidth`) allow for explicit size control as covered in the [sizing principle][principle-sizing] section.
 
 ## SizingProp
 
-The `sizing` prop is covered in the [sizing principle][principle-sizing] section.
+The implicit `sizing` prop is covered in the [sizing principle][principle-sizing] section.
 
 ## PaddingProp
 
