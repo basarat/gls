@@ -1,6 +1,6 @@
 import * as typestyle from 'typestyle';
 import { SizingProp, StylesProp, SpacingProp, AlignmentInVerticalProps, AlignmentInHorizontalProps, PaddingProp, SizeProps, ScrollProp, StyleProp, ClassNameProp, TagProps } from '../common';
-import { createBaseTag, useGLSDefaults, _processSizingProp, _processPadding } from '../internal/utils';
+import { createBaseTag, useGLSDefaults, _processSizingProp, _processPadding, cssLengthToString } from '../internal/utils';
 import { vertical, horizontal, centerJustified, endJustified, end, center, start } from '../styles/flex';
 import { verticallySpaced, horizontallySpaced } from '../styles/spacing';
 
@@ -123,6 +123,33 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
   const horizontalPadding = (horizontalOptions && horizontalOptions.padding != null) ? horizontalOptions.padding
     : padding;
 
+  /** Determine size */
+  const verticalHeight = (verticalOptions && verticalOptions.height != null) ? verticalOptions.height
+    : height;
+  const horizontalHeight = (horizontalOptions && horizontalOptions.height != null) ? horizontalOptions.height
+    : height;
+  const verticalMinHeight = (verticalOptions && verticalOptions.minHeight != null) ? verticalOptions.minHeight
+    : minHeight;
+  const horizontalMinHeight = (horizontalOptions && horizontalOptions.minHeight != null) ? horizontalOptions.minHeight
+    : minHeight;
+  const verticalMaxHeight = (verticalOptions && verticalOptions.maxHeight != null) ? verticalOptions.maxHeight
+    : maxHeight;
+  const horizontalMaxHeight = (horizontalOptions && horizontalOptions.maxHeight != null) ? horizontalOptions.maxHeight
+    : maxHeight;
+  const verticalWidth = (verticalOptions && verticalOptions.width != null) ? verticalOptions.width
+    : width;
+  const horizontalWidth = (horizontalOptions && horizontalOptions.width != null) ? horizontalOptions.width
+    : width;
+  const verticalMinWidth = (verticalOptions && verticalOptions.minWidth != null) ? verticalOptions.minWidth
+    : minWidth;
+  const horizontalMinWidth = (horizontalOptions && horizontalOptions.minWidth != null) ? horizontalOptions.minWidth
+    : minWidth;
+  const verticalMaxWidth = (verticalOptions && verticalOptions.maxWidth != null) ? verticalOptions.maxWidth
+    : maxWidth;
+  const horizontalMaxWidth = (horizontalOptions && horizontalOptions.maxWidth != null) ? horizontalOptions.maxWidth
+    : maxWidth;
+
+
   /** Determine alignments */
   const verticalModeVerticalAlign =
     (verticalOptions && verticalOptions.verticalAlign != null)
@@ -153,6 +180,12 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
       verticalModeHorizontalAlign == 'left' && start,
       verticalModeHorizontalAlign == 'right' && end,
       verticalModeHorizontalAlign == 'center' && center,
+      verticalHeight != null && { height: cssLengthToString(verticalHeight) },
+      verticalMinHeight != null && { minHeight: cssLengthToString(verticalMinHeight) },
+      verticalMaxHeight != null && { maxHeight: cssLengthToString(verticalMaxHeight) },
+      verticalWidth != null && { width: cssLengthToString(verticalWidth) },
+      verticalMinWidth != null && { minWidth: cssLengthToString(verticalMinWidth) },
+      verticalMaxWidth != null && { maxWidth: cssLengthToString(verticalMaxWidth) },
     ),
     verticalOptions && verticalOptions.styles && typestyle.media({ minWidth: 0, maxWidth: breakpoint },
       ...verticalOptions.styles),
@@ -168,6 +201,12 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
       horizontalModeVerticalAlign == 'top' && start,
       horizontalModeVerticalAlign == 'center' && center,
       horizontalModeVerticalAlign == 'bottom' && end,
+      horizontalHeight != null && { height: cssLengthToString(horizontalHeight) },
+      horizontalMinHeight != null && { minHeight: cssLengthToString(horizontalMinHeight) },
+      horizontalMaxHeight != null && { maxHeight: cssLengthToString(horizontalMaxHeight) },
+      horizontalWidth != null && { width: cssLengthToString(horizontalWidth) },
+      horizontalMinWidth != null && { minWidth: cssLengthToString(horizontalMinWidth) },
+      horizontalMaxWidth != null && { maxWidth: cssLengthToString(horizontalMaxWidth) },
     ),
     horizontalOptions && horizontalOptions.styles && typestyle.media({ minWidth: breakpoint + 1 },
       ...horizontalOptions.styles),
