@@ -4,7 +4,7 @@ route: /responsive/
 ---
 
 import { Playground } from 'docz';
-import { Responsive, Flex, Horizontal } from '../..'; 
+import { Responsive, Flex, Horizontal, Vertical } from '../..'; 
 import * as demos from '../../demos'; 
 
 <demos.Star/>
@@ -24,7 +24,7 @@ As an example, resize your browser window to see the following layout change fro
   </Responsive>
 </Playground>
 
-Another example is a common (left - right) layout with buttons: 
+Here is an example with left and right buttons collapsing into two rows at breakpoint: 
 
 <Playground>
   <Responsive breakpoint={650} minWidth={250}>
@@ -36,6 +36,35 @@ Another example is a common (left - right) layout with buttons:
       <demos.Button>Next 1</demos.Button>
       <demos.Button>Next 2</demos.Button>
     </Horizontal>
+  </Responsive>
+</Playground>
+
+Another similar example is a common layout in designs is presented in pseudocode (can be done in a similar fashion to the buttons shown before):
+
+```txt
+       HORIZONTAL
+Price                    12.34
+GST                       1.23
+
+       VERTICAL
+Price 
+             12.24 
+GST
+              1.23
+```
+
+Another example is form inputs: 
+
+<Playground>
+  <Responsive breakpoint={600}>
+    <Vertical sizing='flex' spacing={5}>
+      <demos.Label>First name</demos.Label>
+      <demos.Input/>
+    </Vertical>
+    <Vertical sizing='flex' spacing={5}>
+      <demos.Label>Last name</demos.Label>
+      <demos.Input/>
+    </Vertical>
   </Responsive>
 </Playground>
 
