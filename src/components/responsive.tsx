@@ -23,26 +23,6 @@ export interface BreakpointProp {
   breakpoint?: number;
 }
 
-export interface ResponsiveModesProps {
-  /** Vertical mode configuration */
-  vertical?: ResponsiveVerticalModeProps;
-
-  /** Horizontal mode configuration */
-  horizontal?: ResponsiveHorizontalModeProps;
-}
-
-/** 
- * Props that can only be specified at the root of the `Responsive` 
- */
-export interface ResponsiveNonOverridableProps extends
-  StylesProp,
-  StyleProp,
-  ClassNameProp,
-  TagProps,
-  BreakpointProp,
-  ResponsiveModesProps {
-}
-
 /** 
  * Props for Vertical mode
  */
@@ -61,12 +41,32 @@ export interface ResponsiveHorizontalModeProps extends
   ResponsiveOverridableProps {
 }
 
+export interface ResponsiveModesProps {
+  /** Vertical mode configuration */
+  vertical?: ResponsiveVerticalModeProps;
+
+  /** Horizontal mode configuration */
+  horizontal?: ResponsiveHorizontalModeProps;
+}
+
+/** 
+ * Props that can only be specified at the root of the `Responsive` 
+ */
+export interface ResponsiveRootOnlyProps extends
+  StylesProp,
+  StyleProp,
+  ClassNameProp,
+  TagProps,
+  BreakpointProp,
+  ResponsiveModesProps {
+}
+
 /** 
  * Props for the Responsive component
  */
 export interface ResponsiveProps extends
   ResponsiveOverridableProps,
-  ResponsiveNonOverridableProps {
+  ResponsiveRootOnlyProps {
 }
 
 /**
