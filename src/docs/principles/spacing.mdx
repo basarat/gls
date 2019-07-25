@@ -4,7 +4,7 @@ route: /principle-spacing/
 ---
 
 import { Playground } from 'docz';
-import { Vertical } from '../..'; 
+import { Vertical, Content } from '../..'; 
 import * as demos from '../../demos'; 
 
 <demos.Star/>
@@ -20,15 +20,15 @@ The difference between pixel perfect and good enough, mostly boils down to perfe
 
 ### Issues with external margins
 
-- Fundamentally external e.g. outside the width of the component in the recommended `border-box` box sizing (width of the component only includes the content,padding and border):
+- Fundamentally external i.e. outside the width of the component in the recommended `border-box` box sizing (width of the component only includes the content,padding and border). When you add a margin to a component it ends up taking responsibility for screen area it does not control:
 
 ![borderbox](../images/borderbox.png)
 
-- Collapses. You set a value, but it renders as something else depending on the neighbours. A maintainability nightmare.
+- Margins collapse. You set a value, but it renders as something else depending on the neighbours. E.g. the top margin on the bottom component in the example shown will disappear. This can be a maintainability nightmare.
 
 ![margincollapse](../images/margincollapse.png)
 
-- Pollutes layout with logic. Suppose you want to conditionally render some buttons. If you are using component margins for spacing then there a conditional logic dependency leaking into your CSS. These dependencies quickly become unmanagable.
+- Creates cross component dependencies. Suppose you want to conditionally render some buttons. If you are using component margins for spacing, then there is a conditional logic dependency leaking into your CSS. These dependencies quickly become unmanagable.
 
 ![margindependency](../images/margindependency.png)
 
@@ -46,16 +46,20 @@ Lets discuss that next.
 
 Realize that a component's external space, is its parent's internal space. A parent is free to manage its internal space anyway it wants. So really space management between components, is the responsibility of the container (and we provide plenty of such containers).
 
-### Space among children: the `spacing` prop
+### Space between children: the `spacing` prop
 Remember good components don't come with bleedy margins. Since components don't use margins, our containers can easily create spacing between their children by adding margins with pure CSS (pseudocode: `CSS-selector(all children except last-child): CSS-property(margin)`).
 
-Lets look at some examples of external-margin-free components and how they nicely compose. First a simple margin-free component e.g. an input:
+Lets look at some examples of external-margin-free components and how they nicely compose. First a few simple margin-free components e.g. a basic react `label` and an `input` (not a part of this library, so you can use your own):
+
+<Playground>
+  <demos.Label>Name</demos.Label>
+</Playground>
 
 <Playground>
   <demos.Input/>
 </Playground>
 
-Because the input was margin free, it can easily be reused in any given context. We can easily compose it with a`label` to create a `label+input` set:
+Because they are both margin free, they can easily be reused in any given context. We can easily compose them to create a `Vertical(label+input)` set:
 
 <Playground>
   <Vertical spacing={5}>
@@ -93,19 +97,8 @@ Notice that this composite of composites (`Vertical( 3 x Vertical(label+input) )
 We've talked about spacing children among each other, one final thing to talk about is how to seperate children from the parent border. The answer is to simply use padding: 
 
 <Playground>
-  <Vertical spacing={15} padding={15}>
-    <Vertical spacing={5}>
-      <demos.Label>First name</demos.Label>
-      <demos.Input/>
-    </Vertical>
-    <Vertical spacing={5}>
-      <demos.Label>Middle name</demos.Label>
-      <demos.Input/>
-    </Vertical>
-    <Vertical spacing={5}>
-      <demos.Label>Last name</demos.Label>
-      <demos.Input/>
-    </Vertical>
+  <Vertical padding={15}>
+    <Content style={{backgroundColor: 'darkorange'}}>Example margin free content</Content>
   </Vertical>
 </Playground>
 
@@ -115,7 +108,7 @@ You normally:
 * don't put `padding` on any *layout* components that you want to *compose* into other layouts.
 * put `padding` on *page level* layout components.
 
-So a page level form layout component would have padding, whereas a reusable form component would not. You can observe this pattern in the example below where the two `Vertical`s for the reuseable `First/Middle/Last` name component do not have a padding (enabling seemless reuse): 
+So a page level form layout would have padding, whereas a reusable form-component (or reusable form-component-set) would not. You can observe this pattern in the example below where the two `Vertical`s for the reuseable `First/Middle/Last` name component do not have a padding (enabling seemless reuse): 
 
 <Playground>
   {/* Not meant to be nested further, hence padding */}
