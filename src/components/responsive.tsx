@@ -5,7 +5,9 @@ import { vertical, horizontal, centerJustified, endJustified, end, center, start
 import { verticallySpaced, horizontallySpaced } from '../styles/spacing';
 
 /** 
- * Props that can be specified at root of `Responsive` and overridden for `vertical`/`horizontal` options
+ * Props that can be specified at
+ * - root of `Responsive` 
+ * - and overridden for `vertical`/`horizontal` modes
  */
 export interface ResponsiveOverridableProps extends
   ScrollProp,

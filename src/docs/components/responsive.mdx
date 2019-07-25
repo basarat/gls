@@ -39,9 +39,35 @@ Another example is a common (left - right) layout with buttons:
   </Responsive>
 </Playground>
 
-## BaseProps
+# Props 
+Responsive props are categorized into *RootOnly*, *Overridable* and *ModeSpecific* (vertical/horizontal mode).
 
-`Responsive` [supports all `BaseProps`][common-types].
+## ResponsiveOverridableProps
+```ts
+/** 
+ * Props that can be specified at
+ * - root of `Responsive` 
+ * - and overridden for `vertical`/`horizontal` modes
+ */
+export interface ResponsiveOverridableProps extends
+  ScrollProp,
+  PaddingProp,
+  SizeProps,
+  SizingProp,
+  SpacingProp {
+}
+```
+
+> `ScrollProp`, `PaddingProp`, `SizeProps`, `SizingProp`, `SpacingProp` are all covered [in the common props section][common-types].
+
+You can specify these props at the root, and optionally change their values for the specific mode. e.g. below we have a responsive with a default height of `100px` but in vertical mode it has a `height:300px` (`<Responsive height=100 vertical={height:100}/>`): 
+
+<Playground>
+  <Responsive breakpoint={600} style={{backgroundColor: 'lightskyblue'}} 
+    height={100}
+    vertical={{height: 300}}
+  />
+</Playground>
 
 ## SizingProp
 
