@@ -46,7 +46,6 @@ export interface ResponsiveHorizontalModeProps extends
 export interface ResponsiveModesProps {
   /** Vertical mode configuration */
   vertical?: ResponsiveVerticalModeProps;
-
   /** Horizontal mode configuration */
   horizontal?: ResponsiveHorizontalModeProps;
 }
@@ -59,16 +58,16 @@ export interface ResponsiveRootOnlyProps extends
   StyleProp,
   ClassNameProp,
   TagProps,
-  BreakpointProp,
-  ResponsiveModesProps {
+  BreakpointProp {
 }
 
 /** 
  * Props for the Responsive component
  */
 export interface ResponsiveProps extends
-  ResponsiveOverridableProps,
-  ResponsiveRootOnlyProps {
+  ResponsiveRootOnlyProps,
+  ResponsiveModesProps,
+  ResponsiveOverridableProps {
 }
 
 /**
