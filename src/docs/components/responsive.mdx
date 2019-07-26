@@ -4,7 +4,7 @@ route: /responsive/
 ---
 
 import { Playground } from 'docz';
-import { Responsive, Flex, Horizontal, Vertical } from '../..'; 
+import { Responsive, Flex, Horizontal, Vertical, GLSDefaults } from '../..'; 
 import * as demos from '../../demos'; 
 
 <demos.Star/>
@@ -39,19 +39,22 @@ Here is an example with left and right buttons collapsing into two rows at break
   </Responsive>
 </Playground>
 
-Another similar example is a common layout in designs is presented in pseudocode (can be done in a similar fashion to the buttons shown before):
+Another similar example is a common layout in designs is tabular data that collapses:
 
-```txt
-       HORIZONTAL
-Price                    12.34
-GST                       1.23
-
-       VERTICAL
-Price 
-             12.24 
-GST
-              1.23
-```
+<Playground>
+  <Vertical style={{fontSize: '24px'}}>
+    <GLSDefaults.Provider value={{breakpoint: 650}}>
+      <Responsive>
+        <Horizontal sizing="flex">Price</Horizontal>
+        <Horizontal sizing="flex" horizontalAlign="right">12.34</Horizontal>
+      </Responsive>
+      <Responsive>
+        <Horizontal sizing="flex">GST</Horizontal>
+        <Horizontal sizing="flex" horizontalAlign="right">1.23</Horizontal>
+      </Responsive>
+    </GLSDefaults.Provider>
+  </Vertical>
+</Playground>
 
 Another example is form inputs: 
 
