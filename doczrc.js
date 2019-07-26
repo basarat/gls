@@ -16,6 +16,7 @@ export default {
     'Containers',
     'Further Guidance 🌹',
     'Layout Examples',
+    'Component Concepts',
     'Button Guidance',
   ],
 
