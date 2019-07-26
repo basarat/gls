@@ -116,10 +116,14 @@ export function _processSizingProp(prop: SizingProp): typestyle.types.CSSPropert
  * Uses the defaults safely 
  */
 export function useGLSDefaults() {
-  const context = useContext(GLSDefaults);
+  const {
+    verticalSpacing = 24,
+    horizontalSpacing = 24,
+    breakpoint = 480
+  } = useContext(GLSDefaults);
   return {
-    verticalSpacing: context.verticalSpacing == null ? 24 : context.verticalSpacing,
-    horizontalSpacing: context.horizontalSpacing == null ? 24 : context.horizontalSpacing,
-    breakpoint: context.breakpoint == null ? 480 : context.breakpoint,
+    verticalSpacing,
+    horizontalSpacing,
+    breakpoint,
   }
 }
