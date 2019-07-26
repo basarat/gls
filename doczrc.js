@@ -14,7 +14,9 @@ export default {
     'Grid',
     'Spacers',
     'Containers',
-    'Example Layouts',
+    'Further Guidance 🌹',
+    'Layout Examples',
+    'Button Guidance',
   ],
 
   // Some cleanups
