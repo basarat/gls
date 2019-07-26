@@ -66,7 +66,7 @@ Example (`vertical spacing=40px, horizontal spacing=20px`):
    * Controls how the extra space around the children is handled
    */
   justify?:
-  /** Controls by content */
+  /** Controls by child placement */
   | 'left' /** default */
   | 'center'
   | 'right'
@@ -77,7 +77,7 @@ Example (`vertical spacing=40px, horizontal spacing=20px`):
 
 > We've seen the default `left` already (the extra space gets put on the right). We cover the rest below.
 
-Example `center` (the extra space gets put around the content):
+Example `center` (the extra space gets put around the children):
 
 <Playground>
   <Grid justify="center">

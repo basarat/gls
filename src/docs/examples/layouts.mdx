@@ -36,7 +36,14 @@ A simple `Vertical(Content,Flex,Content)` takes care of this common layout:
 
 ## Header Sidebar Body Sidebar Footer
 
-`Vertical(Content-Header,Horizontal(Content-Sidebar, Flex-Body, Content-Sidebar),Content-Footer)` takes care of this common layout: 
+```
+Vertical
+  Content-Header
+  Horizontal( Content-Sidebar, Flex-Body, Content-Sidebar )
+  Content-Footer
+```
+
+takes care of this common layout: 
 
 <Playground style={{height: '200px'}}>
   <Vertical height={'100%'} spacing={0}>

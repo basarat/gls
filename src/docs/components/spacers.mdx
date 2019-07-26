@@ -27,7 +27,7 @@ Let's say the design wants you to add some space on top of the button. You can d
   </demos.Button>
 </Playground>  
 
-We've covered issues with using margin (specifically their collapsing nature which makes them hard to manage and maintain reliably) in our [spacing-principle][principle-spacing]. Another issue is that `marginTop` can easily get lost in code reviews. 
+We've covered issues with using margin (specifically their collapsing nature and cross component dependencies, which makes them hard to manage and maintain reliably) in our [spacing-principle][principle-spacing]. Another issue is that `marginTop` can easily get lost in code reviews. 
 
 So instead you can use a simple `VerticalSpacer`, which doesn't collapse (i.e. magically disappear), and shows up in code reviews: 
 
