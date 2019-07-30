@@ -13,6 +13,38 @@ import * as demos from '../../demos';
 
 > This section is in a [series of sections that provide further guidance for success][guidance].
 
+Following the [sizing principle][principle-sizing] there are three categories of **defaults** you should follow in components 
+
+- Explicit Size
+- Flex Sizing
+- Content Sizing
+
+## Explicit Size 
+
+Explicit size is rare, but still plays an active part in UI design. 
+
+An example would be a profile display picture component where you want to set the width and the height to ensure the image takes up a particular space even before the image (content) is loaded. Notice the explicit `width` and `height` in the `style`
+
+```ts
+export const DemoProfile: React.FC<{ size: number }> = ({ size }) => {
+  return (
+    <img
+      style={{
+        borderRadius: '50%',
+        // Explicit size
+        width: `${size}px`,
+        height: `${size}px`,
+      }}
+      src={`http://placekitten.com/g/${size}/${size}`} />
+  );
+}
+```
+
+<Playground>
+  <demos.DemoProfile size={100}/>
+</Playground>
 
 
+
+[principle-sizing]:../principle-sizing/
 [guidance]:../guidance/

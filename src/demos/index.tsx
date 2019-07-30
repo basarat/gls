@@ -87,3 +87,17 @@ export const Button
       />
     );
   };
+
+
+export const DemoProfile: React.FC<{ size: number }> = ({ size }) => {
+  return (
+    <img
+      style={{
+        borderRadius: '50%',
+        // Explicit size
+        width: `${size}px`,
+        height: `${size}px`,
+      }}
+      src={`http://placekitten.com/g/${size}/${size}`} />
+  );
+}
