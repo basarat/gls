@@ -15,9 +15,10 @@ import * as demos from '../../demos';
 
 Following the [sizing principle][principle-sizing] there are three categories of **defaults** you should follow in components 
 
-- Explicit Size
+- [Explicit Size](#explicit-size)
+- [Content Sizing](#content-sizing)
 - Flex Sizing
-- Content Sizing
+
 
 ## Explicit Size 
 
@@ -44,6 +45,17 @@ export const DemoProfile: React.FC<{ size: number }> = ({ size }) => {
   <demos.DemoProfile size={100}/>
 </Playground>
 
+## Content Sizing 
+Content sizing is the most common form of sizing in designs out there. 
+
+> Before creating a component you just have to ask yourself *Do I want this component to be sized by its content?*
+
+You normally don't need to do anything special for the browsers to reliably size your items by content. 
+
+Examples: 
+- Links (`a`)
+- Buttons (`button`)
+- Typography (`h1,h2,...,p,li,ul` etc)
 
 
 [principle-sizing]:../principle-sizing/
