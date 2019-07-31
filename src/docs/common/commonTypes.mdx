@@ -32,9 +32,15 @@ export type CSSBox =
   | [CSSLength, CSSLength]
   /** [top,right,bottom,left] */
   | [CSSLength, CSSLength, CSSLength, CSSLength]
+  /** Individual */
+  | { top?: CSSLength, right?: CSSLength, bottom?: CSSLength, left?: CSSLength }
 ```
 
-e.g. `5` (means `5px` top,right,left,bottom), `['5rem','10px']` (means `5rem` top & bottom, `10px` left & right), `[10,5,'10rem', 15]` (means `10px` top, `5px` right, `10rem` bottom, `15px` left).
+e.g. 
+* `5` (means `5px` top,right,left,bottom).
+* `['5rem','10px']` (means `5rem` top & bottom, `10px` left & right).
+* `[10,5,'10rem', 15]` (means `10px` top, `5px` right, `10rem` bottom, `15px` left).
+* `{right: 5}` (means `5px` right).
 
 # Common Props
 

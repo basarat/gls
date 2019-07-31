@@ -31,6 +31,8 @@ export type CSSBox =
   | [CSSLength, CSSLength]
   /** [top,right,bottom,left] */
   | [CSSLength, CSSLength, CSSLength, CSSLength]
+  /** Individual */
+  | { top?: CSSLength, right?: CSSLength, bottom?: CSSLength, left?: CSSLength }
 
 /** 
  * Specifies sizing interaction

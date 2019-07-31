@@ -15,15 +15,38 @@ export function cssLengthToString(value: CSSLength): string {
 /** 
  * Ensures all four members of box are present
  */
-function boxToFullBox(box: CSSBox): [CSSLength, CSSLength, CSSLength, CSSLength] {
+function boxToFullBox(box: CSSBox, name: string): typestyle.types.NestedCSSProperties {
   if (typeof box == 'number' || typeof box == 'string') {
     const value = cssLengthToString(box);
-    return [value, value, value, value];
+    return {
+      [name + 'Top']: value,
+      [name + 'Right']: value,
+      [name + 'Bottom']: value,
+      [name + 'Left']: value,
+    };
+  } else if (!Array.isArray(box)) {
+    const toReturn: any = {};
+    if (box.top != null) toReturn[name + 'Top'] = cssLengthToString(box.top);
+    if (box.right != null) toReturn[name + 'Right'] = cssLengthToString(box.right);
+    if (box.bottom != null) toReturn[name + 'Bottom'] = cssLengthToString(box.bottom);
+    if (box.left != null) toReturn[name + 'Left'] = cssLengthToString(box.left);
+    return toReturn;
   } else if (box.length == 2) {
     const [topBottom, leftRight] = box.map(cssLengthToString);
-    return [topBottom, leftRight, topBottom, leftRight];
+    return {
+      [name + 'Top']: topBottom,
+      [name + 'Right']: leftRight,
+      [name + 'Bottom']: topBottom,
+      [name + 'Left']: leftRight,
+    };
   } else {
-    return box.map(cssLengthToString) as [CSSLength, CSSLength, CSSLength, CSSLength];
+    const [top, right, bottom, left] = box.map(cssLengthToString);
+    return {
+      [name + 'Top']: top,
+      [name + 'Right']: right,
+      [name + 'Bottom']: bottom,
+      [name + 'Left']: left,
+    };
   }
 }
 
@@ -32,8 +55,7 @@ function boxToFullBox(box: CSSBox): [CSSLength, CSSLength, CSSLength, CSSLength]
  */
 export function _processPadding(box: CSSBox)
   : typestyle.types.NestedCSSProperties {
-  const [paddingTop, paddingRight, paddingBottom, paddingLeft] = boxToFullBox(box);
-  return { paddingTop, paddingRight, paddingBottom, paddingLeft };
+  return boxToFullBox(box, 'padding');
 }
 
 export function _processScroll(scroll: Scroll) {
