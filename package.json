@@ -42,7 +42,7 @@
     "concurrently": "4.1.1",
     "docz": "1.2.0",
     "docz-theme-default": "1.2.0",
-    "gh-pages": "2.0.1",
+    "gh-pages": "2.1.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "typescript": "3.5.3",
