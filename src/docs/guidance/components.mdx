@@ -17,10 +17,12 @@ Following the [sizing principle][principle-sizing] there are three categories of
 
 - [Explicit Size](#explicit-size)
 - [Content Sizing](#content-sizing)
-- Flex Sizing
+- [Flex Sizing](#flex-sizing)
 
 
 ## Explicit Size 
+
+> If a component exists to present an explicitly sized piece of information, then it should take explicit `SizeProps`.
 
 Explicit size is rare, but still plays an active part in UI design. 
 
@@ -48,7 +50,7 @@ export const DemoProfile: React.FC<{ size: number }> = ({ size }) => {
 ## Content Sizing 
 Content sizing is the most common form of sizing in designs out there. 
 
-> Before creating a component you just have to ask yourself *Do I want this component to be sized by its content?*
+> If a component exists only to present the **dynamic amount of content** it contains, then it should be *content* by default.
 
 You normally don't need to do anything special for the browsers to reliably size your items by content. 
 
@@ -57,6 +59,21 @@ Examples:
 - Buttons (`button`)
 - Typography (`h1,h2,...,p,li,ul` etc)
 
+## Flex Sizing
 
+> If a component is going to occupy a significant portion of user's interaction time, then it should be flex by default. 
+
+When you think of default flex sizing, you normally need to thing about direction (horizontal / vertical) as well. 
+
+### Horizontal examples
+- `input`
+- `select` 
+- `textarea` (horizontal flex, with vertical drag enabled)
+
+### Vertical examples 
+- [Grids][grid]
+
+
+[grid]:../grid/
 [principle-sizing]:../principle-sizing/
 [guidance]:../guidance/
