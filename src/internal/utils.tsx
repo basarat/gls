@@ -63,8 +63,7 @@ export function _processScroll(scroll: Scroll) {
     scroll == 'hidden' ? scrollHelpers.scrollHidden
       : scroll == 'horizontal' ? scrollHelpers.scrollHorizontal
         : scroll == 'vertical' ? scrollHelpers.scrollVertical
-          : scroll == 'both' ? scrollHelpers.scrollBoth
-            : null
+          : scrollHelpers.scrollBoth
   );
 }
 
