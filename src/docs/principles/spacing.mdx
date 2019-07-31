@@ -102,6 +102,8 @@ We've talked about spacing children among each other, one final thing to talk ab
   </Vertical>
 </Playground>
 
+***Padding tip 1: Default padding on components***
+
 > Component design tip: `padding` can be used in any component that has an explict visually designed border (e.g buttons).
 
 You normally:
@@ -148,3 +150,54 @@ So a page level form layout would have padding, whereas a reusable form-componen
 
   </Vertical>
 </Playground>
+
+***Padding tip 2: Prefer parent.padding at the edges over child.margin***
+
+We've already talked about margins creating *cross component layout dependencies*. Here is a walkthrough example.
+
+Consider a simple button on the screen: 
+
+<Playground>
+  <Vertical>
+    <demos.Button>
+      Just a button minding its own business
+    </demos.Button>
+  </Vertical>
+</Playground>  
+
+Let's say the design wants you to add some space on top of the button. You can do that easily with `margin-top`: 
+
+<Playground>
+  <Vertical>
+    <demos.Button style={{marginTop: '25px'}}>
+      Just a button minding its own business
+    </demos.Button>
+  </Vertical>
+</Playground>  
+
+Lets say there is another button that conditionally shows based on some business logic, now you would be forced to toggle off the excess margin from the second button (see the code in the below example): 
+
+<Playground>
+  <Vertical>
+    <demos.Button style={{marginTop: '25px'}}>
+      I sometimes show up
+    </demos.Button>
+    {/** Because there is another button showing before this one, we've had to remove the margin top */}
+    <demos.Button>
+      Just a button minding its own business
+    </demos.Button>
+  </Vertical>
+</Playground>  
+
+This cross component layout dependency can be removed if the space around the border is managed by the parent (using padding): 
+
+<Playground>
+  <Vertical padding={{top:25}}>
+    <demos.Button>
+      I sometimes show up
+    </demos.Button>
+    <demos.Button>
+      Just a button minding its own business
+    </demos.Button>
+  </Vertical>
+</Playground>  
