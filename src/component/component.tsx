@@ -1,6 +1,6 @@
 import { PaddingProp, ClassNameProp, ScrollProp, SizeProps, StylesProp, SizingProp } from "../common";
 import * as typestyle from "typestyle";
-import { _processPadding, _processScroll, cssLengthToString, _processSizingProp } from "../internal/utils";
+import { _processPadding, _processScroll, cssLengthToString, _processSizing } from "../internal/utils";
 
 /** 
  * A set of props that can help you build layout-customizable components
@@ -56,7 +56,7 @@ export function component<T extends ComponentProps>(props: T, _defaults?: T)
 
   if (padding != null) stylesToProcess.push(_processPadding(padding));
   if (scroll != null) stylesToProcess.push(_processScroll(scroll));
-  if (sizing != null) stylesToProcess.push(_processSizingProp({ sizing }));
+  if (sizing != null) stylesToProcess.push(_processSizing(sizing));
 
   if (height != null) stylesToProcess.push({ height: cssLengthToString(height) });
   if (minHeight != null) stylesToProcess.push({ minHeight: cssLengthToString(minHeight) });

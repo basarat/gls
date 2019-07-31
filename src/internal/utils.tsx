@@ -1,5 +1,5 @@
 import * as typestyle from 'typestyle';
-import { CSSLength, BaseProps, SizingProp, GLSDefaults, CSSBox, Scroll } from "../common";
+import { CSSLength, BaseProps, GLSDefaults, CSSBox, Scroll, Sizing } from "../common";
 import * as scrollHelpers from "../styles/scroll";
 import { content, flex } from '../styles/flex';
 import React, { useContext } from 'react';
@@ -126,8 +126,7 @@ export function createBaseTag<T extends BaseProps>(
 /** 
  * Generates the appropriate styles to handle the flex interaction 
  */
-export function _processSizingProp(prop: SizingProp): typestyle.types.CSSProperties {
-  const { sizing: fx = 'content' } = prop;
+export function _processSizing(fx: Sizing = 'content'): typestyle.types.CSSProperties {
   return fx == 'content' ? content
     : fx == 'flex' ? flex(1)
       : flex(fx);

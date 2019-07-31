@@ -1,7 +1,7 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
 import { CSSLength, BaseProps, SizingProp } from '../common';
-import { createBaseTag, useGLSDefaults, _processSizingProp } from '../internal/utils';
+import { createBaseTag, useGLSDefaults, _processSizing } from '../internal/utils';
 import { horizontal, wrap, endJustified, centerJustified, betweenJustified, aroundJustified } from '../styles/flex';
 import { gridSpaced } from '../styles/spacing';
 
@@ -50,7 +50,7 @@ export const Grid: React.FC<GridProps> = (props) => {
   }
 
   const klass = typestyle.style(
-    _processSizingProp(props),
+    _processSizing(sizing),
     horizontal, wrap,
     gridSpaced(verticalSpacing, horizontalSpacing),
     justify == 'center' && centerJustified,

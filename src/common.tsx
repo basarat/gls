@@ -34,6 +34,11 @@ export type CSSBox =
   /** Individual */
   | { top?: CSSLength, right?: CSSLength, bottom?: CSSLength, left?: CSSLength }
 
+export type Sizing =
+  | 'content' /** default */
+  | 'flex' /** Same as `1` */
+  | number /** A flex ratio */
+
 /** 
  * Specifies sizing interaction
  */
@@ -41,10 +46,7 @@ export interface SizingProp {
   /** 
    * Specifies `sizing` interaction
    */
-  sizing?:
-  | 'content' /** default */
-  | 'flex' /** Same as `1` */
-  | number /** A flex ratio */;
+  sizing?: Sizing,
 }
 
 export interface SpacingProp {

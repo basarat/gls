@@ -1,6 +1,6 @@
 import * as typestyle from 'typestyle';
 import { SizingProp, StylesProp, SpacingProp, AlignmentInVerticalProps, AlignmentInHorizontalProps, PaddingProp, SizeProps, ScrollProp, StyleProp, ClassNameProp, TagProps } from '../common';
-import { createBaseTag, useGLSDefaults, _processSizingProp, _processPadding, cssLengthToString, _processScroll } from '../internal/utils';
+import { createBaseTag, useGLSDefaults, _processSizing, _processPadding, cssLengthToString, _processScroll } from '../internal/utils';
 import { vertical, horizontal, centerJustified, endJustified, end, center, start } from '../styles/flex';
 import { verticallySpaced, horizontallySpaced } from '../styles/spacing';
 
@@ -177,7 +177,7 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
   const klass = typestyle.style(
     /** Till breakpoint: Vertical */
     typestyle.media({ minWidth: 0, maxWidth: breakpoint },
-      _processSizingProp({ sizing: verticalSizing }),
+      _processSizing(verticalSizing),
       verticalPadding != null && _processPadding(verticalPadding),
       vertical,
       verticalSpacing !== 0 && verticallySpaced(verticalSpacing),
@@ -199,7 +199,7 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
 
     /** Bigger than breakpoint: Horizontal */
     typestyle.media({ minWidth: breakpoint + 1 },
-      _processSizingProp({ sizing: horizontalSizing }),
+      _processSizing(horizontalSizing),
       horizontalPadding != null && _processPadding(horizontalPadding),
       horizontal,
       horizontalSpacing !== 0 && horizontallySpaced(horizontalSpacing),
