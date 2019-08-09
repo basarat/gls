@@ -14,6 +14,7 @@ export default {
     'Grid',
     'Spacers',
     'Containers',
+    'Component',
     'Further Guidance 🌹',
     'Layout Examples',
     'Component Concepts',

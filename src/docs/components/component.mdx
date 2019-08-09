@@ -1,0 +1,35 @@
+---
+name: Component
+route: /component/
+---
+
+import { Playground } from 'docz';
+import { Vertical } from '../..'; 
+import * as demos from '../../demos'; 
+
+<demos.Star/>
+
+# Component 
+
+GLS can easily work with components without any special requirements, so you can bring your own. 
+
+## Bring your own
+
+For example, here is a simple `<input/>` without any GLS use: 
+
+<Playground>
+  <input placeholder='Example'/>
+</Playground>
+
+You can easily place these in a [vertical][vertical] and you can see that they get nicely vertically-spaced, and `stretch` nicely (thanks to vertical default horizontal alignment of stretch):
+
+<Playground>
+  <Vertical>
+    <input placeholder='Example'/>
+    <input placeholder='Example'/>
+    <input placeholder='Example'/>
+  </Vertical>
+</Playground>
+
+
+[vertical]:../vertical/
