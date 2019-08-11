@@ -1,0 +1,66 @@
+---
+name: Base
+route: /base/
+---
+
+import { Playground } from 'docz';
+import * as demos from '../../demos'; 
+
+<demos.Star/>
+
+# Base
+
+We provide a neat `base(rootSelector?:string)` utility function to remove any browser specific idiosyncrasies. 
+
+```ts
+/**
+ * Setups:
+ * - normalize
+ * - border box
+ * - fill body into page
+ * - fill root-selector into body
+ */
+function base(rootSelector?: string): void;
+```
+
+Example use: 
+
+```ts
+import { base } from 'gls';
+base('#root');
+```
+
+We describe its features next:
+
+## Normalize 
+Unifies the [user agent style sheets][user-agent-stylesheet] (the browser default styles), so that they are consistent. This allows you to test your code in one browser and be fairly confident that it will look the same in the other browsers ❤️
+
+## Border Box
+Browsers can be confused about whether or not the border is *a part of the width*. We remove this confusion to provide a simple (and intutive) meaning of width (`= content+padding+border`) across all browsers 💚
+
+![borderbox](../images/borderbox.png)
+
+## Fill body in to page
+
+By default browsers come with a nasty `margin` around the `body` element. This means there is an aweful unmanaged background around your markup. You can remove this of course, and that is what we do. We also make the body `100%` of the page so you get complete control of what is on screen 💙
+
+## Fill root-selector into body
+
+We take a root selector and set it up to fill the entire `body`. It is common to have a `root` element in the *index.html* of React applications e.g.
+
+```html
+<html>
+<body>
+  <div id="root"></div>
+  <script src="./build/bundle.js"></script>
+</body>
+</html>
+```
+You can set this root element to fill the body by passing it into the `base` function. e.g.: 
+
+```ts
+import { base } from 'gls';
+base('#root');
+```
+
+[user-agent-stylesheet]: https://html.spec.whatwg.org/multipage/rendering.html#the-css-user-agent-style-sheet-and-presentational-hints

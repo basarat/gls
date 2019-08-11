@@ -4,10 +4,11 @@ import { normalize } from "./normalize";
 /** 
  * Setups: 
  * - normalize 
- * - box model : border box
- * - full body width 
+ * - border box
+ * - fill body into page
+ * - fill root-selector into body
  */
-export function base(selector: string) {
+export function base(rootSelector?: string) {
   /** normalize */
   normalize();
 
@@ -29,9 +30,11 @@ export function base(selector: string) {
     margin: 0
   });
 
-  /** Root should fill parent */
-  cssRule(selector, {
-    width: '100%',
-    height: '100%',
-  });
+  if (rootSelector) {
+    /** Root should fill parent */
+    cssRule(rootSelector, {
+      width: '100%',
+      height: '100%',
+    });
+  }
 }

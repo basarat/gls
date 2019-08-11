@@ -6,6 +6,7 @@ export default {
     'Spacing principle',
     'Sizing principle',
     'Scrolling principle',
+    'Base',
     'Common Types and Props',
     'Defaults',
     'Vertical',
