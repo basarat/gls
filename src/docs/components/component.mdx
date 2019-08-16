@@ -69,12 +69,12 @@ E.g. you can `flex` (as explained in the [sizing principle][principle-sizing]) t
 
 
 ## component
-There is a `gls.component` function that takes any set of these props and returns a set of props with any `ComponentProps` omitted and a `className` that you can use to power to root of your component.
+There is a `gls.component` function that takes any set (subset or fullset) of `ComponentProps` and returns props with any `ComponentProps` omitted + processsed to place into the `className` prop (taking into account any existing `className` as well), that you can use to power to root of your component.
 
 We look at examples below.
 
 ## Creating a component
-You can use any partial set of `ComponentProps` in your component e.g: 
+You can use any partial set of `ComponentProps` in your component e.g here as just use the `SizeProps`: 
 
 ```ts
 export interface OnlySomeProps extends
@@ -103,7 +103,7 @@ export const AllThePropsButton: React.FC<AllTheProps> = (props) => {
 }
 ```
 
-Any props tht are not a part of `ComponentProps` are yours to handle and returned as is from `gls.component` e.g.: 
+Any props tht are not a part of `ComponentProps` are yours to handle and returned as is from `gls.component` e.g. below you can see the `error` prop passing through the component function without any processing: 
 
 ```ts
 export interface LimitedButtonProps extends
@@ -113,8 +113,8 @@ export interface LimitedButtonProps extends
 }
 export const LimitedButton: React.FC<LimitedButtonProps> = (props) => {
   /** 
-   * Generate a className from component props 
-   * + take out any props you want to handle 
+   * Generates a className from component props 
+   * + returns the rest
    **/
   const {className, error} = gls.component(props);
   

@@ -134,8 +134,8 @@ export interface LimitedButtonProps extends
 }
 export const LimitedButton: React.FC<LimitedButtonProps> = (props) => {
   /** 
-   * Generate a className from component props 
-   * + take out any props you want to handle 
+   * Generates a className from component props 
+   * + returns the rest
    **/
   const {className, error} = gls.component(props);
   
