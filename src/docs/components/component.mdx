@@ -4,24 +4,24 @@ route: /component/
 ---
 
 import { Playground } from 'docz';
-import { Vertical } from '../..'; 
+import { Vertical, Horizontal } from '../..'; 
 import * as demos from '../../demos'; 
 
 <demos.Star/>
 
 # Component 
 
-GLS can easily work with components without any special requirements, so you can bring your own. 
+GLS can easily work with components without any special requirements, so you can bring your own or add explicit support for `ComponentProps`. We cover these below.
 
 ## Bring your own
 
-For example, here is a simple `<input/>` without any GLS use: 
+For example, here is a simple `<input/>` without any gls use: 
 
 <Playground>
   <input placeholder='Example'/>
 </Playground>
 
-You can easily place these in a [vertical][vertical] and you can see that they get nicely vertically-spaced, and `stretch` nicely (thanks to vertical default horizontal alignment of stretch):
+You can easily place these (raw `input`s) in a [vertical][vertical] and you can see that they get nicely vertically-spaced, and `stretch` nicely (thanks to `Vertical`'s default `horizontalAlignment`):
 
 <Playground>
   <Vertical>
@@ -31,5 +31,100 @@ You can easily place these in a [vertical][vertical] and you can see that they g
   </Vertical>
 </Playground>
 
+You can even have a *single* input in a `Vertical` and it essentially stretches (horizontally) to match the parent: 
+
+<Playground>
+  <Vertical>
+    <input placeholder='Example'/>
+  </Vertical>
+</Playground>
+
+This allows you to create a reusable (`Vertical>input`) pair that you can provide various [BaseProps][common-types] for (using the `Vertical` in the `Vertical>input` pair).
+ 
+E.g. you can `flex` (as explained in the [sizing principle][principle-sizing]) two `Vertical>input`s in a Horziontal: 
+
+<Playground>
+  <Horizontal>
+    <Vertical sizing="flex">
+      <input placeholder='Example'/>
+    </Vertical>
+    <Vertical sizing="flex">
+      <input placeholder='Example'/>
+    </Vertical>
+  </Horizontal>
+</Playground>
+
+> of course you can create a component out of the `Vertical>input` pair.
+
+## ComponentProps
+
+`ComponentProps` is a grouping of a set of common props that allow you to hook into the layout principles provided by gls:
+
+* `ClassNameProp`: [Allows you to pass in CSS class names][common-types].
+* `ScrollProp`: [Specify scrolling behaviours][common-types].
+* `PaddingProp`: [Specifies padding][common-types].
+* `SizingProp`: [Specify implicit size control][common-types].
+* `SizeProps`: [Specify explicit size control][common-types].
+* `StylesProp`: [Allows you to use TypeStyle CSS mixins][common-types]. 
+
+
+## component
+There is a `gls.component` function that takes any set of these props and returns a set of props with any `ComponentProps` omitted and a `className` that you can use to power to root of your component.
+
+We look at examples below.
+
+## Creating a component
+You can use any partial set of `ComponentProps` in your component e.g: 
+
+```ts
+export interface OnlySomeProps extends
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  gls.SizeProps {
+}
+
+export const OnlySomePropsButton: React.FC<OnlySomeProps> = (props) => {
+  const processedProps = gls.component(props);
+
+  return <button {...processedProps} />;
+}
+```
+
+or you can use all the `ComponentProps`: 
+
+```ts
+export interface AllTheProps extends
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  gls.ComponentProps {
+}
+export const AllThePropsButton: React.FC<AllTheProps> = (props) => {
+  const processedProps = gls.component(props);
+
+  return <button {...processedProps} />;
+}
+```
+
+Any props tht are not a part of `ComponentProps` are yours to handle and returned as is from `gls.component` e.g.: 
+
+```ts
+export interface LimitedButtonProps extends
+  gls.ComponentProps {
+  /** Turns red if in error state */
+  error?: boolean
+}
+export const LimitedButton: React.FC<LimitedButtonProps> = (props) => {
+  /** 
+   * Generate a className from component props 
+   * + take out any props you want to handle 
+   **/
+  const {className, error} = gls.component(props);
+  
+  /** Handle the error */
+  const errorStyle = error ? { backgroundColor: 'red' } : {};
+  
+  return <button className={className} style={errorStyle} />;
+}
+```
 
 [vertical]:../vertical/
+[common-types]:../common-types/
+[principle-sizing]:../princile-sizing/

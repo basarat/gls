@@ -4,6 +4,7 @@
 
 import React from "react";
 import * as typestyle from "typestyle";
+import * as gls from "..";
 
 export const Star: React.FC = () => {
   const link = "https://ghbtns.com/github-btn.html?user=basarat&repo=gls&type=star&count=true"
@@ -100,4 +101,46 @@ export const DemoProfile: React.FC<{ size: number }> = ({ size }) => {
       }}
       src={`http://placekitten.com/g/${size}/${size}`} />
   );
+}
+
+
+/** 
+ * Example creating a button component 
+ */
+export interface OnlySomeProps extends
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  gls.SizeProps {
+}
+export const OnlySomePropsButton: React.FC<OnlySomeProps> = (props) => {
+  const processedProps = gls.component(props);
+
+  return <button {...processedProps} />;
+}
+
+export interface AllTheProps extends
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  gls.ComponentProps {
+}
+export const AllThePropsButton: React.FC<AllTheProps> = (props) => {
+  const processedProps = gls.component(props);
+
+  return <button {...processedProps} />;
+}
+
+export interface LimitedButtonProps extends
+  gls.ComponentProps {
+  /** Turns red if in error state */
+  error?: boolean
+}
+export const LimitedButton: React.FC<LimitedButtonProps> = (props) => {
+  /** 
+   * Generate a className from component props 
+   * + take out any props you want to handle 
+   **/
+  const {className, error} = gls.component(props);
+  
+  /** Handle the error */
+  const errorStyle = error ? { backgroundColor: 'red' } : {};
+  
+  return <button className={className} style={errorStyle} />;
 }

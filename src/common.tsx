@@ -159,7 +159,7 @@ export interface TagProps {
   }
   | {
     name: 'button';
-    props?: Omit<React.HTMLProps<HTMLButtonElement>, 'className' | 'style'>;
+    props?: Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'className' | 'style'>;
   }
   | {
     name: 'input';
