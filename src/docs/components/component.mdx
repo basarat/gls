@@ -73,7 +73,7 @@ There is `gls.component(props) => props` function which is a simple map:
 
 ```
 OtherProps + ComponentProps (subset or fullset) + { className? }
-  => OtherProps + { className (including existingClassName?) }
+  => OtherProps + { className (including existing className if present) }
 ``` 
 
 The `gls.component` function that takes any set (subset or fullset) of `ComponentProps` and returns props with any `ComponentProps` omitted + processsed and placed into the `className` prop (taking into account any existing `className` as well). You then use the `className` in your component.
