@@ -1,5 +1,5 @@
 ---
-name: Component Concepts
+name: Component Guidance
 route: /guidance-components/
 ---
 
@@ -52,29 +52,22 @@ Content sizing is the most common form of sizing in designs out there.
 
 > If a component exists only to present the **dynamic amount of content** it contains, then it should be *content* by default.
 
-You normally don't need to do anything special for the browsers to reliably size your items by content. 
+You normally don't need to do anything special for the browsers to reliably size your items by content. Adding an explicit `sizing: 'content'` does help with flex-box bugs though and `gls.component` function does that. 
 
 Examples: 
 - Links (`a`)
 - Buttons (`button`)
 - Typography (`h1,h2,...,p,li,ul` etc)
 
-## Full Width
+## Full Size
 
-> If a component is going to occupy a significant portion of user's interaction time, then it should be full width by default. 
+> If a component is going to occupy a significant portion of user's interaction time, then it should be full size (`sizing:'flex'`) by default. 
  
 Examples:
 - `input`
 - `select` 
 - `textarea`
-
-## Full Height
-
-> If a component is going to be a critical part of page design then it should be full height by default
-
-Example:
 - page body
-
 
 [principle-sizing]:../principle-sizing/
 [guidance]:../guidance/
