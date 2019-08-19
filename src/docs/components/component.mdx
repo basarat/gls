@@ -41,7 +41,7 @@ You can even have a *single* input in a `Vertical` and it essentially stretches 
 
 This allows you to create a reusable (`Vertical>input`) pair that you can provide various [BaseProps][common-types] for (using the `Vertical` in the `Vertical>input` pair).
  
-E.g. you can `flex` (as explained in the [sizing principle][principle-sizing]) two `Vertical>input`s in a Horziontal: 
+And you can control various props using either of the `Vertical`/`input` e.g. you can `flex` on the Vertical (as explained in the [sizing principle][principle-sizing]) allowing two flexing `Vertical>input`s in a Horziontal: 
 
 <Playground>
   <Horizontal>
@@ -54,7 +54,15 @@ E.g. you can `flex` (as explained in the [sizing principle][principle-sizing]) t
   </Horizontal>
 </Playground>
 
-> of course you can create a component out of the `Vertical>input` pair.
+You can props to the `input` as well e.g. an explicit height can be set: 
+
+<Playground>
+  <Vertical sizing="flex">
+    <input placeholder='Example' style={{height: '30px'}}/>
+  </Vertical>
+</Playground>
+
+Of course you can create a component out of the `Vertical>input` pair. However if you want to compose a component that supports various gls props in a single tag, you can use `gls.ComponentProps` / `gls.component` which we cover next. 
 
 ## ComponentProps
 
