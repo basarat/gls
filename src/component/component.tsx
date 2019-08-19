@@ -19,7 +19,7 @@ export interface ComponentProps extends
  * - actions certain props to update the `props` className
  * @returns `props` with actioned members omitted and className updated
  */
-export function component<T extends ComponentProps>(props: T, _defaults?: T)
+export function component<T extends ComponentProps>(props: T, defaults: ComponentProps = {})
   : Omit<
     T,
     | 'padding'
@@ -38,25 +38,26 @@ export function component<T extends ComponentProps>(props: T, _defaults?: T)
   let stylesToProcess: (typestyle.types.NestedCSSProperties | false | null)[] = [];
 
   const {
-    padding,
-    scroll,
-    sizing,
+    padding = defaults.padding,
+    scroll = defaults.scroll,
+    sizing = defaults.sizing,
 
-    height,
-    minHeight,
-    maxHeight,
-    width,
-    minWidth,
-    maxWidth,
+    height = defaults.height,
+    minHeight = defaults.minHeight,
+    maxHeight = defaults.maxHeight,
+    width = defaults.width,
+    minWidth = defaults.minWidth,
+    maxWidth = defaults.maxWidth,
 
-    styles,
+    styles = defaults.styles,
 
     ...result
   } = props;
 
   if (padding != null) stylesToProcess.push(_processPadding(padding));
   if (scroll != null) stylesToProcess.push(_processScroll(scroll));
-  if (sizing != null) stylesToProcess.push(_processSizing(sizing));
+  /** Always size by content by default */
+  stylesToProcess.push(_processSizing(sizing));
 
   if (height != null) stylesToProcess.push({ height: cssLengthToString(height) });
   if (minHeight != null) stylesToProcess.push({ minHeight: cssLengthToString(minHeight) });

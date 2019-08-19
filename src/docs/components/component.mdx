@@ -4,7 +4,7 @@ route: /component/
 ---
 
 import { Playground } from 'docz';
-import { Vertical, Horizontal } from '../..'; 
+import { Vertical, Horizontal, Responsive } from '../..'; 
 import * as demos from '../../demos'; 
 
 <demos.Star/>
@@ -140,6 +140,52 @@ export const LimitedButton: React.FC<LimitedButtonProps> = (props) => {
 }
 ```
 
+## defaults
+
+The `component` function takes a second `defaults: ComponentProps` argument.
+
+You can use it to provide defaults for any `ComponentProps` e.g. 
+it is good practice to have an `input` with default `sizing:'flex'`([later we also cover best layout practices for components][guidance-components]): 
+
+```ts
+export interface DefaultInputProps extends
+  React.InputHTMLAttributes<HTMLInputElement>,
+  gls.ComponentProps {
+}
+
+export const DefaultInput: React.FC<DefaultInputProps> = (props) => {
+  const { className, ...otherProps } =
+    gls.component(props, { sizing: 'flex' });
+
+  return <input className={className} {...otherProps} />
+};
+```
+
+Such a button behaves nicely in common vertical / horizontal and responsive layouts: 
+
+<Playground>
+  <Vertical>
+    <demos.DefaultInput placeholder="Example"/>
+    <demos.DefaultInput placeholder="Example"/>
+  </Vertical>
+</Playground>
+
+<Playground>
+  <Horizontal>
+    <demos.DefaultInput placeholder="Example"/>
+    <demos.DefaultInput placeholder="Example"/>
+  </Horizontal>
+</Playground>
+
+<Playground>
+  <Responsive breakpoint={650}>
+    <demos.DefaultInput placeholder="Example"/>
+    <demos.DefaultInput placeholder="Example"/>
+  </Responsive>
+</Playground>
+
+
 [vertical]:../vertical/
 [common-types]:../common-types/
 [principle-sizing]:../princile-sizing/
+[guidance-components]:../guidance-components/

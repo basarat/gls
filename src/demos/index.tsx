@@ -137,10 +137,26 @@ export const LimitedButton: React.FC<LimitedButtonProps> = (props) => {
    * Generates a className from component props 
    * + returns the rest
    **/
-  const {className, error} = gls.component(props);
-  
+  const { className, error } = gls.component(props);
+
   /** Handle the error */
   const errorStyle = error ? { backgroundColor: 'red' } : {};
-  
+
   return <button className={className} style={errorStyle} />;
 }
+
+
+/** 
+ * Example creating an input component 
+ */
+export interface DefaultInputProps extends
+  React.InputHTMLAttributes<HTMLInputElement>,
+  gls.ComponentProps {
+}
+
+export const DefaultInput: React.FC<DefaultInputProps> = (props) => {
+  const { className, ...otherProps } =
+    gls.component(props, { sizing: 'flex' });
+
+  return <input className={className} {...otherProps} />
+};
