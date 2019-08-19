@@ -18,8 +18,7 @@ export default {
     'Component',
     'Further Guidance 🌹',
     'Layout Examples',
-    'Component Concepts',
-    'Button Guidance',
+    'Component Guidance',
   ],
 
   // Some cleanups
