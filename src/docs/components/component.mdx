@@ -184,6 +184,21 @@ Such a button behaves nicely in common vertical / horizontal and responsive layo
   </Responsive>
 </Playground>
 
+## Using third party libraries
+
+Since the `component` function just returns a `className` you can easily use its features with any third party components that support the className prop e.g. material-ui
+
+```ts
+// Use `gls.component`
+const className = gls.component({width: '100%'});
+
+// With any library
+import Button from '@material-ui/core/Button';
+
+<Button className={className} variant="contained" color="primary">
+  Hello World
+</Button>
+```
 
 [vertical]:../vertical/
 [common-types]:../common-types/
