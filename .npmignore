@@ -1,2 +1,5 @@
 # Dev only assets
 lib/demos
+
+# Documentation website
+.docz
