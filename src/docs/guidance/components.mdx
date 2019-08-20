@@ -4,7 +4,7 @@ route: /guidance-components/
 ---
 
 import { Playground } from 'docz';
-import { Content, Vertical, Horizontal, Flex } from '../..'; 
+import { Content, Vertical, Horizontal, Responsive } from '../..'; 
 import * as demos from '../../demos'; 
 
 <demos.Star/>
@@ -69,6 +69,63 @@ Examples:
 - `select` 
 - `textarea`
 - page body
+
+As an example consider an input with `sizing:'flex'` as default [using the `gls.component` function][component]:
+
+```ts
+export interface ExampleInputProps extends
+  React.InputHTMLAttributes<HTMLInputElement>,
+  gls.ComponentProps {
+}
+
+export const ExampleInput: React.FC<ExampleInputProps> = (props) => {
+  const { className, ...otherProps } =
+    gls.component(props, { sizing: 'flex' });
+
+  return <input className={className} {...otherProps} />
+};
+```
+
+Such an input behaves nicely in common vertical, horizontal and responsive layouts: 
+
+<Playground>
+  <Vertical>
+    <demos.DefaultInput placeholder="Example"/>
+    <demos.DefaultInput placeholder="Example"/>
+  </Vertical>
+</Playground>
+
+<Playground>
+  <Horizontal>
+    <demos.DefaultInput placeholder="Example"/>
+    <demos.DefaultInput placeholder="Example"/>
+  </Horizontal>
+</Playground>
+
+<Playground>
+  <Responsive breakpoint={650}>
+    <demos.DefaultInput placeholder="Example"/>
+    <demos.DefaultInput placeholder="Example"/>
+  </Responsive>
+</Playground>
+
+You can also provide a sizing ratio e.g. 1-2: 
+
+<Playground>
+  <Horizontal>
+    <demos.DefaultInput placeholder="Example" sizing={1}/>
+    <demos.DefaultInput placeholder="Example" sizing={2}/>
+  </Horizontal>
+</Playground>
+
+An even explicit size if you need to, e.g. `width:200px`: 
+
+<Playground>
+  <Horizontal>
+    <demos.DefaultInput placeholder="Example" sizing='content' width={200}/>
+    <demos.DefaultInput placeholder="Example" sizing='content' width={200}/>
+  </Horizontal>
+</Playground>
 
 [principle-sizing]:../principle-sizing/
 [guidance]:../guidance/

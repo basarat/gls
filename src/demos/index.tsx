@@ -147,7 +147,7 @@ export const LimitedButton: React.FC<LimitedButtonProps> = (props) => {
 
 
 /** 
- * Example creating an input component 
+ * Example creating a default component prop 
  */
 export interface DefaultInputProps extends
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -155,6 +155,21 @@ export interface DefaultInputProps extends
 }
 
 export const DefaultInput: React.FC<DefaultInputProps> = (props) => {
+  const { className, ...otherProps } =
+    gls.component(props, { sizing: 'flex' });
+
+  return <input className={className} {...otherProps} />
+};
+
+/** 
+ * Example creating an input component 
+ */
+export interface ExampleInputProps extends
+  React.InputHTMLAttributes<HTMLInputElement>,
+  gls.ComponentProps {
+}
+
+export const ExampleInput: React.FC<ExampleInputProps> = (props) => {
   const { className, ...otherProps } =
     gls.component(props, { sizing: 'flex' });
 
