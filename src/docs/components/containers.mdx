@@ -4,7 +4,7 @@ route: /containers/
 ---
 
 import { Playground } from 'docz';
-import { Vertical, Horizontal, Flex, Content } from '../..'; 
+import { Vertical, Horizontal, Flex, Content, Box } from '../..'; 
 import * as demos from '../../demos'; 
 
 <demos.Star/>
@@ -63,11 +63,34 @@ In the example below we throw a few `Content` items in a `Vertical(Content,Conte
   </Vertical>
 </Playground>
 
+## Box
+A more general purpose `Box` component exists that supports the `sizing` property allowing you to dynamically switch between `Content` or `Flex` based on your requirement.
+
+Example `<Box sizing='flex'/>` same as `<Flex/>`: 
+
+<Playground>
+  <Vertical height={100} style={{backgroundColor: "lightskyblue"}}>
+    <Box sizing='flex' style={{backgroundColor: "darkorange"}}>
+        I'm taking up all the space from the parent
+    </Box>  
+  </Vertical>
+</Playground>
+
+Example `<Box sizing='content'/>` same as `<Content/>`: 
+
+<Playground>
+  <Vertical height={100} style={{backgroundColor: "lightskyblue"}}>
+    <Box sizing='content' style={{backgroundColor: "darkorange"}}>
+        I'm taking up as much space as needed by this text
+    </Box>  
+  </Vertical>
+</Playground>
+
 ## BaseProps
-Both `Flex` and `Content` [supports all `BaseProps`][common-types].
+`Flex`, `Content` and `Box` [support all `BaseProps`][common-types].
 
 ## Alignment
-Both `Flex` and `Content` support alignment. 
+`Flex`, `Content` and `Box` support alignment. 
 
 ```ts
 export interface AlignmentProps {
