@@ -4,7 +4,7 @@ route: /principle-sizing/
 ---
 
 import { Playground } from 'docz';
-import { Vertical, Horizontal, Flex, Content } from '../..'; 
+import { Vertical, Horizontal, Flex, Content, Box } from '../..'; 
 import * as demos from '../../demos'; 
 
 <demos.Star/>
@@ -123,5 +123,27 @@ You can mix `Flex`, `Content` and explicit sizing to match your design requireme
     <Flex sizing={2} style={{backgroundColor: "lightpink"}}>
         I'm taking 2 from remainder
     </Flex>
+  </Horizontal>
+</Playground>
+
+## Additional Guidance
+
+### Explicit Size requires sizing='content'
+
+`sizing=flex` takes precedence on any explicit sizing e.g. `width` has no effect in the following example:
+
+<Playground>
+  <Horizontal height={100} spacing={0} style={{backgroundColor: "lightskyblue"}}>
+    {/* Explicit width 100 */ }
+    <Box sizing='flex' width={100} style={{backgroundColor: "limegreen"}}>Width 100px will not work because of `sizing=flex`</Box>
+  </Horizontal>
+</Playground>
+
+For for explicit size to work sizing needs to be `content`. All our components are `sizing=content` by default so you don't need to think about it when using our components. The following example demonstrates this default: 
+
+<Playground>
+  <Horizontal height={100} spacing={0} style={{backgroundColor: "lightskyblue"}}>
+    {/* Explicit width 100 */ }
+    <Box width={100} style={{backgroundColor: "limegreen"}}>Width 100px works</Box>
   </Horizontal>
 </Playground>

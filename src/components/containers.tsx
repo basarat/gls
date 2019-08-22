@@ -1,7 +1,7 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { BaseProps, AlignmentProps } from '../common';
-import { createBaseTag } from '../internal/utils';
+import { BaseProps, AlignmentProps, SizingProp } from '../common';
+import { createBaseTag, _processSizing } from '../internal/utils';
 import { content, flex, centerJustified, endJustified, center, end, vertical, start, startJustified } from '../styles/flex';
 
 export interface FlexProps extends BaseProps, AlignmentProps {
@@ -60,3 +60,31 @@ export const Content: React.FC<ContentProps> = (props) => {
   return createBaseTag(otherProps, klass, 'Content');
 };
 Content.displayName = 'Content';
+
+export interface BoxProps extends BaseProps, AlignmentProps, SizingProp {
+}
+
+/** 
+ * A general purpose single item container
+ */
+export const Box: React.FC<BoxProps> = (props) => {
+  const {
+    sizing,
+    verticalAlign = 'top',
+    horizontalAlign = 'left',
+    
+    ...otherProps
+  } = props;
+  const klass = typestyle.style(
+    _processSizing(sizing),
+    vertical,
+    verticalAlign == 'top' && startJustified,
+    verticalAlign == 'center' && centerJustified,
+    verticalAlign == 'bottom' && endJustified,
+    horizontalAlign == 'left' && start,
+    horizontalAlign == 'center' && center,
+    horizontalAlign == 'right' && end,
+  );
+  return createBaseTag(otherProps, klass, 'Box');
+};
+Box.displayName = 'Box';
