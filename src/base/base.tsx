@@ -31,10 +31,15 @@ export function base(rootSelector?: string) {
   });
 
   if (rootSelector) {
-    /** Root should fill parent */
+    /** Root should fill parent and start a flex layout */
     cssRule(rootSelector, {
       width: '100%',
       height: '100%',
+      display: [
+        '-ms-flexbox',
+        '-webkit-flex',
+        'flex',
+      ]
     });
   }
 }
