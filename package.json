@@ -1,6 +1,6 @@
 {
   "name": "gls",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "General Layout System for React",
   "main": "lib/index.js",
   "types": "lib",
