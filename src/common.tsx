@@ -147,35 +147,6 @@ export interface ClassNameProp {
 /** 
  * Props supported by the underlying tag 
  */
-export interface TagProps {
-  tag?:
-  {
-    /** name default: div */
-    props: Omit<React.HTMLProps<HTMLDivElement>, 'className' | 'style'>;
-  }
-  | {
-    name: 'div';
-    props?: Omit<React.HTMLProps<HTMLDivElement>, 'className' | 'style'>;
-  }
-  | {
-    name: 'button';
-    props?: Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'className' | 'style'>;
-  }
-  | {
-    name: 'input';
-    props?: Omit<React.HTMLProps<HTMLInputElement>, 'className' | 'style'>;
-  }
-  | {
-    name: 'select';
-    props?: Omit<React.HTMLProps<HTMLSelectElement>, 'className' | 'style'>;
-  }
-  | {
-    name: 'section';
-    props?: Omit<React.HTMLProps<HTMLDivElement>, 'className' | 'style'>;
-  }
-  | {
-    name: 'a';
-    props?: Omit<React.HTMLProps<HTMLAnchorElement>, 'className' | 'style'>;
-  }
-  // TODO: heading paragraph
+export interface TagProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'className' | 'style'> {
+  tag: string,
 }

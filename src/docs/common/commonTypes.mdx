@@ -147,24 +147,23 @@ Allows you to add your own CSS classnames to the element.
 /** 
  * Props supported by the underlying tag 
  */
-export interface TagProps {
-  tag?: {
-    name?: 'div' /** default */ | 'a' | 'button' // etc.
-    props?: React.HTMLProps // props passed to the tag
-  }
+export interface TagProps extends React.HTMLAttributes<HTMLDivElement> {
+  tag: string,
 }
 ```
 Gives you direct access to the underlying react tag for any customization you might want e.g. generate a `Vertical` as a `section` tag (instead of the default `div` tag) with an `onClick` handler:
 
 <Playground>
   <Vertical 
-    tag={{name:'section', props: {onClick:() => alert('Nice you meet you ❤️')}}} 
+    tag='section'
+    onClick={() => alert('Nice you meet you ❤️')}
     height={100} style={{backgroundColor: 'limegreen'}}/>
 </Playground>
 
 Another example is a `Vertial` as a `ol`: 
+
 <Playground>
-  <Vertical tag={{name:'ol'}} spacing={5}>
+  <Vertical tag='ol' spacing={5}>
     <li>Hello</li>
     <li>World,</li>
     <li>how</li>
@@ -172,6 +171,8 @@ Another example is a `Vertial` as a `ol`:
     <li>we?</li>
   </Vertical>
 </Playground>
+
+> If you need advanced customization you can use the `component` function to generate a `className` that you can use with any tag.
 
 ## BaseProps
 A consistent set of customization options. Collects the following props into a common type: 
@@ -182,7 +183,7 @@ A consistent set of customization options. Collects the following props into a c
 * `StylesProp`: [Allows you to use TypeStyle CSS mixins](#stylesprop). 
 * `StyleProp`: [Allows you to specify React.CSSProperties](#styleprop).
 * `ClassNameProp`: [Allows you to pass in CSS class names](#classnameprop).
-* `TagProps`: [Allows tag control](#tagprops).
+* `TagProps`: [Allows all underlying tag properties and tag control](#tagprops).
 
 [principle-spacing]:../principle-spacing/
 [principle-sizing]:../principle-sizing/

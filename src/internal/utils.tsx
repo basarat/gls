@@ -78,7 +78,7 @@ export function createBaseTag<T extends BaseProps>(
   /** Any additional customizations done by the component */
   klass: string,
 
-  /** Comment to help with debuggin */
+  /** Comment to help with debugging */
   comment: string,
 ) {
   const {
@@ -92,10 +92,11 @@ export function createBaseTag<T extends BaseProps>(
     maxWidth,
     scroll,
     styles = [],
-    tag, ...otherProps } = props;
+    tag,
+    ...otherProps } = props;
 
   return React.createElement(
-    (tag != null && ('name' in tag) && tag.name != null) ? tag.name : 'div',
+    (tag != null) ? tag : 'div',
     {
       className: typestyle.classes(
         className,
@@ -118,7 +119,6 @@ export function createBaseTag<T extends BaseProps>(
       ),
       'data-comment': comment,
       ...otherProps,
-      ...((tag != null && tag.props != null) ? tag.props : {}),
     }
   )
 }
