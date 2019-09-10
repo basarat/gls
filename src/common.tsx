@@ -148,5 +148,5 @@ export interface ClassNameProp {
  * Props supported by the underlying tag 
  */
 export interface TagProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'className' | 'style'> {
-  tag: string,
+  tag?: string,
 }
