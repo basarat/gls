@@ -11,7 +11,7 @@ export interface HorizontalProps extends BaseProps, SizingProp, SpacingProp, Ali
 /** 
  * Layout out children horizontally with a margin between them
  */
-export const Horizontal: React.FC<HorizontalProps> = (props) => {
+export const Horizontal = React.forwardRef((props: HorizontalProps, ref: React.LegacyRef<HTMLDivElement>) => {
   const { horizontalSpacing } = useGLSDefaults();
   const {
     sizing,
@@ -32,6 +32,6 @@ export const Horizontal: React.FC<HorizontalProps> = (props) => {
     verticalAlign == 'center' && center,
     verticalAlign == 'bottom' && end,
   );
-  return createBaseTag(otherProps, klass, 'Horizontal');
-}
+  return createBaseTag(otherProps, klass, 'Horizontal', ref);
+});
 Horizontal.displayName = 'Horizontal';

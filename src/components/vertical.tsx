@@ -11,7 +11,7 @@ export interface VerticalProps extends BaseProps, SizingProp, SpacingProp, Align
 /** 
  * Layout out children vertically with a margin between them
  */
-export const Vertical: React.FC<VerticalProps> = (props) => {
+export const Vertical = React.forwardRef((props: VerticalProps, ref: React.LegacyRef<HTMLDivElement>) => {
   const { verticalSpacing } = useGLSDefaults();
   const {
     sizing,
@@ -33,6 +33,6 @@ export const Vertical: React.FC<VerticalProps> = (props) => {
     horizontalAlign == 'center' && center,
     horizontalAlign == 'right' && end,
   );
-  return createBaseTag(otherProps, klass, 'Vertical');
-}
+  return createBaseTag(otherProps, klass, 'Vertical', ref);
+});
 Vertical.displayName = 'Vertical';

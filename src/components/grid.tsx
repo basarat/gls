@@ -29,7 +29,7 @@ export interface GridProps extends BaseProps, SizingProp {
 /** 
  * Lays out children with a margin between them (horizontal and vertical)
  */
-export const Grid: React.FC<GridProps> = (props) => {
+export const Grid = React.forwardRef((props: GridProps, ref: React.LegacyRef<HTMLDivElement>) => {
   const {
     sizing,
     spacing,
@@ -59,7 +59,7 @@ export const Grid: React.FC<GridProps> = (props) => {
     justify == 'space-around' && aroundJustified,
   );
   return (
-    createBaseTag(otherProps, klass, 'Grid')
+    createBaseTag(otherProps, klass, 'Grid', ref)
   );
-}
+});
 Grid.displayName = 'Grid';

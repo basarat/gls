@@ -11,7 +11,7 @@ export interface FlexProps extends BaseProps, AlignmentProps {
 /** 
  * For providing a *as much as available* amount of space for an item
  */
-export const Flex: React.FC<FlexProps> = (props) => {
+export const Flex = React.forwardRef((props: FlexProps, ref: React.LegacyRef<HTMLDivElement>) => {
   const {
     sizing,
 
@@ -30,8 +30,8 @@ export const Flex: React.FC<FlexProps> = (props) => {
     horizontalAlign == 'center' && center,
     horizontalAlign == 'right' && end,
   );
-  return createBaseTag(otherProps, klass, 'Flex');
-};
+  return createBaseTag(otherProps, klass, 'Flex', ref);
+});
 Flex.displayName = 'Flex';
 
 export interface ContentProps extends BaseProps, AlignmentProps {
@@ -40,7 +40,7 @@ export interface ContentProps extends BaseProps, AlignmentProps {
 /** 
  * For providing a *as much as needed* amount of space for an item
  */
-export const Content: React.FC<ContentProps> = (props) => {
+export const Content = React.forwardRef((props: ContentProps, ref: React.LegacyRef<HTMLDivElement>) => {
   const {
     verticalAlign = 'top',
     horizontalAlign = 'left',
@@ -57,8 +57,8 @@ export const Content: React.FC<ContentProps> = (props) => {
     horizontalAlign == 'center' && center,
     horizontalAlign == 'right' && end,
   );
-  return createBaseTag(otherProps, klass, 'Content');
-};
+  return createBaseTag(otherProps, klass, 'Content', ref);
+});
 Content.displayName = 'Content';
 
 export interface BoxProps extends BaseProps, AlignmentProps, SizingProp {
@@ -67,12 +67,12 @@ export interface BoxProps extends BaseProps, AlignmentProps, SizingProp {
 /** 
  * A general purpose single item container
  */
-export const Box: React.FC<BoxProps> = (props) => {
+export const Box = React.forwardRef((props: BoxProps, ref: React.LegacyRef<HTMLDivElement>) => {
   const {
     sizing,
     verticalAlign = 'top',
     horizontalAlign = 'left',
-    
+
     ...otherProps
   } = props;
   const klass = typestyle.style(
@@ -85,6 +85,6 @@ export const Box: React.FC<BoxProps> = (props) => {
     horizontalAlign == 'center' && center,
     horizontalAlign == 'right' && end,
   );
-  return createBaseTag(otherProps, klass, 'Box');
-};
+  return createBaseTag(otherProps, klass, 'Box', ref);
+});
 Box.displayName = 'Box';

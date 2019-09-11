@@ -80,6 +80,9 @@ export function createBaseTag<T extends BaseProps>(
 
   /** Comment to help with debugging */
   comment: string,
+
+  /** Ref to allow you to use dom element if you want */
+  ref: React.LegacyRef<HTMLDivElement>
 ) {
   const {
     className,
@@ -98,6 +101,7 @@ export function createBaseTag<T extends BaseProps>(
   return React.createElement(
     (tag != null) ? tag : 'div',
     {
+      ref,
       className: typestyle.classes(
         className,
         klass,

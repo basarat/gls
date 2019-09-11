@@ -1,3 +1,4 @@
+import React from 'react';
 import * as typestyle from 'typestyle';
 import { SizingProp, StylesProp, SpacingProp, AlignmentInVerticalProps, AlignmentInHorizontalProps, PaddingProp, SizeProps, ScrollProp, StyleProp, ClassNameProp, TagProps } from '../common';
 import { createBaseTag, useGLSDefaults, _processSizing, _processPadding, cssLengthToString, _processScroll } from '../internal/utils';
@@ -75,7 +76,7 @@ export interface ResponsiveProps extends
  * - vertically till breakpoint
  * - horizontally above breakpoint
  */
-export const Responsive: React.FC<ResponsiveProps> = (props) => {
+export const Responsive = React.forwardRef((props: ResponsiveProps, ref: React.LegacyRef<HTMLDivElement>) => {
   const {
     verticalSpacing: defaultVerticalSpacing,
     horizontalSpacing: defaultHorizontalSpacing,
@@ -219,6 +220,6 @@ export const Responsive: React.FC<ResponsiveProps> = (props) => {
     horizontalOptions && horizontalOptions.styles && typestyle.media({ minWidth: breakpoint + 1 },
       ...horizontalOptions.styles),
   );
-  return createBaseTag(otherProps, klass, 'Responsive');
-}
+  return createBaseTag(otherProps, klass, 'Responsive', ref);
+});
 Responsive.displayName = 'Responsive';
