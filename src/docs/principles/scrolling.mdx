@@ -100,4 +100,19 @@ It behaves exactly like you would expect, cutting off overflowing content and no
   </Vertical>
 </Playground>
 
+Example use case - Clipping an image at the border, a common pattern in landing pages:
+
+<Playground>
+  {/* use scroll hidden to clip the image at the bottom of this section */}
+  <Vertical height={100} scroll='hidden' style={{backgroundColor: "lightskyblue", position: 'relative'}}>
+    Cute kitten at bottom
+    <img 
+      style={{borderRadius: '50%', position: 'absolute', right: '20px', bottom: '-20px'}}
+      src='http://placekitten.com/g/80/80' />
+  </Vertical>
+  <Vertical height={100} style={{backgroundColor: "lightpink"}}>
+    Next section
+  </Vertical>
+</Playground>
+
 [principle-sizing]:../principle-sizing/
