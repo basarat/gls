@@ -31,7 +31,7 @@ export function base(rootSelector?: string) {
   });
 
   if (rootSelector) {
-    /** Root should fill parent and start a flex layout */
+    /** Root should fill parent and start a vertical flex layout */
     cssRule(rootSelector, {
       width: '100%',
       height: '100%',
@@ -39,7 +39,10 @@ export function base(rootSelector?: string) {
         '-ms-flexbox',
         '-webkit-flex',
         'flex',
-      ]
+      ],
+      '-ms-flex-direction': 'column',
+      '-webkit-flex-direction': 'column',
+      flexDirection: 'column'
     });
   }
 }
