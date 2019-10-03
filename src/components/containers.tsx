@@ -1,10 +1,10 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { BaseProps, AlignmentProps, SizingProp } from '../common';
+import { BaseProps, SizingProp, AlignmentInVerticalProps } from '../common';
 import { createBaseTag, _processSizing } from '../internal/utils';
 import { content, flex, centerJustified, endJustified, center, end, vertical, start, startJustified, crossAxisStretchStyle } from '../styles/flex';
 
-export interface FlexProps extends BaseProps, AlignmentProps {
+export interface FlexProps extends BaseProps, AlignmentInVerticalProps {
   sizing?: number;
   crossAxisStretch?: boolean;
 }
@@ -26,7 +26,6 @@ export const Flex = React.forwardRef((props: FlexProps, ref: React.LegacyRef<HTM
     flex(sizing),
     crossAxisStretch && crossAxisStretchStyle,
     vertical,
-    verticalAlign == 'top' && startJustified,
     verticalAlign == 'center' && centerJustified,
     verticalAlign == 'bottom' && endJustified,
     horizontalAlign == 'left' && start,
@@ -37,7 +36,7 @@ export const Flex = React.forwardRef((props: FlexProps, ref: React.LegacyRef<HTM
 });
 Flex.displayName = 'Flex';
 
-export interface ContentProps extends BaseProps, AlignmentProps {
+export interface ContentProps extends BaseProps, AlignmentInVerticalProps {
   crossAxisStretch?: boolean;
 }
 
@@ -56,7 +55,6 @@ export const Content = React.forwardRef((props: ContentProps, ref: React.LegacyR
     content,
     crossAxisStretch && crossAxisStretchStyle,
     vertical,
-    verticalAlign == 'top' && startJustified,
     verticalAlign == 'center' && centerJustified,
     verticalAlign == 'bottom' && endJustified,
     horizontalAlign == 'left' && start,
@@ -67,7 +65,7 @@ export const Content = React.forwardRef((props: ContentProps, ref: React.LegacyR
 });
 Content.displayName = 'Content';
 
-export interface BoxProps extends BaseProps, AlignmentProps, SizingProp {
+export interface BoxProps extends BaseProps, AlignmentInVerticalProps, SizingProp {
 }
 
 /** 
@@ -85,7 +83,6 @@ export const Box = React.forwardRef((props: BoxProps, ref: React.LegacyRef<HTMLD
   const klass = typestyle.style(
     _processSizing(sizing, crossAxisStretch),
     vertical,
-    verticalAlign == 'top' && startJustified,
     verticalAlign == 'center' && centerJustified,
     verticalAlign == 'bottom' && endJustified,
     horizontalAlign == 'left' && start,
