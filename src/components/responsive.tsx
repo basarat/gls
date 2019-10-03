@@ -98,6 +98,7 @@ export const Responsive = React.forwardRef((props: ResponsiveProps, ref: React.L
     minWidth,
     maxWidth,
     sizing,
+    crossAxisStretch,
     spacing,
 
     ...otherProps
@@ -149,6 +150,13 @@ export const Responsive = React.forwardRef((props: ResponsiveProps, ref: React.L
     ? horizontalOptions.sizing
     : sizing;
 
+  const verticalCrossAxisStretch = (verticalOptions && verticalOptions.crossAxisStretch != null)
+    ? verticalOptions.crossAxisStretch
+    : crossAxisStretch;
+  const horizontalCrossAxisStretch = (horizontalOptions && horizontalOptions.crossAxisStretch != null)
+    ? horizontalOptions.crossAxisStretch
+    : crossAxisStretch;
+
   /** Determine spacings  */
   const verticalSpacing = (verticalOptions && verticalOptions.spacing != null) ? verticalOptions.spacing
     : spacing != null ? spacing
@@ -178,7 +186,7 @@ export const Responsive = React.forwardRef((props: ResponsiveProps, ref: React.L
   const klass = typestyle.style(
     /** Till breakpoint: Vertical */
     typestyle.media({ minWidth: 0, maxWidth: breakpoint },
-      _processSizing(verticalSizing),
+      _processSizing(verticalSizing, verticalCrossAxisStretch),
       verticalPadding != null && _processPadding(verticalPadding),
       vertical,
       verticalSpacing !== 0 && verticallySpaced(verticalSpacing),
@@ -200,7 +208,7 @@ export const Responsive = React.forwardRef((props: ResponsiveProps, ref: React.L
 
     /** Bigger than breakpoint: Horizontal */
     typestyle.media({ minWidth: breakpoint + 1 },
-      _processSizing(horizontalSizing),
+      _processSizing(horizontalSizing, horizontalCrossAxisStretch),
       horizontalPadding != null && _processPadding(horizontalPadding),
       horizontal,
       horizontalSpacing !== 0 && horizontallySpaced(horizontalSpacing),

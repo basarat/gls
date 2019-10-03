@@ -15,6 +15,7 @@ export const Horizontal = React.forwardRef((props: HorizontalProps, ref: React.L
   const { horizontalSpacing } = useGLSDefaults();
   const {
     sizing,
+    crossAxisStretch,
 
     spacing = horizontalSpacing,
     verticalAlign,
@@ -23,7 +24,7 @@ export const Horizontal = React.forwardRef((props: HorizontalProps, ref: React.L
     ...otherProps } = props;
 
   const klass = typestyle.style(
-    _processSizing(sizing),
+    _processSizing(sizing, crossAxisStretch),
     horizontal,
     spacing !== 0 && horizontallySpaced(spacing),
     horizontalAlign == 'center' && centerJustified,

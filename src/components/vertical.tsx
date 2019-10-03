@@ -15,6 +15,7 @@ export const Vertical = React.forwardRef((props: VerticalProps, ref: React.Legac
   const { verticalSpacing } = useGLSDefaults();
   const {
     sizing,
+    crossAxisStretch,
 
     spacing = verticalSpacing,
     verticalAlign,
@@ -24,7 +25,7 @@ export const Vertical = React.forwardRef((props: VerticalProps, ref: React.Legac
   } = props;
 
   const klass = typestyle.style(
-    _processSizing(sizing),
+    _processSizing(sizing, crossAxisStretch),
     vertical,
     spacing !== 0 && verticallySpaced(spacing),
     verticalAlign == 'center' && centerJustified,

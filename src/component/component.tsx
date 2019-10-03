@@ -25,6 +25,7 @@ export function component<T extends ComponentProps>(props: T, defaults: Componen
     | 'padding'
     | 'scroll'
     | 'sizing'
+    | 'crossAxisStretch'
 
     | 'height'
     | 'minHeight'
@@ -41,6 +42,7 @@ export function component<T extends ComponentProps>(props: T, defaults: Componen
     padding = defaults.padding,
     scroll = defaults.scroll,
     sizing = defaults.sizing,
+    crossAxisStretch = defaults.crossAxisStretch,
 
     height = defaults.height,
     minHeight = defaults.minHeight,
@@ -57,7 +59,7 @@ export function component<T extends ComponentProps>(props: T, defaults: Componen
   if (padding != null) stylesToProcess.push(_processPadding(padding));
   if (scroll != null) stylesToProcess.push(_processScroll(scroll));
   /** Always size by content by default */
-  stylesToProcess.push(_processSizing(sizing));
+  stylesToProcess.push(_processSizing(sizing, crossAxisStretch));
 
   if (height != null) stylesToProcess.push({ height: cssLengthToString(height) });
   if (minHeight != null) stylesToProcess.push({ minHeight: cssLengthToString(minHeight) });

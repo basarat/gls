@@ -44,9 +44,13 @@ export type Sizing =
  */
 export interface SizingProp {
   /** 
-   * Specifies `sizing` interaction
+   * Specifies `sizing` interaction in the main axis
    */
   sizing?: Sizing,
+  /** 
+   * Allows item to stretch into the parent cross axis
+   */
+  crossAxisStretch?: boolean,
 }
 
 export interface SpacingProp {

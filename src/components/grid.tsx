@@ -32,6 +32,7 @@ export interface GridProps extends BaseProps, SizingProp {
 export const Grid = React.forwardRef((props: GridProps, ref: React.LegacyRef<HTMLDivElement>) => {
   const {
     sizing,
+    crossAxisStretch,
     spacing,
     justify,
     ...otherProps } = props;
@@ -50,7 +51,7 @@ export const Grid = React.forwardRef((props: GridProps, ref: React.LegacyRef<HTM
   }
 
   const klass = typestyle.style(
-    _processSizing(sizing),
+    _processSizing(sizing, crossAxisStretch),
     horizontal, wrap,
     gridSpaced(verticalSpacing, horizontalSpacing),
     justify == 'center' && centerJustified,
