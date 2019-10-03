@@ -4,7 +4,7 @@ route: /responsive/
 ---
 
 import { Playground } from 'docz';
-import { Responsive, Flex, Horizontal, Vertical, GLSDefaults } from '../..'; 
+import { Responsive, Stretch, Horizontal, Vertical, GLSDefaults } from '../..'; 
 import * as demos from '../../demos'; 
 
 <demos.Star/>
@@ -19,8 +19,8 @@ As an example, resize your browser window to see the following layout change fro
 
 <Playground>
   <Responsive breakpoint={600}>
-    <Flex style={{backgroundColor: "lightskyblue"}}>Hello</Flex>
-    <Flex style={{backgroundColor: "lightpink"}}>World</Flex>
+    <Stretch style={{backgroundColor: "lightskyblue"}}>Hello</Stretch>
+    <Stretch style={{backgroundColor: "lightpink"}}>World</Stretch>
   </Responsive>
 </Playground>
 
@@ -28,11 +28,11 @@ Here is an example with left and right buttons collapsing into two rows at break
 
 <Playground>
   <Responsive breakpoint={650} minWidth={250}>
-    <Horizontal sizing="flex">
+    <Horizontal sizing="stretch">
       <demos.Button>Back 1</demos.Button>
       <demos.Button>Back 2</demos.Button>
     </Horizontal>
-    <Horizontal sizing="flex" horizontalAlign="right">
+    <Horizontal sizing="stretch" horizontalAlign="right">
       <demos.Button>Next 1</demos.Button>
       <demos.Button>Next 2</demos.Button>
     </Horizontal>
@@ -45,12 +45,12 @@ Another similar example is a common layout in designs is tabular data that colla
   <Vertical style={{fontSize: '24px'}}>
     <GLSDefaults.Provider value={{breakpoint: 650}}>
       <Responsive>
-        <Horizontal sizing="flex">Price</Horizontal>
-        <Horizontal sizing="flex" horizontalAlign="right">12.34</Horizontal>
+        <Horizontal sizing="stretch">Price</Horizontal>
+        <Horizontal sizing="stretch" horizontalAlign="right">12.34</Horizontal>
       </Responsive>
       <Responsive>
-        <Horizontal sizing="flex">GST</Horizontal>
-        <Horizontal sizing="flex" horizontalAlign="right">1.23</Horizontal>
+        <Horizontal sizing="stretch">GST</Horizontal>
+        <Horizontal sizing="stretch" horizontalAlign="right">1.23</Horizontal>
       </Responsive>
     </GLSDefaults.Provider>
   </Vertical>
@@ -60,11 +60,11 @@ Another example is form inputs:
 
 <Playground>
   <Responsive breakpoint={600}>
-    <Vertical sizing='flex' spacing={5}>
+    <Vertical sizing='stretch' spacing={5}>
       <demos.Label>First name</demos.Label>
       <demos.Input/>
     </Vertical>
-    <Vertical sizing='flex' spacing={5}>
+    <Vertical sizing='stretch' spacing={5}>
       <demos.Label>Last name</demos.Label>
       <demos.Input/>
     </Vertical>
@@ -160,8 +160,8 @@ As an example, below we have a responsive with a default spacing of `30px` but i
     spacing={30}
     vertical={{spacing: 10}}
   >
-    <Flex style={{backgroundColor: "lightskyblue"}}>Hello</Flex>
-    <Flex style={{backgroundColor: "darkorange"}}>World</Flex>
+    <Stretch style={{backgroundColor: "lightskyblue"}}>Hello</Stretch>
+    <Stretch style={{backgroundColor: "darkorange"}}>World</Stretch>
   </Responsive>
 </Playground>
 

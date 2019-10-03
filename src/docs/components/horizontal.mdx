@@ -4,7 +4,7 @@ route: /horizontal/
 ---
 
 import { Playground } from 'docz';
-import { Horizontal, Vertical, Flex, Content } from '../..'; 
+import { Horizontal, Vertical, Stretch, Content } from '../..'; 
 import * as demos from '../../demos'; 
 
 <demos.Star/>
@@ -15,8 +15,8 @@ Lays out children in a horiztonally spaced layout ([default spacing is 24px][def
 
 <Playground>
   <Horizontal>
-    <Flex style={{backgroundColor: "lightskyblue"}}>Hello</Flex>
-    <Flex style={{backgroundColor: "lightpink"}}>World</Flex>
+    <Stretch style={{backgroundColor: "lightskyblue"}}>Hello</Stretch>
+    <Stretch style={{backgroundColor: "lightpink"}}>World</Stretch>
   </Horizontal>
 </Playground>
 
@@ -24,13 +24,13 @@ Since `Horizontal` follows the [spacing principle][principle-spacing] you can co
 
 <Playground>
   <Horizontal>
-    <Horizontal sizing="flex">
-      <Flex style={{backgroundColor: "lightskyblue"}}>Hello</Flex>
-      <Flex style={{backgroundColor: "lightpink"}}>World</Flex>
+    <Horizontal sizing="stretch">
+      <Stretch style={{backgroundColor: "lightskyblue"}}>Hello</Stretch>
+      <Stretch style={{backgroundColor: "lightpink"}}>World</Stretch>
     </Horizontal>
-    <Horizontal sizing="flex">
-      <Flex style={{backgroundColor: "lightskyblue"}}>Hello</Flex>
-      <Flex style={{backgroundColor: "lightpink"}}>World</Flex>
+    <Horizontal sizing="stretch">
+      <Stretch style={{backgroundColor: "lightskyblue"}}>Hello</Stretch>
+      <Stretch style={{backgroundColor: "lightpink"}}>World</Stretch>
     </Horizontal>
   </Horizontal>
 </Playground>

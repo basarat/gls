@@ -1,7 +1,7 @@
 import * as typestyle from 'typestyle';
 import { CSSLength, BaseProps, GLSDefaults, CSSBox, Scroll, Sizing } from "../common";
 import * as scrollHelpers from "../styles/scroll";
-import { content, flex, crossAxisStretchStyle } from '../styles/flex';
+import { content, stretch, crossAxisStretchStyle } from '../styles/flex';
 import React, { useContext } from 'react';
 
 /**
@@ -132,8 +132,8 @@ export function createBaseTag<T extends BaseProps>(
  */
 export function _processSizing(fx: Sizing = 'content', crossAxisStretch = false): typestyle.types.CSSProperties {
   const fxApplied = fx == 'content' ? content
-    : fx == 'flex' ? flex(1)
-      : flex(fx);
+    : fx == 'stretch' ? stretch(1)
+      : stretch(fx);
   return crossAxisStretch ? typestyle.extend(fxApplied, crossAxisStretchStyle) : fxApplied;
 }
 

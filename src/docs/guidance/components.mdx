@@ -17,7 +17,7 @@ Following the [sizing principle][principle-sizing] there are three categories of
 
 - [Explicit Size](#explicit-size)
 - [Content Sizing](#content-sizing)
-- [Flex Sizing](#flex-sizing)
+- [Stretch Sizing](#stretch-sizing)
 
 All of these can be supported by your component using [the `gls.component` function][component].
 
@@ -60,9 +60,9 @@ Examples:
 - Buttons (`button`)
 - Typography (`h1,h2,...,p,li,ul` etc)
 
-## Flex Sizing
+## Stretch Sizing
 
-> If a component is going to occupy a significant portion of user's interaction time, then it should be `sizing:'flex'` by default. 
+> If a component is going to occupy a significant portion of user's interaction time, then it should be `sizing:'stretch'` by default. 
  
 Examples:
 - `input`
@@ -70,7 +70,7 @@ Examples:
 - `textarea`
 - page body
 
-As an example consider an input with `sizing:'flex'` as default [using the `gls.component` function][component]:
+As an example consider an input with `sizing:'stretch'` as default [using the `gls.component` function][component]:
 
 ```ts
 export interface ExampleInputProps extends
@@ -80,7 +80,7 @@ export interface ExampleInputProps extends
 
 export const ExampleInput: React.FC<ExampleInputProps> = (props) => {
   const { className, ...otherProps } =
-    gls.component(props, { sizing: 'flex' });
+    gls.component(props, { sizing: 'stretch' });
 
   return <input className={className} {...otherProps} />
 };

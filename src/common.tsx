@@ -36,7 +36,7 @@ export type CSSBox =
 
 export type Sizing =
   | 'content' /** default */
-  | 'flex' /** Same as `1` */
+  | 'stretch' /** Same as `1` */
   | number /** A flex ratio */
 
 /** 

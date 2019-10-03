@@ -40,11 +40,11 @@ export const content: types.CSSProperties = {
   flexBasis: 'auto',
 } as types.CSSProperties;
 
-export const flex = (flex: number = 1): types.CSSProperties => {
+export const stretch = (stretch: number = 1): types.CSSProperties => {
   return {
-    '-ms-flex': flex,
-    '-webkit-flex': flex,
-    flex: flex
+    '-ms-flex': stretch,
+    '-webkit-flex': stretch,
+    flex: stretch
   };
 };
 

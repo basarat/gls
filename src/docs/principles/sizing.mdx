@@ -4,7 +4,7 @@ route: /principle-sizing/
 ---
 
 import { Playground } from 'docz';
-import { Vertical, Horizontal, Flex, Content, Box } from '../..'; 
+import { Vertical, Horizontal, Stretch, Content, Box } from '../..'; 
 import * as demos from '../../demos'; 
 
 <demos.Star/>
@@ -44,7 +44,7 @@ This is essentially what you are doing in most design tools out there. Sadly exp
 ## SizingProp (Implicit sizing)
 > Implicit sizing controls the component behaviour when no explicit size properties are provided.
 
-The `SizingProp` is what controls the implicit sizing (content / flex / flex-ratio) features: 
+The `SizingProp` is what controls the implicit sizing (content / stretch / stretch-ratio) features: 
 
 ```ts
 /** 
@@ -56,8 +56,8 @@ export interface SizingProp {
    */
   sizing?:
   | 'content' /** default */
-  | 'flex' /** Same as `1` */
-  | number /** A flex ratio */;
+  | 'stretch' /** Same as `1` */
+  | number /** A stretch ratio */;
 }
 ```
 
@@ -78,36 +78,36 @@ In the example below, we have an explicit sized `Vertical` (background `lightsky
 
 > You can set sizing to `content` explicitly as well if you want (`sizing={'content'}`)
 
-### Flex sized
-A flex sized component takes up as much space as offered by the parent. 
+### Stretch sized
+A stretch sized component takes up as much space as offered by the parent. 
 
-In the example below, we have an explicit sized `Vertical` (background `lightskyblue`) with an inner flex-sized `Vertical` (background `darkorange`). The inner vertical keeps its size to match that of the outer container (observed below as you don't see the background of the parent-lightskyblue as it is filled in by the child-darkorange).
+In the example below, we have an explicit sized `Vertical` (background `lightskyblue`) with an inner stretch-sized `Vertical` (background `darkorange`). The inner vertical keeps its size to match that of the outer container (observed below as you don't see the background of the parent-lightskyblue as it is filled in by the child-darkorange).
 
 <Playground>
   <Vertical height={100} style={{backgroundColor: "lightskyblue"}}>
-    <Vertical sizing={'flex'} style={{backgroundColor: "darkorange"}}>
+    <Vertical sizing={'stretch'} style={{backgroundColor: "darkorange"}}>
         I'm taking up all the space from the parent
     </Vertical>  
   </Vertical>
 </Playground>
 
-### Flex sized ratios
-With flex sizing, you can specify `number` values. This controls how much you want different items dividing the space provided by their parent. e.g. We have `1` and `2` as the sizing on the children of the following horizontal:
+### Stretch ratios
+With stretch sizing, you can specify `number` values. This controls how much you want different items dividing the space provided by their parent. e.g. We have `1` and `2` as the sizing on the children of the following horizontal:
 
 <Playground>
   <Horizontal height={100} spacing={0} style={{backgroundColor: "lightskyblue"}}>
-    <Flex sizing={1} style={{backgroundColor: "darkorange"}}>
+    <Stretch sizing={1} style={{backgroundColor: "darkorange"}}>
         I'm taking 1
-    </Flex>  
-    <Flex sizing={2} style={{backgroundColor: "lightpink"}}>
+    </Stretch>  
+    <Stretch sizing={2} style={{backgroundColor: "lightpink"}}>
         I'm taking 2
-    </Flex>
+    </Stretch>
   </Horizontal>
 </Playground>
 
 ## Mixing
 
-You can mix `Flex`, `Content` and explicit sizing to match your design requirements as shown in the example below (`explicit,content,flex 1,flex 2`):
+You can mix `Stretch`, `Content` and explicit sizing to match your design requirements as shown in the example below (`explicit,content,stretch 1,stretch 2`):
 
 <Playground>
   <Horizontal height={100} spacing={0} style={{backgroundColor: "lightskyblue"}}>
@@ -115,14 +115,14 @@ You can mix `Flex`, `Content` and explicit sizing to match your design requireme
     <Content width={100} style={{backgroundColor: "limegreen"}}>Exactly 100px</Content>
     {/* Implicit content */ }
     <Content style={{backgroundColor: "gold"}}>As much as I need</Content>
-    {/* Implicit flex sizing = 1 */ }
-    <Flex sizing={1} style={{backgroundColor: "darkorange"}}>
+    {/* Implicit stretch sizing = 1 */ }
+    <Stretch sizing={1} style={{backgroundColor: "darkorange"}}>
         I'm taking 1 from remainder
-    </Flex>  
-    {/* Implicit flex sizing = 2 */ }
-    <Flex sizing={2} style={{backgroundColor: "lightpink"}}>
+    </Stretch>  
+    {/* Implicit stretch sizing = 2 */ }
+    <Stretch sizing={2} style={{backgroundColor: "lightpink"}}>
         I'm taking 2 from remainder
-    </Flex>
+    </Stretch>
   </Horizontal>
 </Playground>
 
@@ -130,12 +130,12 @@ You can mix `Flex`, `Content` and explicit sizing to match your design requireme
 
 ### Explicit Size requires sizing='content'
 
-`sizing=flex` takes precedence on any explicit sizing e.g. `width` has no effect in the following example:
+`sizing=stretch` takes precedence on any explicit sizing e.g. `width` has no effect in the following example:
 
 <Playground>
   <Horizontal height={100} spacing={0} style={{backgroundColor: "lightskyblue"}}>
     {/* Explicit width 100 */ }
-    <Box sizing='flex' width={100} style={{backgroundColor: "limegreen"}}>Width 100px will not work because of `sizing=flex`</Box>
+    <Box sizing='stretch' width={100} style={{backgroundColor: "limegreen"}}>Width 100px will not work because of `sizing=stretch`</Box>
   </Horizontal>
 </Playground>
 

@@ -156,7 +156,7 @@ export interface DefaultInputProps extends
 
 export const DefaultInput: React.FC<DefaultInputProps> = (props) => {
   const { className, ...otherProps } =
-    gls.component(props, { sizing: 'flex' });
+    gls.component(props, { sizing: 'stretch' });
 
   return <input className={className} {...otherProps} />
 };
@@ -171,7 +171,7 @@ export interface ExampleInputProps extends
 
 export const ExampleInput: React.FC<ExampleInputProps> = (props) => {
   const { className, ...otherProps } =
-    gls.component(props, { sizing: 'flex' });
+    gls.component(props, { sizing: 'stretch' });
 
   return <input className={className} {...otherProps} />
 };

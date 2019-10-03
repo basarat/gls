@@ -2,26 +2,26 @@ import * as typestyle from 'typestyle';
 import * as React from 'react';
 import { CSSLength } from '../common';
 import { cssLengthToString, useGLSDefaults } from '../internal/utils';
-import { flex } from '../styles/flex';
+import { stretch } from '../styles/flex';
 
-export interface FlexSpacerProps extends React.HTMLProps<HTMLDivElement> {
+export interface StretchSpacerProps extends React.HTMLProps<HTMLDivElement> {
   sizing?: number;
 }
 
 /** 
  * Flexes into any available space 
  */
-export const FlexSpacer: React.FC<FlexSpacerProps> = (props) => {
+export const StretchSpacer: React.FC<StretchSpacerProps> = (props) => {
   const { className, sizing, ...otherProps } = props;
   const klass = typestyle.classes(
     className,
-    typestyle.style(flex(sizing))
+    typestyle.style(stretch(sizing))
   );
   return (
-    <div {...otherProps} className={klass} data-comment='FlexSpacer' />
+    <div {...otherProps} className={klass} data-comment='StretchSpacer' />
   );
 };
-FlexSpacer.displayName = 'FlexSpacer';
+StretchSpacer.displayName = 'StretchSpacer';
 
 /** 
  * Common interface for space props 

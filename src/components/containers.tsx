@@ -2,9 +2,9 @@ import * as typestyle from 'typestyle';
 import * as React from 'react';
 import { BaseProps, SizingProp, AlignmentInVerticalProps } from '../common';
 import { createBaseTag, _processSizing } from '../internal/utils';
-import { content, flex, centerJustified, endJustified, center, end, vertical, start, crossAxisStretchStyle } from '../styles/flex';
+import { content, stretch, centerJustified, endJustified, center, end, vertical, start, crossAxisStretchStyle } from '../styles/flex';
 
-export interface FlexProps extends BaseProps, AlignmentInVerticalProps {
+export interface Stretch extends BaseProps, AlignmentInVerticalProps {
   sizing?: number;
   crossAxisStretch?: boolean;
 }
@@ -12,7 +12,7 @@ export interface FlexProps extends BaseProps, AlignmentInVerticalProps {
 /** 
  * For providing a *as much as available* amount of space for an item
  */
-export const Flex = React.forwardRef((props: FlexProps, ref: React.LegacyRef<HTMLDivElement>) => {
+export const Stretch = React.forwardRef((props: Stretch, ref: React.LegacyRef<HTMLDivElement>) => {
   const {
     sizing,
     crossAxisStretch,
@@ -23,7 +23,7 @@ export const Flex = React.forwardRef((props: FlexProps, ref: React.LegacyRef<HTM
     ...otherProps
   } = props;
   const klass = typestyle.style(
-    flex(sizing),
+    stretch(sizing),
     crossAxisStretch && crossAxisStretchStyle,
     vertical,
     verticalAlign == 'center' && centerJustified,
@@ -34,7 +34,7 @@ export const Flex = React.forwardRef((props: FlexProps, ref: React.LegacyRef<HTM
   );
   return createBaseTag(otherProps, klass, 'Flex', ref);
 });
-Flex.displayName = 'Flex';
+Stretch.displayName = 'Flex';
 
 export interface ContentProps extends BaseProps, AlignmentInVerticalProps {
   crossAxisStretch?: boolean;

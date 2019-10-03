@@ -4,7 +4,7 @@ route: /spacers/
 ---
 
 import { Playground } from 'docz';
-import { Vertical, Horizontal, FlexSpacer, VerticalSpacer, HorizontalSpacer } from '../..'; 
+import { Vertical, Horizontal, StretchSpacer, VerticalSpacer, HorizontalSpacer } from '../..'; 
 import * as demos from '../../demos'; 
 
 <demos.Star/>
@@ -58,28 +58,28 @@ Takes the `space?:CSSLength` prop to generate a vertical space. e.g. you can see
   </demos.Button>
 </Playground>  
 
-## FlexSpacer 
-Takes the `sizing?:number` prop ([flex ratio concept covered in sizing principle][principle-sizing]) to generate a flex amount of space.
+## StretchSpacer 
+Takes the `sizing?:number` prop ([stretch ratio concept covered in sizing principle][principle-sizing]) to generate a stretch amount of space.
 
-`FlexSpacer` comes really handy when you want to split items to the sides (left & right) with a flex space in between as shown below:
+`StretchSpacer` comes really handy when you want to split items to the sides (left & right) with a stretch space in between as shown below:
 
 <Playground>
   <Horizontal>
     <demos.Button>
       On left
     </demos.Button>
-    <FlexSpacer/>
+    <StretchSpacer/>
     <demos.Button>
       On right
     </demos.Button>
   </Horizontal>
 </Playground>
 
-`FlexSpacer` works automatically for both horizontal and vertical dimensions depending on the parent container. The following two examples demonstrate it with `Vertical(FlexSpacer,Button)` and `Horizontal(FlexSpacer,Button)`: 
+`StretchSpacer` works automatically for both horizontal and vertical dimensions depending on the parent container. The following two examples demonstrate it with `Vertical(StretchSpacer,Button)` and `Horizontal(StretchSpacer,Button)`: 
 
 <Playground>
   <Vertical height={100}>
-    <FlexSpacer/>
+    <StretchSpacer/>
     <demos.Button>
       Just a button minding its own business
     </demos.Button>
@@ -88,14 +88,14 @@ Takes the `sizing?:number` prop ([flex ratio concept covered in sizing principle
 
 <Playground>
   <Horizontal>
-    <FlexSpacer/>
+    <StretchSpacer/>
     <demos.Button>
       Just a button minding its own business
     </demos.Button>
   </Horizontal>
 </Playground>
 
-Note that when don't want to split items (all child items are grouped together), you can use the [alignment properties][common-types] on `Vertical`/`Horizontal` to achieve the same effect (no `FlexSpacer` in the below example):
+Note that when don't want to split items (all child items are grouped together), you can use the [alignment properties][common-types] on `Vertical`/`Horizontal` to achieve the same effect (no `StretchSpacer` in the below example):
 
 <Playground>
   <Horizontal horizontalAlign='right'>

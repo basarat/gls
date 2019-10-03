@@ -4,7 +4,7 @@ route: /guidance-layouts/
 ---
 
 import { Playground } from 'docz';
-import { Content, Vertical, Horizontal, Flex } from '../..'; 
+import { Content, Vertical, Horizontal, Stretch } from '../..'; 
 import * as demos from '../../demos'; 
 
 <demos.Star/>
@@ -16,7 +16,7 @@ import * as demos from '../../demos';
 Here are a few layout examples for you to play around with.
 
 ## Header Body Footer
-A simple `Vertical(Content,Flex,Content)` takes care of this common layout: 
+A simple `Vertical(Content,Stretch,Content)` takes care of this common layout: 
 
 <Playground style={{height: '200px'}}>
   <Vertical height={'100%'} spacing={0}>
@@ -25,9 +25,9 @@ A simple `Vertical(Content,Flex,Content)` takes care of this common layout:
       Header
     </Content>
     
-    <Flex style={{backgroundColor: "darkorange"}}>
+    <Stretch style={{backgroundColor: "darkorange"}}>
       Body
-    </Flex>
+    </Stretch>
     
     <Content style={{backgroundColor: "lightpink"}}>
       Footer
@@ -41,8 +41,8 @@ A simple `Vertical(Content,Flex,Content)` takes care of this common layout:
 ```
 Vertical
   Content-Header
-  Horizontal[sizing=flex] 
-    Content-Sidebar, Flex-Body, Content-Sidebar 
+  Horizontal[sizing=stretch] 
+    Content-Sidebar, Stretch-Body, Content-Sidebar 
   Content-Footer
 ```
 
@@ -55,13 +55,13 @@ takes care of this common layout:
       Header
     </Content>
     
-    <Horizontal sizing='flex' spacing={0}>
+    <Horizontal sizing='stretch' spacing={0}>
       <Content padding={[0,10]} style={{backgroundColor: "limegreen"}}>
         Sidebar 1
       </Content>
-      <Flex style={{backgroundColor: "darkorange"}}>
+      <Stretch style={{backgroundColor: "darkorange"}}>
         Body
-      </Flex>
+      </Stretch>
       <Content padding={[0,10]} style={{backgroundColor: "gold"}}>
         Sidebar 2
       </Content>
