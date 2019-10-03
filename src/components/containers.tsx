@@ -2,7 +2,7 @@ import * as typestyle from 'typestyle';
 import * as React from 'react';
 import { BaseProps, SizingProp, AlignmentInVerticalProps } from '../common';
 import { createBaseTag, _processSizing } from '../internal/utils';
-import { content, flex, centerJustified, endJustified, center, end, vertical, start, startJustified, crossAxisStretchStyle } from '../styles/flex';
+import { content, flex, centerJustified, endJustified, center, end, vertical, start, crossAxisStretchStyle } from '../styles/flex';
 
 export interface FlexProps extends BaseProps, AlignmentInVerticalProps {
   sizing?: number;
