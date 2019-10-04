@@ -1,12 +1,11 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { BaseProps, SizingProp, AlignmentInVerticalProps } from '../common';
-import { createBaseTag, _processSizing } from '../internal/utils';
-import { content, stretch, centerJustified, endJustified, center, end, vertical, start, crossAxisStretchStyle } from '../styles/flex';
+import { BaseProps, SizingProp, AlignmentInVerticalProps, CrossAxisAlignProp } from '../common';
+import { createBaseTag, _processSizing, _processCrossAxisAlign } from '../internal/utils';
+import { content, stretch, centerJustified, endJustified, center, end, vertical, start } from '../styles/flex';
 
-export interface Stretch extends BaseProps, AlignmentInVerticalProps {
+export interface Stretch extends BaseProps, AlignmentInVerticalProps, CrossAxisAlignProp {
   sizing?: number;
-  crossAxisStretch?: boolean;
 }
 
 /** 
@@ -15,7 +14,7 @@ export interface Stretch extends BaseProps, AlignmentInVerticalProps {
 export const Stretch = React.forwardRef((props: Stretch, ref: React.LegacyRef<HTMLDivElement>) => {
   const {
     sizing,
-    crossAxisStretch,
+    crossAxisAlign,
 
     verticalAlign = 'top',
     horizontalAlign = 'left',
@@ -24,7 +23,7 @@ export const Stretch = React.forwardRef((props: Stretch, ref: React.LegacyRef<HT
   } = props;
   const klass = typestyle.style(
     stretch(sizing),
-    crossAxisStretch && crossAxisStretchStyle,
+    crossAxisAlign != null && _processCrossAxisAlign(crossAxisAlign),
     vertical,
     verticalAlign == 'center' && centerJustified,
     verticalAlign == 'bottom' && endJustified,
@@ -36,8 +35,7 @@ export const Stretch = React.forwardRef((props: Stretch, ref: React.LegacyRef<HT
 });
 Stretch.displayName = 'Flex';
 
-export interface ContentProps extends BaseProps, AlignmentInVerticalProps {
-  crossAxisStretch?: boolean;
+export interface ContentProps extends BaseProps, AlignmentInVerticalProps, CrossAxisAlignProp {
 }
 
 /** 
@@ -45,7 +43,7 @@ export interface ContentProps extends BaseProps, AlignmentInVerticalProps {
  */
 export const Content = React.forwardRef((props: ContentProps, ref: React.LegacyRef<HTMLDivElement>) => {
   const {
-    crossAxisStretch,
+    crossAxisAlign,
     verticalAlign = 'top',
     horizontalAlign = 'left',
 
@@ -53,7 +51,7 @@ export const Content = React.forwardRef((props: ContentProps, ref: React.LegacyR
   } = props;
   const klass = typestyle.style(
     content,
-    crossAxisStretch && crossAxisStretchStyle,
+    crossAxisAlign != null && _processCrossAxisAlign(crossAxisAlign),
     vertical,
     verticalAlign == 'center' && centerJustified,
     verticalAlign == 'bottom' && endJustified,
@@ -65,7 +63,7 @@ export const Content = React.forwardRef((props: ContentProps, ref: React.LegacyR
 });
 Content.displayName = 'Content';
 
-export interface BoxProps extends BaseProps, AlignmentInVerticalProps, SizingProp {
+export interface BoxProps extends BaseProps, AlignmentInVerticalProps, SizingProp, CrossAxisAlignProp {
 }
 
 /** 
@@ -74,14 +72,15 @@ export interface BoxProps extends BaseProps, AlignmentInVerticalProps, SizingPro
 export const Box = React.forwardRef((props: BoxProps, ref: React.LegacyRef<HTMLDivElement>) => {
   const {
     sizing,
-    crossAxisStretch,
+    crossAxisAlign,
     verticalAlign = 'top',
     horizontalAlign = 'left',
 
     ...otherProps
   } = props;
   const klass = typestyle.style(
-    _processSizing(sizing, crossAxisStretch),
+    _processSizing(sizing),
+    crossAxisAlign != null && _processCrossAxisAlign(crossAxisAlign),
     vertical,
     verticalAlign == 'center' && centerJustified,
     verticalAlign == 'bottom' && endJustified,

@@ -1,6 +1,6 @@
-import { PaddingProp, ClassNameProp, ScrollProp, SizeProps, StylesProp, SizingProp } from "../common";
+import { PaddingProp, ClassNameProp, ScrollProp, SizeProps, StylesProp, SizingProp, CrossAxisAlignProp } from "../common";
 import * as typestyle from "typestyle";
-import { _processPadding, _processScroll, cssLengthToString, _processSizing } from "../internal/utils";
+import { _processPadding, _processScroll, cssLengthToString, _processSizing, _processCrossAxisAlign } from "../internal/utils";
 
 /** 
  * A set of props that can help you build layout-customizable components
@@ -10,6 +10,7 @@ export interface ComponentProps extends
   ScrollProp,
   PaddingProp,
   SizingProp,
+  CrossAxisAlignProp,
   SizeProps,
   StylesProp {
 }
@@ -25,7 +26,7 @@ export function component<T extends ComponentProps>(props: T, defaults: Componen
     | 'padding'
     | 'scroll'
     | 'sizing'
-    | 'crossAxisStretch'
+    | 'crossAxisAlign'
 
     | 'height'
     | 'minHeight'
@@ -42,7 +43,7 @@ export function component<T extends ComponentProps>(props: T, defaults: Componen
     padding = defaults.padding,
     scroll = defaults.scroll,
     sizing = defaults.sizing,
-    crossAxisStretch = defaults.crossAxisStretch,
+    crossAxisAlign = defaults.crossAxisAlign,
 
     height = defaults.height,
     minHeight = defaults.minHeight,
@@ -59,7 +60,8 @@ export function component<T extends ComponentProps>(props: T, defaults: Componen
   if (padding != null) stylesToProcess.push(_processPadding(padding));
   if (scroll != null) stylesToProcess.push(_processScroll(scroll));
   /** Always size by content by default */
-  stylesToProcess.push(_processSizing(sizing, crossAxisStretch));
+  stylesToProcess.push(_processSizing(sizing));
+  if (crossAxisAlign != null) stylesToProcess.push(_processCrossAxisAlign(crossAxisAlign));
 
   if (height != null) stylesToProcess.push({ height: cssLengthToString(height) });
   if (minHeight != null) stylesToProcess.push({ minHeight: cssLengthToString(minHeight) });

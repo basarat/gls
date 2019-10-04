@@ -47,10 +47,16 @@ export interface SizingProp {
    * Specifies `sizing` interaction in the main axis
    */
   sizing?: Sizing,
+}
+
+export interface CrossAxisAlignProp {
   /** 
-   * Allows item to stretch into the parent cross axis
+   * Allows an item to override its alignment in the parents cross axis
+   * e.g. 
+   * - allows an item to stretch horizontally in a Vertical(horizontalAlign='left')
+   * - allows an item to stretch vertically in a Horizontal(verticalAlign='top')
    */
-  crossAxisStretch?: boolean,
+  crossAxisAlign?: 'start' | 'center' | 'end' | 'stretch';
 }
 
 export interface SpacingProp {

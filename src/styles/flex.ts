@@ -106,8 +106,23 @@ export const aroundJustified = {
 ////////////////////
 // Self alignment //
 ////////////////////
-export const crossAxisStretchStyle = {
+export const crossAxisStretch = {
   '-ms-flex-item-align': 'stretch',
   '-webkit-align-self': 'stretch',
   alignSelf: 'stretch',
+} as types.CSSProperties;
+export const crossAxisStart = {
+  '-ms-flex-item-align': 'start',
+  '-webkit-align-self': 'flex-start',
+  alignSelf: 'flex-start'
+} as types.CSSProperties;
+export const crossAxisCenter = {
+  '-ms-flex-item-align': 'center',
+  '-webkit-align-self': 'center',
+  alignSelf: 'center'
+} as types.CSSProperties;
+export const crossAxisEnd = {
+  '-ms-flex-item-align': 'center',
+  '-webkit-align-self': 'center',
+  alignSelf: 'center'
 } as types.CSSProperties;

@@ -1,11 +1,11 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { CSSLength, BaseProps, SizingProp } from '../common';
-import { createBaseTag, useGLSDefaults, _processSizing } from '../internal/utils';
+import { CSSLength, BaseProps, SizingProp, CrossAxisAlignProp } from '../common';
+import { createBaseTag, useGLSDefaults, _processSizing, _processCrossAxisAlign } from '../internal/utils';
 import { horizontal, wrap, endJustified, centerJustified, betweenJustified, aroundJustified } from '../styles/flex';
 import { gridSpaced } from '../styles/spacing';
 
-export interface GridProps extends BaseProps, SizingProp {
+export interface GridProps extends BaseProps, SizingProp, CrossAxisAlignProp {
   /** 
    * Minimum spacing between children
    */
@@ -32,7 +32,7 @@ export interface GridProps extends BaseProps, SizingProp {
 export const Grid = React.forwardRef((props: GridProps, ref: React.LegacyRef<HTMLDivElement>) => {
   const {
     sizing,
-    crossAxisStretch,
+    crossAxisAlign,
     spacing,
     justify,
     ...otherProps } = props;
@@ -51,7 +51,8 @@ export const Grid = React.forwardRef((props: GridProps, ref: React.LegacyRef<HTM
   }
 
   const klass = typestyle.style(
-    _processSizing(sizing, crossAxisStretch),
+    _processSizing(sizing),
+    crossAxisAlign != null && _processCrossAxisAlign(crossAxisAlign),
     horizontal, wrap,
     gridSpaced(verticalSpacing, horizontalSpacing),
     justify == 'center' && centerJustified,

@@ -1,11 +1,11 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { BaseProps, SizingProp, SpacingProp, AlignmentInVerticalProps } from '../common';
-import { createBaseTag, _processSizing, useGLSDefaults } from '../internal/utils';
+import { BaseProps, SizingProp, SpacingProp, AlignmentInVerticalProps, CrossAxisAlignProp } from '../common';
+import { createBaseTag, _processSizing, useGLSDefaults, _processCrossAxisAlign } from '../internal/utils';
 import { vertical, centerJustified, endJustified, end, center, start } from '../styles/flex';
 import { verticallySpaced } from '../styles/spacing';
 
-export interface VerticalProps extends BaseProps, SizingProp, SpacingProp, AlignmentInVerticalProps {
+export interface VerticalProps extends BaseProps, SizingProp, SpacingProp, AlignmentInVerticalProps, CrossAxisAlignProp {
 }
 
 /** 
@@ -15,7 +15,7 @@ export const Vertical = React.forwardRef((props: VerticalProps, ref: React.Legac
   const { verticalSpacing } = useGLSDefaults();
   const {
     sizing,
-    crossAxisStretch,
+    crossAxisAlign,
 
     spacing = verticalSpacing,
     verticalAlign,
@@ -25,7 +25,8 @@ export const Vertical = React.forwardRef((props: VerticalProps, ref: React.Legac
   } = props;
 
   const klass = typestyle.style(
-    _processSizing(sizing, crossAxisStretch),
+    _processSizing(sizing),
+    crossAxisAlign != null && _processCrossAxisAlign(crossAxisAlign),
     vertical,
     spacing !== 0 && verticallySpaced(spacing),
     verticalAlign == 'center' && centerJustified,

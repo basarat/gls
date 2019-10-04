@@ -1,7 +1,7 @@
 import React from 'react';
 import * as typestyle from 'typestyle';
-import { SizingProp, StylesProp, SpacingProp, AlignmentInVerticalProps, AlignmentInHorizontalProps, PaddingProp, SizeProps, ScrollProp, StyleProp, ClassNameProp, TagProps } from '../common';
-import { createBaseTag, useGLSDefaults, _processSizing, _processPadding, cssLengthToString, _processScroll } from '../internal/utils';
+import { SizingProp, StylesProp, SpacingProp, AlignmentInVerticalProps, AlignmentInHorizontalProps, PaddingProp, SizeProps, ScrollProp, StyleProp, ClassNameProp, TagProps, CrossAxisAlignProp } from '../common';
+import { createBaseTag, useGLSDefaults, _processSizing, _processPadding, cssLengthToString, _processScroll, _processCrossAxisAlign } from '../internal/utils';
 import { vertical, horizontal, centerJustified, endJustified, end, center, start } from '../styles/flex';
 import { verticallySpaced, horizontallySpaced } from '../styles/spacing';
 
@@ -15,7 +15,8 @@ export interface ResponsiveOverridableProps extends
   PaddingProp,
   SizeProps,
   SizingProp,
-  SpacingProp {
+  SpacingProp,
+  CrossAxisAlignProp {
 }
 
 export interface BreakpointProp {
@@ -98,7 +99,7 @@ export const Responsive = React.forwardRef((props: ResponsiveProps, ref: React.L
     minWidth,
     maxWidth,
     sizing,
-    crossAxisStretch,
+    crossAxisAlign,
     spacing,
 
     ...otherProps
@@ -150,12 +151,12 @@ export const Responsive = React.forwardRef((props: ResponsiveProps, ref: React.L
     ? horizontalOptions.sizing
     : sizing;
 
-  const verticalCrossAxisStretch = (verticalOptions && verticalOptions.crossAxisStretch != null)
-    ? verticalOptions.crossAxisStretch
-    : crossAxisStretch;
-  const horizontalCrossAxisStretch = (horizontalOptions && horizontalOptions.crossAxisStretch != null)
-    ? horizontalOptions.crossAxisStretch
-    : crossAxisStretch;
+  const verticalCrossAxisAlign = (verticalOptions && verticalOptions.crossAxisAlign != null)
+    ? verticalOptions.crossAxisAlign
+    : crossAxisAlign;
+  const horizontalCrossAxisAlign = (horizontalOptions && horizontalOptions.crossAxisAlign != null)
+    ? horizontalOptions.crossAxisAlign
+    : crossAxisAlign;
 
   /** Determine spacings  */
   const verticalSpacing = (verticalOptions && verticalOptions.spacing != null) ? verticalOptions.spacing
@@ -186,7 +187,8 @@ export const Responsive = React.forwardRef((props: ResponsiveProps, ref: React.L
   const klass = typestyle.style(
     /** Till breakpoint: Vertical */
     typestyle.media({ minWidth: 0, maxWidth: breakpoint },
-      _processSizing(verticalSizing, verticalCrossAxisStretch),
+      _processSizing(verticalSizing),
+      verticalCrossAxisAlign != null && _processCrossAxisAlign(verticalCrossAxisAlign),
       verticalPadding != null && _processPadding(verticalPadding),
       vertical,
       verticalSpacing !== 0 && verticallySpaced(verticalSpacing),
@@ -208,7 +210,8 @@ export const Responsive = React.forwardRef((props: ResponsiveProps, ref: React.L
 
     /** Bigger than breakpoint: Horizontal */
     typestyle.media({ minWidth: breakpoint + 1 },
-      _processSizing(horizontalSizing, horizontalCrossAxisStretch),
+      _processSizing(horizontalSizing),
+      horizontalCrossAxisAlign != null && _processCrossAxisAlign(horizontalCrossAxisAlign),
       horizontalPadding != null && _processPadding(horizontalPadding),
       horizontal,
       horizontalSpacing !== 0 && horizontallySpaced(horizontalSpacing),

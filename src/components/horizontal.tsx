@@ -1,11 +1,11 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { BaseProps, SizingProp, SpacingProp, AlignmentInHorizontalProps } from '../common';
-import { createBaseTag, _processSizing, useGLSDefaults } from '../internal/utils';
+import { BaseProps, SizingProp, SpacingProp, AlignmentInHorizontalProps, CrossAxisAlignProp } from '../common';
+import { createBaseTag, _processSizing, useGLSDefaults, _processCrossAxisAlign } from '../internal/utils';
 import { horizontal, endJustified, centerJustified, center, end, start } from '../styles/flex';
 import { horizontallySpaced } from '../styles/spacing';
 
-export interface HorizontalProps extends BaseProps, SizingProp, SpacingProp, AlignmentInHorizontalProps {
+export interface HorizontalProps extends BaseProps, SizingProp, SpacingProp, AlignmentInHorizontalProps, CrossAxisAlignProp {
 }
 
 /** 
@@ -15,7 +15,7 @@ export const Horizontal = React.forwardRef((props: HorizontalProps, ref: React.L
   const { horizontalSpacing } = useGLSDefaults();
   const {
     sizing,
-    crossAxisStretch,
+    crossAxisAlign,
 
     spacing = horizontalSpacing,
     verticalAlign,
@@ -24,7 +24,8 @@ export const Horizontal = React.forwardRef((props: HorizontalProps, ref: React.L
     ...otherProps } = props;
 
   const klass = typestyle.style(
-    _processSizing(sizing, crossAxisStretch),
+    _processSizing(sizing),
+    crossAxisAlign != null && _processCrossAxisAlign(crossAxisAlign),
     horizontal,
     spacing !== 0 && horizontallySpaced(spacing),
     horizontalAlign == 'center' && centerJustified,
