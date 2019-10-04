@@ -1,6 +1,6 @@
 import React from 'react';
 import * as typestyle from 'typestyle';
-import { SizingProp, StylesProp, SpacingProp, AlignmentInVerticalProps, AlignmentInHorizontalProps, PaddingProp, SizeProps, ScrollProp, StyleProp, ClassNameProp, TagProps, CrossAxisAlignProp } from '../common';
+import { SizingProp, StylesProp, SpacingProp, VerticalsAlignProps, HorizontalsAlignProps, PaddingProp, SizeProps, ScrollProp, StyleProp, ClassNameProp, TagProps, CrossAxisAlignProp } from '../common';
 import { createBaseTag, useGLSDefaults, _processSizing, _processPadding, cssLengthToString, _processScroll, _processCrossAxisAlign } from '../internal/utils';
 import { vertical, horizontal, centerJustified, endJustified, end, center, start } from '../styles/flex';
 import { verticallySpaced, horizontallySpaced } from '../styles/spacing';
@@ -31,7 +31,7 @@ export interface BreakpointProp {
  * Props for Vertical mode
  */
 export interface ResponsiveVerticalModeProps extends
-  AlignmentInVerticalProps,
+  VerticalsAlignProps,
   StylesProp,
   ResponsiveOverridableProps {
 }
@@ -40,7 +40,7 @@ export interface ResponsiveVerticalModeProps extends
  * Props for Horizontal mode
  */
 export interface ResponsiveHorizontalModeProps extends
-  AlignmentInHorizontalProps,
+  HorizontalsAlignProps,
   StylesProp,
   ResponsiveOverridableProps {
 }

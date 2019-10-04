@@ -64,21 +64,14 @@ export interface SpacingProp {
   spacing?: CSSLength,
 }
 
-export interface AlignmentProps {
-  /** Child alignment in vertical axis */
-  verticalAlign?: 'top' /** default */ | 'center' | 'bottom',
-  /** Child alignment in horizontal axis */
-  horizontalAlign?: 'left' /** default */ | 'center' | 'right',
-}
-
-export interface AlignmentInVerticalProps {
+export interface VerticalsAlignProps {
   /** Child alignment in vertical axis */
   verticalAlign?: 'top' /** default */ | 'center' | 'bottom',
   /** Child alignment in horizontal axis */
   horizontalAlign?: 'stretch' /** default */ | 'left' | 'center' | 'right',
 }
 
-export interface AlignmentInHorizontalProps {
+export interface HorizontalsAlignProps {
   /** Child alignment in vertical axis */
   verticalAlign?: 'stretch' /** default */ | 'top' | 'center' | 'bottom',
   /** Child alignment in horizontal axis */

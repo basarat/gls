@@ -1,11 +1,11 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { BaseProps, SizingProp, SpacingProp, AlignmentInVerticalProps, CrossAxisAlignProp } from '../common';
+import { BaseProps, SizingProp, SpacingProp, VerticalsAlignProps, CrossAxisAlignProp } from '../common';
 import { createBaseTag, _processSizing, useGLSDefaults, _processCrossAxisAlign } from '../internal/utils';
 import { vertical, centerJustified, endJustified, end, center, start } from '../styles/flex';
 import { verticallySpaced } from '../styles/spacing';
 
-export interface VerticalProps extends BaseProps, SizingProp, SpacingProp, AlignmentInVerticalProps, CrossAxisAlignProp {
+export interface VerticalProps extends BaseProps, SizingProp, SpacingProp, VerticalsAlignProps, CrossAxisAlignProp {
 }
 
 /** 

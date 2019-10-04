@@ -92,16 +92,7 @@ Example `<Box sizing='content'/>` same as `<Content/>`:
 `Stretch`, `Content` and `Box` [support all `BaseProps`][common-types].
 
 ## Alignment
-`Stretch`, `Content` and `Box` support alignment. 
-
-```ts
-export interface AlignmentProps {
-  /** Child alignment in vertical axis */
-  verticalAlign?: 'top' /** default */ | 'center' | 'bottom',
-  /** Child alignment in horizontal axis */
-  horizontalAlign?: 'left' /** default */ | 'center' | 'right',
-}
-```
+`Stretch`, `Content` and `Box` support the same alignment as [`Vertical`][vertical]. 
 
 Example `center,center`: 
 

@@ -1,10 +1,10 @@
 import * as typestyle from 'typestyle';
 import * as React from 'react';
-import { BaseProps, SizingProp, AlignmentInVerticalProps, CrossAxisAlignProp } from '../common';
+import { BaseProps, SizingProp, VerticalsAlignProps, CrossAxisAlignProp } from '../common';
 import { createBaseTag, _processSizing, _processCrossAxisAlign } from '../internal/utils';
 import { content, stretch, centerJustified, endJustified, center, end, vertical, start } from '../styles/flex';
 
-export interface Stretch extends BaseProps, AlignmentInVerticalProps, CrossAxisAlignProp {
+export interface Stretch extends BaseProps, VerticalsAlignProps, CrossAxisAlignProp {
   sizing?: number;
 }
 
@@ -35,7 +35,7 @@ export const Stretch = React.forwardRef((props: Stretch, ref: React.LegacyRef<HT
 });
 Stretch.displayName = 'Flex';
 
-export interface ContentProps extends BaseProps, AlignmentInVerticalProps, CrossAxisAlignProp {
+export interface ContentProps extends BaseProps, VerticalsAlignProps, CrossAxisAlignProp {
 }
 
 /** 
@@ -63,7 +63,7 @@ export const Content = React.forwardRef((props: ContentProps, ref: React.LegacyR
 });
 Content.displayName = 'Content';
 
-export interface BoxProps extends BaseProps, AlignmentInVerticalProps, SizingProp, CrossAxisAlignProp {
+export interface BoxProps extends BaseProps, VerticalsAlignProps, SizingProp, CrossAxisAlignProp {
 }
 
 /** 
