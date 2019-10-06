@@ -67,6 +67,11 @@ export const end: types.CSSProperties = {
   '-webkit-align-items': 'flex-end',
   alignItems: 'flex-end'
 } as types.CSSProperties;
+export const baseline: types.CSSProperties = {
+  '-ms-flex-align': 'baseline',
+  '-webkit-align-items': 'baseline',
+  alignItems: 'baseline'
+} as types.CSSProperties;
 
 ////////////////////////////
 // Alignment in main axis //
@@ -122,7 +127,7 @@ export const crossAxisCenter = {
   alignSelf: 'center'
 } as types.CSSProperties;
 export const crossAxisEnd = {
-  '-ms-flex-item-align': 'center',
-  '-webkit-align-self': 'center',
-  alignSelf: 'center'
+  '-ms-flex-item-align': 'end',
+  '-webkit-align-self': 'flex-end',
+  alignSelf: 'flex-end'
 } as types.CSSProperties;

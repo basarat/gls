@@ -2,7 +2,7 @@ import React from 'react';
 import * as typestyle from 'typestyle';
 import { SizingProp, StylesProp, SpacingProp, VerticalsAlignProps, HorizontalsAlignProps, PaddingProp, SizeProps, ScrollProp, StyleProp, ClassNameProp, TagProps, CrossAxisAlignProp } from '../common';
 import { createBaseTag, useGLSDefaults, _processSizing, _processPadding, cssLengthToString, _processScroll, _processCrossAxisAlign } from '../internal/utils';
-import { vertical, horizontal, centerJustified, endJustified, end, center, start } from '../styles/flex';
+import { vertical, horizontal, centerJustified, endJustified, end, center, start, baseline } from '../styles/flex';
 import { verticallySpaced, horizontallySpaced } from '../styles/spacing';
 
 /** 
@@ -220,6 +220,7 @@ export const Responsive = React.forwardRef((props: ResponsiveProps, ref: React.L
       horizontalModeVerticalAlign == 'top' && start,
       horizontalModeVerticalAlign == 'center' && center,
       horizontalModeVerticalAlign == 'bottom' && end,
+      horizontalModeVerticalAlign == 'baseline' && baseline,
       horizontalHeight != null && { height: cssLengthToString(horizontalHeight) },
       horizontalMinHeight != null && { minHeight: cssLengthToString(horizontalMinHeight) },
       horizontalMaxHeight != null && { maxHeight: cssLengthToString(horizontalMaxHeight) },

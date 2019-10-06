@@ -2,7 +2,7 @@ import * as typestyle from 'typestyle';
 import * as React from 'react';
 import { BaseProps, SizingProp, SpacingProp, HorizontalsAlignProps, CrossAxisAlignProp } from '../common';
 import { createBaseTag, _processSizing, useGLSDefaults, _processCrossAxisAlign } from '../internal/utils';
-import { horizontal, endJustified, centerJustified, center, end, start } from '../styles/flex';
+import { horizontal, endJustified, centerJustified, center, end, start, baseline } from '../styles/flex';
 import { horizontallySpaced } from '../styles/spacing';
 
 export interface HorizontalProps extends BaseProps, SizingProp, SpacingProp, HorizontalsAlignProps, CrossAxisAlignProp {
@@ -33,6 +33,7 @@ export const Horizontal = React.forwardRef((props: HorizontalProps, ref: React.L
     verticalAlign == 'top' && start,
     verticalAlign == 'center' && center,
     verticalAlign == 'bottom' && end,
+    verticalAlign == 'baseline' && baseline,
   );
   return createBaseTag(otherProps, klass, 'Horizontal', ref);
 });

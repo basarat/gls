@@ -45,7 +45,7 @@ By default `horizontalAlign:left` and `verticalAlign:stretch`. It helps you writ
   </Horizontal>
 </Playground>
 
-* `verticalAlign?: 'stretch' /** default */ | 'top' | 'center' | 'bottom'` Controls vertical alignment of children. e.g. `verticalAlign='top'` gives us:
+* `verticalAlign?: 'stretch' /** default */ | 'top' | 'center' | 'bottom' | 'baseline'` Controls vertical alignment of children. e.g. `verticalAlign='top'` gives us:
 
 <Playground>
   <Horizontal verticalAlign='top' height={60}>
@@ -74,6 +74,17 @@ By default `horizontalAlign:left` and `verticalAlign:stretch`. It helps you writ
 ## SizingProp
 
 `Horizontal` supports the `sizing` prop as explained in the [sizing principle][principle-sizing].
+
+## Tip: Baseline
+
+`verticalAlign: 'baseline'` is really useful with mixed font sizes:
+
+<Playground>
+  <Horizontal verticalAlign='baseline' height={60} spacing={0}>
+    <div style={{fontSize:'24px'}}>$100</div>
+    <div style={{fontSize:'16px'}}>/month</div>
+  </Horizontal>
+</Playground>
 
 [common-types]:../common-types/
 [principle-spacing]:../principle-spacing/
