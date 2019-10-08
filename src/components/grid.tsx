@@ -60,8 +60,9 @@ export const Grid = React.forwardRef((props: GridProps, ref: React.LegacyRef<HTM
     justify == 'space-between' && betweenJustified,
     justify == 'space-around' && aroundJustified,
   );
-  return (
-    createBaseTag(otherProps, klass, 'Grid', ref)
-  );
+  return (<>
+    <span />
+    {createBaseTag(otherProps, klass, 'Grid', ref)}
+  </>);
 });
 Grid.displayName = 'Grid';
