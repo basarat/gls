@@ -47,7 +47,7 @@ Lets discuss that next.
 Realize that a component's external space, is its parent's internal space. A parent is free to manage its internal space anyway it wants. So really space management between components, is the responsibility of the container (and we provide plenty of such containers).
 
 ### Space between children: the `spacing` prop
-Remember good components don't come with bleedy margins. Since components don't use margins, our containers can easily create spacing between their children by adding margins with pure CSS (pseudocode: `CSS-selector(all children except last-child): CSS-property(margin)`).
+Remember good components don't come with bleedy margins. Since components don't use margins, our containers can easily create spacing between their children by adding margins with pure CSS (pseudocode: `CSS-selector(all children except first-child): CSS-property(margin)`).
 
 Lets look at some examples of external-margin-free components and how they nicely compose. First a few simple margin-free components e.g. a basic react `label` and an `input` (not a part of this library, so you can use your own):
 

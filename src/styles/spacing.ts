@@ -9,11 +9,8 @@ export const verticallySpaced = (margin: CSSLength) => {
   const spacing = cssLengthToString(margin);
   return (
     {
-      '&>*': {
-        marginBottom: spacing + ' !important'
-      },
-      '&>*:last-child': {
-        marginBottom: '0px !important',
+      '&>*+*': {
+        marginTop: spacing + ' !important'
       }
     } as typestyle.types.NestedCSSProperties
   );
@@ -26,11 +23,8 @@ export const horizontallySpaced = (margin: CSSLength) => {
   const spacing = cssLengthToString(margin);
   return (
     {
-      '&>*': {
-        marginRight: spacing + ' !important'
-      },
-      '&>*:last-child': {
-        marginRight: '0px !important',
+      '&>*+*': {
+        marginLeft: spacing + ' !important'
       }
     } as typestyle.types.CSSProperties
   );
