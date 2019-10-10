@@ -44,9 +44,7 @@ export const stretch = (stretch: number = 1): types.CSSProperties => {
   return {
     '-ms-flex': stretch,
     '-webkit-flex': stretch,
-    flex: stretch,
-    flexBasis: 'auto',
-    flexShrink: 0
+    flex: stretch
   };
 };
 
