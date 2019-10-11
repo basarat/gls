@@ -75,7 +75,7 @@ export interface HorizontalsAlignProps {
   /** Child alignment in vertical axis */
   verticalAlign?: 'stretch' /** default */ | 'top' | 'center' | 'bottom' | 'baseline',
   /** Child alignment in horizontal axis */
-  horizontalAlign?: 'left' /** default */ | 'center' | 'right',
+  horizontalAlign?: 'left' /** default if `reverse = false` */ | 'center' | 'right' /** default if `reverse = true` */,
 }
 
 /** 
