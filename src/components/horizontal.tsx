@@ -2,10 +2,11 @@ import * as typestyle from 'typestyle';
 import * as React from 'react';
 import { BaseProps, SizingProp, SpacingProp, HorizontalsAlignProps, CrossAxisAlignProp } from '../common';
 import { createBaseTag, _processSizing, useGLSDefaults, _processCrossAxisAlign } from '../internal/utils';
-import { horizontal, endJustified, centerJustified, center, end, start, baseline } from '../styles/flex';
-import { horizontallySpaced } from '../styles/spacing';
+import { horizontal, endJustified, centerJustified, center, end, start, baseline, horizontalReverse } from '../styles/flex';
+import { horizontallySpaced, horizontallyReverseSpaced } from '../styles/spacing';
 
 export interface HorizontalProps extends BaseProps, SizingProp, SpacingProp, HorizontalsAlignProps, CrossAxisAlignProp {
+  reverse?: boolean
 }
 
 /** 
@@ -20,14 +21,15 @@ export const Horizontal = React.forwardRef((props: HorizontalProps, ref: React.L
     spacing = horizontalSpacing,
     verticalAlign,
     horizontalAlign,
+    reverse,
 
     ...otherProps } = props;
 
   const klass = typestyle.style(
     _processSizing(sizing),
     crossAxisAlign != null && _processCrossAxisAlign(crossAxisAlign),
-    horizontal,
-    spacing !== 0 && horizontallySpaced(spacing),
+    reverse === true ? horizontalReverse : horizontal,
+    spacing !== 0 && (reverse === true ? horizontallyReverseSpaced(spacing) : horizontallySpaced(spacing)),
     horizontalAlign == 'center' && centerJustified,
     horizontalAlign == 'right' && endJustified,
     verticalAlign == 'top' && start,

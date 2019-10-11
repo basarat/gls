@@ -29,6 +29,19 @@ export const horizontallySpaced = (margin: CSSLength) => {
     } as typestyle.types.CSSProperties
   );
 };
+/**
+ * Puts a horizontal margin between each child
+ */
+export const horizontallyReverseSpaced = (margin: CSSLength) => {
+  const spacing = cssLengthToString(margin);
+  return (
+    {
+      '&>*+*': {
+        marginRight: spacing + ' !important'
+      }
+    } as typestyle.types.CSSProperties
+  );
+};
 
 /**
  * Puts a (horizontal AND vertical) margin between each child

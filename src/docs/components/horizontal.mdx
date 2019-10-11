@@ -4,7 +4,7 @@ route: /horizontal/
 ---
 
 import { Playground } from 'docz';
-import { Horizontal, Vertical, Stretch, Content } from '../..'; 
+import { Horizontal, Vertical, Stretch, Content, StretchSpacer } from '../..'; 
 import * as demos from '../../demos'; 
 
 <demos.Star/>
@@ -74,6 +74,23 @@ By default `horizontalAlign:left` and `verticalAlign:stretch`. It helps you writ
 ## SizingProp
 
 `Horizontal` supports the `sizing` prop as explained in the [sizing principle][principle-sizing].
+
+## Reverse
+`Horizontal` takes `reverse` prop that lays out its children in *reverse* order of how they appear in the dom. 
+
+Common use case: With bottom of the form `previous ---- next` buttons, `reverse` allows you to have tab order be intutive while the layout being visually appealing: 
+
+<Playground>
+  <Vertical spacing={5}>
+    <input/>
+    <Horizontal reverse={true}>
+      <button>Next</button>
+      <button>Reset</button>
+      <StretchSpacer />
+      <button>Back</button>
+    </Horizontal>
+  </Vertical>
+</Playground>
 
 ## Tip: Baseline
 
