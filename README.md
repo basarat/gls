@@ -1,5 +1,3 @@
-:warning: Currenty a thought experiement. Best way to consume is to fork it :rose:
-
 # gls
 
 > General Layout System for React.
