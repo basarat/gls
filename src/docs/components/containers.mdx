@@ -18,7 +18,7 @@ Here are few reasons why you should use these containers:
 * Allow you to control their child alignment.
 * They support [BaseProps][common-types].
 
-These containers behave the same as a `Vertical` with `horizontalAlign='left'` (instead of the default `stretch`) and `spacing={0}`.
+These containers wrap their children in a `span` ensuring that flexbox sees a single child and flex-direction properies don't mess with children.
 
 ## Stretch
 Stretch into the parent container.
