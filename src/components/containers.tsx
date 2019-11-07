@@ -21,7 +21,6 @@ export const Stretch = React.forwardRef((props: Stretch, ref: React.LegacyRef<HT
 
     ...otherProps
   } = props;
-  otherProps.children = <span>{otherProps.children}</span>;
   const klass = typestyle.style(
     stretch(sizing),
     crossAxisAlign != null && _processCrossAxisAlign(crossAxisAlign),
@@ -37,6 +36,7 @@ export const Stretch = React.forwardRef((props: Stretch, ref: React.LegacyRef<HT
 Stretch.displayName = 'Stretch';
 
 export interface ContentProps extends BaseProps, VerticalsAlignProps, CrossAxisAlignProp {
+  wrapInSpan?: boolean
 }
 
 /** 
@@ -47,14 +47,17 @@ export const Content = React.forwardRef((props: ContentProps, ref: React.LegacyR
     crossAxisAlign,
     verticalAlign = 'top',
     horizontalAlign = 'left',
+    wrapInSpan,
 
     ...otherProps
   } = props;
   /** 
    * Ensure single child. Without it the following would become weird
-   * <Content><b>Hello</b> is it me you are looking for</Content> 
+   * `<Content><b>Hello</b> is it me you are looking for</Content>`
    */
-  otherProps.children = <span>{otherProps.children}</span>;
+  if (wrapInSpan) {
+    otherProps.children = <span>{otherProps.children}</span>;  
+  }
   const klass = typestyle.style(
     content,
     crossAxisAlign != null && _processCrossAxisAlign(crossAxisAlign),
@@ -84,7 +87,6 @@ export const Box = React.forwardRef((props: BoxProps, ref: React.LegacyRef<HTMLD
 
     ...otherProps
   } = props;
-  otherProps.children = <span>{otherProps.children}</span>;
   const klass = typestyle.style(
     _processSizing(sizing),
     crossAxisAlign != null && _processCrossAxisAlign(crossAxisAlign),

@@ -18,7 +18,7 @@ Here are few reasons why you should use these containers:
 * Allow you to control their child alignment.
 * They support [BaseProps][common-types].
 
-These containers wrap their children in a `span` ensuring that flexbox sees a single child and flex-direction properies don't mess with children.
+These containers behave the same as a `Vertical` with `horizontalAlign='left'` (instead of the default `stretch`) and `spacing={0}`.
 
 ## Stretch
 Stretch into the parent container.
@@ -63,6 +63,18 @@ In the example below we throw a few `Content` items in a `Vertical(Content,Conte
         I'm taking up as much space as needed by this text
     </Content>
   </Vertical>
+</Playground>
+
+If you want to have multiple children e.g. `<Content><b>Hello</b> is it me you are looking for</Content>` you can use `wrapInSpan` to ensure flexbox sees a single child and flex-direction properies don't mess with children.
+
+<Playground>
+  <Content style={{backgroundColor: "darkorange"}} wrapInSpan>
+    <b>Hello</b> is it me you are looking for.
+    <b>Hello</b> is it me you are looking for.
+    <b>Hello</b> is it me you are looking for.
+    <b>Hello</b> is it me you are looking for.
+    <b>Hello</b> is it me you are looking for.
+  </Content>
 </Playground>
 
 ## Box
