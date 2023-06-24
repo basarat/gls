@@ -23,8 +23,8 @@ export const Star: React.FC = () => {
   );
 }
 
-export const BlueDiv: React.FC = (props) => <div style={{ backgroundColor: "lightskyblue" }} children={props.children} />;
-export const PinkDiv: React.FC = (props) => <div style={{ backgroundColor: "lightpink" }} children={props.children} />;
+export const BlueDiv: React.FC<{ children: React.ReactNode }> = (props) => <div style={{ backgroundColor: "lightskyblue" }} children={props.children} />;
+export const PinkDiv: React.FC<{ children: React.ReactNode }> = (props) => <div style={{ backgroundColor: "lightpink" }} children={props.children} />;
 
 /** 
  * Label 
