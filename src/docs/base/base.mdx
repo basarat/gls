@@ -1,6 +1,6 @@
 ---
-name: Foundation
-route: /foundation/
+name: Base
+route: /base/
 ---
 
 import { Playground } from 'docz';
@@ -8,29 +8,34 @@ import * as demos from '../../demos';
 
 <demos.Star/>
 
-# Foundation
+# Base
 
-We provide a neat `<Foundation/>` utility to remove any browser specific idiosyncrasies. 
+We provide a neat `base(rootSelector?:string)` utility function to remove any browser specific idiosyncrasies. 
+
+```ts
+/**
+ * Setups:
+ * - normalize
+ * - border box
+ * - fill body into page
+ * - fill root-selector into body
+ */
+function base(rootSelector?: string): void;
+```
 
 Example use: 
 
 ```ts
-import { Foundation, Root } from 'gls';
-
-// In your application layout
-<Foundation />
-<body>
-  <Root>
-    {children}
-  </Root>
-</body>
+import { base } from 'gls';
+base('#root');
 ```
 
 We describe its features next:
 
-## Modern Normalize 
+## Normalize 
 Unifies the [user agent style sheets][user-agent-stylesheet] (the browser default styles), so that they are consistent. This allows you to test your code in one browser and be fairly confident that it will look the same in the other browsers 💜
 
+## Border Box
 Browsers can be confused about whether or not the border is *a part of the width*. We remove this confusion to provide a simple (and intutive) meaning of width (`= content+padding+border`) across all browsers 💚
 
 ![borderbox](../images/borderbox.png)
