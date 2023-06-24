@@ -1,6 +1,6 @@
 {
   "name": "gls",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "description": "General Layout System for React",
   "main": "lib/index.js",
   "types": "lib",
@@ -32,9 +32,8 @@
   },
   "peerDependencies": {
     "react": ">0.0.0",
-    "typestyle": ">2.0.0"
+    "styled-components": ">6.0.0"
   },
-  "dependencies": {},
   "homepage": "https://github.com/basarat/gls#readme",
   "devDependencies": {
     "@types/react": "16.8.23",
@@ -45,6 +44,7 @@
     "gh-pages": "2.0.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
+    "styled-components": "6.0.0-rc.6",
     "typescript": "3.5.3",
     "typestyle": "2.0.4"
   }

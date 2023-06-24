@@ -1,5 +1,8 @@
 # Changelog 
 
+# 4.0.0
+* Moved from `typestyle` to `styled-components`.
+
 # 3.0.1
 * Wraping container children in a `span` breaks in uncontrollable ways. So reverted that. Added explicit `Content` prop `wrapInSpan` and guidance.
 
